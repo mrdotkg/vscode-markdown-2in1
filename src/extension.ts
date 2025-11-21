@@ -10,10 +10,9 @@ export function activate(context: vscode.ExtensionContext) {
 	const markdownService = new MarkdownService(context);
 	const markdownEditorProvider = new MarkdownEditorProvider(context)
 	context.subscriptions.push(
-		vscode.commands.registerCommand('office.markdown.switch', (uri) => { markdownService.switchEditor(uri) }),
-		vscode.commands.registerCommand('office.markdown.paste', () => { markdownService.loadClipboardImage() }),
-		vscode.window.registerCustomEditorProvider("cweijan.markdownViewer", markdownEditorProvider, viewOption),
-		vscode.window.registerCustomEditorProvider("cweijan.markdownViewer.optional", markdownEditorProvider, viewOption)
+		vscode.commands.registerCommand('vsc-markdown.switch', (uri) => { markdownService.switchEditor(uri) }),
+		vscode.commands.registerCommand('vsc-markdown.paste', () => { markdownService.loadClipboardImage() }),
+		vscode.window.registerCustomEditorProvider("vsc-markdown", markdownEditorProvider, viewOption),
 	);
 }
 

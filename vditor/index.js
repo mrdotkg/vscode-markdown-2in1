@@ -86,6 +86,8 @@ waitForHandler(() => {
             engine: 'KaTeX',
             inlineDigit: true,
           },
+          actions: [],
+          mode: 'editor',
         },
         toolbar: await getToolbar(md.rootPath),
         extPath: md.rootPath,
