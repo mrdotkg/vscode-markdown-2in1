@@ -92,11 +92,11 @@ export async function getToolbar(resPath) {
         "|",
         "undo",
         "redo",
+        "preview",
         "|",
         {
             name: 'more',
             toolbar: [
-            "preview",
             "help",
             ]
         }
