@@ -62,7 +62,8 @@ const isMac = navigator.userAgent.includes('Mac OS');
 const shortcutTip = isMac ? '⌘ ^ E' : 'Ctrl Alt E';
 
 export async function getToolbar(resPath) {
-    return [
+    // Normalize: wrap strings as objects with tipPosition
+    const toolbarItems = [
         'outline',
         "headings",
         "bold",
@@ -70,16 +71,7 @@ export async function getToolbar(resPath) {
         "strike",
         "link",
         "|",
-        {
-            name: 'selectTheme',
-            tipPosition: 's', tip: 'Select Theme',
-            icon: 'Theme:',
-            click() {
-                handler.emit("theme")
-            }
-        },
-        "code-theme",
-        // "|",
+        "emoji",
         "list",
         "ordered-list",
         "check",
@@ -92,15 +84,35 @@ export async function getToolbar(resPath) {
         "|",
         "undo",
         "redo",
+        "edit-mode",
         "preview",
+        "content-theme",
+        "code-theme",
         "|",
         {
             name: 'more',
             toolbar: [
-            "help",
             ]
         }
-    ]
+    ];
+    const tipP = 'e';
+    const normalizedToolbar = toolbarItems.map(item =>
+    typeof item === 'string'
+        ? { name: item, tipPosition: tipP }
+        : {
+            ...item,
+            tipPosition: item.tipPosition || tipP,
+            toolbar: item.toolbar
+            ? item.toolbar.map(sub =>
+                typeof sub === 'string'
+                    ? { name: sub, tipPosition: tipP }
+                    : { ...sub, tipPosition: sub.tipPosition || tipP }
+                )
+            : item.toolbar
+        }
+    );
+
+    return normalizedToolbar;
 }
 
 /**

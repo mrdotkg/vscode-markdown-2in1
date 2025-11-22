@@ -54,25 +54,28 @@ waitForHandler(() => {
       });
       
       const editor = new Vditor('vditor', {
+        customWysiwygToolbar: () => {},
         value: md.content,
-        // _lutePath: md.rootPath + '/lute.min.js',
-        // cdn: 'https://unpkg.com/vscode-vditor@3.8.19',
         height: document.documentElement.clientHeight,
         outline: {
           enable: config.openOutline,
-          position: 'right',
+          position: 'left',
         },
         toolbarConfig: {
+          tipPosition: 'right',
           hide: config.hideToolbar,
         },
         cache: {
           enable: false,
         },
-        mode: 'ir',
+        mode: 'wysiwyg',
         lang: (config.editorLanguage || 'en_US'),
         icon: "ant",
         tab: '\t',
         preview: {
+          theme: {
+            path: `${md.rootPath}/css/content-theme`
+          },
           markdown: {
             toc: true,
             codeBlockPreview: config.previewCode,

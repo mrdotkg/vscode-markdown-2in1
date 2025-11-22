@@ -13,7 +13,7 @@ A lightweight VS Code extension for instant Markdown editing and rendering using
 - **Instant Rendering**: Real-time preview as you type
 - **WYSIWYG Editor**: Visual editing with Vditor
 - **Markdown Support**: Full CommonMark and GFM support
-- **Code Highlighting**: Syntax highlighting with highlight.js
+- **Code Highlighting**: Syntax highltighting with highlight.js
 - **Math Support**: KaTeX for mathematical expressions
 - **Mermaid Diagrams**: Support for Mermaid diagram syntax
 - **Outline View**: Navigate document structure
@@ -55,8 +55,15 @@ To use the default VS Code markdown editor instead:
 
 ## TODO
 
-- Check support for line number setting with vditor
-- Toollbar placement - sides
-- Preview CSS use Markdown preview theme.
-- Add vscode action to fetch preview theme from a website url, store and configure as vditor preview action.
-- Give more editor action buttons like "switch editor" to accomodate native toolbar.
+- On install replace built in Markdown editing, preview and editor actions with this extension.
+- In Extesion Settings, command and editor action provide a buton to toggle default markdown editing.
+- Instead of current switch editor, use the VS code built in show source editor action buttons
+- Use a css to animate the toolbar, stay for longer May be click to show.
+- Make sure there are no difference between native markdown preview and our own preview.
+- remove whats not working and release first version of the extension.
+- Fix  missing services like -
+  - upload,
+  - content-theme,
+  - code-theme not applying immediately
+  - export,
+  - emoji,
