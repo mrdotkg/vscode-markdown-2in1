@@ -12,6 +12,9 @@ function loadConfigs() {
     state = JSON.parse(elem.getAttribute('data-config'));
     const { platform } = state;
     document.getElementById('vditor').classList.add(platform);
+    if (state.scrollBeyondLastLine) {
+      document.body.classList.add('scrollBeyondLastLine');
+    }
   } catch (error) {
     console.log('loadConfigFail');
   }
@@ -59,10 +62,10 @@ waitForHandler(() => {
         height: document.documentElement.clientHeight,
         outline: {
           enable: config.openOutline,
-          position: 'left',
+          position: 'right',
         },
         toolbarConfig: {
-          tipPosition: 'right',
+          tipPosition: 'south',
           hide: config.hideToolbar,
         },
         cache: {
@@ -79,6 +82,7 @@ waitForHandler(() => {
           markdown: {
             toc: true,
             codeBlockPreview: config.previewCode,
+            mark: false,
           },
           hljs: {
             style: config.previewCodeHighlight.style,
@@ -162,3 +166,4 @@ function loadCSS(rootPath, path) {
   style.href = `${rootPath}/${path}`;
   document.documentElement.appendChild(style);
 }
+

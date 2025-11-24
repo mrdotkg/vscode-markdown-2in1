@@ -1,37 +1,45 @@
-body {
-    padding: 0;
-}
-
 .vditor * {
-    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Helvetica Neue", "Helvetica", "Arial", "Microsoft YaHei", sans-serif;
+    /* font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Helvetica Neue", "Helvetica", "Arial", "Microsoft YaHei", sans-serif; */
+    font-family: var(--markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", system-ui, "Ubuntu", "Droid Sans", sans-serif);
+    /* font-size: var(--markdown-font-size, 15px); */
 }
 
-code {
-    color: #24292e;
+
+blockquote {
+    margin: 0;
+    padding: 0px 16px 0 10px;
+    border-left-width: 5px;
+    border-left-style: solid;
+    border-radius: 2px;
+    background-color: var(--bg-color) !important;
+    color: var(--front-color) !important;
 }
 
-a {
-    text-decoration: none;
+/* .vditor-ir__node:hover::before {
+    border-left: 3px solid var(--front-color);
+} */
+.vditor-ir__node::before {
+    content: "" !important;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -12px;
+    height: 100%;
+}
+.vditor {
+    border: none !important;
+    height: auto !important;
+    min-height: auto !important;
+    width: auto !important;
+    --panel-background-color: transparent;
 }
 
-.vditor-panel span[aria-label="ID<Alt+Enter>"],
-.vditor-panel .vditor-icon[data-type="down"] {
-    display: none !important;
+.vditor-reset h1 {
+  font-size: 2em;
 }
 
 .vditor-reset {
-    padding: 0 5% !important;
-}
+    padding: 0 !important;
+    line-height: 24px;
 
-.win32 * {
-    text-shadow: 0 0 0.55px #7c7c7cdd;
-}
-
-.vditor-toolbar__item .vditor-tooltipped[data-type="selectTheme"] {
-    width: 55px;
-    font-size: 14px;
-}
-
-html {
-    scrollbar-color: unset;
 }

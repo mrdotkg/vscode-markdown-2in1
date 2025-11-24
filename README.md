@@ -6,7 +6,7 @@ A lightweight VS Code extension for instant Markdown editing and rendering using
 
 **Supported file formats:**
 
-- Markdown:  `.md`
+- Markdown: `.md`
 
 ## Features
 
@@ -55,9 +55,8 @@ To use the default VS Code markdown editor instead:
 
 ## TODO
 
-- On install replace built in Markdown editing, preview and editor actions with this extension.
-- In Extesion Settings, command and editor action provide a buton to toggle default markdown editing.
-- Instead of current switch editor, use the VS code built in show source editor action buttons
+- Figure out where to place vscode markdown alike css in the code among (base.css, light.css, auto.css, index.css)
+  - if color goes to light.css and dark.css both
 - Use a css to animate the toolbar, stay for longer May be click to show.
 - Make sure there are no difference between native markdown preview and our own preview.
 - remove whats not working and release first version of the extension.

@@ -65,34 +65,21 @@ export async function getToolbar(resPath) {
     // Normalize: wrap strings as objects with tipPosition
     const toolbarItems = [
         'outline',
-        "headings",
-        "bold",
-        "italic",
-        "strike",
-        "link",
-        "|",
-        "emoji",
-        "list",
-        "ordered-list",
-        "check",
-        "table",
-        "|",
-        "quote",
-        "line",
-        "code",
-        "inline-code",
         "|",
         "undo",
         "redo",
-        "edit-mode",
-        "preview",
-        "content-theme",
-        "code-theme",
         "|",
+        "check",
+        "table",
+        "quote",
+        "link",
+        "strike",
         {
             name: 'more',
             toolbar: [
-            ]
+                "edit-mode",
+                "preview",
+    ]
         }
     ];
     const tipP = 'e';
@@ -115,9 +102,7 @@ export async function getToolbar(resPath) {
     return normalizedToolbar;
 }
 
-/**
- * 针对wysiwyg和ir两种模式对超链接做不同的处理
- */
+
 export const openLink = () => {
     const clickCallback = e => {
         let ele = e.target;
@@ -168,8 +153,6 @@ export function scrollEditor(top) {
     }, 10);
 }
 
-
-//监听选项改变事件
 export function onToolbarClick(editor) {
     document.querySelector('.vditor-toolbar').addEventListener("click", (e) => {
         let target = e.target, type;
@@ -263,7 +246,6 @@ function matchShortcut(hotkey, event) {
     }
 
 }
-
 
 /**
  * 自动补全符号

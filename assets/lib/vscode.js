@@ -73,3 +73,15 @@ window.addEventListener("keydown", (e) => {
   if (e.code == "F12") window.vscodeEvent.emit("developerTool");
   else if (isCompose(e) && e.code == "KeyV") e.preventDefault(); // vscode的bug, hebrew(希伯来语)键盘会粘贴两次
 });
+
+// If vscode settings ScrollBeyondLastLine is enabled, add a 'scrollBeyondLastLine ' class to body
+window.addEventListener('message', event => {
+  const message = event.data;
+  if (message.type === 'updateScrollBeyondLastLine') {
+    if (message.value) {
+      document.body.classList.add('scrollBeyondLastLine');
+    } else {
+      document.body.classList.remove('scrollBeyondLastLine');
+    }
+  }
+});

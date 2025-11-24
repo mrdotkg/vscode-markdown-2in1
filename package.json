@@ -40,11 +40,8 @@
 		"commands": [
 			{
 				"command": "vsc-markdown.switch",
-				"title": "Switch markdown editor",
-				"icon": {
-					"dark": "./assets/images/switch.svg",
-					"light": "./assets/images/switch_light.svg"
-				}
+				"title": "Toggle Editor",
+				"icon": "$(diff-ignored)"
 			},
 			{
 				"command": "vsc-markdown.paste",
@@ -99,7 +96,7 @@
 				},
 				"vsc-markdown.hideToolbar": {
 					"type": "boolean",
-					"default": true,
+					"default": false,
 					"description": "Hide markdown toolbar."
 				},
 				"vsc-markdown.previewCode": {

@@ -1,6 +1,3 @@
-*:not(.katex, .katex *) {
-    border-color: var(--ext-border-color) !important;
-}
 
 .vditor-content hr {
     background-color: var(--hr-bg) !important;
@@ -45,7 +42,7 @@
 .vditor,
 .vditor-content,
 .vditor-content *:not(.hljs, .hljs *, .katex, .katex *, a, hr, .vditor-reset--error, code) {
-    background-color: var(--bg-color) !important;
+    background-color: transparent !important;
     color: var(--front-color) !important;
 }
 
@@ -67,12 +64,6 @@
 
 .vditor-content .vditor-outline li>span:hover>span {
     color: var(--list-hover-color) !important;
-}
-
-.vditor-reset h1,
-.vditor-reset h2 {
-    padding-bottom: 0 !important;
-    border-bottom: none !important;
 }
 
 .vditor-toolbar,
@@ -100,4 +91,15 @@ body[data-vscode-theme-kind="vscode-light"] #vditor[data-editor-theme="Auto"] .v
 #vditor[data-editor-theme="Dracula"] .vditor-content .vditor-outline,
 body[data-vscode-theme-kind="vscode-dark"] #vditor[data-editor-theme="Auto"] .vditor-content .vditor-outline {
     filter: brightness(110%);
+}
+
+/* custom */
+.vditor-toolbar{
+    display: none;
+}
+
+.vditor-reset hr,
+.vditor-ir hr{
+    margin: revert;
+    display: revert;
 }

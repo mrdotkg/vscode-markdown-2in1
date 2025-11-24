@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="../node_modules/vditor/dist/index.css" />
     <script src="../node_modules/vditor/dist/index.js"></script>
     <base href="{{baseUrl}}/">
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="md.css" />
     <meta id="configs" data-config='{{configs}}'>
 </head>
 
-<body style="padding:0;">
+<body class="showEditorSelection">
     <div id="vditor" style="min-height: 100vh;"></div>
     <div class="dropdown-menu dropdown-menu-sm" id="context-menu" style="display: none;">
         <a class="dropdown-item" id="copy" href="#">Copy</a>

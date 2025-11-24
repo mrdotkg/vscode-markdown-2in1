@@ -163,6 +163,10 @@ export class MarkdownEditorProvider implements vscode.CustomTextEditorProvider {
             .replace(/\?.+$/, '')        // strip query parameters
             .replace('https://git', 'https://file'); // adjust scheme for file access
 
+        const configs = {
+            platform: process.platform, // e.g. 'win32', 'darwin'
+            scrollBeyondLastLine: vscode.workspace.getConfiguration('editor').get('scrollBeyondLastLine')};
+
         // Read the HTML template file for the Webview (index.html inside vditor)
         // Then replace placeholders with actual values:
         // - {{rootPath}} → rootPath variable
@@ -174,10 +178,25 @@ export class MarkdownEditorProvider implements vscode.CustomTextEditorProvider {
             readFileSync(`${this.extensionPath}/vditor/index.html`, 'utf8')
                 .replace("{{rootPath}}", rootPath)                 // inject rootPath
                 .replace("{{baseUrl}}", baseUrl)                   // inject baseUrl
-                .replace(`{{configs}}`, JSON.stringify({})),       // inject configs (empty object)
+                .replace(`{{configs}}`, JSON.stringify(configs)),       // inject configs (empty object)
             webview,                                               // Webview instance
             contextPath                                            // context path for resource resolution
         );
+
+        const configEd = vscode.workspace.getConfiguration('editor');
+        updateWebviewConfig();
+
+        vscode.workspace.onDidChangeConfiguration(e => {
+        if (e.affectsConfiguration('editor.scrollBeyondLastLine')) {
+            updateWebviewConfig();
+        }
+        });
+
+        function updateWebviewConfig() {
+            const scrollBeyondLastLine = vscode.workspace.getConfiguration('editor').get<boolean>('scrollBeyondLastLine');
+            webview.postMessage({ type: 'updateScrollBeyondLastLine', value: scrollBeyondLastLine });
+        }
+
 
     }
 
