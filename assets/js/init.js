@@ -11,7 +11,7 @@ function loadConfigs() {
   try {
     state = JSON.parse(elem.getAttribute('data-config'));
     const { platform } = state;
-    document.getElementById('vditor').classList.add(platform);
+    document.getElementById('editor').classList.add(platform);
     if (state.scrollBeyondLastLine) {
       document.body.classList.add('scrollBeyondLastLine');
     }
@@ -36,8 +36,8 @@ function waitForHandler(callback) {
 }
 
 /**
- * Wait for Vditor to be defined.
- * @param {Function} callback The callback function to execute when Vditor is defined.
+ * Wait for Editor to be defined.
+ * @param {Function} callback The callback function to execute when Editor is defined.
  */
 function waitForVditor(callback) {
   if (typeof Vditor !== 'undefined') {
@@ -56,7 +56,7 @@ waitForHandler(() => {
         loadTheme(md.rootPath, theme);
       });
       
-      const editor = new Vditor('vditor', {
+      const editor = new Vditor('editor', {
         customWysiwygToolbar: () => {},
         value: md.content,
         height: document.documentElement.clientHeight,
@@ -123,12 +123,6 @@ waitForHandler(() => {
           onToolbarClick(editor);
         },
       });
-
-      // autoSymbol(handler, editor, config);
-      // createContextMenu(editor);
-      // imageParser(config.viewAbsoluteLocal);
-      // scrollEditor(md.scrollTop);
-      // zoomElement('.vditor-content');
     }).emit("init");
   });
 });
@@ -150,7 +144,7 @@ function addAutoTheme(rootPath, theme) {
  */
 function loadTheme(rootPath, theme) {
   loadCSS(rootPath, `css/theme/${theme}.css`);
-  document.getElementById('vditor').setAttribute('data-editor-theme', theme);
+  document.getElementById('editor').setAttribute('data-editor-theme', theme);
 }
 
 /**

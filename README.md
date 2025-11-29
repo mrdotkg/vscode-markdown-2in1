@@ -56,26 +56,4 @@ To use the default VS Code markdown editor instead:
 ## TODO
 
 - Make sure there are no difference between native markdown preview and our own preview.
-- remove whats not working and release first version of the extension.
-- Remove vditor.css.
-
-## System Design
-
-```text
-assets
-  logo.png
-src
-  ui
-    md-elements.css
-    editor.css
-    dark-light-theme.css
-  api
-    provider.js
-    service.js
-    events.js
-  ext.js
-  ext.html
-  ext.css
-package.json
-
-```
+- Remove base, auto css and create a theme.css

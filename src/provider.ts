@@ -51,7 +51,7 @@ export class MarkdownEditorProvider implements vscode.CustomTextEditorProvider {
         const webview = handler.panel.webview;
 
         let content = document.getText();
-        const contextPath = `${this.extensionPath}/editor`;
+        const contextPath = `${this.extensionPath}`;
         const rootPath = webview.asWebviewUri(vscode.Uri.file(`${contextPath}`)).toString();
 
         Holder.activeDocument = document;
@@ -167,7 +167,7 @@ export class MarkdownEditorProvider implements vscode.CustomTextEditorProvider {
             platform: process.platform, // e.g. 'win32', 'darwin'
             scrollBeyondLastLine: vscode.workspace.getConfiguration('editor').get('scrollBeyondLastLine')};
 
-        // Read the HTML template file for the Webview (index.html inside vditor)
+        // Read the HTML template file for the Webview (index.html)
         // Then replace placeholders with actual values:
         // - {{rootPath}} → rootPath variable
         // - {{baseUrl}} → the computed baseUrl above
@@ -175,9 +175,9 @@ export class MarkdownEditorProvider implements vscode.CustomTextEditorProvider {
         // Finally, pass the processed HTML through Util.buildPath()
         // which rewrites src/href attributes so resources load correctly in the Webview
         webview.html = Util.buildPath(
-            readFileSync(`${this.extensionPath}/editor/index.html`, 'utf8')
-                .replace("{{rootPath}}", rootPath)                 // inject rootPath
-                .replace("{{baseUrl}}", baseUrl)                   // inject baseUrl
+            readFileSync(`${this.extensionPath}/editor.html`, 'utf8')
+                // .replace("{{rootPath}}", rootPath)                 // inject rootPath
+                // .replace("{{baseUrl}}", baseUrl)                   // inject baseUrl
                 .replace(`{{configs}}`, JSON.stringify(configs)),       // inject configs (empty object)
             webview,                                               // Webview instance
             contextPath                                            // context path for resource resolution
