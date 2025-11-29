@@ -5,9 +5,9 @@
         ".github": true,
         ".gitignore": true,
         ".idea": true,
-        ".vscode": true,
+        // ".vscode": true,
         ".vscodeignore": true,
-        "out/": true,
+        // "out/": true,
         "package-lock.json": true,
         "resources": true,
         "tsconfig.json": true

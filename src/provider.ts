@@ -51,7 +51,7 @@ export class MarkdownEditorProvider implements vscode.CustomTextEditorProvider {
         const webview = handler.panel.webview;
 
         let content = document.getText();
-        const contextPath = `${this.extensionPath}/vditor`;
+        const contextPath = `${this.extensionPath}/editor`;
         const rootPath = webview.asWebviewUri(vscode.Uri.file(`${contextPath}`)).toString();
 
         Holder.activeDocument = document;
@@ -175,7 +175,7 @@ export class MarkdownEditorProvider implements vscode.CustomTextEditorProvider {
         // Finally, pass the processed HTML through Util.buildPath()
         // which rewrites src/href attributes so resources load correctly in the Webview
         webview.html = Util.buildPath(
-            readFileSync(`${this.extensionPath}/vditor/index.html`, 'utf8')
+            readFileSync(`${this.extensionPath}/editor/index.html`, 'utf8')
                 .replace("{{rootPath}}", rootPath)                 // inject rootPath
                 .replace("{{baseUrl}}", baseUrl)                   // inject baseUrl
                 .replace(`{{configs}}`, JSON.stringify(configs)),       // inject configs (empty object)
