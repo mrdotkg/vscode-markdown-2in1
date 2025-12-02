@@ -41,8 +41,13 @@
 
 .vditor,
 .vditor-content,
-.vditor-content *:not(.hljs, .hljs *, .katex, .katex *, a, hr, .vditor-reset--error, code) {
+.vditor-content *:not(blockquote, blockquote p, .hljs, .hljs *, .katex, .katex *, a, hr, .vditor-reset--error, code) {
     background-color: var(--bg-color) !important;
+    color: var(--front-color) !important;
+}
+
+blockquote, blockquote p {
+    background-color: var(--vscode-textBlockQuote-background) !important;
     color: var(--front-color) !important;
 }
 

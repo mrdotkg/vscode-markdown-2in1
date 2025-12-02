@@ -9,7 +9,7 @@
 .vditor-reset {
     overflow: visible;
     padding: 0 !important;
-    line-height: 24px;
+    /* line-height: 24px; */
 }
 .vditor-toolbar{
     display: none;
