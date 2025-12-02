@@ -1,8 +1,3 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
 html, body {
 	font-family: var(--markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", system-ui, "Ubuntu", "Droid Sans", sans-serif);
 	font-size: var(--markdown-font-size, 15px);
@@ -15,7 +10,6 @@ body {
 	padding-top: 1em;
 }
 
-/* Reset margin top for elements */
 h1, h2, h3, h4, h5, h6,
 p, ol, ul, pre {
 	margin-top: 0;
@@ -28,69 +22,20 @@ h1, h2, h3, h4, h5, h6 {
 	line-height: 1.25;
 }
 
-#code-csp-warning {
-	position: fixed;
-	top: 0;
-	right: 0;
-	color: white;
-	margin: 16px;
-	text-align: center;
-	font-size: 12px;
-	font-family: sans-serif;
-	background-color:#444444;
-	cursor: pointer;
-	padding: 6px;
-	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+.vscode-light h1,
+.vscode-light h2,
+.vscode-light hr,
+.vscode-light td {
+	border-color: rgba(0, 0, 0, 0.18);
 }
 
-#code-csp-warning:hover {
-	text-decoration: none;
-	background-color:#007acc;
-	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+.vscode-dark h1,
+.vscode-dark h2,
+.vscode-dark hr,
+.vscode-dark td {
+	border-color: rgba(255, 255, 255, 0.18);
 }
 
-body.scrollBeyondLastLine {
-	margin-bottom: calc(100vh - 22px);
-}
-
-body.showEditorSelection [data-block] {
-	position: relative;
-}
-
-/* body.showEditorSelection :not(tr,ul,ol).code-active-line:before, */
-body.showEditorSelection [data-block]:hover:before {
-	content: "";
-	display: block;
-	position: absolute;
-	top: 0;
-	left: -10px;
-	height: 100%;
-	z-index: 99999999999999;
-	/* border-left: 3px solid rgba(0, 0, 0, 0.40); */
-}
-
-.vscode-high-contrast.showEditorSelection [data-block]:hover:before{
-	border-left: none;
-}
-
-body.showEditorSelection li.code-active-line:before,
-body.showEditorSelection li[data-block]:hover:before {
-	left: -30px;
-}
-
-.vscode-light.showEditorSelection [data-block]:hover:before {
-	border-left: 3px solid rgba(0, 0, 0, 0.40);
-}
-
-.vscode-dark.showEditorSelection [data-block]:hover:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.60);
-}
-
-.vscode-high-contrast.showEditorSelection [data-block]:hover:before {
-	border-left: 3px solid rgba(255, 160, 0, 1);
-}
-
-/* Prevent `sub` and `sup` elements from affecting line height */
 sub,
 sup {
 	line-height: 0;
@@ -146,7 +91,7 @@ hr {
 
 h1 {
 	font-size: 2em;
-	margin-top: 0;
+	margin-top: 0 !important;
 	padding-bottom: 0.3em;
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
@@ -160,29 +105,27 @@ h2 {
 }
 
 h3 {
-	font-size: 1.25em;
+	font-size: 1.25em !important;
 }
 
 h4 {
-	font-size: 1em;
+	font-size: 1em !important;
 }
 
 h5{
-	font-size: 0.875em;
+	font-size: 0.875em !important;
 }
 
 h6{
-	font-size: 0.82em;
+	font-size: 0.875em !important;
 }
 
-input {
-  font: inherit;
-  line-height: inherit;
-  padding: 0;
-  border: none;
+.vscode-light th {
+	border-color: rgba(0, 0, 0, 0.69);
 }
-h6 {
-	font-size: 0.85em;
+
+.vscode-dark th {
+	border-color: rgba(255, 255, 255, 0.69);
 }
 
 table {
@@ -203,16 +146,87 @@ td {
 table > tbody > tr + tr > td {
 	border-top: 1px solid;
 }
+input {
+  font: inherit;
+  line-height: inherit;
+  padding: 0;
+  border: none;
+}
 
 blockquote {
 	margin: 0;
-	padding: 0px 16px 0 10px;
-	border-left-width: 5px;
-	border-left-style: solid;
+	padding: 0px 16px 0 10px !important;
+	border-left: 5px solid var(--vscode-textBlockQuote-border) !important;
+	/* border-left-style: solid; */
 	border-radius: 2px;
-	border-color: revert-layer;
+	/* border-color: revert-layer; */
+	border-color: var(--vscode-textBlockQuote-border);
 	background: var(--vscode-textBlockQuote-background);
 }
+
+/* 
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection [data-block] {
+	position: relative;
+}
+
+body.showEditorSelection [data-block]:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -10px;
+	height: 100%;
+	z-index: 99999999999999;
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-high-contrast.showEditorSelection [data-block]:hover:before{
+	border-left: none;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li[data-block]:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection [data-block]:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection [data-block]:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection [data-block]:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
 
 code {
 	font-family: var(--vscode-editor-font-family, "SF Mono", Monaco, Menlo, Consolas, "Ubuntu Mono", "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace);
@@ -233,12 +247,11 @@ pre.hljs code > div {
 
 pre code {
 	display: inline-block;
-	/* color: var(--vscode-editor-foreground); */
+	color: var(--vscode-editor-foreground);
 	tab-size: 4;
 	background: none;
 }
 
-/** Theming */
 
 pre {
 	background-color: var(--vscode-textCodeBlock-background);
@@ -249,11 +262,36 @@ pre {
 	border-color: rgb(0, 0, 0);
 }
 
-.vscode-light th {
-	border-color: rgba(0, 0, 0, 0.69);
+ */
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
 }
 
-.vscode-dark th {
-	border-color: rgba(255, 255, 255, 0.69);
+body.showEditorSelection [data-block] {
+	position: relative;
 }
 
+
+
+.vscode-high-contrast.showEditorSelection [data-block]:hover:before{
+	border-left: none;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li[data-block]:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection [data-block]:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection [data-block]:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection [data-block]:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}

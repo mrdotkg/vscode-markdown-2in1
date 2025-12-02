@@ -1,0 +1,97 @@
+/* Custom IR */
+.vditor * {
+    font-family: var(--markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", system-ui, "Ubuntu", "Droid Sans", sans-serif);
+}
+.vditor-reset h1 {
+  font-size: 2em;
+}
+
+.vditor-reset {
+    overflow: visible;
+    padding: 0 !important;
+    line-height: 24px;
+}
+.vditor-toolbar{
+    display: none;
+}
+.vditor{
+  border: none;
+}
+.vditor-reset hr,
+.vditor-ir hr{
+    margin: revert;
+    display: revert;
+}
+
+.vscode-light .vditor-reset h1,
+.vscode-light .vditor-reset h2,
+.vscode-light .vditor-reset hr,
+.vscode-light .vditor-reset td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-light .vditor-reset hr{
+  --hr-bg: rgba(0, 0, 0, 0.18);
+
+}
+
+.vscode-dark .vditor-reset h1,
+.vscode-dark .vditor-reset h2,
+.vscode-dark .vditor-reset hr,
+.vscode-dark .vditor-reset td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-dark .vditor-reset hr{
+  background-color: rgba(255, 255, 255, 0.18);
+  --hr-bg: rgba(255, 255, 255, 0.18);
+}
+.vditor-copy{
+    display: none !important;
+}
+.hljs{
+  background: transparent !important;
+  padding: 0 !important;
+
+}
+
+/* Custom MD */
+html, body {
+	font-size: var(--markdown-font-size, 15px);
+}
+body.showEditorSelection [data-block] {
+	position: relative;
+}
+pre.vditor-reset{
+  border: none;
+}
+.vditor-ir__preview {
+  white-space: pre;
+}
+
+.vditor-ir__node.vditor-ir__node--expand::before,
+.vditor-ir__node.vditor-ir__node--expand::after {
+  content: '';
+}
+
+.vditor-ir__node::before,
+.vditor-ir__node::after {
+  display: none;
+}
+hr{
+  height: 1px !important;
+  border: none !important;
+}
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+body.showEditorSelection [data-block]:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -10px;
+	height: 100%;
+	z-index: 99999999999999;
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}

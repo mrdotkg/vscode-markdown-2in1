@@ -1,0 +1,132 @@
+/* .vditor-wysiwyg {
+	 box-sizing: border-box;
+	 flex: 1;
+	 position: relative;
+	 width: 100%;
+	 min-width: 1px;
+}
+ .vditor-wysiwyg pre.vditor-reset {
+	 background-color: var(--panel-background-color);
+	 margin: 0;
+	 white-space: pre-wrap;
+	 height: 100%;
+	 box-sizing: border-box;
+}
+ .vditor-wysiwyg pre.vditor-reset[contenteditable="false"] {
+	 opacity: 0.3;
+	 cursor: not-allowed;
+}
+ .vditor-wysiwyg pre.vditor-reset:empty::before {
+	 content: attr(placeholder);
+	 color: var(--second-color);
+}
+ .vditor-wysiwyg pre.vditor-reset:focus {
+	 outline: none;
+	 background-color: var(--textarea-background-color);
+}
+ .vditor-wysiwyg pre.vditor-reset:after {
+	 content: "";
+	 height: var(--editor-bottom);
+	 display: block;
+}
+ .vditor-wysiwyg blockquote:empty::before, .vditor-wysiwyg pre > code:empty::before, .vditor-wysiwyg p:empty::before, .vditor-wysiwyg h1:empty::after, .vditor-wysiwyg h2:empty::after, .vditor-wysiwyg h3:empty::after, .vditor-wysiwyg h4:empty::after, .vditor-wysiwyg h5:empty::after, .vditor-wysiwyg h6:empty::after {
+	 content: ' ';
+}
+ .vditor-wysiwyg code[data-marker="`"] {
+	 padding-left: 0 !important;
+	 padding-right: 0 !important;
+}
+ .vditor-wysiwyg__block pre:first-child {
+	 margin-bottom: -1em;
+}
+ .vditor-wysiwyg__block pre:first-child code {
+	 height: auto;
+	 color: var(--textarea-text-color);
+	 text-align: left;
+}
+ .vditor-wysiwyg__block pre:last-child {
+	 margin-bottom: 1em;
+}
+ .vditor-wysiwyg__preview {
+	 cursor: pointer;
+	 white-space: initial;
+	 min-height: 27px;
+}
+ .vditor-wysiwyg > .vditor-reset > h1:before, .vditor-wysiwyg > .vditor-reset > h2:before, .vditor-wysiwyg > .vditor-reset > h3:before, .vditor-wysiwyg > .vditor-reset > h4:before, .vditor-wysiwyg > .vditor-reset > h5:before, .vditor-wysiwyg > .vditor-reset > h6:before, .vditor-wysiwyg div.vditor-wysiwyg__block:before, .vditor-wysiwyg div[data-type="link-ref-defs-block"]:before, .vditor-wysiwyg div[data-type="footnotes-block"]:before, .vditor-wysiwyg .vditor-toc:before {
+	 float: left;
+	 padding-right: 4px;
+	 margin-left: -29px;
+	 content: 'H1';
+	 font-size: 0.85rem;
+	 font-weight: normal;
+	 color: var(--second-color);
+}
+ .vditor-wysiwyg > .vditor-reset > h2:before {
+	 content: 'H2';
+}
+ .vditor-wysiwyg > .vditor-reset > h3:before {
+	 content: 'H3';
+}
+ .vditor-wysiwyg > .vditor-reset > h4:before {
+	 content: 'H4';
+}
+ .vditor-wysiwyg > .vditor-reset > h5:before {
+	 content: 'H5';
+}
+ .vditor-wysiwyg > .vditor-reset > h6:before {
+	 content: 'H6';
+}
+ .vditor-wysiwyg div[data-type="link-ref-defs-block"]:before {
+	 content: '"A"';
+}
+ .vditor-wysiwyg div[data-type="footnotes-block"]:before {
+	 content: '^F';
+}
+ .vditor-wysiwyg div.vditor-wysiwyg__block:before {
+	 content: "</>";
+}
+ .vditor-wysiwyg div.vditor-wysiwyg__block[data-type="yaml-front-matter"]:before {
+	 content: "F";
+}
+ .vditor-wysiwyg div.vditor-wysiwyg__block[data-type="math-block"]:before {
+	 content: "$$";
+}
+ .vditor-wysiwyg .vditor-toc:before {
+	 content: "ToC";
+}
+ .vditor-wysiwyg hr {
+	 display: inline-block;
+	 margin: 12px 0;
+	 width: 100%;
+}
+ .vditor-wysiwyg details {
+	 white-space: initial;
+}
+ .vditor-wysiwyg a {
+	 cursor: pointer;
+}
+ .vditor-wysiwyg span[data-type="backslash"] > span {
+	 display: none;
+	 color: var(--second-color);
+}
+ .vditor-wysiwyg span[data-type="link-ref"], .vditor-wysiwyg sup[data-type="footnotes-ref"] {
+	 color: ;
+}
+ .vditor-wysiwyg span[data-type="toc-h"] {
+	 color: ;
+	 text-decoration: underline;
+}
+ .vditor-wysiwyg div[data-type="footnotes-block"] {
+	 border-top: 2px solid var(--heading-border-color);
+	 padding-top: 24px;
+	 margin-top: 24px;
+}
+ .vditor-wysiwyg div[data-type="link-ref-defs-block"] {
+	 color: var(--blockquote-color);
+}
+ @media screen and (max-width: ) {
+	 .vditor-wysiwyg h1:before, .vditor-wysiwyg h2:before, .vditor-wysiwyg h3:before, .vditor-wysiwyg h4:before, .vditor-wysiwyg h5:before, .vditor-wysiwyg h6:before, .vditor-wysiwyg div.vditor-wysiwyg__block:before, .vditor-wysiwyg div[data-type="link-ref-defs-block"]:before, .vditor-wysiwyg div[data-type="footnotes-block"]:before, .vditor-wysiwyg .vditor-toc:before {
+		 content: none;
+	}
+}
+  */

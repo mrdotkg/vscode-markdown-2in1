@@ -1,59 +1,32 @@
-# Markdown Editor
+# VSC Markdown - Editing & Previewing
 
-## Introduction
+This extension aims to replace the built in markdown preview of VS Code.
 
-A lightweight VS Code extension for instant Markdown editing and rendering using Vditor.
+## Issues
 
-**Supported file formats:**
+- Ctrl + A inside code editing area should only select editable code.
+- On hover new styles appear, but if i scroll instead of mouse move the hover styling still remains.
+- The build does not run in dev command
+- Figure out automatic VSIX upload in Github releases.
+- Editor Scroll position is not being persisted across window reload.
 
-- Markdown: `.md`
+## Identical to the built in Markdown Preview
 
-## Features
+Make sure there are no difference between native markdown preview and our own preview.
 
-- **Instant Rendering**: Real-time preview as you type
-- **WYSIWYG Editor**: Visual editing with Vditor
-- **Markdown Support**: Full CommonMark and GFM support
-- **Code Highlighting**: Syntax highltighting with highlight.js
-- **Math Support**: KaTeX for mathematical expressions
-- **Mermaid Diagrams**: Support for Mermaid diagram syntax
-- **Outline View**: Navigate document structure
-- **Theme Support**: Multiple editor themes
+- Switch dark(vs2015)/light(vs) themes on dark/light theme switch.
+- Show marker at the block start on mouse hover.
+- Tables
+- Links
+- Inline Code
 
-## Keyboard Shortcuts
+## Extra
 
-Based on [Vditor shortcuts](shortcut.md):
+Support these extra features as well
 
-- **Move list up**: `Ctrl+Alt+I` / `⌘+^+I`
-- **Move list down**: `Ctrl+Alt+J` / `⌘+^+J`
-- **Edit in VS Code**: `Ctrl+Alt+E` / `⌘+^+E`
-
-## Tips
-
-- Resize editor via `Ctrl/Cmd + Mouse Scroll`
-- Open hyperlinks with `Ctrl/Cmd + Click` or double-click
-- Paste images directly into the editor
-
-## Configuration
-
-To use the default VS Code markdown editor instead:
-
-```json
-{
-    "workbench.editorAssociations": {
-        "*.md": "default",
-        "*.markdown": "default"
-    }
-}
-```
-
-## Credits
-
-- **Markdown Editor**: [Vanessa219/vditor](https://github.com/Vanessa219/vditor)
-- **Syntax Highlighting**: [highlight.js](https://highlightjs.org/)
-- **Math Rendering**: [KaTeX](https://katex.org/)
-- **Diagrams**: [Mermaid](https://mermaid.js.org/)
-
-## TODO
-
-- Make sure there are no difference between native markdown preview and our own preview.
-- Remove base, auto css and create a theme.css
+- Support line numbers and copy button
+- Support two editing modes - IR and Wysisyg
+- Support Subscript/Superscript
+- Support Definition Lists
+- Support yaml Front Matter editing/preview
+- Support Outline in Explorer Outline view
