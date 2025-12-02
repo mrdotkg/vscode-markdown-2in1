@@ -109,3 +109,6 @@ body.showEditorSelection [data-block]:hover:before {
 .vditor-wysiwyg__link{
   color: var(--vscode-textLink-foreground) !important;
 }
+#editor.vditor{
+  height: 100% !important;
+}

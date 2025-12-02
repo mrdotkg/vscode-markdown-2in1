@@ -278,12 +278,6 @@ pre code {
 	/* background: none; */
 	/* background-color: var(--vscode-textCodeBlock-background) !important; */
 }
-
-
-body.scrollBeyondLastLine {
-	margin-bottom: calc(100vh - 22px);
-}
-
 body.showEditorSelection [data-block] {
 	position: relative;
 }
