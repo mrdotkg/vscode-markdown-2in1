@@ -1,3 +1,15 @@
+html, body {
+	font-family: var(--markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", system-ui, "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--markdown-font-size, 15px);
+	padding: 0 26px;
+	line-height: var(--markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+body {
+	padding-top: 1em;
+}
+
 /* Custom IR */
 .vditor * {
     font-family: var(--markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", system-ui, "Ubuntu", "Droid Sans", sans-serif);
@@ -108,6 +120,9 @@ body.scrollBeyondLastLine {
     margin-left: 0;
 
 }
+.vditor-ir__marker{
+  color: var(--vscode-editor-foreground) !important;
+}
 .vditor-ir__marker--pre code {
   color: var(--vscode-textPreformat-foreground) !important;
   background-color: var(--vscode-textPreformat-background) !important;
@@ -121,4 +136,105 @@ pre.vditor-ir__marker--pre.vditor-ir__marker code{
 }
 .vditor-ir__marker.vditor-ir__marker--info{
   display: inline !important;
+}
+.vditor-content hr {
+  background-color: var(--hr-bg) !important;
+}
+
+.dropdown-menu.show:before,
+.dropdown-item {
+  background-color: var(--second-bg-color) !important;
+  color: var(--front-color) !important;
+}
+
+.dropdown-item:hover {
+  background: var(--dropdown-hover-background) !important;
+}
+
+.vditor-reset--error {
+  color: var(--error-color) !important;
+}
+
+.vditor-input {
+  border: 1px solid var(--ext-border-color);
+}
+
+.vditor-toolbar,
+.vditor-toolbar--hide:hover {
+  background-color: var(--bg-color);
+}
+
+.vditor-toolbar__item .vditor-tooltipped {
+  color: var(--front-color);
+}
+
+.vditor-reset {
+  font-size: var(--vscode-editor-font-size);
+}
+.vditor-reset table tr,
+pre.vditor-reset {
+    background-color: var(--bg-color) !important;
+    color: var(--front-color) !important;
+}
+.vditor-ir__marker.vditor-ir__marker--heading{
+    color: var(--dropdown-hover-background) !important;
+}
+
+blockquote,
+blockquote p {
+  background-color: var(--vscode-textBlockQuote-background) !important;
+  color: var(--front-color) !important;
+}
+
+.vditor-content .vditor-wysiwyg__preview > code {
+  color: var(--front-color);
+  background-color: var(--bg-color) !important;
+}
+
+.vditor-hint button:not(.vditor-menu--disabled):hover {
+  background-color: var(--second-bg-color) !important;
+}
+
+.vditor-content .vditor-outline li > span:hover > span {
+  color: var(--list-hover-color) !important;
+}
+
+.vditor-toolbar,
+.vditor-outline {
+  border: none !important;
+}
+
+.vditor-outline__title {
+  display: none !important;
+}
+
+body.showEditorSelection [data-block] {
+	position: relative;
+}
+
+body.showEditorSelection [data-block]:hover:before {
+	content: "" !important;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -13px;
+	height: 100%;
+	z-index: 99999999999999;
+	border-left: 3px solid rgba(0, 0, 0, 0.20);
+}
+
+.vscode-high-contrast.showEditorSelection [data-block]:hover:before{
+	border-left: none;
+}
+
+.vscode-light.showEditorSelection [data-block]:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.20);
+}
+
+.vscode-dark.showEditorSelection [data-block]:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.20);
+}
+
+.vscode-high-contrast.showEditorSelection [data-block]:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
 }
