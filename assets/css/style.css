@@ -108,3 +108,17 @@ body.scrollBeyondLastLine {
     margin-left: 0;
 
 }
+.vditor-ir__marker--pre code {
+  color: var(--vscode-textPreformat-foreground) !important;
+  background-color: var(--vscode-textPreformat-background) !important;
+}
+.vditor-ir__marker--info{
+  color: var(--vscode-textPreformat-foreground) !important;
+}
+
+pre.vditor-ir__marker--pre.vditor-ir__marker code{
+    padding: 1em !important;
+}
+.vditor-ir__marker.vditor-ir__marker--info{
+  display: inline !important;
+}
