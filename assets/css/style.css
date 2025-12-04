@@ -69,11 +69,6 @@ pre.vditor-reset{
   white-space: pre;
 }
 
-.vditor-ir__node.vditor-ir__node--expand::before,
-.vditor-ir__node.vditor-ir__node--expand::after {
-  content: '';
-}
-
 .vditor-ir__node::before,
 .vditor-ir__node::after {
   display: none;
@@ -84,16 +79,6 @@ hr{
 }
 body.scrollBeyondLastLine {
 	margin-bottom: calc(100vh - 22px);
-}
-body.showEditorSelection [data-block]:hover:before {
-	content: "";
-	display: block;
-	position: absolute;
-	top: 0;
-	left: -10px;
-	height: 100%;
-	z-index: 99999999999999;
-	border-left: 3px solid rgba(0, 0, 0, 0.40);
 }
 
 .vditor-reset table td, .vditor-reset table th {
@@ -118,4 +103,8 @@ body.showEditorSelection [data-block]:hover:before {
 .vditor-ir, .vditor-wysiwyg, .vditor-sv {
   caret-color: var(--vscode-editorCursor-foreground) !important;
   caret-shape: inherit;
+}
+.vditor-ir .vditor-reset > h1:before, .vditor-ir .vditor-reset > h2:before, .vditor-ir .vditor-reset > h3:before, .vditor-ir .vditor-reset > h4:before, .vditor-ir .vditor-reset > h5:before, .vditor-ir .vditor-reset > h6:before, .vditor-ir div[data-type="link-ref-defs-block"]:before, .vditor-ir div[data-type="footnotes-block"]:before, .vditor-ir .vditor-toc:before {
+    margin-left: 0;
+
 }
