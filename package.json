@@ -155,17 +155,6 @@
 	"dependencies": {
 		"date-format": "^4.0.14",
 		"file-type": "^19.6.0",
-		"highlight.js": "^11.10.0",
-		"katex": "^0.16.2",
-		"markdown-it": "^14.1.0",
-		"markdown-it-anchor": "^9.2.0",
-		"markdown-it-checkbox": "^1.1.0",
-		"markdown-it-mermaid": "^0.2.5",
-		"markdown-it-plantuml": "^1.4.1",
-		"markdown-it-toc-done-right": "^4.2.0",
-		"mustache": "^4.0.1",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
 		"vditor": "^3.11.2"
 	}
 }
