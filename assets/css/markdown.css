@@ -279,27 +279,22 @@ body.showEditorSelection [data-block]:hover:before {
 	display: block;
 	position: absolute;
 	top: 0;
-	left: -10px;
+	left: -13px;
 	height: 100%;
 	z-index: 99999999999999;
-	border-left: 3px solid rgba(0, 0, 0, 0.40);
+	border-left: 3px solid rgba(0, 0, 0, 0.20);
 }
 
 .vscode-high-contrast.showEditorSelection [data-block]:hover:before{
 	border-left: none;
 }
 
-body.showEditorSelection li.code-active-line:before,
-body.showEditorSelection li[data-block]:hover:before {
-	left: -30px;
-}
-
 .vscode-light.showEditorSelection [data-block]:hover:before {
-	border-left: 3px solid rgba(0, 0, 0, 0.40);
+	border-left: 3px solid rgba(0, 0, 0, 0.20);
 }
 
 .vscode-dark.showEditorSelection [data-block]:hover:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.60);
+	border-left: 3px solid rgba(255, 255, 255, 0.20);
 }
 
 .vscode-high-contrast.showEditorSelection [data-block]:hover:before {
