@@ -1,4 +1,4 @@
-import { openLink, hotKeys, getToolbar, onToolbarClick} from "./util.js";
+import { openLink, hotKeys, getToolbar, onToolbarClick } from "./util.js";
 
 let state;
 
@@ -7,16 +7,16 @@ let state;
  * @returns {Object} The loaded configuration state.
  */
 function loadConfigs() {
-  const elem = document.getElementById('configs');
+  const elem = document.getElementById("configs");
   try {
-    state = JSON.parse(elem.getAttribute('data-config'));
+    state = JSON.parse(elem.getAttribute("data-config"));
     const { platform } = state;
-    document.getElementById('editor').classList.add(platform);
+    document.getElementById("editor").classList.add(platform);
     if (state.scrollBeyondLastLine) {
-      document.body.classList.add('scrollBeyondLastLine');
+      document.body.classList.add("scrollBeyondLastLine");
     }
   } catch (error) {
-    console.log('loadConfigFail');
+    console.log("loadConfigFail");
   }
   return state;
 }
@@ -28,7 +28,7 @@ loadConfigs();
  * @param {Function} callback The callback function to execute when the handler is defined.
  */
 function waitForHandler(callback) {
-  if (typeof handler !== 'undefined') {
+  if (typeof handler !== "undefined") {
     callback();
   } else {
     setTimeout(() => waitForHandler(callback), 10);
@@ -40,7 +40,7 @@ function waitForHandler(callback) {
  * @param {Function} callback The callback function to execute when Editor is defined.
  */
 function waitForVditor(callback) {
-  if (typeof Vditor !== 'undefined') {
+  if (typeof Vditor !== "undefined") {
     callback();
   } else {
     setTimeout(() => waitForVditor(callback), 10);
@@ -49,82 +49,86 @@ function waitForVditor(callback) {
 
 waitForHandler(() => {
   waitForVditor(() => {
-handler.on("open", async (md) => {
-      const { config, language } = md;
-      addAutoTheme(md.rootPath, config.editorTheme);
-      handler.on('theme', (theme) => {
-        loadTheme(md.rootPath, theme);
-      });
-      
-      const vditor = new Vditor('editor', {
-    customWysiwygToolbar: () => {},
-    value: md.content,
-    height: document.documentElement.clientHeight,
-    outline: {
-      enable: config.openOutline,
-      position: 'right',
-    },
-    toolbarConfig: {
-      tipPosition: 'south',
-      hide: config.hideToolbar,
-    },
-    cache: {
-      enable: false,
-    },
-    mode: 'ir',
-    lang: (config.editorLanguage || 'en_US'),
-    // icon: "ant",
-    tab: '\t',
-    preview: {
-      theme: {current: 'none'},
-      markdown: {
-        toc: false,
-        codeBlockPreview: true,
-        mark: false,
-      },
-      hljs: {
-        enable: true,
-        style: document.body.classList.contains('vscode-dark')? 'vs2015' : 'vs',
-        lineNumber: config.previewCodeHighlight.showLineNumber,
-      },
-      extPath: md.rootPath,
-      math: {
-        engine: 'KaTeX',
-        inlineDigit: true,
-      },
-      actions: [],
-      mode: 'editor',
-    },
-    toolbar: await getToolbar(md.rootPath),
-    extPath: md.rootPath,
-    input(content) {
-      handler.emit("save", content);
-    },
-    upload: {
-      url: '/image',
-      accept: 'image/*',
-      handler(files) {
-        let reader = new FileReader();
-        reader.readAsBinaryString(files[0]);
-        reader.onloadend = () => {
-          handler.emit("img", reader.result);
-        };
-      },
-    },
-    hint: {
-      emoji: {},
-      extend: hotKeys,
-    },
-    after() {
-      handler.on("update", (content) => {
-        editor.setValue(content);
-      });
-      openLink();
-      onToolbarClick(editor);
-    },
-  });
-  window.vditor = vditor;
-}).emit("init");
+    handler
+      .on("open", async (md) => {
+        const { config, language } = md;
+        addAutoTheme(md.rootPath, config.editorTheme);
+        handler.on("theme", (theme) => {
+          loadTheme(md.rootPath, theme);
+        });
+
+        const vditor = new Vditor("editor", {
+          customWysiwygToolbar: () => {},
+          value: md.content,
+          height: document.documentElement.clientHeight,
+          outline: {
+            enable: config.openOutline,
+            position: "right",
+          },
+          toolbarConfig: {
+            tipPosition: "south",
+            hide: config.hideToolbar,
+          },
+          cache: {
+            enable: false,
+          },
+          mode: "ir",
+          lang: config.editorLanguage || "en_US",
+          // icon: "ant",
+          tab: "\t",
+          preview: {
+            theme: { current: "none" },
+            markdown: {
+              toc: false,
+              codeBlockPreview: true,
+              mark: false,
+            },
+            hljs: {
+              enable: true,
+              style: document.body.classList.contains("vscode-dark")
+                ? "vs2015"
+                : "vs",
+              lineNumber: config.previewCodeHighlight.showLineNumber,
+            },
+            extPath: md.rootPath,
+            math: {
+              engine: "KaTeX",
+              inlineDigit: true,
+            },
+            actions: [],
+            mode: "editor",
+          },
+          toolbar: await getToolbar(md.rootPath),
+          extPath: md.rootPath,
+          input(content) {
+            handler.emit("save", content);
+          },
+          upload: {
+            url: "/image",
+            accept: "image/*",
+            handler(files) {
+              let reader = new FileReader();
+              reader.readAsBinaryString(files[0]);
+              reader.onloadend = () => {
+                handler.emit("img", reader.result);
+              };
+            },
+          },
+          hint: {
+            emoji: {},
+            extend: hotKeys,
+          },
+          after() {
+            handler.on("update", (content) => {
+              window.vditor.setValue(content);
+            });
+            openLink();
+            onToolbarClick(window.vditor);
+          },
+        });
+        window.vditor = vditor;
+      })
+      .emit("init");
   });
 });
 
@@ -145,7 +149,7 @@ function addAutoTheme(rootPath, theme) {
  */
 function loadTheme(rootPath, theme) {
   loadCSS(rootPath, `css/theme/${theme}.css`);
-  document.getElementById('editor').setAttribute('data-editor-theme', theme);
+  document.getElementById("editor").setAttribute("data-editor-theme", theme);
 }
 
 /**
@@ -154,10 +158,9 @@ function loadTheme(rootPath, theme) {
  * @param {String} path The path of the CSS file.
  */
 function loadCSS(rootPath, path) {
-  const style = document.createElement('link');
+  const style = document.createElement("link");
   style.rel = "stylesheet";
   style.type = "text/css";
   style.href = `${rootPath}/${path}`;
   document.documentElement.appendChild(style);
 }
-
