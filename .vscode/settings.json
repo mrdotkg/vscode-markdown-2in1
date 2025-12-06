@@ -1,18 +1,5 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-    "files.exclude": {
-        ".eslintrc.js": true,
-        ".github": true,
-        ".gitignore": true,
-        ".idea": true,
-        // ".vscode": true,
-        ".vscodeignore": true,
-        "node_modules/": true,
-        "out/": true,
-        "package-lock.json": true,
-        "resources": true,
-        "tsconfig.json": true
-    },
     "search.exclude": {
         "out": true // set this to false to include "out" folder in search results
     },

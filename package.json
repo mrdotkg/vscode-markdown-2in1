@@ -153,8 +153,6 @@
 		 "@vscode/vsce": "^2.12.1"
 	},
 	"dependencies": {
-		"date-format": "^4.0.14",
-		"file-type": "^19.6.0",
-		"vditor": "^3.11.2"
+		"file-type": "^19.6.0"
 	}
 }
