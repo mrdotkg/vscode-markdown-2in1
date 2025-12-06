@@ -4,8 +4,10 @@ This extension aims to replace the built in markdown preview of VS Code.
 
 ## Pre market release issues
 
-- No unused code.
-- Figure out automatic VSIX upload in Github releases.
+- [ ] No unused code.
+- [ ] Persist scroll position
+- [ ] Avoid git to open md with this editor.
+- [X] Figure out automatic VSIX upload in Github releases.
 
 ## App Issues
 
