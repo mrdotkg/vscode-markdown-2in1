@@ -6,14 +6,14 @@ This extension aims to replace the built in markdown preview of VS Code.
 
 - [ ] No unused code.
 - [ ] Persist scroll position
-- [ ] Avoid git to open md with this editor.
+- [X] Parse Images
+- [X] Avoid git to open md with this editor.
 - [X] Figure out automatic VSIX upload in Github releases.
 
 ## App Issues
 
 - Ctrl + A inside code editing area should only select editable code.
 - On hover new styles appear, but if i scroll instead of mouse move the hover styling still remains.
-- Editor Scroll position is not being persisted across window reload.
 - Text align of table tr th should resemble that of built in preview - right if not mentioned.
 
 ## Identical to the built in Markdown Preview

@@ -160,11 +160,6 @@ export class MarkdownEditorProvider implements vscode.CustomTextEditorProvider {
             ? vscode.Uri.file(getWorkspacePath(folderPath))   // Convert workspace folder path into a VS Code file URI
             : folderPath;                                     // Fallback: use the raw folder path
 
-        // Convert the basePath into a Webview-safe URI
-        // - asWebviewUri() transforms local paths into special URIs that Webviews can load
-        // - toString() makes it a string
-        // - replace(/\?.+$/, '') removes any query string (e.g., ?v=123) from the URI
-        // - replace('https://git', 'https://file') rewrites scheme prefix for compatibility
         const baseUrl = webview.asWebviewUri(basePath)
             .toString()
             .replace(/\?.+$/, '')        // strip query parameters
@@ -174,17 +169,10 @@ export class MarkdownEditorProvider implements vscode.CustomTextEditorProvider {
             platform: process.platform, // e.g. 'win32', 'darwin'
             scrollBeyondLastLine: vscode.workspace.getConfiguration('editor').get('scrollBeyondLastLine')};
 
-        // Read the HTML template file for the Webview (index.html)
-        // Then replace placeholders with actual values:
-        // - {{rootPath}} → rootPath variable
-        // - {{baseUrl}} → the computed baseUrl above
-        // - {{configs}} → an empty JSON object here
-        // Finally, pass the processed HTML through Util.buildPath()
-        // which rewrites src/href attributes so resources load correctly in the Webview
         webview.html = Util.buildPath(
             readFileSync(`${this.extensionPath}/editor.html`, 'utf8')
-                // .replace("{{rootPath}}", rootPath)                 // inject rootPath
-                // .replace("{{baseUrl}}", baseUrl)                   // inject baseUrl
+                .replace("{{rootPath}}", rootPath)                 // inject rootPath
+                .replace("{{baseUrl}}", baseUrl)                   // inject baseUrl
                 .replace(`{{configs}}`, JSON.stringify(configs)),       // inject configs (empty object)
             webview,                                               // Webview instance
             contextPath                                            // context path for resource resolution

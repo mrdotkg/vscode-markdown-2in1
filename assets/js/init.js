@@ -1,4 +1,4 @@
-import { openLink, hotKeys, getToolbar, onToolbarClick } from "./util.js";
+import { openLink, hotKeys, getToolbar, onToolbarClick, imageParser } from "./util.js";
 
 let state;
 
@@ -126,6 +126,7 @@ waitForHandler(() => {
             onToolbarClick(window.vditor);
           },
         });
+        imageParser(true);
         window.vditor = vditor;
       })
       .emit("init");
