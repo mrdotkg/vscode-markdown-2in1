@@ -53,14 +53,89 @@
         "icon": "$(symbol-method)"
       },
       {
+        "command": "vsc-markdown.insertH2",
+        "title": "Insert H2 Heading",
+        "icon": "$(symbol-class)"
+      },
+      {
+        "command": "vsc-markdown.insertH3",
+        "title": "Insert H3 Heading",
+        "icon": "$(symbol-namespace)"
+      },
+      {
         "command": "vsc-markdown.insertBold",
-        "title": "Make text bold",
+        "title": "Insert Bold Text",
         "icon": "$(bold)"
       },
       {
+        "command": "vsc-markdown.insertItalic",
+        "title": "Insert Italic Text",
+        "icon": "$(italic)"
+      },
+      {
         "command": "vsc-markdown.insertList",
-        "title": "Insert unordered list",
+        "title": "Insert Unordered List",
         "icon": "$(list-unordered)"
+      },
+      {
+        "command": "vsc-markdown.insertOrderedList",
+        "title": "Insert Ordered List",
+        "icon": "$(list-ordered)"
+      },
+      {
+        "command": "vsc-markdown.insertLink",
+        "title": "Insert Link",
+        "icon": "$(link)"
+      },
+      {
+        "command": "vsc-markdown.insertImage",
+        "title": "Insert Image",
+        "icon": "$(file-media)"
+      },
+      {
+        "command": "vsc-markdown.insertCodeBlock",
+        "title": "Insert Code Block",
+        "icon": "$(code)"
+      },
+      {
+        "command": "vsc-markdown.insertInlineCode",
+        "title": "Insert Inline Code",
+        "icon": "$(symbol-string)"
+      },
+      {
+        "command": "vsc-markdown.insertBlockquote",
+        "title": "Insert Blockquote",
+        "icon": "$(quote)"
+      },
+      {
+        "command": "vsc-markdown.insertHorizontalRule",
+        "title": "Insert Horizontal Rule",
+        "icon": "$(dash)"
+      },
+      {
+        "command": "vsc-markdown.insertTable",
+        "title": "Insert Table",
+        "icon": "$(table)"
+      },
+      {
+        "command": "vsc-markdown.insertStrikethrough",
+        "title": "Insert Strikethrough",
+        "icon": "$(strikethrough)"
+      },
+      {
+        "command": "vsc-markdown.insertEmptyBlock",
+        "title": "Insert Empty Block",
+        "icon": "$(add)"
+      },
+      {
+        "command": "vsc-markdown.insertH4",
+        "title": "Insert H4 Heading",
+        "icon": "$(symbol-property)"
+      },
+      {
+        "command": "vsc-markdown.insertH5",
+        "title": "Insert H5 Heading",
+        "icon": "$(symbol-variable)"
       }
     ],
     "keybindings": [
