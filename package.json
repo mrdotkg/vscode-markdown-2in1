@@ -150,6 +150,12 @@
         "key": "ctrl+alt+e",
         "mac": "ctrl+cmd+e",
         "when": "editorTextFocus && editorLangId == markdown"
+      },
+      {
+        "command": "vsc-markdown.insertH1",
+        "key": "ctrl+alt+1",
+        "mac": "cmd+alt+1",
+        "when": "editorTextFocus && editorLangId == markdown"
       }
     ],
     "menus": {

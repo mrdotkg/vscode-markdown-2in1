@@ -31,60 +31,8 @@ export class MarkdownService {
     return true;
   }
 
-  static insertHeading(level: number = 1) {
-    this.sendVditorCommand("insertHeading", { level });
-  }
-
-  static insertEmphasis(type: "bold" | "italic" = "bold") {
-    this.sendVditorCommand("insertEmphasis", { type });
-  }
-
-  static insertList(ordered: boolean = false) {
-    this.sendVditorCommand("insertList", { ordered });
-  }
-
-  static insertLink() {
-    this.sendVditorCommand("insertLink");
-  }
-
-  static insertImage() {
-    this.sendVditorCommand("insertImage");
-  }
-
-  static insertCodeBlock() {
-    this.sendVditorCommand("insertCodeBlock");
-  }
-
-  static insertInlineCode() {
-    this.sendVditorCommand("insertInlineCode");
-  }
-
-  static insertBlockquote() {
-    this.sendVditorCommand("insertBlockquote");
-  }
-
-  static insertHorizontalRule() {
-    this.sendVditorCommand("insertHorizontalRule");
-  }
-
-  static insertTable() {
-    this.sendVditorCommand("insertTable");
-  }
-
-  static insertStrikethrough() {
-    this.sendVditorCommand("insertStrikethrough");
-  }
-
-  static insertEmptyBlock() {
-    this.sendVditorCommand("insertEmptyBlock");
-  }
-
-  static insertH4() {
-    this.sendVditorCommand("insertH4");
-  }
-
-  static insertH5() {
-    this.sendVditorCommand("insertH5");
+  static format(type, shortcut) {
+    this.sendVditorCommand(type, shortcut);
   }
 
   public async loadClipboardImage() {
