@@ -40,6 +40,340 @@ export const openLink = () => {
   });
 };
 
+export const createContextMenu = (editor) => {
+    const menu = document.getElementById('context-menu');
+    
+    if (!menu) {
+        console.error('[Webview] Context menu element not found');
+        return;
+    }
+
+    const groups = window.appState?.contextMenuGroups || {};
+    const orderedEntries = ['other', 'formatting', 'headings', 'lists', 'blocks', 'tables']
+        .filter(cat => groups[cat])
+        .map(cat => [cat, groups[cat]]);
+    
+    if (orderedEntries.length === 0) {
+        return;
+    }
+
+    menu.innerHTML = '';
+    
+    const categoryNames = {
+        formatting: "Emphasis",
+        headings: "Heading",
+        lists: "List",
+        tables: "Tables",
+        blocks: "Blocks",
+        other: "Other"
+    };
+
+    const multiLevelGroups = ['headings', 'formatting', 'lists', 'blocks', 'tables'];
+    
+    // Helper to create menu item element
+    const createMenuItem = (item) => {
+        const a = document.createElement('a');
+        a.className = 'dropdown-item';
+        a.href = '#';
+        a.setAttribute('data-command', item.command);
+        
+        const titleSpan = document.createElement('span');
+        titleSpan.textContent = item.title;
+        a.appendChild(titleSpan);
+        
+        if (item.keybinding) {
+            const keySpan = document.createElement('span');
+            keySpan.className = 'keybinding';
+            keySpan.textContent = item.keybinding;
+            a.appendChild(keySpan);
+        }
+        
+        a.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            menu.style.display = 'none';
+            
+            const command = a.getAttribute('data-command');
+            if (typeof handler !== 'undefined') {
+                handler.emit('command', command);
+            }
+        });
+        
+        return a;
+    };
+
+    orderedEntries.forEach(([category, items]) => {
+        // Handle "other" category items directly without group wrapper
+        if (category === 'other') {
+            items.forEach((item) => menu.appendChild(createMenuItem(item)));
+            
+            // Add separator after "other" items
+            if (orderedEntries.length > 1) {
+                const separator = document.createElement('div');
+                separator.className = 'context-menu-separator';
+                menu.appendChild(separator);
+            }
+            return;
+        }
+        
+        const group = document.createElement('div');
+        group.className = 'menu-group';
+        
+        if (multiLevelGroups.includes(category)) {
+            // Create collapsible multi-level group
+            const titleContainer = document.createElement('div');
+            titleContainer.className = 'menu-group-title submenu-toggle';
+            
+            const titleText = document.createElement('span');
+            titleText.textContent = categoryNames[category] || category;
+            titleContainer.appendChild(titleText);
+            
+            // Add arrow indicator
+            const arrow = document.createElement('span');
+            arrow.className = 'submenu-arrow';
+            arrow.textContent = '›';
+            titleContainer.appendChild(arrow);
+            
+            group.appendChild(titleContainer);
+            
+            // Create submenu container
+            const submenu = document.createElement('ul');
+            submenu.className = 'submenu';
+            
+            items.forEach((item) => {
+                const li = document.createElement('li');
+                li.appendChild(createMenuItem(item));
+                submenu.appendChild(li);
+            });
+            
+            group.appendChild(submenu);
+            
+            // Position submenu on hover (left or right based on available space)
+            titleContainer.addEventListener('mouseenter', () => {
+                showSubmenu(submenu, titleContainer);
+            });
+            
+            titleContainer.addEventListener('mouseleave', () => {
+                scheduleSubmenuHide(submenu);
+            });
+            
+            // Keep submenu visible when hovering over it
+            submenu.addEventListener('mouseenter', () => {
+                clearTimeout(currentSubmenuHideTimeout);
+            });
+            
+            submenu.addEventListener('mouseleave', () => {
+                scheduleSubmenuHide(submenu);
+            });
+        } else {
+            // Create regular flat group with separator
+            const separator = document.createElement('div');
+            separator.style.height = '1px';
+            separator.style.backgroundColor = 'var(--vscode-menu-border, #3e3e42)';
+            separator.style.margin = '4px 0';
+            group.appendChild(separator);
+            
+            const itemsList = document.createElement('ul');
+            itemsList.className = 'menu-group-items';
+            
+            items.forEach((item) => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.className = 'dropdown-item';
+                a.href = '#';
+                a.setAttribute('data-command', item.command);
+                
+                const titleSpan = document.createElement('span');
+                titleSpan.textContent = item.title;
+                a.appendChild(titleSpan);
+                
+                if (item.keybinding) {
+                    const keySpan = document.createElement('span');
+                    keySpan.className = 'keybinding';
+                    keySpan.textContent = item.keybinding;
+                    a.appendChild(keySpan);
+                }
+                
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    menu.style.display = 'none';
+                    
+                    const command = a.getAttribute('data-command');
+                    console.log('[Webview] Command clicked:', command);
+                    
+                    if (typeof handler !== 'undefined') {
+                        handler.emit('command', command);
+                    }
+                });
+                
+                li.appendChild(a);
+                itemsList.appendChild(li);
+            });
+            
+            group.appendChild(itemsList);
+        }
+        
+        menu.appendChild(group);
+    });
+
+    // Helper function to position menu within viewport
+    const positionMenu = (pageX, pageY) => {
+        menu.style.display = 'block';
+        menu.style.maxHeight = 'none'; // Reset to measure full height
+        
+        // Use clientX/Y for positioning
+        let x = pageX;
+        let y = pageY;
+        
+        // Temporarily show to measure
+        menu.style.visibility = 'hidden';
+        menu.style.top = '0px';
+        menu.style.left = '0px';
+        
+        setTimeout(() => {
+            const menuRect = menu.getBoundingClientRect();
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const padding = 10;
+            const scrollbarWidth = 17; // Standard scrollbar width
+            
+            // Adjust horizontal position (account for scrollbar width)
+            const menuWidthWithScrollbar = menuRect.width + scrollbarWidth;
+            if (x + menuWidthWithScrollbar > windowWidth) {
+                x = Math.max(padding, windowWidth - menuWidthWithScrollbar - padding);
+            } else {
+                x = Math.max(padding, x);
+            }
+            
+            // Calculate available space below and above cursor
+            const spaceBelow = windowHeight - y;
+            const spaceAbove = y;
+            
+            // Determine if menu should open above or below
+            let finalY = y;
+            let maxHeight;
+            
+            if (spaceBelow > spaceAbove && spaceBelow > menuRect.height) {
+                // Open below with available space
+                maxHeight = spaceBelow - padding;
+            } else if (spaceAbove > menuRect.height) {
+                // Open above
+                finalY = Math.max(padding, y - menuRect.height);
+                maxHeight = spaceAbove - padding;
+            } else {
+                // Not enough space either way, use available space
+                if (spaceBelow > spaceAbove) {
+                    maxHeight = spaceBelow - padding;
+                } else {
+                    finalY = Math.max(padding, y - spaceAbove);
+                    maxHeight = spaceAbove - padding;
+                }
+            }
+            
+            menu.style.top = finalY + 'px';
+            menu.style.left = x + 'px';
+            menu.style.maxHeight = Math.max(100, maxHeight) + 'px'; // Min 100px
+            menu.style.visibility = 'visible';
+        }, 0);
+    };
+
+    // Context menu event listener
+    document.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        positionMenu(e.clientX, e.clientY);
+    });
+
+    // Close on outside click
+    document.addEventListener('mousedown', (e) => {
+        if (!menu.contains(e.target)) {
+            menu.style.display = 'none';
+        }
+    });
+
+    // Close on escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            menu.style.display = 'none';
+        }
+    });
+
+    // Close menu when window loses focus
+    window.addEventListener('blur', () => {
+        menu.style.display = 'none';
+    });
+    
+    // Global timeout for submenu hiding
+    let currentSubmenuHideTimeout;
+    let currentVisibleSubmenu = null;
+    
+    // Helper function to hide all submenus
+    const hideAllSubmenus = () => {
+        clearTimeout(currentSubmenuHideTimeout);
+        if (currentVisibleSubmenu) {
+            currentVisibleSubmenu.style.display = 'none';
+            currentVisibleSubmenu = null;
+        }
+    };
+    
+    // Helper function to show and position submenu
+    const showSubmenu = (submenu, titleContainer) => {
+        clearTimeout(currentSubmenuHideTimeout);
+        
+        // Hide previous submenu immediately
+        if (currentVisibleSubmenu && currentVisibleSubmenu !== submenu) {
+            currentVisibleSubmenu.style.display = 'none';
+        }
+        
+        submenu.style.display = 'block';
+        currentVisibleSubmenu = submenu;
+        
+        // Position submenu with boundary checks
+        const titleRect = titleContainer.getBoundingClientRect();
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        const submenuWidth = 280;
+        const scrollbarWidth = 17; // Standard scrollbar width
+        const padding = 10;
+        
+        // Calculate horizontal position
+        let left;
+        const spaceOnRight = windowWidth - titleRect.right;
+        
+        if (spaceOnRight >= submenuWidth + scrollbarWidth + padding) {
+            // Enough space on right
+            left = titleRect.right + 2;
+        } else {
+            // Not enough space on right, position on left with minimal gap
+            left = Math.max(padding, titleRect.left - submenuWidth - 2);
+        }
+        
+        // Calculate vertical position (align with title, but adjust if goes off-screen)
+        let top = titleRect.top;
+        
+        // Check if submenu would go below viewport
+        const estimatedSubmenuHeight = 300; // Approximate max height
+        if (top + estimatedSubmenuHeight > windowHeight) {
+            // Adjust to fit within viewport
+            top = Math.max(padding, windowHeight - estimatedSubmenuHeight - padding);
+        }
+        
+        submenu.style.left = left + 'px';
+        submenu.style.top = top + 'px';
+    };
+    
+    // Helper function to schedule submenu hiding
+    const scheduleSubmenuHide = (submenu) => {
+        clearTimeout(currentSubmenuHideTimeout);
+        currentSubmenuHideTimeout = setTimeout(() => {
+            if (currentVisibleSubmenu === submenu) {
+                submenu.style.display = 'none';
+                currentVisibleSubmenu = null;
+            }
+        }, 150);
+    };
+};
+
 export const addScrollListener = () => {
   const possibleContainers = [
     ".vditor-reset",

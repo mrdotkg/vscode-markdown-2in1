@@ -5,6 +5,7 @@ import {
   addScrollListener,
   preventBlurPropagation,
   setupFocusManagement,
+  createContextMenu,
 } from "./util.js";
 
 let state;
@@ -12,14 +13,15 @@ let editorContainerId = "editor";
 let vditorReady = false; // Track when Vditor is fully initialized
 
 function loadConfigs() {
-  const elem = document.getElementById("configs");
+  const elem = document.getElementById("app-config");
   try {
-    state = JSON.parse(elem.getAttribute("data-config"));
+    state = JSON.parse(elem.getHTML());
+    window.appState = state;
     const { platform } = state;
     document.getElementById("editor").classList.add(platform);
     if (state.scrollBeyondLastLine) {
-      document.body.classList.add("scrollBeyondLastLine");
-    }
+        document.body.classList.add("scrollBeyondLastLine");
+      }
   } catch (error) {}
   return state;
 }
@@ -103,8 +105,9 @@ waitForHandler(() => {
             vscodeEvent.on("update", (content) => {
               window.vditor.setValue(content);
             });
-
+            
             openLink();
+            createContextMenu(editorContainerId);
             setTimeout(preventBlurPropagation, 50);
             addScrollListener();
             scrollEditor(md.scrollTop);

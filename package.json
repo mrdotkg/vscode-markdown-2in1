@@ -48,278 +48,278 @@
         "title": "Enhance paste in markdown"
       },
       {
+        "command": "vsc-markdown.toggleFullscreen",
+        "title": "Palm Markdown | Toggle Fullscreen",
+        "icon": "$(screen-full)"
+      },
+      {
         "command": "vsc-markdown.insertH1",
-        "title": "BossMD: Insert H1 Heading",
+        "title": "Palm Markdown | Insert H1 Heading",
         "icon": "$(symbol-text)"
       },
       {
         "command": "vsc-markdown.insertH2",
-        "title": "BossMD: Insert H2 Heading",
+        "title": "Palm Markdown | Insert H2 Heading",
         "icon": "$(symbol-text)"
       },
       {
         "command": "vsc-markdown.insertH3",
-        "title": "BossMD: Insert H3 Heading",
+        "title": "Palm Markdown | Insert H3 Heading",
         "icon": "$(symbol-text)"
       },
       {
         "command": "vsc-markdown.insertH4",
-        "title": "BossMD: Insert H4 Heading",
+        "title": "Palm Markdown | Insert H4 Heading",
         "icon": "$(symbol-text)"
       },
       {
         "command": "vsc-markdown.insertH5",
-        "title": "BossMD: Insert H5 Heading",
+        "title": "Palm Markdown | Insert H5 Heading",
         "icon": "$(symbol-text)"
       },
       {
         "command": "vsc-markdown.insertBold",
-        "title": "BossMD: Insert Bold Text",
+        "title": "Palm Markdown | Insert Bold Text",
         "icon": "$(bold)"
       },
       {
         "command": "vsc-markdown.insertItalic",
-        "title": "BossMD: Insert Italic Text",
+        "title": "Palm Markdown | Insert Italic Text",
         "icon": "$(italic)"
       },
       {
         "command": "vsc-markdown.insertList",
-        "title": "BossMD: Insert Unordered List",
+        "title": "Palm Markdown | Insert Unordered List",
         "icon": "$(list-unordered)"
       },
       {
         "command": "vsc-markdown.insertOrderedList",
-        "title": "BossMD: Insert Ordered List",
+        "title": "Palm Markdown | Insert Ordered List",
         "icon": "$(list-ordered)"
       },
       {
         "command": "vsc-markdown.insertLink",
-        "title": "BossMD: Insert Link",
+        "title": "Palm Markdown | Insert Link",
         "icon": "$(link)"
       },
       {
         "command": "vsc-markdown.insertImage",
-        "title": "BossMD: Insert Image",
+        "title": "Palm Markdown | Insert Image",
         "icon": "$(file-media)"
       },
       {
         "command": "vsc-markdown.insertCodeBlock",
-        "title": "BossMD: Insert Code Block",
+        "title": "Palm Markdown | Insert Code Block",
         "icon": "$(code)"
       },
       {
         "command": "vsc-markdown.insertInlineCode",
-        "title": "BossMD: Insert Inline Code",
+        "title": "Palm Markdown | Insert Inline Code",
         "icon": "$(symbol-string)"
       },
       {
         "command": "vsc-markdown.insertBlockquote",
-        "title": "BossMD: Insert Blockquote",
+        "title": "Palm Markdown | Insert Blockquote",
         "icon": "$(quote)"
       },
       {
         "command": "vsc-markdown.insertTable",
-        "title": "BossMD: Insert Table",
+        "title": "Palm Markdown | Insert Table",
         "icon": "$(table)"
       },
       {
         "command": "vsc-markdown.insertStrikethrough",
-        "title": "BossMD: Insert Strikethrough",
+        "title": "Palm Markdown | Insert Strikethrough",
         "icon": "$(strikethrough)"
       },
       {
         "command": "vsc-markdown.insertEmptyBlock",
-        "title": "BossMD: Insert Empty Block",
+        "title": "Palm Markdown | Insert Empty Block",
         "icon": "$(add)"
       },
       {
         "command": "vsc-markdown.insertTaskList",
-        "title": "BossMD: Insert Task List",
+        "title": "Palm Markdown | Insert Task List",
         "icon": "$(tasklist)"
       },
       {
         "command": "vsc-markdown.insertHorizontalRule",
-        "title": "BossMD: Insert Horizontal Rule",
+        "title": "Palm Markdown | Insert Horizontal Rule",
         "icon": "$(dash)"
       },
       {
         "command": "vsc-markdown.insertBlockBefore",
-        "title": "BossMD: Insert Block to Before",
+        "title": "Palm Markdown | Insert Block to Before",
         "icon": "$(arrow-up)"
       },
       {
         "command": "vsc-markdown.insertBlockEnd",
-        "title": "BossMD: Insert Block to End",
+        "title": "Palm Markdown | Insert Block to End",
         "icon": "$(arrow-down)"
       },
       {
         "command": "vsc-markdown.undo",
-        "title": "BossMD: Undo",
+        "title": "Palm Markdown | Undo",
         "icon": "$(undo)"
       },
       {
         "command": "vsc-markdown.redo",
-        "title": "BossMD: Redo",
+        "title": "Palm Markdown | Redo",
         "icon": "$(redo)"
       },
       {
         "command": "vsc-markdown.moveBlockUp",
-        "title": "BossMD: Move Block Up",
+        "title": "Palm Markdown | Move Block Up",
         "icon": "$(arrow-up)"
       },
       {
         "command": "vsc-markdown.moveBlockDown",
-        "title": "BossMD: Move Block Down",
+        "title": "Palm Markdown | Move Block Down",
         "icon": "$(arrow-down)"
       },
       {
-        "command": "vsc-markdown.toggleFullscreen",
-        "title": "BossMD: Toggle Fullscreen",
-        "icon": "$(screen-full)"
-      },
-      {
         "command": "vsc-markdown.increaseHeading",
-        "title": "BossMD: Increase Heading Level",
+        "title": "Palm Markdown | Increase Heading Level",
         "icon": "$(arrow-up)"
       },
       {
         "command": "vsc-markdown.decreaseHeading",
-        "title": "BossMD: Decrease Heading Level",
+        "title": "Palm Markdown | Decrease Heading Level",
         "icon": "$(arrow-down)"
       },
       {
         "command": "vsc-markdown.indentList",
-        "title": "BossMD: Indent List",
+        "title": "Palm Markdown | Indent List",
         "icon": "$(indent)"
       },
       {
         "command": "vsc-markdown.unindentList",
-        "title": "BossMD: Unindent List",
+        "title": "Palm Markdown | Unindent List",
         "icon": "$(outdent)"
       },
       {
         "command": "vsc-markdown.toggleTaskCheck",
-        "title": "BossMD: Toggle Task Check",
+        "title": "Palm Markdown | Toggle Task Check",
         "icon": "$(check)"
       },
       {
         "command": "vsc-markdown.insertTableRowAbove",
-        "title": "BossMD: Insert Table Row Above",
+        "title": "Palm Markdown | Insert Table Row Above",
         "icon": "$(arrow-up)"
       },
       {
         "command": "vsc-markdown.insertTableRowBelow",
-        "title": "BossMD: Insert Table Row Below",
+        "title": "Palm Markdown | Insert Table Row Below",
         "icon": "$(arrow-down)"
       },
       {
         "command": "vsc-markdown.deleteTableRow",
-        "title": "BossMD: Delete Table Row",
+        "title": "Palm Markdown | Delete Table Row",
         "icon": "$(trash)"
       },
       {
         "command": "vsc-markdown.insertTableColLeft",
-        "title": "BossMD: Insert Table Column Left",
+        "title": "Palm Markdown | Insert Table Column Left",
         "icon": "$(arrow-left)"
       },
       {
         "command": "vsc-markdown.insertTableColRight",
-        "title": "BossMD: Insert Table Column Right",
+        "title": "Palm Markdown | Insert Table Column Right",
         "icon": "$(arrow-right)"
       },
       {
         "command": "vsc-markdown.deleteTableCol",
-        "title": "BossMD: Delete Table Column",
+        "title": "Palm Markdown | Delete Table Column",
         "icon": "$(trash)"
       },
       {
         "command": "vsc-markdown.tableAlignLeft",
-        "title": "BossMD: Table Align Left",
+        "title": "Palm Markdown | Table Align Left",
         "icon": "$(align-left)"
       },
       {
         "command": "vsc-markdown.tableAlignCenter",
-        "title": "BossMD: Table Align Center",
+        "title": "Palm Markdown | Table Align Center",
         "icon": "$(align-center)"
       },
       {
         "command": "vsc-markdown.tableAlignRight",
-        "title": "BossMD: Table Align Right",
+        "title": "Palm Markdown | Table Align Right",
         "icon": "$(align-right)"
       },
       {
         "command": "vsc-markdown.insertEmoji",
-        "title": "BossMD: Insert Emoji",
+        "title": "Palm Markdown | Insert Emoji",
         "icon": "$(smiley)"
       },
       {
         "command": "vsc-markdown.toggleHeadingMenu",
-        "title": "BossMD: Heading Menu",
+        "title": "Palm Markdown | Heading Menu",
         "icon": "$(list-ordered)"
       },
       {
         "command": "vsc-markdown.insertBlockquoteAdvanced",
-        "title": "BossMD: Insert Blockquote (Advanced)",
+        "title": "Palm Markdown | Insert Blockquote (Advanced)",
         "icon": "$(quote)"
       },
       {
         "command": "vsc-markdown.toggleLinkInput",
-        "title": "BossMD: Toggle Link Input",
+        "title": "Palm Markdown | Toggle Link Input",
         "icon": "$(link)"
       },
       {
         "command": "vsc-markdown.toggleCodeBlockInput",
-        "title": "BossMD: Toggle Code Block Input",
+        "title": "Palm Markdown | Toggle Code Block Input",
         "icon": "$(code)"
       },
       {
         "command": "vsc-markdown.hideCodeBlockEdit",
-        "title": "BossMD: Hide Code Block Edit",
+        "title": "Palm Markdown | Hide Code Block Edit",
         "icon": "$(close)"
       },
       {
         "command": "vsc-markdown.selectAllCodeBlock",
-        "title": "BossMD: Select All Code Block",
+        "title": "Palm Markdown | Select All Code Block",
         "icon": "$(select-all)"
       },
       {
         "command": "vsc-markdown.indentListAdvanced",
-        "title": "BossMD: Indent List (Advanced)",
+        "title": "Palm Markdown | Indent List (Advanced)",
         "icon": "$(indent)"
       },
       {
         "command": "vsc-markdown.unindentListAdvanced",
-        "title": "BossMD: Unindent List (Advanced)",
+        "title": "Palm Markdown | Unindent List (Advanced)",
         "icon": "$(outdent)"
       },
       {
         "command": "vsc-markdown.tableMoveCaretToInput",
-        "title": "BossMD: Table: Move Caret to Input",
+        "title": "Palm Markdown | Table: Move Caret to Input",
         "icon": "$(arrow-left)"
       },
       {
         "command": "vsc-markdown.tableMoveCaretPrevious",
-        "title": "BossMD: Table: Move Caret to Previous Cell",
+        "title": "Palm Markdown | Table: Move Caret to Previous Cell",
         "icon": "$(arrow-left)"
       },
       {
         "command": "vsc-markdown.tableMoveCaretNext",
-        "title": "BossMD: Table: Move Caret to Next Cell",
+        "title": "Palm Markdown | Table: Move Caret to Next Cell",
         "icon": "$(arrow-right)"
       },
       {
         "command": "vsc-markdown.insertH6",
-        "title": "BossMD: Insert H6 Heading",
+        "title": "Palm Markdown | Insert H6 Heading",
         "icon": "$(symbol-text)"
       },
       {
         "command": "vsc-markdown.atUser",
-        "title": "BossMD: At User",
+        "title": "Palm Markdown | At User",
         "icon": "$(mention)"
       },
       {
         "command": "vsc-markdown.removeMistyped",
-        "title": "BossMD: Remove Mistyped",
+        "title": "Palm Markdown | Remove Mistyped",
         "icon": "$(undo)"
       }
     ],
@@ -334,6 +334,11 @@
         "command": "vsc-markdown.switch",
         "key": "ctrl+alt+e",
         "mac": "ctrl+cmd+e",
+        "when": "editorTextFocus && editorLangId == markdown"
+      },
+      {
+        "command": "vsc-markdown.toggleFullscreen",
+        "key": "ctrl+'",
         "when": "editorTextFocus && editorLangId == markdown"
       },
       {
@@ -449,11 +454,6 @@
       {
         "command": "vsc-markdown.moveBlockDown",
         "key": "ctrl+shift+d",
-        "when": "editorTextFocus && editorLangId == markdown"
-      },
-      {
-        "command": "vsc-markdown.toggleFullscreen",
-        "key": "ctrl+'",
         "when": "editorTextFocus && editorLangId == markdown"
       },
       {
@@ -608,6 +608,13 @@
           "command": "vsc-markdown.switch",
           "when": "resourceExtname == '.md'",
           "group": "navigation@-2"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "vsc-markdown.insertH1",
+          "when": "editorTextFocus",
+          "group": "1_modification@1"
         }
       ]
     },

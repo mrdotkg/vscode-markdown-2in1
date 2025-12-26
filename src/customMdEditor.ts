@@ -4,6 +4,7 @@ import { MarkdownService } from "./editorServices";
 import { Toolbar } from "./statusBarControls";
 import { Holder } from "./common/holder";
 import { adjustImgPath } from "@/common/fileUtil";
+import { ContextMenu } from "./common/contextMenu";
 import { isAbsolute, parse } from "path";
 
 export class Editor implements vscode.CustomTextEditorProvider {
@@ -214,20 +215,29 @@ export class Editor implements vscode.CustomTextEditorProvider {
   }
 
   private setupWebviewContent() {
+    const contextMenu = ContextMenu.getInstance();
+    const groupedMenuItems = contextMenu.getGroupedMenuItems();
+    
+    console.log('[Extension] Grouped ContextMenu items:', groupedMenuItems);
+    
     const configs = {
       platform: process.platform,
       scrollBeyondLastLine: vscode.workspace
         .getConfiguration("editor")
         .get("scrollBeyondLastLine"),
+      contextMenuGroups: groupedMenuItems,
     };
 
+    console.log('[Extension] Config being sent to webview:', configs);
+
     const { Util } = require("./common/util");
+    const configJson = JSON.stringify(configs);
     this.webview.html = Util.buildPath(
       require("fs")
         .readFileSync(`${this.contextPath}/editor.html`, "utf8")
         .replace("{{rootPath}}", this.rootPath)
         .replace("{{baseUrl}}", this.baseUrl)
-        .replace(`"{{configs}}"`, `'${JSON.stringify(configs)}'`),
+        .replace(`{{configs}}`, configJson),
       this.webview,
       this.contextPath
     );

@@ -325,19 +325,19 @@ export const Hotkeys = [
       cancelable: true,
     },
   },
-  {
-    command: "vsc-markdown.toggleFullscreen",
-    title: "Toggle Fullscreen",
-    icon: "$(screen-full)",
-    keybinding: "ctrl+'",
-    keyEvent: {
-      key: "'",
-      code: "Quote",
-      ctrlKey: true,
-      bubbles: true,
-      cancelable: true,
-    },
-  },
+  // {
+  //   command: "vsc-markdown.toggleFullscreen",
+  //   title: "Toggle Fullscreen",
+  //   icon: "$(screen-full)",
+  //   keybinding: "ctrl+'",
+  //   keyEvent: {
+  //     key: "'",
+  //     code: "Quote",
+  //     ctrlKey: true,
+  //     bubbles: true,
+  //     cancelable: true,
+  //   },
+  // },
   {
     command: "vsc-markdown.increaseHeading",
     title: "Increase Heading Level",

@@ -1,13 +1,16 @@
-# **Total Hotkeys:** 
+# Total Hotkeys
+
 55 commands with 53 keybindings
 
 #### Core Text Formatting (6)
+
 - H1-H6 Headings: `ctrl+alt+1` through `ctrl+alt+6`
 - Bold: `ctrl+b`
 - Italic: `ctrl+i`
 - Strikethrough: `ctrl+s`
 
 #### Lists & Blocks (12)
+
 - Unordered List: `ctrl+l`
 - Ordered List: `ctrl+o`
 - Task List: `ctrl+j`
@@ -17,6 +20,7 @@
 - Horizontal Rule: `ctrl+shift+h`
 
 #### Code & Links (6)
+
 - Code Block: `ctrl+u`
 - Inline Code: `ctrl+g`
 - Link: `ctrl+k` (+ toggle input: `alt+enter`)
@@ -25,6 +29,7 @@
 - Select All Code Block: `ctrl+a`
 
 #### Block Operations (6)
+
 - Insert Block Before: `ctrl+shift+b`
 - Insert Block End: `ctrl+shift+e`
 - Move Block Up: `ctrl+shift+u`
@@ -33,6 +38,7 @@
 - Redo: `ctrl+y`
 
 #### Table Operations (13)
+
 - Insert Row Above: `ctrl+shift+f`
 - Insert Row Below: `ctrl+=`
 - Delete Row: `ctrl+-`
@@ -46,6 +52,7 @@
 - Move Caret Previous/Next: `shift+tab` / `tab`
 
 #### Other Features (8)
+
 - Emoji: `:`
 - Heading Menu: `ctrl+h`
 - Fullscreen: `ctrl+'`

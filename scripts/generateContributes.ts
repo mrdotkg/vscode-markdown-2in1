@@ -61,7 +61,7 @@ function extractHotkeys(): Hotkey[] {
 function generateCommands(hotkeys: Hotkey[]) {
   return hotkeys.map((hotkey) => ({
     command: hotkey.command,
-    title: `BossMD : ${hotkey.title}`,
+    title: `Palm Markdown | ${hotkey.title}`,
     icon: hotkey.icon,
   }));
 }
