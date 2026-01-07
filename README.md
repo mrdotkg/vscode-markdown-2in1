@@ -5,6 +5,8 @@ This extension aims to replace the built in markdown preview of VS Code.
 ## Pre market release issues
 
 - [ ]  No unused code.
+- [ ]  Write raw logic in src/common/utility.ts
+- [ ]  Write VSCode components src/*
 - [X]  Expose Context Memu
 - [X]  Expose toolbar
 - [X]  Persist scroll position
@@ -18,10 +20,9 @@ This extension aims to replace the built in markdown preview of VS Code.
 - Ctrl + A inside code editing area should only select editable code.
 - On hover new styles appear, but if i scroll instead of mouse move the hover styling still remains.
 - Text align of table tr th should resemble that of built in preview - right if not mentioned.
+- Identical to the built in Markdown Preview
 
-## Identical to the built in Markdown Preview
-
-## Extra
+### Extra
 
 - Support Outlines
 - Support line numbers and copy button

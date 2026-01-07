@@ -39,565 +39,505 @@
   "contributes": {
     "commands": [
       {
-        "command": "vsc-markdown.switch",
-        "title": "Toggle Editor",
-        "icon": "$(symbol-parameter)"
-      },
-      {
-        "command": "vsc-markdown.paste",
-        "title": "Enhance paste in markdown"
-      },
-      {
-        "command": "vsc-markdown.toggleFullscreen",
-        "title": "Palm Markdown | Toggle Fullscreen",
-        "icon": "$(screen-full)"
-      },
-      {
         "command": "vsc-markdown.insertH1",
         "title": "Palm Markdown | Insert H1 Heading",
-        "icon": "$(symbol-text)"
+        "icon": "$(symbol-text)",
+        "category": "headings"
       },
       {
         "command": "vsc-markdown.insertH2",
         "title": "Palm Markdown | Insert H2 Heading",
-        "icon": "$(symbol-text)"
+        "icon": "$(symbol-text)",
+        "category": "headings"
       },
       {
         "command": "vsc-markdown.insertH3",
         "title": "Palm Markdown | Insert H3 Heading",
-        "icon": "$(symbol-text)"
+        "icon": "$(symbol-text)",
+        "category": "headings"
       },
       {
         "command": "vsc-markdown.insertH4",
         "title": "Palm Markdown | Insert H4 Heading",
-        "icon": "$(symbol-text)"
+        "icon": "$(symbol-text)",
+        "category": "headings"
       },
       {
         "command": "vsc-markdown.insertH5",
         "title": "Palm Markdown | Insert H5 Heading",
-        "icon": "$(symbol-text)"
-      },
-      {
-        "command": "vsc-markdown.insertBold",
-        "title": "Palm Markdown | Insert Bold Text",
-        "icon": "$(bold)"
-      },
-      {
-        "command": "vsc-markdown.insertItalic",
-        "title": "Palm Markdown | Insert Italic Text",
-        "icon": "$(italic)"
-      },
-      {
-        "command": "vsc-markdown.insertList",
-        "title": "Palm Markdown | Insert Unordered List",
-        "icon": "$(list-unordered)"
-      },
-      {
-        "command": "vsc-markdown.insertOrderedList",
-        "title": "Palm Markdown | Insert Ordered List",
-        "icon": "$(list-ordered)"
-      },
-      {
-        "command": "vsc-markdown.insertLink",
-        "title": "Palm Markdown | Insert Link",
-        "icon": "$(link)"
-      },
-      {
-        "command": "vsc-markdown.insertImage",
-        "title": "Palm Markdown | Insert Image",
-        "icon": "$(file-media)"
-      },
-      {
-        "command": "vsc-markdown.insertCodeBlock",
-        "title": "Palm Markdown | Insert Code Block",
-        "icon": "$(code)"
-      },
-      {
-        "command": "vsc-markdown.insertInlineCode",
-        "title": "Palm Markdown | Insert Inline Code",
-        "icon": "$(symbol-string)"
-      },
-      {
-        "command": "vsc-markdown.insertBlockquote",
-        "title": "Palm Markdown | Insert Blockquote",
-        "icon": "$(quote)"
-      },
-      {
-        "command": "vsc-markdown.insertTable",
-        "title": "Palm Markdown | Insert Table",
-        "icon": "$(table)"
-      },
-      {
-        "command": "vsc-markdown.insertStrikethrough",
-        "title": "Palm Markdown | Insert Strikethrough",
-        "icon": "$(strikethrough)"
-      },
-      {
-        "command": "vsc-markdown.insertEmptyBlock",
-        "title": "Palm Markdown | Insert Empty Block",
-        "icon": "$(add)"
-      },
-      {
-        "command": "vsc-markdown.insertTaskList",
-        "title": "Palm Markdown | Insert Task List",
-        "icon": "$(tasklist)"
-      },
-      {
-        "command": "vsc-markdown.insertHorizontalRule",
-        "title": "Palm Markdown | Insert Horizontal Rule",
-        "icon": "$(dash)"
-      },
-      {
-        "command": "vsc-markdown.insertBlockBefore",
-        "title": "Palm Markdown | Insert Block to Before",
-        "icon": "$(arrow-up)"
-      },
-      {
-        "command": "vsc-markdown.insertBlockEnd",
-        "title": "Palm Markdown | Insert Block to End",
-        "icon": "$(arrow-down)"
-      },
-      {
-        "command": "vsc-markdown.undo",
-        "title": "Palm Markdown | Undo",
-        "icon": "$(undo)"
-      },
-      {
-        "command": "vsc-markdown.redo",
-        "title": "Palm Markdown | Redo",
-        "icon": "$(redo)"
-      },
-      {
-        "command": "vsc-markdown.moveBlockUp",
-        "title": "Palm Markdown | Move Block Up",
-        "icon": "$(arrow-up)"
-      },
-      {
-        "command": "vsc-markdown.moveBlockDown",
-        "title": "Palm Markdown | Move Block Down",
-        "icon": "$(arrow-down)"
-      },
-      {
-        "command": "vsc-markdown.increaseHeading",
-        "title": "Palm Markdown | Increase Heading Level",
-        "icon": "$(arrow-up)"
-      },
-      {
-        "command": "vsc-markdown.decreaseHeading",
-        "title": "Palm Markdown | Decrease Heading Level",
-        "icon": "$(arrow-down)"
-      },
-      {
-        "command": "vsc-markdown.indentList",
-        "title": "Palm Markdown | Indent List",
-        "icon": "$(indent)"
-      },
-      {
-        "command": "vsc-markdown.unindentList",
-        "title": "Palm Markdown | Unindent List",
-        "icon": "$(outdent)"
-      },
-      {
-        "command": "vsc-markdown.toggleTaskCheck",
-        "title": "Palm Markdown | Toggle Task Check",
-        "icon": "$(check)"
-      },
-      {
-        "command": "vsc-markdown.insertTableRowAbove",
-        "title": "Palm Markdown | Insert Table Row Above",
-        "icon": "$(arrow-up)"
-      },
-      {
-        "command": "vsc-markdown.insertTableRowBelow",
-        "title": "Palm Markdown | Insert Table Row Below",
-        "icon": "$(arrow-down)"
-      },
-      {
-        "command": "vsc-markdown.deleteTableRow",
-        "title": "Palm Markdown | Delete Table Row",
-        "icon": "$(trash)"
-      },
-      {
-        "command": "vsc-markdown.insertTableColLeft",
-        "title": "Palm Markdown | Insert Table Column Left",
-        "icon": "$(arrow-left)"
-      },
-      {
-        "command": "vsc-markdown.insertTableColRight",
-        "title": "Palm Markdown | Insert Table Column Right",
-        "icon": "$(arrow-right)"
-      },
-      {
-        "command": "vsc-markdown.deleteTableCol",
-        "title": "Palm Markdown | Delete Table Column",
-        "icon": "$(trash)"
-      },
-      {
-        "command": "vsc-markdown.tableAlignLeft",
-        "title": "Palm Markdown | Table Align Left",
-        "icon": "$(align-left)"
-      },
-      {
-        "command": "vsc-markdown.tableAlignCenter",
-        "title": "Palm Markdown | Table Align Center",
-        "icon": "$(align-center)"
-      },
-      {
-        "command": "vsc-markdown.tableAlignRight",
-        "title": "Palm Markdown | Table Align Right",
-        "icon": "$(align-right)"
-      },
-      {
-        "command": "vsc-markdown.insertEmoji",
-        "title": "Palm Markdown | Insert Emoji",
-        "icon": "$(smiley)"
-      },
-      {
-        "command": "vsc-markdown.toggleHeadingMenu",
-        "title": "Palm Markdown | Heading Menu",
-        "icon": "$(list-ordered)"
-      },
-      {
-        "command": "vsc-markdown.insertBlockquoteAdvanced",
-        "title": "Palm Markdown | Insert Blockquote (Advanced)",
-        "icon": "$(quote)"
-      },
-      {
-        "command": "vsc-markdown.toggleLinkInput",
-        "title": "Palm Markdown | Toggle Link Input",
-        "icon": "$(link)"
-      },
-      {
-        "command": "vsc-markdown.toggleCodeBlockInput",
-        "title": "Palm Markdown | Toggle Code Block Input",
-        "icon": "$(code)"
-      },
-      {
-        "command": "vsc-markdown.hideCodeBlockEdit",
-        "title": "Palm Markdown | Hide Code Block Edit",
-        "icon": "$(close)"
-      },
-      {
-        "command": "vsc-markdown.selectAllCodeBlock",
-        "title": "Palm Markdown | Select All Code Block",
-        "icon": "$(select-all)"
-      },
-      {
-        "command": "vsc-markdown.indentListAdvanced",
-        "title": "Palm Markdown | Indent List (Advanced)",
-        "icon": "$(indent)"
-      },
-      {
-        "command": "vsc-markdown.unindentListAdvanced",
-        "title": "Palm Markdown | Unindent List (Advanced)",
-        "icon": "$(outdent)"
-      },
-      {
-        "command": "vsc-markdown.tableMoveCaretToInput",
-        "title": "Palm Markdown | Table: Move Caret to Input",
-        "icon": "$(arrow-left)"
-      },
-      {
-        "command": "vsc-markdown.tableMoveCaretPrevious",
-        "title": "Palm Markdown | Table: Move Caret to Previous Cell",
-        "icon": "$(arrow-left)"
-      },
-      {
-        "command": "vsc-markdown.tableMoveCaretNext",
-        "title": "Palm Markdown | Table: Move Caret to Next Cell",
-        "icon": "$(arrow-right)"
+        "icon": "$(symbol-text)",
+        "category": "headings"
       },
       {
         "command": "vsc-markdown.insertH6",
         "title": "Palm Markdown | Insert H6 Heading",
-        "icon": "$(symbol-text)"
+        "icon": "$(symbol-text)",
+        "category": "headings"
       },
       {
-        "command": "vsc-markdown.atUser",
-        "title": "Palm Markdown | At User",
-        "icon": "$(mention)"
+        "command": "vsc-markdown.insertBold",
+        "title": "Palm Markdown | Insert Bold Text",
+        "icon": "$(bold)",
+        "category": "formatting"
       },
       {
-        "command": "vsc-markdown.removeMistyped",
-        "title": "Palm Markdown | Remove Mistyped",
-        "icon": "$(undo)"
+        "command": "vsc-markdown.insertItalic",
+        "title": "Palm Markdown | Insert Italic Text",
+        "icon": "$(italic)",
+        "category": "formatting"
+      },
+      {
+        "command": "vsc-markdown.insertStrikethrough",
+        "title": "Palm Markdown | Insert Strikethrough",
+        "icon": "$(strikethrough)",
+        "category": "formatting"
+      },
+      {
+        "command": "vsc-markdown.insertCode",
+        "title": "Palm Markdown | Insert Inline Code",
+        "icon": "$(symbol-string)",
+        "category": "formatting"
+      },
+      {
+        "command": "vsc-markdown.insertList",
+        "title": "Palm Markdown | Insert Unordered List",
+        "icon": "$(list-unordered)",
+        "category": "lists"
+      },
+      {
+        "command": "vsc-markdown.insertOrderedList",
+        "title": "Palm Markdown | Insert Ordered List",
+        "icon": "$(list-ordered)",
+        "category": "lists"
+      },
+      {
+        "command": "vsc-markdown.insertTaskList",
+        "title": "Palm Markdown | Insert Task List",
+        "icon": "$(tasklist)",
+        "category": "lists"
+      },
+      {
+        "command": "vsc-markdown.toggleTaskCheck",
+        "title": "Palm Markdown | Toggle Task Check",
+        "icon": "$(check)",
+        "category": "lists"
+      },
+      {
+        "command": "vsc-markdown.indentList",
+        "title": "Palm Markdown | Indent List",
+        "icon": "$(indent)",
+        "category": "lists"
+      },
+      {
+        "command": "vsc-markdown.unindentList",
+        "title": "Palm Markdown | Unindent List",
+        "icon": "$(outdent)",
+        "category": "lists"
+      },
+      {
+        "command": "vsc-markdown.insertLink",
+        "title": "Palm Markdown | Insert Link",
+        "icon": "$(link)",
+        "category": "blocks"
+      },
+      {
+        "command": "vsc-markdown.toggleLinkInput",
+        "title": "Palm Markdown | Toggle Link Input",
+        "icon": "$(link)",
+        "category": "blocks"
+      },
+      {
+        "command": "vsc-markdown.insertImage",
+        "title": "Palm Markdown | Insert Image",
+        "icon": "$(file-media)",
+        "category": "blocks"
+      },
+      {
+        "command": "vsc-markdown.insertCodeBlock",
+        "title": "Palm Markdown | Insert Code Block",
+        "icon": "$(code)",
+        "category": "blocks"
+      },
+      {
+        "command": "vsc-markdown.insertTable",
+        "title": "Palm Markdown | Insert Table",
+        "icon": "$(table)",
+        "category": "blocks"
+      },
+      {
+        "command": "vsc-markdown.insertQuote",
+        "title": "Palm Markdown | Insert Block Quote",
+        "icon": "$(quote)",
+        "category": "blocks"
+      },
+      {
+        "command": "vsc-markdown.insertHorizontalRule",
+        "title": "Palm Markdown | Insert Horizontal Rule",
+        "icon": "$(minus)",
+        "category": "blocks"
+      },
+      {
+        "command": "vsc-markdown.pasteClipboardImage",
+        "title": "Palm Markdown | Paste Clipboard Image",
+        "icon": "$(clippy)",
+        "category": "utilities"
+      },
+      {
+        "command": "vsc-markdown.switchEditor",
+        "title": "Palm Markdown | Switch Editor",
+        "icon": "$(multiple-windows)",
+        "category": "utilities"
+      },
+      {
+        "command": "vsc-markdown.openPreview",
+        "title": "Palm Markdown | Open Preview",
+        "icon": "$(open-preview)",
+        "category": "utilities"
+      },
+      {
+        "command": "vsc-markdown.formatDocument",
+        "title": "Palm Markdown | Format Document",
+        "icon": "$(formatting)",
+        "category": "utilities"
+      },
+      {
+        "command": "vsc-markdown.uploadImage",
+        "title": "Palm Markdown | Upload Image",
+        "icon": "$(cloud-upload)",
+        "category": "utilities"
+      },
+      {
+        "command": "vsc-markdown.exportHtml",
+        "title": "Palm Markdown | Export as HTML",
+        "icon": "$(file-code)",
+        "category": "utilities"
+      },
+      {
+        "command": "vsc-markdown.exportPdf",
+        "title": "Palm Markdown | Export as PDF",
+        "icon": "$(file-pdf)",
+        "category": "utilities"
+      },
+      {
+        "command": "vsc-markdown.convertToUppercase",
+        "title": "Palm Markdown | Convert to Uppercase",
+        "icon": "$(symbol-text)",
+        "category": "text"
+      },
+      {
+        "command": "vsc-markdown.convertToLowercase",
+        "title": "Palm Markdown | Convert to Lowercase",
+        "icon": "$(symbol-text)",
+        "category": "text"
+      },
+      {
+        "command": "vsc-markdown.convertToTitleCase",
+        "title": "Palm Markdown | Convert to Title Case",
+        "icon": "$(symbol-text)",
+        "category": "text"
+      },
+      {
+        "command": "vsc-markdown.insertEmoji",
+        "title": "Palm Markdown | Insert Emoji",
+        "icon": "$(smiley)",
+        "category": "special"
       }
     ],
     "keybindings": [
       {
         "command": "vsc-markdown.insertH1",
         "key": "ctrl+alt+1",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.insertH1.enabled"
       },
       {
         "command": "vsc-markdown.insertH2",
         "key": "ctrl+alt+2",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.insertH2.enabled"
       },
       {
         "command": "vsc-markdown.insertH3",
         "key": "ctrl+alt+3",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.insertH3.enabled"
       },
       {
         "command": "vsc-markdown.insertH4",
         "key": "ctrl+alt+4",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.insertH4.enabled"
       },
       {
         "command": "vsc-markdown.insertH5",
         "key": "ctrl+alt+5",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.insertBold",
-        "key": "ctrl+b",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.insertItalic",
-        "key": "ctrl+i",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.insertList",
-        "key": "ctrl+l",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.insertOrderedList",
-        "key": "ctrl+o",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.insertLink",
-        "key": "ctrl+k",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.insertCodeBlock",
-        "key": "ctrl+u",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.insertInlineCode",
-        "key": "ctrl+g",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.insertBlockquote",
-        "key": "ctrl+;",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.insertTable",
-        "key": "ctrl+m",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.insertStrikethrough",
-        "key": "ctrl+s",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.insertTaskList",
-        "key": "ctrl+j",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.insertHorizontalRule",
-        "key": "ctrl+shift+h",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.insertBlockBefore",
-        "key": "ctrl+shift+b",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.insertBlockEnd",
-        "key": "ctrl+shift+e",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.undo",
-        "key": "ctrl+z",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.redo",
-        "key": "ctrl+y",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.moveBlockUp",
-        "key": "ctrl+shift+u",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.moveBlockDown",
-        "key": "ctrl+shift+d",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.increaseHeading",
-        "key": "ctrl+=",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.decreaseHeading",
-        "key": "ctrl+-",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.indentList",
-        "key": "tab",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.unindentList",
-        "key": "shift+tab",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.toggleTaskCheck",
-        "key": "ctrl+shift+j",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.insertTableRowAbove",
-        "key": "ctrl+shift+f",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.insertTableRowBelow",
-        "key": "ctrl+=",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.deleteTableRow",
-        "key": "ctrl+-",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.insertTableColLeft",
-        "key": "ctrl+shift+g",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.insertTableColRight",
-        "key": "ctrl+shift+=",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.deleteTableCol",
-        "key": "ctrl+shift+-",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.tableAlignLeft",
-        "key": "ctrl+shift+l",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.tableAlignCenter",
-        "key": "ctrl+shift+c",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.tableAlignRight",
-        "key": "ctrl+shift+r",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.insertEmoji",
-        "key": ":",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.toggleHeadingMenu",
-        "key": "ctrl+h",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.insertBlockquoteAdvanced",
-        "key": "ctrl+shift+;",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.toggleLinkInput",
-        "key": "alt+enter",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.toggleCodeBlockInput",
-        "key": "alt+enter",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.hideCodeBlockEdit",
-        "key": "escape",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.selectAllCodeBlock",
-        "key": "ctrl+a",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.indentListAdvanced",
-        "key": "ctrl+shift+i",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.unindentListAdvanced",
-        "key": "ctrl+shift+o",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.tableMoveCaretToInput",
-        "key": "alt+enter",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.tableMoveCaretPrevious",
-        "key": "shift+tab",
-        "when": "vsc-markdown.isMarkdownEditorActive"
-      },
-      {
-        "command": "vsc-markdown.tableMoveCaretNext",
-        "key": "tab",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.insertH5.enabled"
       },
       {
         "command": "vsc-markdown.insertH6",
         "key": "ctrl+alt+6",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.insertH6.enabled"
       },
       {
-        "command": "vsc-markdown.atUser",
-        "key": "@",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "command": "vsc-markdown.insertBold",
+        "key": "ctrl+b",
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.insertBold.enabled"
       },
       {
-        "command": "vsc-markdown.removeMistyped",
-        "key": "backspace",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "command": "vsc-markdown.insertItalic",
+        "key": "ctrl+i",
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.insertItalic.enabled"
+      },
+      {
+        "command": "vsc-markdown.insertStrikethrough",
+        "key": "ctrl+shift+s",
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.insertStrikethrough.enabled"
+      },
+      {
+        "command": "vsc-markdown.insertCode",
+        "key": "ctrl+grave",
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.insertCode.enabled"
+      },
+      {
+        "command": "vsc-markdown.insertList",
+        "key": "ctrl+l",
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.insertList.enabled"
+      },
+      {
+        "command": "vsc-markdown.insertOrderedList",
+        "key": "ctrl+shift+l",
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.insertOrderedList.enabled"
+      },
+      {
+        "command": "vsc-markdown.insertTaskList",
+        "key": "ctrl+j",
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.insertTaskList.enabled"
+      },
+      {
+        "command": "vsc-markdown.toggleTaskCheck",
+        "key": "ctrl+shift+j",
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.toggleTaskCheck.enabled"
+      },
+      {
+        "command": "vsc-markdown.indentList",
+        "key": "tab",
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.indentList.enabled"
+      },
+      {
+        "command": "vsc-markdown.unindentList",
+        "key": "shift+tab",
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.unindentList.enabled"
+      },
+      {
+        "command": "vsc-markdown.insertLink",
+        "key": "ctrl+k",
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.insertLink.enabled"
+      },
+      {
+        "command": "vsc-markdown.toggleLinkInput",
+        "key": "alt+enter",
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.toggleLinkInput.enabled"
+      },
+      {
+        "command": "vsc-markdown.insertCodeBlock",
+        "key": "ctrl+u",
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.insertCodeBlock.enabled"
+      },
+      {
+        "command": "vsc-markdown.insertTable",
+        "key": "ctrl+t",
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.insertTable.enabled"
+      },
+      {
+        "command": "vsc-markdown.insertQuote",
+        "key": "ctrl+shift+q",
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.insertQuote.enabled"
+      },
+      {
+        "command": "vsc-markdown.insertHorizontalRule",
+        "key": "ctrl+shift+h",
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.insertHorizontalRule.enabled"
+      },
+      {
+        "command": "vsc-markdown.switchEditor",
+        "key": "ctrl+shift+p",
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.switchEditor.enabled"
+      },
+      {
+        "command": "vsc-markdown.openPreview",
+        "key": "ctrl+shift+v",
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.openPreview.enabled"
+      },
+      {
+        "command": "vsc-markdown.formatDocument",
+        "key": "ctrl+shift+f",
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.formatDocument.enabled"
+      },
+      {
+        "command": "vsc-markdown.insertEmoji",
+        "key": ":",
+        "when": "editorTextFocus && editorLangId == markdown && config.vsc-markdown.features.insertEmoji.enabled"
       }
     ],
     "menus": {
       "editor/title": [
         {
-          "command": "vsc-markdown.switch",
-          "when": "resourceExtname == '.md'",
-          "group": "navigation@-2"
+          "command": "vsc-markdown.switchEditor",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.switchEditor.enabled",
+          "group": "navigation"
         }
       ],
       "editor/context": [
         {
-          "command": "vsc-markdown.insertH1",
-          "when": "editorTextFocus",
-          "group": "1_modification@1"
+          "command": "vsc-markdown.insertH2",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.insertH2.enabled",
+          "group": "1_headings"
+        },
+        {
+          "command": "vsc-markdown.insertH3",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.insertH3.enabled",
+          "group": "1_headings"
+        },
+        {
+          "command": "vsc-markdown.insertH4",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.insertH4.enabled",
+          "group": "1_headings"
+        },
+        {
+          "command": "vsc-markdown.insertH5",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.insertH5.enabled",
+          "group": "1_headings"
+        },
+        {
+          "command": "vsc-markdown.insertH6",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.insertH6.enabled",
+          "group": "1_headings"
+        },
+        {
+          "command": "vsc-markdown.insertBold",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.insertBold.enabled",
+          "group": "2_formatting"
+        },
+        {
+          "command": "vsc-markdown.insertItalic",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.insertItalic.enabled",
+          "group": "2_formatting"
+        },
+        {
+          "command": "vsc-markdown.insertStrikethrough",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.insertStrikethrough.enabled",
+          "group": "2_formatting"
+        },
+        {
+          "command": "vsc-markdown.insertCode",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.insertCode.enabled",
+          "group": "2_formatting"
+        },
+        {
+          "command": "vsc-markdown.insertList",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.insertList.enabled",
+          "group": "3_lists"
+        },
+        {
+          "command": "vsc-markdown.insertOrderedList",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.insertOrderedList.enabled",
+          "group": "3_lists"
+        },
+        {
+          "command": "vsc-markdown.insertTaskList",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.insertTaskList.enabled",
+          "group": "3_lists"
+        },
+        {
+          "command": "vsc-markdown.toggleTaskCheck",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.toggleTaskCheck.enabled",
+          "group": "3_lists"
+        },
+        {
+          "command": "vsc-markdown.indentList",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.indentList.enabled",
+          "group": "3_lists"
+        },
+        {
+          "command": "vsc-markdown.unindentList",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.unindentList.enabled",
+          "group": "3_lists"
+        },
+        {
+          "command": "vsc-markdown.insertLink",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.insertLink.enabled",
+          "group": "9_other"
+        },
+        {
+          "command": "vsc-markdown.toggleLinkInput",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.toggleLinkInput.enabled",
+          "group": "9_other"
+        },
+        {
+          "command": "vsc-markdown.insertImage",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.insertImage.enabled",
+          "group": "9_other"
+        },
+        {
+          "command": "vsc-markdown.insertCodeBlock",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.insertCodeBlock.enabled",
+          "group": "9_other"
+        },
+        {
+          "command": "vsc-markdown.insertTable",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.insertTable.enabled",
+          "group": "9_other"
+        },
+        {
+          "command": "vsc-markdown.insertQuote",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.insertQuote.enabled",
+          "group": "9_other"
+        },
+        {
+          "command": "vsc-markdown.insertHorizontalRule",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.insertHorizontalRule.enabled",
+          "group": "9_other"
+        },
+        {
+          "command": "vsc-markdown.pasteClipboardImage",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.pasteClipboardImage.enabled",
+          "group": "9_other"
+        },
+        {
+          "command": "vsc-markdown.openPreview",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.openPreview.enabled",
+          "group": "9_other"
+        },
+        {
+          "command": "vsc-markdown.formatDocument",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.formatDocument.enabled",
+          "group": "9_other"
+        },
+        {
+          "command": "vsc-markdown.uploadImage",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.uploadImage.enabled",
+          "group": "9_other"
+        },
+        {
+          "command": "vsc-markdown.exportHtml",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.exportHtml.enabled",
+          "group": "9_other"
+        },
+        {
+          "command": "vsc-markdown.exportPdf",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.exportPdf.enabled",
+          "group": "9_other"
+        },
+        {
+          "command": "vsc-markdown.convertToUppercase",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.convertToUppercase.enabled",
+          "group": "9_other"
+        },
+        {
+          "command": "vsc-markdown.convertToLowercase",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.convertToLowercase.enabled",
+          "group": "9_other"
+        },
+        {
+          "command": "vsc-markdown.convertToTitleCase",
+          "when": "resourceLangId == markdown && config.vsc-markdown.features.convertToTitleCase.enabled",
+          "group": "9_other"
         }
       ]
     },
@@ -628,44 +568,708 @@
       "type": "object",
       "title": "Markdown Editor",
       "properties": {
-        "vsc-markdown.openOutline": {
-          "type": "boolean",
-          "default": true,
-          "description": "Open markdown outline."
+        "vsc-markdown.statusBar.items": {
+          "type": "array",
+          "description": "Order and visibility of status bar buttons (drag to reorder)",
+          "markdownDescription": "Configure which formatting buttons appear in the status bar and their order. Drag items to reorder.",
+          "default": [
+            "insertH2",
+            "insertH3",
+            "insertH4",
+            "insertH5",
+            "insertH6"
+          ],
+          "items": {
+            "type": "string",
+            "enum": [
+              "insertH1",
+              "insertH2",
+              "insertH3",
+              "insertH4",
+              "insertH5",
+              "insertH6"
+            ],
+            "enumDescriptions": [
+              "Insert H1 Heading",
+              "Insert H2 Heading",
+              "Insert H3 Heading",
+              "Insert H4 Heading",
+              "Insert H5 Heading",
+              "Insert H6 Heading"
+            ]
+          }
         },
-        "vsc-markdown.hideToolbar": {
-          "type": "boolean",
-          "default": false,
-          "description": "Hide markdown toolbar."
+        "vsc-markdown.webviewContextMenu.items": {
+          "type": "array",
+          "description": "Order and visibility of webview context menu items (drag to reorder)",
+          "markdownDescription": "Configure which formatting options appear in the webview right-click menu and their order. Drag to reorder.",
+          "default": [
+            "insertH2",
+            "insertH3",
+            "insertH4",
+            "insertH5",
+            "insertH6",
+            "insertBold",
+            "insertItalic",
+            "insertStrikethrough",
+            "insertCode",
+            "insertList",
+            "insertOrderedList",
+            "insertTaskList",
+            "toggleTaskCheck",
+            "indentList",
+            "unindentList",
+            "insertLink",
+            "toggleLinkInput",
+            "insertImage",
+            "insertCodeBlock",
+            "insertTable",
+            "insertQuote",
+            "insertHorizontalRule",
+            "pasteClipboardImage",
+            "uploadImage",
+            "convertToUppercase",
+            "convertToLowercase",
+            "convertToTitleCase"
+          ],
+          "items": {
+            "type": "string",
+            "enum": [
+              "insertH1",
+              "insertH2",
+              "insertH3",
+              "insertH4",
+              "insertH5",
+              "insertH6",
+              "insertBold",
+              "insertItalic",
+              "insertStrikethrough",
+              "insertCode",
+              "insertList",
+              "insertOrderedList",
+              "insertTaskList",
+              "toggleTaskCheck",
+              "indentList",
+              "unindentList",
+              "insertLink",
+              "toggleLinkInput",
+              "insertImage",
+              "insertCodeBlock",
+              "insertTable",
+              "insertQuote",
+              "insertHorizontalRule",
+              "pasteClipboardImage",
+              "uploadImage",
+              "convertToUppercase",
+              "convertToLowercase",
+              "convertToTitleCase",
+              "insertEmoji"
+            ],
+            "enumDescriptions": [
+              "Insert H1 Heading",
+              "Insert H2 Heading",
+              "Insert H3 Heading",
+              "Insert H4 Heading",
+              "Insert H5 Heading",
+              "Insert H6 Heading",
+              "Insert Bold Text",
+              "Insert Italic Text",
+              "Insert Strikethrough",
+              "Insert Inline Code",
+              "Insert Unordered List",
+              "Insert Ordered List",
+              "Insert Task List",
+              "Toggle Task Check",
+              "Indent List",
+              "Unindent List",
+              "Insert Link",
+              "Toggle Link Input",
+              "Insert Image",
+              "Insert Code Block",
+              "Insert Table",
+              "Insert Block Quote",
+              "Insert Horizontal Rule",
+              "Paste Clipboard Image",
+              "Upload Image",
+              "Convert to Uppercase",
+              "Convert to Lowercase",
+              "Convert to Title Case",
+              "Insert Emoji"
+            ]
+          }
         },
-        "vsc-markdown.previewCode": {
+        "vsc-markdown.features.insertH1.enabled": {
           "type": "boolean",
-          "default": true,
-          "description": "Preview code in markdown."
+          "description": "Enable feature: Insert H1 Heading",
+          "markdownDescription": "Master switch to enable/disable **Insert H1 Heading** completely",
+          "default": false
         },
-        "vsc-markdown.previewCodeHighlight.showLineNumber": {
+        "vsc-markdown.features.insertH2.enabled": {
           "type": "boolean",
-          "default": false,
-          "markdownDescription": "Show line numbers in markdown preview code window. Only applies when `#vsc-markdown.previewCode#` is enabled."
+          "description": "Enable feature: Insert H2 Heading",
+          "markdownDescription": "Master switch to enable/disable **Insert H2 Heading** completely",
+          "default": true
         },
-        "vsc-markdown.workspacePathAsImageBasePath": {
+        "vsc-markdown.features.insertH3.enabled": {
           "type": "boolean",
-          "default": false,
-          "description": "Using workspace path as markdown image base path."
+          "description": "Enable feature: Insert H3 Heading",
+          "markdownDescription": "Master switch to enable/disable **Insert H3 Heading** completely",
+          "default": true
         },
-        "vsc-markdown.pasterImgPath": {
-          "type": "string",
-          "default": "image/${fileName}/${now}.png",
-          "description": "Markdown paste image path, variables: workspaceDir, fileName, now."
+        "vsc-markdown.features.insertH4.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Insert H4 Heading",
+          "markdownDescription": "Master switch to enable/disable **Insert H4 Heading** completely",
+          "default": true
+        },
+        "vsc-markdown.features.insertH5.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Insert H5 Heading",
+          "markdownDescription": "Master switch to enable/disable **Insert H5 Heading** completely",
+          "default": true
+        },
+        "vsc-markdown.features.insertH6.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Insert H6 Heading",
+          "markdownDescription": "Master switch to enable/disable **Insert H6 Heading** completely",
+          "default": true
+        },
+        "vsc-markdown.features.insertBold.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Insert Bold Text",
+          "markdownDescription": "Master switch to enable/disable **Insert Bold Text** completely",
+          "default": true
+        },
+        "vsc-markdown.features.insertItalic.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Insert Italic Text",
+          "markdownDescription": "Master switch to enable/disable **Insert Italic Text** completely",
+          "default": true
+        },
+        "vsc-markdown.features.insertStrikethrough.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Insert Strikethrough",
+          "markdownDescription": "Master switch to enable/disable **Insert Strikethrough** completely",
+          "default": true
+        },
+        "vsc-markdown.features.insertCode.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Insert Inline Code",
+          "markdownDescription": "Master switch to enable/disable **Insert Inline Code** completely",
+          "default": true
+        },
+        "vsc-markdown.features.insertList.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Insert Unordered List",
+          "markdownDescription": "Master switch to enable/disable **Insert Unordered List** completely",
+          "default": true
+        },
+        "vsc-markdown.features.insertOrderedList.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Insert Ordered List",
+          "markdownDescription": "Master switch to enable/disable **Insert Ordered List** completely",
+          "default": true
+        },
+        "vsc-markdown.features.insertTaskList.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Insert Task List",
+          "markdownDescription": "Master switch to enable/disable **Insert Task List** completely",
+          "default": true
+        },
+        "vsc-markdown.features.toggleTaskCheck.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Toggle Task Check",
+          "markdownDescription": "Master switch to enable/disable **Toggle Task Check** completely",
+          "default": true
+        },
+        "vsc-markdown.features.indentList.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Indent List",
+          "markdownDescription": "Master switch to enable/disable **Indent List** completely",
+          "default": true
+        },
+        "vsc-markdown.features.unindentList.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Unindent List",
+          "markdownDescription": "Master switch to enable/disable **Unindent List** completely",
+          "default": true
+        },
+        "vsc-markdown.features.insertLink.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Insert Link",
+          "markdownDescription": "Master switch to enable/disable **Insert Link** completely",
+          "default": true
+        },
+        "vsc-markdown.features.toggleLinkInput.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Toggle Link Input",
+          "markdownDescription": "Master switch to enable/disable **Toggle Link Input** completely",
+          "default": true
+        },
+        "vsc-markdown.features.insertImage.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Insert Image",
+          "markdownDescription": "Master switch to enable/disable **Insert Image** completely",
+          "default": true
+        },
+        "vsc-markdown.features.insertCodeBlock.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Insert Code Block",
+          "markdownDescription": "Master switch to enable/disable **Insert Code Block** completely",
+          "default": true
+        },
+        "vsc-markdown.features.insertTable.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Insert Table",
+          "markdownDescription": "Master switch to enable/disable **Insert Table** completely",
+          "default": true
+        },
+        "vsc-markdown.features.insertQuote.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Insert Block Quote",
+          "markdownDescription": "Master switch to enable/disable **Insert Block Quote** completely",
+          "default": true
+        },
+        "vsc-markdown.features.insertHorizontalRule.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Insert Horizontal Rule",
+          "markdownDescription": "Master switch to enable/disable **Insert Horizontal Rule** completely",
+          "default": true
+        },
+        "vsc-markdown.features.pasteClipboardImage.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Paste Clipboard Image",
+          "markdownDescription": "Master switch to enable/disable **Paste Clipboard Image** completely",
+          "default": true
+        },
+        "vsc-markdown.features.switchEditor.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Switch Editor",
+          "markdownDescription": "Master switch to enable/disable **Switch Editor** completely",
+          "default": true
+        },
+        "vsc-markdown.features.openPreview.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Open Preview",
+          "markdownDescription": "Master switch to enable/disable **Open Preview** completely",
+          "default": true
+        },
+        "vsc-markdown.features.formatDocument.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Format Document",
+          "markdownDescription": "Master switch to enable/disable **Format Document** completely",
+          "default": true
+        },
+        "vsc-markdown.features.uploadImage.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Upload Image",
+          "markdownDescription": "Master switch to enable/disable **Upload Image** completely",
+          "default": true
+        },
+        "vsc-markdown.features.exportHtml.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Export as HTML",
+          "markdownDescription": "Master switch to enable/disable **Export as HTML** completely",
+          "default": true
+        },
+        "vsc-markdown.features.exportPdf.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Export as PDF",
+          "markdownDescription": "Master switch to enable/disable **Export as PDF** completely",
+          "default": true
+        },
+        "vsc-markdown.features.convertToUppercase.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Convert to Uppercase",
+          "markdownDescription": "Master switch to enable/disable **Convert to Uppercase** completely",
+          "default": true
+        },
+        "vsc-markdown.features.convertToLowercase.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Convert to Lowercase",
+          "markdownDescription": "Master switch to enable/disable **Convert to Lowercase** completely",
+          "default": true
+        },
+        "vsc-markdown.features.convertToTitleCase.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Convert to Title Case",
+          "markdownDescription": "Master switch to enable/disable **Convert to Title Case** completely",
+          "default": true
+        },
+        "vsc-markdown.features.insertEmoji.enabled": {
+          "type": "boolean",
+          "description": "Enable feature: Insert Emoji",
+          "markdownDescription": "Master switch to enable/disable **Insert Emoji** completely",
+          "default": false
+        },
+        "vsc-markdown.features.insertH1.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Insert H1 Heading",
+          "markdownDescription": "Enable the keyboard shortcut **ctrl+alt+1** for Insert H1 Heading",
+          "default": false
+        },
+        "vsc-markdown.features.insertH2.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Insert H2 Heading",
+          "markdownDescription": "Enable the keyboard shortcut **ctrl+alt+2** for Insert H2 Heading",
+          "default": true
+        },
+        "vsc-markdown.features.insertH3.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Insert H3 Heading",
+          "markdownDescription": "Enable the keyboard shortcut **ctrl+alt+3** for Insert H3 Heading",
+          "default": true
+        },
+        "vsc-markdown.features.insertH4.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Insert H4 Heading",
+          "markdownDescription": "Enable the keyboard shortcut **ctrl+alt+4** for Insert H4 Heading",
+          "default": true
+        },
+        "vsc-markdown.features.insertH5.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Insert H5 Heading",
+          "markdownDescription": "Enable the keyboard shortcut **ctrl+alt+5** for Insert H5 Heading",
+          "default": true
+        },
+        "vsc-markdown.features.insertH6.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Insert H6 Heading",
+          "markdownDescription": "Enable the keyboard shortcut **ctrl+alt+6** for Insert H6 Heading",
+          "default": true
+        },
+        "vsc-markdown.features.insertBold.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Insert Bold Text",
+          "markdownDescription": "Enable the keyboard shortcut **ctrl+b** for Insert Bold Text",
+          "default": true
+        },
+        "vsc-markdown.features.insertItalic.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Insert Italic Text",
+          "markdownDescription": "Enable the keyboard shortcut **ctrl+i** for Insert Italic Text",
+          "default": true
+        },
+        "vsc-markdown.features.insertStrikethrough.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Insert Strikethrough",
+          "markdownDescription": "Enable the keyboard shortcut **ctrl+shift+s** for Insert Strikethrough",
+          "default": true
+        },
+        "vsc-markdown.features.insertCode.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Insert Inline Code",
+          "markdownDescription": "Enable the keyboard shortcut **ctrl+grave** for Insert Inline Code",
+          "default": true
+        },
+        "vsc-markdown.features.insertList.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Insert Unordered List",
+          "markdownDescription": "Enable the keyboard shortcut **ctrl+l** for Insert Unordered List",
+          "default": true
+        },
+        "vsc-markdown.features.insertOrderedList.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Insert Ordered List",
+          "markdownDescription": "Enable the keyboard shortcut **ctrl+shift+l** for Insert Ordered List",
+          "default": true
+        },
+        "vsc-markdown.features.insertTaskList.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Insert Task List",
+          "markdownDescription": "Enable the keyboard shortcut **ctrl+j** for Insert Task List",
+          "default": true
+        },
+        "vsc-markdown.features.toggleTaskCheck.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Toggle Task Check",
+          "markdownDescription": "Enable the keyboard shortcut **ctrl+shift+j** for Toggle Task Check",
+          "default": true
+        },
+        "vsc-markdown.features.indentList.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Indent List",
+          "markdownDescription": "Enable the keyboard shortcut **tab** for Indent List",
+          "default": true
+        },
+        "vsc-markdown.features.unindentList.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Unindent List",
+          "markdownDescription": "Enable the keyboard shortcut **shift+tab** for Unindent List",
+          "default": true
+        },
+        "vsc-markdown.features.insertLink.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Insert Link",
+          "markdownDescription": "Enable the keyboard shortcut **ctrl+k** for Insert Link",
+          "default": true
+        },
+        "vsc-markdown.features.toggleLinkInput.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Toggle Link Input",
+          "markdownDescription": "Enable the keyboard shortcut **alt+enter** for Toggle Link Input",
+          "default": true
+        },
+        "vsc-markdown.features.insertCodeBlock.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Insert Code Block",
+          "markdownDescription": "Enable the keyboard shortcut **ctrl+u** for Insert Code Block",
+          "default": true
+        },
+        "vsc-markdown.features.insertTable.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Insert Table",
+          "markdownDescription": "Enable the keyboard shortcut **ctrl+t** for Insert Table",
+          "default": true
+        },
+        "vsc-markdown.features.insertQuote.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Insert Block Quote",
+          "markdownDescription": "Enable the keyboard shortcut **ctrl+shift+q** for Insert Block Quote",
+          "default": true
+        },
+        "vsc-markdown.features.insertHorizontalRule.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Insert Horizontal Rule",
+          "markdownDescription": "Enable the keyboard shortcut **ctrl+shift+h** for Insert Horizontal Rule",
+          "default": true
+        },
+        "vsc-markdown.features.switchEditor.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Switch Editor",
+          "markdownDescription": "Enable the keyboard shortcut **ctrl+shift+p** for Switch Editor",
+          "default": true
+        },
+        "vsc-markdown.features.openPreview.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Open Preview",
+          "markdownDescription": "Enable the keyboard shortcut **ctrl+shift+v** for Open Preview",
+          "default": true
+        },
+        "vsc-markdown.features.formatDocument.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Format Document",
+          "markdownDescription": "Enable the keyboard shortcut **ctrl+shift+f** for Format Document",
+          "default": true
+        },
+        "vsc-markdown.features.insertEmoji.keybinding": {
+          "type": "boolean",
+          "description": "Enable keyboard shortcut for: Insert Emoji",
+          "markdownDescription": "Enable the keyboard shortcut **:** for Insert Emoji",
+          "default": false
+        },
+        "vsc-markdown.features.insertH1.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Insert H1 Heading",
+          "markdownDescription": "Control whether **Insert H1 Heading** appears in the command palette (Ctrl+Shift+P)",
+          "default": false
+        },
+        "vsc-markdown.features.insertH2.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Insert H2 Heading",
+          "markdownDescription": "Control whether **Insert H2 Heading** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.insertH3.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Insert H3 Heading",
+          "markdownDescription": "Control whether **Insert H3 Heading** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.insertH4.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Insert H4 Heading",
+          "markdownDescription": "Control whether **Insert H4 Heading** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.insertH5.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Insert H5 Heading",
+          "markdownDescription": "Control whether **Insert H5 Heading** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.insertH6.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Insert H6 Heading",
+          "markdownDescription": "Control whether **Insert H6 Heading** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.insertBold.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Insert Bold Text",
+          "markdownDescription": "Control whether **Insert Bold Text** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.insertItalic.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Insert Italic Text",
+          "markdownDescription": "Control whether **Insert Italic Text** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.insertStrikethrough.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Insert Strikethrough",
+          "markdownDescription": "Control whether **Insert Strikethrough** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.insertCode.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Insert Inline Code",
+          "markdownDescription": "Control whether **Insert Inline Code** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.insertList.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Insert Unordered List",
+          "markdownDescription": "Control whether **Insert Unordered List** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.insertOrderedList.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Insert Ordered List",
+          "markdownDescription": "Control whether **Insert Ordered List** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.insertTaskList.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Insert Task List",
+          "markdownDescription": "Control whether **Insert Task List** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.toggleTaskCheck.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Toggle Task Check",
+          "markdownDescription": "Control whether **Toggle Task Check** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.indentList.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Indent List",
+          "markdownDescription": "Control whether **Indent List** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.unindentList.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Unindent List",
+          "markdownDescription": "Control whether **Unindent List** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.insertLink.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Insert Link",
+          "markdownDescription": "Control whether **Insert Link** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.toggleLinkInput.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Toggle Link Input",
+          "markdownDescription": "Control whether **Toggle Link Input** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.insertImage.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Insert Image",
+          "markdownDescription": "Control whether **Insert Image** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.insertCodeBlock.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Insert Code Block",
+          "markdownDescription": "Control whether **Insert Code Block** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.insertTable.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Insert Table",
+          "markdownDescription": "Control whether **Insert Table** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.insertQuote.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Insert Block Quote",
+          "markdownDescription": "Control whether **Insert Block Quote** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.insertHorizontalRule.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Insert Horizontal Rule",
+          "markdownDescription": "Control whether **Insert Horizontal Rule** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.pasteClipboardImage.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Paste Clipboard Image",
+          "markdownDescription": "Control whether **Paste Clipboard Image** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.switchEditor.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Switch Editor",
+          "markdownDescription": "Control whether **Switch Editor** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.openPreview.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Open Preview",
+          "markdownDescription": "Control whether **Open Preview** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.formatDocument.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Format Document",
+          "markdownDescription": "Control whether **Format Document** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.uploadImage.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Upload Image",
+          "markdownDescription": "Control whether **Upload Image** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.exportHtml.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Export as HTML",
+          "markdownDescription": "Control whether **Export as HTML** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.exportPdf.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Export as PDF",
+          "markdownDescription": "Control whether **Export as PDF** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.convertToUppercase.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Convert to Uppercase",
+          "markdownDescription": "Control whether **Convert to Uppercase** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.convertToLowercase.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Convert to Lowercase",
+          "markdownDescription": "Control whether **Convert to Lowercase** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.convertToTitleCase.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Convert to Title Case",
+          "markdownDescription": "Control whether **Convert to Title Case** appears in the command palette (Ctrl+Shift+P)",
+          "default": true
+        },
+        "vsc-markdown.features.insertEmoji.commandPalette": {
+          "type": "boolean",
+          "description": "Show in command palette: Insert Emoji",
+          "markdownDescription": "Control whether **Insert Emoji** appears in the command palette (Ctrl+Shift+P)",
+          "default": false
         }
       }
     }
   },
   "scripts": {
-    "dev": "npm run gen:contributes && node build.ts --mode=development",
-    "gen:contributes": "npx ts-node scripts/generateContributes.ts",
+    "dev": "node build.ts --mode=development",
     "lint:fix": "eslint src/**/*.ts --fix",
-    "build": "npm run gen:contributes && rimraf out && node build.ts --mode=production",
+    "prebuild": "tsc --outDir out",
+    "build": "rimraf out && npm run prebuild && node build.ts --mode=production",
     "package": "vsce package --no-dependencies",
     "publish": "vsce publish --no-dependencies",
     "vscode:prepublish": "npm run build"
@@ -685,5 +1289,167 @@
   },
   "dependencies": {
     "file-type": "^19.6.0"
+  },
+  "configurationDefaults": {
+    "vsc-markdown.statusBar.items": [
+      "insertH2",
+      "insertH3",
+      "insertH4",
+      "insertH5",
+      "insertH6",
+      "insertBold",
+      "insertItalic",
+      "insertStrikethrough",
+      "insertCode"
+    ],
+    "vsc-markdown.webviewContextMenu.items": [
+      "insertH2",
+      "insertH3",
+      "insertH4",
+      "insertH5",
+      "insertH6",
+      "insertBold",
+      "insertItalic",
+      "insertStrikethrough",
+      "insertCode",
+      "insertList",
+      "insertOrderedList",
+      "insertTaskList",
+      "toggleTaskCheck",
+      "indentList",
+      "unindentList",
+      "insertLink",
+      "toggleLinkInput",
+      "insertImage",
+      "insertCodeBlock",
+      "insertTable",
+      "insertQuote",
+      "insertHorizontalRule",
+      "pasteClipboardImage",
+      "uploadImage",
+      "convertToUppercase",
+      "convertToLowercase",
+      "convertToTitleCase"
+    ],
+    "vsc-markdown.features.insertH1.enabled": false,
+    "vsc-markdown.features.insertH1.keybinding": false,
+    "vsc-markdown.features.insertH1.commandPalette": false,
+    "vsc-markdown.features.insertH2.enabled": true,
+    "vsc-markdown.features.insertH2.keybinding": true,
+    "vsc-markdown.features.insertH2.commandPalette": true,
+    "vsc-markdown.features.insertH3.enabled": true,
+    "vsc-markdown.features.insertH3.keybinding": true,
+    "vsc-markdown.features.insertH3.commandPalette": true,
+    "vsc-markdown.features.insertH4.enabled": true,
+    "vsc-markdown.features.insertH4.keybinding": true,
+    "vsc-markdown.features.insertH4.commandPalette": true,
+    "vsc-markdown.features.insertH5.enabled": true,
+    "vsc-markdown.features.insertH5.keybinding": true,
+    "vsc-markdown.features.insertH5.commandPalette": true,
+    "vsc-markdown.features.insertH6.enabled": true,
+    "vsc-markdown.features.insertH6.keybinding": true,
+    "vsc-markdown.features.insertH6.commandPalette": true,
+    "vsc-markdown.features.insertBold.enabled": true,
+    "vsc-markdown.features.insertBold.keybinding": true,
+    "vsc-markdown.features.insertBold.commandPalette": true,
+    "vsc-markdown.features.insertItalic.enabled": true,
+    "vsc-markdown.features.insertItalic.keybinding": true,
+    "vsc-markdown.features.insertItalic.commandPalette": true,
+    "vsc-markdown.features.insertStrikethrough.enabled": true,
+    "vsc-markdown.features.insertStrikethrough.keybinding": true,
+    "vsc-markdown.features.insertStrikethrough.commandPalette": true,
+    "vsc-markdown.features.insertCode.enabled": true,
+    "vsc-markdown.features.insertCode.keybinding": true,
+    "vsc-markdown.features.insertCode.commandPalette": true,
+    "vsc-markdown.features.insertList.enabled": true,
+    "vsc-markdown.features.insertList.keybinding": true,
+    "vsc-markdown.features.insertList.commandPalette": true,
+    "vsc-markdown.features.insertOrderedList.enabled": true,
+    "vsc-markdown.features.insertOrderedList.keybinding": true,
+    "vsc-markdown.features.insertOrderedList.commandPalette": true,
+    "vsc-markdown.features.insertTaskList.enabled": true,
+    "vsc-markdown.features.insertTaskList.keybinding": true,
+    "vsc-markdown.features.insertTaskList.commandPalette": true,
+    "vsc-markdown.features.toggleTaskCheck.enabled": true,
+    "vsc-markdown.features.toggleTaskCheck.keybinding": true,
+    "vsc-markdown.features.toggleTaskCheck.commandPalette": true,
+    "vsc-markdown.features.indentList.enabled": true,
+    "vsc-markdown.features.indentList.keybinding": true,
+    "vsc-markdown.features.indentList.commandPalette": true,
+    "vsc-markdown.features.unindentList.enabled": true,
+    "vsc-markdown.features.unindentList.keybinding": true,
+    "vsc-markdown.features.unindentList.commandPalette": true,
+    "vsc-markdown.features.insertLink.enabled": true,
+    "vsc-markdown.features.insertLink.keybinding": true,
+    "vsc-markdown.features.insertLink.commandPalette": true,
+    "vsc-markdown.features.toggleLinkInput.enabled": true,
+    "vsc-markdown.features.toggleLinkInput.keybinding": true,
+    "vsc-markdown.features.toggleLinkInput.commandPalette": true,
+    "vsc-markdown.features.insertImage.enabled": true,
+    "vsc-markdown.features.insertImage.commandPalette": true,
+    "vsc-markdown.features.insertCodeBlock.enabled": true,
+    "vsc-markdown.features.insertCodeBlock.keybinding": true,
+    "vsc-markdown.features.insertCodeBlock.commandPalette": true,
+    "vsc-markdown.features.insertTable.enabled": true,
+    "vsc-markdown.features.insertTable.keybinding": true,
+    "vsc-markdown.features.insertTable.commandPalette": true,
+    "vsc-markdown.features.insertQuote.enabled": true,
+    "vsc-markdown.features.insertQuote.keybinding": true,
+    "vsc-markdown.features.insertQuote.commandPalette": true,
+    "vsc-markdown.features.insertHorizontalRule.enabled": true,
+    "vsc-markdown.features.insertHorizontalRule.commandPalette": true,
+    "vsc-markdown.features.insertCheckbox.enabled": true,
+    "vsc-markdown.features.insertCheckbox.commandPalette": true,
+    "vsc-markdown.features.insertMathBlock.enabled": true,
+    "vsc-markdown.features.insertMathBlock.commandPalette": true,
+    "vsc-markdown.features.insertComment.enabled": true,
+    "vsc-markdown.features.insertComment.commandPalette": true,
+    "vsc-markdown.features.insertFootnote.enabled": true,
+    "vsc-markdown.features.insertFootnote.commandPalette": true,
+    "vsc-markdown.features.pasteClipboardImage.enabled": true,
+    "vsc-markdown.features.pasteClipboardImage.commandPalette": true,
+    "vsc-markdown.features.switchEditor.enabled": true,
+    "vsc-markdown.features.switchEditor.keybinding": true,
+    "vsc-markdown.features.switchEditor.commandPalette": true,
+    "vsc-markdown.features.openPreview.enabled": true,
+    "vsc-markdown.features.openPreview.keybinding": true,
+    "vsc-markdown.features.openPreview.commandPalette": true,
+    "vsc-markdown.features.formatDocument.enabled": true,
+    "vsc-markdown.features.formatDocument.keybinding": true,
+    "vsc-markdown.features.formatDocument.commandPalette": true,
+    "vsc-markdown.features.uploadImage.enabled": true,
+    "vsc-markdown.features.uploadImage.commandPalette": true,
+    "vsc-markdown.features.exportHtml.enabled": true,
+    "vsc-markdown.features.exportHtml.commandPalette": true,
+    "vsc-markdown.features.exportPdf.enabled": true,
+    "vsc-markdown.features.exportPdf.commandPalette": true,
+    "vsc-markdown.features.convertToUppercase.enabled": true,
+    "vsc-markdown.features.convertToUppercase.commandPalette": true,
+    "vsc-markdown.features.convertToLowercase.enabled": true,
+    "vsc-markdown.features.convertToLowercase.commandPalette": true,
+    "vsc-markdown.features.convertToTitleCase.enabled": true,
+    "vsc-markdown.features.convertToTitleCase.commandPalette": true,
+    "vsc-markdown.features.insertUnderline.enabled": false,
+    "vsc-markdown.features.insertUnderline.keybinding": false,
+    "vsc-markdown.features.insertUnderline.commandPalette": false,
+    "vsc-markdown.features.insertSuperscript.enabled": false,
+    "vsc-markdown.features.insertSuperscript.commandPalette": false,
+    "vsc-markdown.features.insertSubscript.enabled": false,
+    "vsc-markdown.features.insertSubscript.commandPalette": false,
+    "vsc-markdown.features.insertEmoji.enabled": false,
+    "vsc-markdown.features.insertEmoji.commandPalette": false,
+    "vsc-markdown.features.insertSpecialCharacters.enabled": false,
+    "vsc-markdown.features.insertSpecialCharacters.commandPalette": false,
+    "vsc-markdown.features.openHelpDoc.enabled": false,
+    "vsc-markdown.features.openHelpDoc.commandPalette": false,
+    "vsc-markdown.features.openSettings.enabled": false,
+    "vsc-markdown.features.openSettings.commandPalette": false,
+    "vsc-markdown.features.clearFormatting.enabled": false,
+    "vsc-markdown.features.clearFormatting.keybinding": false,
+    "vsc-markdown.features.clearFormatting.commandPalette": false,
+    "vsc-markdown.features.insertToc.enabled": false,
+    "vsc-markdown.features.insertToc.commandPalette": false,
+    "vsc-markdown.features.insertHorizontalRule.keybinding": true,
+    "vsc-markdown.features.insertEmoji.keybinding": false
   }
 }

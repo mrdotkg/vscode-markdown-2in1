@@ -78,14 +78,14 @@ window.addEventListener("keydown", (e) => {
 window.addEventListener('message', event => {
   const message = event.data;
   if (message.type === 'updateScrollBeyondLastLine') {
-    if (message.value) {
+    if (message.content) {
       document.body.classList.add('scrollBeyondLastLine');
     } else {
       document.body.classList.remove('scrollBeyondLastLine');
     }
   }
   if (message.type === 'updateActiveColorThemeKind') {
-      switch (message.value) {
+      switch (message.content) {
         case 'light':
           vditor.setTheme('light','light','vs')
           break;;

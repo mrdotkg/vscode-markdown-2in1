@@ -2,12 +2,14 @@
 
 55 commands with 53 keybindings
 
-#### Core Text Formatting (6)
+#### Core **Text **Formatting (6)
 
-- H1-H6 Headings: `ctrl+alt+1` through `ctrl+alt+6`
+- H1-H6 **Headings**: `ctrl+alt+1` through `ctrl+alt+6`
 - Bold: `ctrl+b`
 - Italic: `ctrl+i`
 - Strikethrough: `ctrl+s`
+
+---
 
 #### Lists & Blocks (12)
 

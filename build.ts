@@ -2,11 +2,17 @@ const { build } = require("esbuild")
 const { resolve } = require("path")
 const { existsSync } = require("fs")
 const { copy } = require("esbuild-plugin-copy")
+const { updatePackageJsonFile } = require("./out/src/common/manifest")
 
 const isProd = process.argv.indexOf('--mode=production') >= 0;
 const dependencies = []
 
 function main() {
+    // Update package.json during production builds
+    if (isProd) {
+        updatePackageJsonFile();
+    }
+
     build({
         entryPoints: ['./src/extension.ts'],
         bundle: true,

@@ -83,7 +83,7 @@ pre.vditor-reset{
 
 .vditor-ir__node::before,
 .vditor-ir__node::after {
-  display: none;
+  /* display: none; */
 }
 hr{
   height: 1px !important;
@@ -116,10 +116,10 @@ body.scrollBeyondLastLine {
   caret-color: var(--vscode-editorCursor-foreground) !important;
   caret-shape: inherit;
 }
-.vditor-ir .vditor-reset > h1:before, .vditor-ir .vditor-reset > h2:before, .vditor-ir .vditor-reset > h3:before, .vditor-ir .vditor-reset > h4:before, .vditor-ir .vditor-reset > h5:before, .vditor-ir .vditor-reset > h6:before, .vditor-ir div[data-type="link-ref-defs-block"]:before, .vditor-ir div[data-type="footnotes-block"]:before, .vditor-ir .vditor-toc:before {
+/* .vditor-ir .vditor-reset > h1:before, .vditor-ir .vditor-reset > h2:before, .vditor-ir .vditor-reset > h3:before, .vditor-ir .vditor-reset > h4:before, .vditor-ir .vditor-reset > h5:before, .vditor-ir .vditor-reset > h6:before, .vditor-ir div[data-type="link-ref-defs-block"]:before, .vditor-ir div[data-type="footnotes-block"]:before, .vditor-ir .vditor-toc:before {
     margin-left: 0;
 
-}
+} */
 .vditor-ir__marker{
   color: var(--vscode-editor-foreground) !important;
 }
@@ -173,7 +173,7 @@ pre.vditor-ir__marker--pre.vditor-ir__marker code{
 }
 .vditor-reset table tr,
 pre.vditor-reset {
-    background-color: var(--bg-color) !important;
+    background-color: transparent !important;
     color: var(--front-color) !important;
 }
 .vditor-ir__marker.vditor-ir__marker--heading{
@@ -205,24 +205,24 @@ blockquote p {
 }
 
 .vditor-outline__title {
-  display: none !important;
+  /* display: none !important; */
 }
-
+/* 
 body.showEditorSelection [data-block] {
 	position: relative;
-}
+} */
 
 body.showEditorSelection [data-block]:hover:before {
-	content: "" !important;
+	/* content: "" !important; */
 	display: block;
 	position: absolute;
 	top: 0;
-	left: -13px;
+	/* left: -13px; */
 	height: 100%;
 	z-index: 99999999999999;
 	border-left: 3px solid rgba(0, 0, 0, 0.20);
 }
-
+/* 
 .vscode-high-contrast.showEditorSelection [data-block]:hover:before{
 	border-left: none;
 }
@@ -237,7 +237,7 @@ body.showEditorSelection [data-block]:hover:before {
 
 .vscode-high-contrast.showEditorSelection [data-block]:hover:before {
 	border-left: 3px solid rgba(255, 160, 0, 1);
-}
+} */
 /* ====================================
    CONTEXT MENU STYLES
    ==================================== */

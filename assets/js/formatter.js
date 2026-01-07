@@ -7,10 +7,11 @@ class VditorHotkeyDispatcher {
       window.vditor.focus();
       // Dispatch to the active element (Vditor's editor)
       const activeElement = document.activeElement || window.vditor.ir.element;
+      console.log("Dispatching keyboard events to:", activeElement, "with keys:", this.keys);
       // Send keydown, keypress, and keyup for maximum compatibility
       ["keydown", "keypress", "keyup"].forEach((eventType) => {
         const event = new KeyboardEvent(eventType, this.keys);
-        activeElement.dispatchEvent(event);
+        document.getElementById("editor").dispatchEvent(event);
       });
       window.vditor.focus();
     });
@@ -31,10 +32,12 @@ class VditorHotkeyDispatcher {
 if (window.vscodeEvent) {
   window.vscodeEvent.on("vditorCommand", (message) => {
     // Handle keyboard hotkey commands by creating dispatcher
-    if (message.data && typeof message.data === 'object' && message.data.key) {
-      new VditorHotkeyDispatcher(message.data);
+    console.log("Received vditorCommand message:", message);
+    // if (message.data && typeof message.data === 'object' && message.data.key) {
+      console.log("Dispatching hotkey with data:", message);
+      new VditorHotkeyDispatcher(message);
       return;
-    }
+    // }
   });
 } else {
   console.log("vscodeEvent is not available");

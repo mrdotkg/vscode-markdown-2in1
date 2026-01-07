@@ -1,56 +1,40 @@
 import * as vscode from "vscode";
-import { Editor } from "./customMdEditor";
-import { MarkdownService } from "./editorServices";
-import { FileUtil } from "./common/fileUtil";
-import { Output } from "./common/output";
-import { Hotkeys } from "./common/hotkeys";
-export function activate(context: vscode.ExtensionContext) {
-  const config = vscode.workspace.getConfiguration("workbench");
-  const configKey = "editorAssociations";
-  const editorAssociations = config.get(configKey);
-  editorAssociations["git:/**/*.md"] = "default";
-  editorAssociations["gitlens:/**/*.md"] = "default";
-  editorAssociations["git-graph:/**/*.md"] = "default";
-  config.update(configKey, editorAssociations, true);
-  const viewOption = {
-    webviewOptions: { retainContextWhenHidden: true, enableFindWidget: true },
-  };
-  FileUtil.init(context);
-  const markdownService = new MarkdownService(context);
-  const markdownEditorProvider = new Editor(context);
-  
-  // Track when switching between editors
+import { Editor } from "./editor";
+import { CommandsPalette } from "./commandsPalette";
+
+export async function activate(context: vscode.ExtensionContext) {
+  //1. Resolve a custom text editor for markdown files
+  const customEditor = new Editor(context);
+
+  //2. Register this custom text editor
   context.subscriptions.push(
-    vscode.window.onDidChangeActiveTextEditor(() => {
-      // Clear active webview if switching to a non-markdown editor
-      const activeEditor = vscode.window.activeTextEditor;
-      if (!activeEditor || activeEditor.document.languageId !== 'markdown') {
-        MarkdownService.setActiveWebview(null);
-        vscode.commands.executeCommand('setContext', 'vsc-markdown.isMarkdownEditorActive', false);
-      }
+    vscode.window.registerCustomEditorProvider("vsc-markdown", customEditor, {
+      webviewOptions: {
+        retainContextWhenHidden: true,
+        enableFindWidget: true,
+      },
     })
   );
-  context.subscriptions.push(
-    ...Hotkeys.map((config) =>
-      vscode.commands.registerCommand(config.command, () => {
-        if (config.keyEvent) {
-          MarkdownService.format(config.text, config.keyEvent);
-        }
-      })
-    ),
-    vscode.commands.registerCommand("vsc-markdown.switch", (uri) => {
-      markdownService.switchEditor(uri);
-    }),
-    vscode.commands.registerCommand("vsc-markdown.paste", () => {
-      markdownService.loadClipboardImage();
-    }),
-    vscode.window.registerCustomEditorProvider(
-      "vsc-markdown",
-      markdownEditorProvider,
-      viewOption
-    )
+
+  //3. Use default text editor for git previews of markdown files
+  const config = vscode.workspace.getConfiguration("workbench");
+  const configKey = "editorAssociations";
+  const settings = config.get(configKey);
+  ["git:/**/*.md", "gitlens:/**/*.md", "git-graph:/**/*.md"].forEach(
+    (association) => (settings[association] = "default")
   );
-  
+  config.update(configKey, settings, true);
+
+  //4. Expose other custom vscode components
+  //4.1 Menu Editor/title
+  //4.2 Menu Editor/context
+  //4.3 Command Palette
+  new CommandsPalette(context).registerCommands();
+
+  //4.4 Keyboard Shortcuts
+  //4.5 Status Bar Controls
+  //4.6 Settings, Default Settings
+  //4.7 Custom Editor Context Menu
 }
 
 export function deactivate() {}
