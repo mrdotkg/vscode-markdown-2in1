@@ -1,6 +1,6 @@
 export const Hotkeys = [
   {
-    command: "vsc-markdown.insertH1",
+    command: "markdown2in1.insertH1",
     title: "Insert H1 Heading",
     icon: "$(symbol-text)",
     text: "H1",
@@ -15,7 +15,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertH2",
+    command: "markdown2in1.insertH2",
     title: "Insert H2 Heading",
     icon: "$(symbol-text)",
     text: "H2",
@@ -30,7 +30,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertH3",
+    command: "markdown2in1.insertH3",
     title: "Insert H3 Heading",
     icon: "$(symbol-text)",
     text: "H3",
@@ -45,7 +45,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertH4",
+    command: "markdown2in1.insertH4",
     title: "Insert H4 Heading",
     icon: "$(symbol-text)",
     text: "H4",
@@ -60,7 +60,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertH5",
+    command: "markdown2in1.insertH5",
     title: "Insert H5 Heading",
     icon: "$(symbol-text)",
     text: "H5",
@@ -75,7 +75,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertBold",
+    command: "markdown2in1.insertBold",
     title: "Insert Bold Text",
     icon: "$(bold)",
     keybinding: "ctrl+b",
@@ -88,7 +88,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertItalic",
+    command: "markdown2in1.insertItalic",
     title: "Insert Italic Text",
     icon: "$(italic)",
     keybinding: "ctrl+i",
@@ -101,7 +101,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertList",
+    command: "markdown2in1.insertList",
     title: "Insert Unordered List",
     icon: "$(list-unordered)",
     keybinding: "ctrl+l",
@@ -114,7 +114,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertOrderedList",
+    command: "markdown2in1.insertOrderedList",
     title: "Insert Ordered List",
     icon: "$(list-ordered)",
     keybinding: "ctrl+o",
@@ -127,7 +127,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertLink",
+    command: "markdown2in1.insertLink",
     title: "Insert Link",
     icon: "$(link)",
     keybinding: "ctrl+k",
@@ -140,13 +140,13 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertImage",
+    command: "markdown2in1.insertImage",
     title: "Insert Image",
     icon: "$(file-media)",
     keybinding: "",
   },
   {
-    command: "vsc-markdown.insertCodeBlock",
+    command: "markdown2in1.insertCodeBlock",
     title: "Insert Code Block",
     icon: "$(code)",
     keybinding: "ctrl+u",
@@ -159,7 +159,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertInlineCode",
+    command: "markdown2in1.insertInlineCode",
     title: "Insert Inline Code",
     icon: "$(symbol-string)",
     keybinding: "ctrl+g",
@@ -172,7 +172,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertBlockquote",
+    command: "markdown2in1.insertBlockquote",
     title: "Insert Blockquote",
     icon: "$(quote)",
     keybinding: "ctrl+;",
@@ -185,7 +185,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertTable",
+    command: "markdown2in1.insertTable",
     title: "Insert Table",
     icon: "$(table)",
     keybinding: "ctrl+m",
@@ -198,7 +198,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertStrikethrough",
+    command: "markdown2in1.insertStrikethrough",
     title: "Insert Strikethrough",
     icon: "$(strikethrough)",
     keybinding: "ctrl+s",
@@ -211,13 +211,13 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertEmptyBlock",
+    command: "markdown2in1.insertEmptyBlock",
     title: "Insert Empty Block",
     icon: "$(add)",
     keybinding: "",
   },
   {
-    command: "vsc-markdown.insertTaskList",
+    command: "markdown2in1.insertTaskList",
     title: "Insert Task List",
     icon: "$(tasklist)",
     keybinding: "ctrl+j",
@@ -230,7 +230,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertHorizontalRule",
+    command: "markdown2in1.insertHorizontalRule",
     title: "Insert Horizontal Rule",
     icon: "$(dash)",
     keybinding: "ctrl+shift+h",
@@ -244,7 +244,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertBlockBefore",
+    command: "markdown2in1.insertBlockBefore",
     title: "Insert Block to Before",
     icon: "$(arrow-up)",
     keybinding: "ctrl+shift+b",
@@ -258,7 +258,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertBlockEnd",
+    command: "markdown2in1.insertBlockEnd",
     title: "Insert Block to End",
     icon: "$(arrow-down)",
     keybinding: "ctrl+shift+e",
@@ -272,7 +272,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.undo",
+    command: "markdown2in1.undo",
     title: "Undo",
     icon: "$(undo)",
     keybinding: "ctrl+z",
@@ -285,7 +285,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.redo",
+    command: "markdown2in1.redo",
     title: "Redo",
     icon: "$(redo)",
     keybinding: "ctrl+y",
@@ -298,7 +298,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.moveBlockUp",
+    command: "markdown2in1.moveBlockUp",
     title: "Move Block Up",
     icon: "$(arrow-up)",
     keybinding: "ctrl+shift+u",
@@ -312,7 +312,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.moveBlockDown",
+    command: "markdown2in1.moveBlockDown",
     title: "Move Block Down",
     icon: "$(arrow-down)",
     keybinding: "ctrl+shift+d",
@@ -326,7 +326,7 @@ export const Hotkeys = [
     },
   },
   // {
-  //   command: "vsc-markdown.toggleFullscreen",
+  //   command: "markdown2in1.toggleFullscreen",
   //   title: "Toggle Fullscreen",
   //   icon: "$(screen-full)",
   //   keybinding: "ctrl+'",
@@ -339,7 +339,7 @@ export const Hotkeys = [
   //   },
   // },
   {
-    command: "vsc-markdown.increaseHeading",
+    command: "markdown2in1.increaseHeading",
     title: "Increase Heading Level",
     icon: "$(arrow-up)",
     keybinding: "ctrl+=",
@@ -352,7 +352,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.decreaseHeading",
+    command: "markdown2in1.decreaseHeading",
     title: "Decrease Heading Level",
     icon: "$(arrow-down)",
     keybinding: "ctrl+-",
@@ -365,7 +365,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.indentList",
+    command: "markdown2in1.indentList",
     title: "Indent List",
     icon: "$(indent)",
     keybinding: "tab",
@@ -377,7 +377,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.unindentList",
+    command: "markdown2in1.unindentList",
     title: "Unindent List",
     icon: "$(outdent)",
     keybinding: "shift+tab",
@@ -390,7 +390,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.toggleTaskCheck",
+    command: "markdown2in1.toggleTaskCheck",
     title: "Toggle Task Check",
     icon: "$(check)",
     keybinding: "ctrl+shift+j",
@@ -404,7 +404,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertTableRowAbove",
+    command: "markdown2in1.insertTableRowAbove",
     title: "Insert Table Row Above",
     icon: "$(arrow-up)",
     keybinding: "ctrl+shift+f",
@@ -418,7 +418,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertTableRowBelow",
+    command: "markdown2in1.insertTableRowBelow",
     title: "Insert Table Row Below",
     icon: "$(arrow-down)",
     keybinding: "ctrl+=",
@@ -431,7 +431,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.deleteTableRow",
+    command: "markdown2in1.deleteTableRow",
     title: "Delete Table Row",
     icon: "$(trash)",
     keybinding: "ctrl+-",
@@ -444,7 +444,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertTableColLeft",
+    command: "markdown2in1.insertTableColLeft",
     title: "Insert Table Column Left",
     icon: "$(arrow-left)",
     keybinding: "ctrl+shift+g",
@@ -458,7 +458,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertTableColRight",
+    command: "markdown2in1.insertTableColRight",
     title: "Insert Table Column Right",
     icon: "$(arrow-right)",
     keybinding: "ctrl+shift+=",
@@ -472,7 +472,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.deleteTableCol",
+    command: "markdown2in1.deleteTableCol",
     title: "Delete Table Column",
     icon: "$(trash)",
     keybinding: "ctrl+shift+-",
@@ -486,7 +486,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.tableAlignLeft",
+    command: "markdown2in1.tableAlignLeft",
     title: "Table Align Left",
     icon: "$(align-left)",
     keybinding: "ctrl+shift+l",
@@ -500,7 +500,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.tableAlignCenter",
+    command: "markdown2in1.tableAlignCenter",
     title: "Table Align Center",
     icon: "$(align-center)",
     keybinding: "ctrl+shift+c",
@@ -514,7 +514,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.tableAlignRight",
+    command: "markdown2in1.tableAlignRight",
     title: "Table Align Right",
     icon: "$(align-right)",
     keybinding: "ctrl+shift+r",
@@ -528,7 +528,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertEmoji",
+    command: "markdown2in1.insertEmoji",
     title: "Insert Emoji",
     icon: "$(smiley)",
     keybinding: ":",
@@ -540,7 +540,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.toggleHeadingMenu",
+    command: "markdown2in1.toggleHeadingMenu",
     title: "Heading Menu",
     icon: "$(list-ordered)",
     keybinding: "ctrl+h",
@@ -553,7 +553,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertBlockquoteAdvanced",
+    command: "markdown2in1.insertBlockquoteAdvanced",
     title: "Insert Blockquote (Advanced)",
     icon: "$(quote)",
     keybinding: "ctrl+shift+;",
@@ -567,7 +567,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.toggleLinkInput",
+    command: "markdown2in1.toggleLinkInput",
     title: "Toggle Link Input",
     icon: "$(link)",
     keybinding: "alt+enter",
@@ -580,7 +580,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.toggleCodeBlockInput",
+    command: "markdown2in1.toggleCodeBlockInput",
     title: "Toggle Code Block Input",
     icon: "$(code)",
     keybinding: "alt+enter",
@@ -593,7 +593,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.hideCodeBlockEdit",
+    command: "markdown2in1.hideCodeBlockEdit",
     title: "Hide Code Block Edit",
     icon: "$(close)",
     keybinding: "escape",
@@ -605,7 +605,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.selectAllCodeBlock",
+    command: "markdown2in1.selectAllCodeBlock",
     title: "Select All Code Block",
     icon: "$(select-all)",
     keybinding: "ctrl+a",
@@ -618,7 +618,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.indentListAdvanced",
+    command: "markdown2in1.indentListAdvanced",
     title: "Indent List (Advanced)",
     icon: "$(indent)",
     keybinding: "ctrl+shift+i",
@@ -632,7 +632,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.unindentListAdvanced",
+    command: "markdown2in1.unindentListAdvanced",
     title: "Unindent List (Advanced)",
     icon: "$(outdent)",
     keybinding: "ctrl+shift+o",
@@ -646,7 +646,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.tableMoveCaretToInput",
+    command: "markdown2in1.tableMoveCaretToInput",
     title: "Table: Move Caret to Input",
     icon: "$(arrow-left)",
     keybinding: "alt+enter",
@@ -659,7 +659,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.tableMoveCaretPrevious",
+    command: "markdown2in1.tableMoveCaretPrevious",
     title: "Table: Move Caret to Previous Cell",
     icon: "$(arrow-left)",
     keybinding: "shift+tab",
@@ -672,7 +672,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.tableMoveCaretNext",
+    command: "markdown2in1.tableMoveCaretNext",
     title: "Table: Move Caret to Next Cell",
     icon: "$(arrow-right)",
     keybinding: "tab",
@@ -684,7 +684,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.insertH6",
+    command: "markdown2in1.insertH6",
     title: "Insert H6 Heading",
     icon: "$(symbol-text)",
     text: "H6",
@@ -699,7 +699,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.atUser",
+    command: "markdown2in1.atUser",
     title: "At User",
     icon: "$(mention)",
     keybinding: "@",
@@ -712,7 +712,7 @@ export const Hotkeys = [
     },
   },
   {
-    command: "vsc-markdown.removeMistyped",
+    command: "markdown2in1.removeMistyped",
     title: "Remove Mistyped",
     icon: "$(undo)",
     keybinding: "backspace",

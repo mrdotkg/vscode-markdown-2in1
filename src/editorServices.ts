@@ -182,7 +182,7 @@ export class MarkdownService {
   public switchEditor(uri: vscode.Uri) {
     const editor = vscode.window.activeTextEditor;
     if (!uri) uri = editor?.document.uri;
-    const type = editor ? "vsc-markdown" : "default";
+    const type = editor ? "markdown2in1" : "default";
     vscode.commands.executeCommand("vscode.openWith", uri, type);
   }
 }

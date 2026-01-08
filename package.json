@@ -1,5 +1,5 @@
 {
-  "name": "vsc-markdown",
+  "name": "markdown2in1",
   "displayName": "Elegant Markdown Editor for VS Code",
   "description": "Instant Markdown rendering and editing with WYSIWYG support.",
   "version": "0.0.1",
@@ -23,13 +23,13 @@
     "Education"
   ],
   "bugs": {
-    "url": "https://github.com/mrdotkg/vsc-markdown/issues",
+    "url": "https://github.com/mrdotkg/vscode-markdown-2-in-1/issues",
     "email": "grv.rkg@gmail.com"
   },
-  "homepage": "https://github.com/mrdotkg/vsc-markdown/blob/master/README.md",
+  "homepage": "https://github.com/mrdotkg/vscode-markdown-2-in-1/blob/master/README.md",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mrdotkg/vsc-markdown.git"
+    "url": "https://github.com/mrdotkg/vscode-markdown-2-in-1.git"
   },
   "activationEvents": [
     "onLanguage:markdown"
@@ -39,563 +39,563 @@
   "contributes": {
     "commands": [
       {
-        "command": "vsc-markdown.switch",
+        "command": "markdown2in1.switch",
         "title": "Toggle Editor",
         "icon": "$(symbol-parameter)"
       },
       {
-        "command": "vsc-markdown.paste",
+        "command": "markdown2in1.paste",
         "title": "Enhance paste in markdown"
       },
       {
-        "command": "vsc-markdown.toggleFullscreen",
-        "title": "Palm Markdown | Toggle Fullscreen",
+        "command": "markdown2in1.toggleFullscreen",
+        "title": "Markdown 2-in-1 | Toggle Fullscreen",
         "icon": "$(screen-full)"
       },
       {
-        "command": "vsc-markdown.insertH1",
-        "title": "Palm Markdown | Insert H1 Heading",
+        "command": "markdown2in1.insertH1",
+        "title": "Markdown 2-in-1 | Insert H1 Heading",
         "icon": "$(symbol-text)"
       },
       {
-        "command": "vsc-markdown.insertH2",
-        "title": "Palm Markdown | Insert H2 Heading",
+        "command": "markdown2in1.insertH2",
+        "title": "Markdown 2-in-1 | Insert H2 Heading",
         "icon": "$(symbol-text)"
       },
       {
-        "command": "vsc-markdown.insertH3",
-        "title": "Palm Markdown | Insert H3 Heading",
+        "command": "markdown2in1.insertH3",
+        "title": "Markdown 2-in-1 | Insert H3 Heading",
         "icon": "$(symbol-text)"
       },
       {
-        "command": "vsc-markdown.insertH4",
-        "title": "Palm Markdown | Insert H4 Heading",
+        "command": "markdown2in1.insertH4",
+        "title": "Markdown 2-in-1 | Insert H4 Heading",
         "icon": "$(symbol-text)"
       },
       {
-        "command": "vsc-markdown.insertH5",
-        "title": "Palm Markdown | Insert H5 Heading",
+        "command": "markdown2in1.insertH5",
+        "title": "Markdown 2-in-1 | Insert H5 Heading",
         "icon": "$(symbol-text)"
       },
       {
-        "command": "vsc-markdown.insertBold",
-        "title": "Palm Markdown | Insert Bold Text",
+        "command": "markdown2in1.insertBold",
+        "title": "Markdown 2-in-1 | Insert Bold Text",
         "icon": "$(bold)"
       },
       {
-        "command": "vsc-markdown.insertItalic",
-        "title": "Palm Markdown | Insert Italic Text",
+        "command": "markdown2in1.insertItalic",
+        "title": "Markdown 2-in-1 | Insert Italic Text",
         "icon": "$(italic)"
       },
       {
-        "command": "vsc-markdown.insertList",
-        "title": "Palm Markdown | Insert Unordered List",
+        "command": "markdown2in1.insertList",
+        "title": "Markdown 2-in-1 | Insert Unordered List",
         "icon": "$(list-unordered)"
       },
       {
-        "command": "vsc-markdown.insertOrderedList",
-        "title": "Palm Markdown | Insert Ordered List",
+        "command": "markdown2in1.insertOrderedList",
+        "title": "Markdown 2-in-1 | Insert Ordered List",
         "icon": "$(list-ordered)"
       },
       {
-        "command": "vsc-markdown.insertLink",
-        "title": "Palm Markdown | Insert Link",
+        "command": "markdown2in1.insertLink",
+        "title": "Markdown 2-in-1 | Insert Link",
         "icon": "$(link)"
       },
       {
-        "command": "vsc-markdown.insertImage",
-        "title": "Palm Markdown | Insert Image",
+        "command": "markdown2in1.insertImage",
+        "title": "Markdown 2-in-1 | Insert Image",
         "icon": "$(file-media)"
       },
       {
-        "command": "vsc-markdown.insertCodeBlock",
-        "title": "Palm Markdown | Insert Code Block",
+        "command": "markdown2in1.insertCodeBlock",
+        "title": "Markdown 2-in-1 | Insert Code Block",
         "icon": "$(code)"
       },
       {
-        "command": "vsc-markdown.insertInlineCode",
-        "title": "Palm Markdown | Insert Inline Code",
+        "command": "markdown2in1.insertInlineCode",
+        "title": "Markdown 2-in-1 | Insert Inline Code",
         "icon": "$(symbol-string)"
       },
       {
-        "command": "vsc-markdown.insertBlockquote",
-        "title": "Palm Markdown | Insert Blockquote",
+        "command": "markdown2in1.insertBlockquote",
+        "title": "Markdown 2-in-1 | Insert Blockquote",
         "icon": "$(quote)"
       },
       {
-        "command": "vsc-markdown.insertTable",
-        "title": "Palm Markdown | Insert Table",
+        "command": "markdown2in1.insertTable",
+        "title": "Markdown 2-in-1 | Insert Table",
         "icon": "$(table)"
       },
       {
-        "command": "vsc-markdown.insertStrikethrough",
-        "title": "Palm Markdown | Insert Strikethrough",
+        "command": "markdown2in1.insertStrikethrough",
+        "title": "Markdown 2-in-1 | Insert Strikethrough",
         "icon": "$(strikethrough)"
       },
       {
-        "command": "vsc-markdown.insertEmptyBlock",
-        "title": "Palm Markdown | Insert Empty Block",
+        "command": "markdown2in1.insertEmptyBlock",
+        "title": "Markdown 2-in-1 | Insert Empty Block",
         "icon": "$(add)"
       },
       {
-        "command": "vsc-markdown.insertTaskList",
-        "title": "Palm Markdown | Insert Task List",
+        "command": "markdown2in1.insertTaskList",
+        "title": "Markdown 2-in-1 | Insert Task List",
         "icon": "$(tasklist)"
       },
       {
-        "command": "vsc-markdown.insertHorizontalRule",
-        "title": "Palm Markdown | Insert Horizontal Rule",
+        "command": "markdown2in1.insertHorizontalRule",
+        "title": "Markdown 2-in-1 | Insert Horizontal Rule",
         "icon": "$(dash)"
       },
       {
-        "command": "vsc-markdown.insertBlockBefore",
-        "title": "Palm Markdown | Insert Block to Before",
+        "command": "markdown2in1.insertBlockBefore",
+        "title": "Markdown 2-in-1 | Insert Block to Before",
         "icon": "$(arrow-up)"
       },
       {
-        "command": "vsc-markdown.insertBlockEnd",
-        "title": "Palm Markdown | Insert Block to End",
+        "command": "markdown2in1.insertBlockEnd",
+        "title": "Markdown 2-in-1 | Insert Block to End",
         "icon": "$(arrow-down)"
       },
       {
-        "command": "vsc-markdown.undo",
-        "title": "Palm Markdown | Undo",
+        "command": "markdown2in1.undo",
+        "title": "Markdown 2-in-1 | Undo",
         "icon": "$(undo)"
       },
       {
-        "command": "vsc-markdown.redo",
-        "title": "Palm Markdown | Redo",
+        "command": "markdown2in1.redo",
+        "title": "Markdown 2-in-1 | Redo",
         "icon": "$(redo)"
       },
       {
-        "command": "vsc-markdown.moveBlockUp",
-        "title": "Palm Markdown | Move Block Up",
+        "command": "markdown2in1.moveBlockUp",
+        "title": "Markdown 2-in-1 | Move Block Up",
         "icon": "$(arrow-up)"
       },
       {
-        "command": "vsc-markdown.moveBlockDown",
-        "title": "Palm Markdown | Move Block Down",
+        "command": "markdown2in1.moveBlockDown",
+        "title": "Markdown 2-in-1 | Move Block Down",
         "icon": "$(arrow-down)"
       },
       {
-        "command": "vsc-markdown.increaseHeading",
-        "title": "Palm Markdown | Increase Heading Level",
+        "command": "markdown2in1.increaseHeading",
+        "title": "Markdown 2-in-1 | Increase Heading Level",
         "icon": "$(arrow-up)"
       },
       {
-        "command": "vsc-markdown.decreaseHeading",
-        "title": "Palm Markdown | Decrease Heading Level",
+        "command": "markdown2in1.decreaseHeading",
+        "title": "Markdown 2-in-1 | Decrease Heading Level",
         "icon": "$(arrow-down)"
       },
       {
-        "command": "vsc-markdown.indentList",
-        "title": "Palm Markdown | Indent List",
+        "command": "markdown2in1.indentList",
+        "title": "Markdown 2-in-1 | Indent List",
         "icon": "$(indent)"
       },
       {
-        "command": "vsc-markdown.unindentList",
-        "title": "Palm Markdown | Unindent List",
+        "command": "markdown2in1.unindentList",
+        "title": "Markdown 2-in-1 | Unindent List",
         "icon": "$(outdent)"
       },
       {
-        "command": "vsc-markdown.toggleTaskCheck",
-        "title": "Palm Markdown | Toggle Task Check",
+        "command": "markdown2in1.toggleTaskCheck",
+        "title": "Markdown 2-in-1 | Toggle Task Check",
         "icon": "$(check)"
       },
       {
-        "command": "vsc-markdown.insertTableRowAbove",
-        "title": "Palm Markdown | Insert Table Row Above",
+        "command": "markdown2in1.insertTableRowAbove",
+        "title": "Markdown 2-in-1 | Insert Table Row Above",
         "icon": "$(arrow-up)"
       },
       {
-        "command": "vsc-markdown.insertTableRowBelow",
-        "title": "Palm Markdown | Insert Table Row Below",
+        "command": "markdown2in1.insertTableRowBelow",
+        "title": "Markdown 2-in-1 | Insert Table Row Below",
         "icon": "$(arrow-down)"
       },
       {
-        "command": "vsc-markdown.deleteTableRow",
-        "title": "Palm Markdown | Delete Table Row",
+        "command": "markdown2in1.deleteTableRow",
+        "title": "Markdown 2-in-1 | Delete Table Row",
         "icon": "$(trash)"
       },
       {
-        "command": "vsc-markdown.insertTableColLeft",
-        "title": "Palm Markdown | Insert Table Column Left",
+        "command": "markdown2in1.insertTableColLeft",
+        "title": "Markdown 2-in-1 | Insert Table Column Left",
         "icon": "$(arrow-left)"
       },
       {
-        "command": "vsc-markdown.insertTableColRight",
-        "title": "Palm Markdown | Insert Table Column Right",
+        "command": "markdown2in1.insertTableColRight",
+        "title": "Markdown 2-in-1 | Insert Table Column Right",
         "icon": "$(arrow-right)"
       },
       {
-        "command": "vsc-markdown.deleteTableCol",
-        "title": "Palm Markdown | Delete Table Column",
+        "command": "markdown2in1.deleteTableCol",
+        "title": "Markdown 2-in-1 | Delete Table Column",
         "icon": "$(trash)"
       },
       {
-        "command": "vsc-markdown.tableAlignLeft",
-        "title": "Palm Markdown | Table Align Left",
+        "command": "markdown2in1.tableAlignLeft",
+        "title": "Markdown 2-in-1 | Table Align Left",
         "icon": "$(align-left)"
       },
       {
-        "command": "vsc-markdown.tableAlignCenter",
-        "title": "Palm Markdown | Table Align Center",
+        "command": "markdown2in1.tableAlignCenter",
+        "title": "Markdown 2-in-1 | Table Align Center",
         "icon": "$(align-center)"
       },
       {
-        "command": "vsc-markdown.tableAlignRight",
-        "title": "Palm Markdown | Table Align Right",
+        "command": "markdown2in1.tableAlignRight",
+        "title": "Markdown 2-in-1 | Table Align Right",
         "icon": "$(align-right)"
       },
       {
-        "command": "vsc-markdown.insertEmoji",
-        "title": "Palm Markdown | Insert Emoji",
+        "command": "markdown2in1.insertEmoji",
+        "title": "Markdown 2-in-1 | Insert Emoji",
         "icon": "$(smiley)"
       },
       {
-        "command": "vsc-markdown.toggleHeadingMenu",
-        "title": "Palm Markdown | Heading Menu",
+        "command": "markdown2in1.toggleHeadingMenu",
+        "title": "Markdown 2-in-1 | Heading Menu",
         "icon": "$(list-ordered)"
       },
       {
-        "command": "vsc-markdown.insertBlockquoteAdvanced",
-        "title": "Palm Markdown | Insert Blockquote (Advanced)",
+        "command": "markdown2in1.insertBlockquoteAdvanced",
+        "title": "Markdown 2-in-1 | Insert Blockquote (Advanced)",
         "icon": "$(quote)"
       },
       {
-        "command": "vsc-markdown.toggleLinkInput",
-        "title": "Palm Markdown | Toggle Link Input",
+        "command": "markdown2in1.toggleLinkInput",
+        "title": "Markdown 2-in-1 | Toggle Link Input",
         "icon": "$(link)"
       },
       {
-        "command": "vsc-markdown.toggleCodeBlockInput",
-        "title": "Palm Markdown | Toggle Code Block Input",
+        "command": "markdown2in1.toggleCodeBlockInput",
+        "title": "Markdown 2-in-1 | Toggle Code Block Input",
         "icon": "$(code)"
       },
       {
-        "command": "vsc-markdown.hideCodeBlockEdit",
-        "title": "Palm Markdown | Hide Code Block Edit",
+        "command": "markdown2in1.hideCodeBlockEdit",
+        "title": "Markdown 2-in-1 | Hide Code Block Edit",
         "icon": "$(close)"
       },
       {
-        "command": "vsc-markdown.selectAllCodeBlock",
-        "title": "Palm Markdown | Select All Code Block",
+        "command": "markdown2in1.selectAllCodeBlock",
+        "title": "Markdown 2-in-1 | Select All Code Block",
         "icon": "$(select-all)"
       },
       {
-        "command": "vsc-markdown.indentListAdvanced",
-        "title": "Palm Markdown | Indent List (Advanced)",
+        "command": "markdown2in1.indentListAdvanced",
+        "title": "Markdown 2-in-1 | Indent List (Advanced)",
         "icon": "$(indent)"
       },
       {
-        "command": "vsc-markdown.unindentListAdvanced",
-        "title": "Palm Markdown | Unindent List (Advanced)",
+        "command": "markdown2in1.unindentListAdvanced",
+        "title": "Markdown 2-in-1 | Unindent List (Advanced)",
         "icon": "$(outdent)"
       },
       {
-        "command": "vsc-markdown.tableMoveCaretToInput",
-        "title": "Palm Markdown | Table: Move Caret to Input",
+        "command": "markdown2in1.tableMoveCaretToInput",
+        "title": "Markdown 2-in-1 | Table: Move Caret to Input",
         "icon": "$(arrow-left)"
       },
       {
-        "command": "vsc-markdown.tableMoveCaretPrevious",
-        "title": "Palm Markdown | Table: Move Caret to Previous Cell",
+        "command": "markdown2in1.tableMoveCaretPrevious",
+        "title": "Markdown 2-in-1 | Table: Move Caret to Previous Cell",
         "icon": "$(arrow-left)"
       },
       {
-        "command": "vsc-markdown.tableMoveCaretNext",
-        "title": "Palm Markdown | Table: Move Caret to Next Cell",
+        "command": "markdown2in1.tableMoveCaretNext",
+        "title": "Markdown 2-in-1 | Table: Move Caret to Next Cell",
         "icon": "$(arrow-right)"
       },
       {
-        "command": "vsc-markdown.insertH6",
-        "title": "Palm Markdown | Insert H6 Heading",
+        "command": "markdown2in1.insertH6",
+        "title": "Markdown 2-in-1 | Insert H6 Heading",
         "icon": "$(symbol-text)"
       },
       {
-        "command": "vsc-markdown.atUser",
-        "title": "Palm Markdown | At User",
+        "command": "markdown2in1.atUser",
+        "title": "Markdown 2-in-1 | At User",
         "icon": "$(mention)"
       },
       {
-        "command": "vsc-markdown.removeMistyped",
-        "title": "Palm Markdown | Remove Mistyped",
+        "command": "markdown2in1.removeMistyped",
+        "title": "Markdown 2-in-1 | Remove Mistyped",
         "icon": "$(undo)"
       }
     ],
     "keybindings": [
       {
-        "command": "vsc-markdown.insertH1",
+        "command": "markdown2in1.insertH1",
         "key": "ctrl+alt+1",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertH2",
+        "command": "markdown2in1.insertH2",
         "key": "ctrl+alt+2",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertH3",
+        "command": "markdown2in1.insertH3",
         "key": "ctrl+alt+3",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertH4",
+        "command": "markdown2in1.insertH4",
         "key": "ctrl+alt+4",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertH5",
+        "command": "markdown2in1.insertH5",
         "key": "ctrl+alt+5",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertBold",
+        "command": "markdown2in1.insertBold",
         "key": "ctrl+b",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertItalic",
+        "command": "markdown2in1.insertItalic",
         "key": "ctrl+i",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertList",
+        "command": "markdown2in1.insertList",
         "key": "ctrl+l",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertOrderedList",
+        "command": "markdown2in1.insertOrderedList",
         "key": "ctrl+o",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertLink",
+        "command": "markdown2in1.insertLink",
         "key": "ctrl+k",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertCodeBlock",
+        "command": "markdown2in1.insertCodeBlock",
         "key": "ctrl+u",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertInlineCode",
+        "command": "markdown2in1.insertInlineCode",
         "key": "ctrl+g",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertBlockquote",
+        "command": "markdown2in1.insertBlockquote",
         "key": "ctrl+;",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertTable",
+        "command": "markdown2in1.insertTable",
         "key": "ctrl+m",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertStrikethrough",
+        "command": "markdown2in1.insertStrikethrough",
         "key": "ctrl+s",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertTaskList",
+        "command": "markdown2in1.insertTaskList",
         "key": "ctrl+j",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertHorizontalRule",
+        "command": "markdown2in1.insertHorizontalRule",
         "key": "ctrl+shift+h",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertBlockBefore",
+        "command": "markdown2in1.insertBlockBefore",
         "key": "ctrl+shift+b",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertBlockEnd",
+        "command": "markdown2in1.insertBlockEnd",
         "key": "ctrl+shift+e",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.undo",
+        "command": "markdown2in1.undo",
         "key": "ctrl+z",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.redo",
+        "command": "markdown2in1.redo",
         "key": "ctrl+y",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.moveBlockUp",
+        "command": "markdown2in1.moveBlockUp",
         "key": "ctrl+shift+u",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.moveBlockDown",
+        "command": "markdown2in1.moveBlockDown",
         "key": "ctrl+shift+d",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.increaseHeading",
+        "command": "markdown2in1.increaseHeading",
         "key": "ctrl+=",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.decreaseHeading",
+        "command": "markdown2in1.decreaseHeading",
         "key": "ctrl+-",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.indentList",
+        "command": "markdown2in1.indentList",
         "key": "tab",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.unindentList",
+        "command": "markdown2in1.unindentList",
         "key": "shift+tab",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.toggleTaskCheck",
+        "command": "markdown2in1.toggleTaskCheck",
         "key": "ctrl+shift+j",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertTableRowAbove",
+        "command": "markdown2in1.insertTableRowAbove",
         "key": "ctrl+shift+f",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertTableRowBelow",
+        "command": "markdown2in1.insertTableRowBelow",
         "key": "ctrl+=",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.deleteTableRow",
+        "command": "markdown2in1.deleteTableRow",
         "key": "ctrl+-",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertTableColLeft",
+        "command": "markdown2in1.insertTableColLeft",
         "key": "ctrl+shift+g",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertTableColRight",
+        "command": "markdown2in1.insertTableColRight",
         "key": "ctrl+shift+=",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.deleteTableCol",
+        "command": "markdown2in1.deleteTableCol",
         "key": "ctrl+shift+-",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.tableAlignLeft",
+        "command": "markdown2in1.tableAlignLeft",
         "key": "ctrl+shift+l",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.tableAlignCenter",
+        "command": "markdown2in1.tableAlignCenter",
         "key": "ctrl+shift+c",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.tableAlignRight",
+        "command": "markdown2in1.tableAlignRight",
         "key": "ctrl+shift+r",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertEmoji",
+        "command": "markdown2in1.insertEmoji",
         "key": ":",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.toggleHeadingMenu",
+        "command": "markdown2in1.toggleHeadingMenu",
         "key": "ctrl+h",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertBlockquoteAdvanced",
+        "command": "markdown2in1.insertBlockquoteAdvanced",
         "key": "ctrl+shift+;",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.toggleLinkInput",
+        "command": "markdown2in1.toggleLinkInput",
         "key": "alt+enter",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.toggleCodeBlockInput",
+        "command": "markdown2in1.toggleCodeBlockInput",
         "key": "alt+enter",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.hideCodeBlockEdit",
+        "command": "markdown2in1.hideCodeBlockEdit",
         "key": "escape",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.selectAllCodeBlock",
+        "command": "markdown2in1.selectAllCodeBlock",
         "key": "ctrl+a",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.indentListAdvanced",
+        "command": "markdown2in1.indentListAdvanced",
         "key": "ctrl+shift+i",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.unindentListAdvanced",
+        "command": "markdown2in1.unindentListAdvanced",
         "key": "ctrl+shift+o",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.tableMoveCaretToInput",
+        "command": "markdown2in1.tableMoveCaretToInput",
         "key": "alt+enter",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.tableMoveCaretPrevious",
+        "command": "markdown2in1.tableMoveCaretPrevious",
         "key": "shift+tab",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.tableMoveCaretNext",
+        "command": "markdown2in1.tableMoveCaretNext",
         "key": "tab",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.insertH6",
+        "command": "markdown2in1.insertH6",
         "key": "ctrl+alt+6",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.atUser",
+        "command": "markdown2in1.atUser",
         "key": "@",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "vsc-markdown.removeMistyped",
+        "command": "markdown2in1.removeMistyped",
         "key": "backspace",
-        "when": "vsc-markdown.isMarkdownEditorActive"
+        "when": "markdown2in1.isMarkdownEditorActive"
       }
     ],
     "menus": {
       "editor/title": [
         {
-          "command": "vsc-markdown.switch",
+          "command": "markdown2in1.switch",
           "when": "resourceExtname == '.md'",
           "group": "navigation@-2"
         }
       ],
       "editor/context": [
         {
-          "command": "vsc-markdown.insertH1",
+          "command": "markdown2in1.insertH1",
           "when": "editorTextFocus",
           "group": "1_modification@1"
         }
@@ -603,8 +603,8 @@
     },
     "customEditors": [
       {
-        "viewType": "vsc-markdown",
-        "displayName": "VSC Markdown Editor",
+        "viewType": "markdown2in1",
+        "displayName": "Markdown 2-in-1",
         "selector": [
           {
             "filenamePattern": "file:/**/*.MD"
@@ -628,32 +628,32 @@
       "type": "object",
       "title": "Markdown Editor",
       "properties": {
-        "vsc-markdown.openOutline": {
+        "markdown2in1.openOutline": {
           "type": "boolean",
           "default": true,
           "description": "Open markdown outline."
         },
-        "vsc-markdown.hideToolbar": {
+        "markdown2in1.hideToolbar": {
           "type": "boolean",
           "default": false,
           "description": "Hide markdown toolbar."
         },
-        "vsc-markdown.previewCode": {
+        "markdown2in1.previewCode": {
           "type": "boolean",
           "default": true,
           "description": "Preview code in markdown."
         },
-        "vsc-markdown.previewCodeHighlight.showLineNumber": {
+        "markdown2in1.previewCodeHighlight.showLineNumber": {
           "type": "boolean",
           "default": false,
-          "markdownDescription": "Show line numbers in markdown preview code window. Only applies when `#vsc-markdown.previewCode#` is enabled."
+          "markdownDescription": "Show line numbers in markdown preview code window. Only applies when `#markdown2in1.previewCode#` is enabled."
         },
-        "vsc-markdown.workspacePathAsImageBasePath": {
+        "markdown2in1.workspacePathAsImageBasePath": {
           "type": "boolean",
           "default": false,
           "description": "Using workspace path as markdown image base path."
         },
-        "vsc-markdown.pasterImgPath": {
+        "markdown2in1.pasterImgPath": {
           "type": "string",
           "default": "image/${fileName}/${now}.png",
           "description": "Markdown paste image path, variables: workspaceDir, fileName, now."

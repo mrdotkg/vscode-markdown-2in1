@@ -1,10 +1,11 @@
-# VSC Markdown - Editing & Previewing
+# Markdown 2in1 - Editing & Previewing
 
 This extension aims to replace the built in markdown preview of VS Code.
 
 ## Pre market release issues
 
 - [ ]  No unused code.
+- [ ]  Rename to Markdown 2-in-1.
 - [X]  Expose Context Memu
 - [X]  Expose toolbar
 - [X]  Persist scroll position

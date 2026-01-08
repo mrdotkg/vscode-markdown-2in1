@@ -26,7 +26,7 @@ export function activate(context: vscode.ExtensionContext) {
       const activeEditor = vscode.window.activeTextEditor;
       if (!activeEditor || activeEditor.document.languageId !== 'markdown') {
         MarkdownService.setActiveWebview(null);
-        vscode.commands.executeCommand('setContext', 'vsc-markdown.isMarkdownEditorActive', false);
+        vscode.commands.executeCommand('setContext', 'markdown2in1.isMarkdownEditorActive', false);
       }
     })
   );
@@ -38,14 +38,14 @@ export function activate(context: vscode.ExtensionContext) {
         }
       })
     ),
-    vscode.commands.registerCommand("vsc-markdown.switch", (uri) => {
+    vscode.commands.registerCommand("markdown2in1.switch", (uri) => {
       markdownService.switchEditor(uri);
     }),
-    vscode.commands.registerCommand("vsc-markdown.paste", () => {
+    vscode.commands.registerCommand("markdown2in1.paste", () => {
       markdownService.loadClipboardImage();
     }),
     vscode.window.registerCustomEditorProvider(
-      "vsc-markdown",
+      "markdown2in1",
       markdownEditorProvider,
       viewOption
     )

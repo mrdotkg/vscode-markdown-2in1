@@ -9,7 +9,7 @@ export class Output {
 
     public static log(value: any, showLog = true) {
         if (this.outputChannel == null) {
-            this.outputChannel = window.createOutputChannel("vsc-markdown");
+            this.outputChannel = window.createOutputChannel("markdown2in1");
         }
         if (showLog) this.outputChannel.show(true);
         this.outputChannel.appendLine(`${value}`);

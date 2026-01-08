@@ -61,7 +61,7 @@ function extractHotkeys(): Hotkey[] {
 function generateCommands(hotkeys: Hotkey[]) {
   return hotkeys.map((hotkey) => ({
     command: hotkey.command,
-    title: `Palm Markdown | ${hotkey.title}`,
+    title: `Markdown 2-in-1 | ${hotkey.title}`,
     icon: hotkey.icon,
   }));
 }
@@ -73,7 +73,7 @@ function generateKeybindings(hotkeys: Hotkey[]) {
     .map((hotkey) => ({
       command: hotkey.command,
       key: hotkey.keybinding,
-      when: "vsc-markdown.isMarkdownEditorActive",
+      when: "markdown2in1.isMarkdownEditorActive",
     }));
 
   return keybindings;
