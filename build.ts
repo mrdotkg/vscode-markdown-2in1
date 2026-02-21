@@ -1,24 +1,21 @@
-const { build } = require("esbuild")
-const { resolve } = require("path")
-const { existsSync } = require("fs")
-const { copy } = require("esbuild-plugin-copy")
+const { context } = require("esbuild");
+const { resolve } = require("path");
+const { existsSync } = require("fs");
+const { copy } = require("esbuild-plugin-copy");
 
 const isProd = process.argv.indexOf('--mode=production') >= 0;
-const dependencies = []
+const dependencies = [];
 
-function main() {
-    build({
+async function main() {
+    const ctx = await context({
         entryPoints: ['./src/extension.ts'],
         bundle: true,
         outfile: "out/extension.js",
         external: ['vscode', ...dependencies],
         format: 'cjs',
         platform: 'node',
-        // logLevel: 'error',
         metafile: true,
-        // sourceRoot: __dirname+"/src",
         minify: isProd,
-        watch: !isProd,
         sourcemap: !isProd,
         logOverride: {
             'duplicate-object-key': "silent",
@@ -29,21 +26,24 @@ function main() {
                 name: 'build notice',
                 setup(build) {
                     build.onStart(() => {
-                        console.log('build start')
-                    })
+                        console.log('build start');
+                    });
                     build.onEnd(() => {
-                        console.log('build success')
-                    })
+                        console.log('build success');
+                    });
                 }
             },
         ],
-    })
-}
+    });
 
-
-(async () => {
-    main();
-    if (isProd) {
+    if (!isProd) {
+        // Enable watch mode
+        await ctx.watch();
+    } else {
+        // Just build once
+        await ctx.rebuild();
         setTimeout(() => process.exit(0), 100);
     }
-})();
+}
+
+main();

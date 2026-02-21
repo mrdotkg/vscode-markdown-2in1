@@ -1,13 +1,17 @@
 {
   "name": "markdown2in1",
-  "displayName": "Markdown 2-in-1 Editor & Preview",
-  "description": "Instant Markdown rendering and editing with WYSIWYG support.",
   "version": "0.0.1",
   "publisher": "Butterops",
-  "icon": "assets/images/logo.png",
   "engines": {
-    "vscode": "^1.106.0"
+    "vscode": "^1.108.0"
   },
+  "license": "SEE LICENSE IN LICENSE.md",
+  "displayName": "Mark↓Twain",
+  "description": "2-in-1 Editor plus Preview for Markdown files.",
+  "categories": [
+    "Other"
+  ],
+  "icon": "assets/images/logo.png",
   "keywords": [
     "typora",
     "markdown",
@@ -15,12 +19,8 @@
     "wysiwyg",
     "rendering"
   ],
-  "categories": [
-    "Themes",
-    "Keymaps",
-    "Visualization",
-    "Notebooks",
-    "Education"
+  "activationEvents": [
+    "onLanguage:markdown"
   ],
   "bugs": {
     "url": "https://github.com/mrdotkg/vscode-markdown-2-in-1/issues",
@@ -31,392 +31,493 @@
     "type": "git",
     "url": "https://github.com/mrdotkg/vscode-markdown-2-in-1.git"
   },
-  "activationEvents": [
-    "onLanguage:markdown"
-  ],
   "main": "./out/extension.js",
-  "pricing": "Free",
   "contributes": {
+    "customEditors": [
+      {
+        "viewType": "markdown2in1",
+        "displayName": "Markdown 2-in-1",
+        "priority": "default",
+        "selector": [
+          {
+            "filenamePattern": "**/*.md"
+          },
+          {
+            "filenamePattern": "**/*.markdown"
+          }
+        ]
+      }
+    ],
     "commands": [
       {
-        "command": "markdown2in1.switch",
-        "title": "Toggle Editor",
-        "icon": "$(symbol-parameter)"
+        "command": "markdown2in1.h1",
+        "title": "H1 Style Heading",
+        "icon": "$(symbol-number)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.paste",
-        "title": "Enhance paste in markdown"
+        "command": "markdown2in1.h2",
+        "title": "H2 Style Heading",
+        "icon": "$(symbol-number)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.toggleFullscreen",
-        "title": "Markdown 2-in-1 | Toggle Fullscreen",
-        "icon": "$(screen-full)"
+        "command": "markdown2in1.h3",
+        "title": "H3 Style Heading",
+        "icon": "$(symbol-number)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.insertH1",
-        "title": "Markdown 2-in-1 | Insert H1 Heading",
-        "icon": "$(symbol-text)"
+        "command": "markdown2in1.h4",
+        "title": "H4 Style Heading",
+        "icon": "$(symbol-number)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.insertH2",
-        "title": "Markdown 2-in-1 | Insert H2 Heading",
-        "icon": "$(symbol-text)"
+        "command": "markdown2in1.h5",
+        "title": "H5 Style Heading",
+        "icon": "$(symbol-number)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.insertH3",
-        "title": "Markdown 2-in-1 | Insert H3 Heading",
-        "icon": "$(symbol-text)"
+        "command": "markdown2in1.h6",
+        "title": "H6 Style Heading",
+        "icon": "$(symbol-number)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.insertH4",
-        "title": "Markdown 2-in-1 | Insert H4 Heading",
-        "icon": "$(symbol-text)"
+        "command": "markdown2in1.h+",
+        "title": "Increase Heading Level",
+        "icon": "$(diff-added)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.insertH5",
-        "title": "Markdown 2-in-1 | Insert H5 Heading",
-        "icon": "$(symbol-text)"
+        "command": "markdown2in1.h-",
+        "title": "Decrease Heading Level",
+        "icon": "$(diff-removed)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.insertBold",
-        "title": "Markdown 2-in-1 | Insert Bold Text",
-        "icon": "$(bold)"
+        "command": "markdown2in1.bold",
+        "title": "Bold",
+        "icon": "$(bold)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.insertItalic",
-        "title": "Markdown 2-in-1 | Insert Italic Text",
-        "icon": "$(italic)"
+        "command": "markdown2in1.italic",
+        "title": "Italic",
+        "icon": "$(italic)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.insertList",
-        "title": "Markdown 2-in-1 | Insert Unordered List",
-        "icon": "$(list-unordered)"
+        "command": "markdown2in1.strikethrough",
+        "title": "Strike",
+        "icon": "$(strikethrough)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.insertOrderedList",
-        "title": "Markdown 2-in-1 | Insert Ordered List",
-        "icon": "$(list-ordered)"
+        "command": "markdown2in1.link",
+        "title": "Link",
+        "icon": "$(link)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.insertLink",
-        "title": "Markdown 2-in-1 | Insert Link",
-        "icon": "$(link)"
+        "command": "markdown2in1.inlinecode",
+        "title": "Monospace",
+        "icon": "$(symbol-string)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.insertImage",
-        "title": "Markdown 2-in-1 | Insert Image",
-        "icon": "$(file-media)"
+        "command": "markdown2in1.unordered",
+        "title": "Unordered List",
+        "icon": "$(list-unordered)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.insertCodeBlock",
-        "title": "Markdown 2-in-1 | Insert Code Block",
-        "icon": "$(code)"
+        "command": "markdown2in1.ordered",
+        "title": "Ordered List",
+        "icon": "$(list-ordered)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.insertInlineCode",
-        "title": "Markdown 2-in-1 | Insert Inline Code",
-        "icon": "$(symbol-string)"
+        "command": "markdown2in1.checked",
+        "title": "Checked List",
+        "icon": "$(tasklist)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.insertBlockquote",
-        "title": "Markdown 2-in-1 | Insert Blockquote",
-        "icon": "$(quote)"
+        "command": "markdown2in1.checked-toggle",
+        "title": "Toggle Checkbox Tick",
+        "icon": "$(check)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.insertTable",
-        "title": "Markdown 2-in-1 | Insert Table",
-        "icon": "$(table)"
+        "command": "markdown2in1.indent",
+        "title": "Indent List",
+        "icon": "$(indent)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.insertStrikethrough",
-        "title": "Markdown 2-in-1 | Insert Strikethrough",
-        "icon": "$(strikethrough)"
+        "command": "markdown2in1.unindent",
+        "title": "Unindent List",
+        "icon": "$(newline)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.insertEmptyBlock",
-        "title": "Markdown 2-in-1 | Insert Empty Block",
-        "icon": "$(add)"
+        "command": "markdown2in1.new-start",
+        "title": "New Block to Before",
+        "icon": "$(arrow-up)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.insertTaskList",
-        "title": "Markdown 2-in-1 | Insert Task List",
-        "icon": "$(tasklist)"
+        "command": "markdown2in1.new-end",
+        "title": "New Block to End",
+        "icon": "$(arrow-down)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.insertHorizontalRule",
-        "title": "Markdown 2-in-1 | Insert Horizontal Rule",
-        "icon": "$(dash)"
+        "command": "markdown2in1.move-up",
+        "title": "Move Block Up",
+        "icon": "$(arrow-circle-up)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.insertBlockBefore",
-        "title": "Markdown 2-in-1 | Insert Block to Before",
-        "icon": "$(arrow-up)"
+        "command": "markdown2in1.move-down",
+        "title": "Move Block Down",
+        "icon": "$(arrow-circle-up)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.insertBlockEnd",
-        "title": "Markdown 2-in-1 | Insert Block to End",
-        "icon": "$(arrow-down)"
+        "command": "markdown2in1.remove",
+        "title": "Remove Block",
+        "icon": "$(trash)",
+        "category": "Markdown 2-in-1"
+      },
+      {
+        "command": "markdown2in1.new-table",
+        "title": "New Table",
+        "icon": "$(table)",
+        "category": "Markdown 2-in-1"
+      },
+      {
+        "command": "markdown2in1.new-row-above",
+        "title": "New Row Above",
+        "icon": "$(arrow-up)",
+        "category": "Markdown 2-in-1"
+      },
+      {
+        "command": "markdown2in1.new-row-below",
+        "title": "New Row Below",
+        "icon": "$(arrow-down)",
+        "category": "Markdown 2-in-1"
+      },
+      {
+        "command": "markdown2in1.del-row",
+        "title": "Delete Row",
+        "icon": "$(split-vertical)",
+        "category": "Markdown 2-in-1"
+      },
+      {
+        "command": "markdown2in1.new-col-left",
+        "title": "New Column Left",
+        "icon": "$(arrow-left)",
+        "category": "Markdown 2-in-1"
+      },
+      {
+        "command": "markdown2in1.new-col-right",
+        "title": "New Column Right",
+        "icon": "$(arrow-right)",
+        "category": "Markdown 2-in-1"
+      },
+      {
+        "command": "markdown2in1.del-col",
+        "title": "Delete Column",
+        "icon": "$(split-horizontal)",
+        "category": "Markdown 2-in-1"
+      },
+      {
+        "command": "markdown2in1.align-left",
+        "title": "Align Left",
+        "icon": "$(layout-sidebar-left-dock)",
+        "category": "Markdown 2-in-1"
+      },
+      {
+        "command": "markdown2in1.align-center",
+        "title": "Align Center",
+        "icon": "$(layout-centered)",
+        "category": "Markdown 2-in-1"
+      },
+      {
+        "command": "markdown2in1.align-right",
+        "title": "Align Right",
+        "icon": "$(layout-sidebar-right-dock)",
+        "category": "Markdown 2-in-1"
+      },
+      {
+        "command": "markdown2in1.move-caret-out",
+        "title": "Move Out",
+        "icon": "$(sign-out)",
+        "category": "Markdown 2-in-1"
+      },
+      {
+        "command": "markdown2in1.move-caret-prev",
+        "title": "Move to Prev Cell",
+        "icon": "$(debug-step-back)",
+        "category": "Markdown 2-in-1"
+      },
+      {
+        "command": "markdown2in1.move-caret-next",
+        "title": "Move to Next Cell",
+        "icon": "$(debug-step-over)",
+        "category": "Markdown 2-in-1"
+      },
+      {
+        "command": "markdown2in1.select-codeblock",
+        "title": "Select All Code Block",
+        "icon": "$(select-all)",
+        "category": "Markdown 2-in-1"
+      },
+      {
+        "command": "markdown2in1.codeblock",
+        "title": "Code Block",
+        "icon": "$(code)",
+        "category": "Markdown 2-in-1"
+      },
+      {
+        "command": "markdown2in1.blockquote",
+        "title": "Block Quote",
+        "icon": "$(quote)",
+        "category": "Markdown 2-in-1"
+      },
+      {
+        "command": "markdown2in1.hr",
+        "title": "Line",
+        "icon": "$(horizontal-rule)",
+        "category": "Markdown 2-in-1"
       },
       {
         "command": "markdown2in1.undo",
-        "title": "Markdown 2-in-1 | Undo",
-        "icon": "$(undo)"
+        "title": "Undo",
+        "icon": "$(discard)",
+        "category": "Markdown 2-in-1"
       },
       {
         "command": "markdown2in1.redo",
-        "title": "Markdown 2-in-1 | Redo",
-        "icon": "$(redo)"
+        "title": "Redo",
+        "icon": "$(redo)",
+        "category": "Markdown 2-in-1"
       },
       {
-        "command": "markdown2in1.moveBlockUp",
-        "title": "Markdown 2-in-1 | Move Block Up",
-        "icon": "$(arrow-up)"
-      },
-      {
-        "command": "markdown2in1.moveBlockDown",
-        "title": "Markdown 2-in-1 | Move Block Down",
-        "icon": "$(arrow-down)"
-      },
-      {
-        "command": "markdown2in1.increaseHeading",
-        "title": "Markdown 2-in-1 | Increase Heading Level",
-        "icon": "$(arrow-up)"
-      },
-      {
-        "command": "markdown2in1.decreaseHeading",
-        "title": "Markdown 2-in-1 | Decrease Heading Level",
-        "icon": "$(arrow-down)"
-      },
-      {
-        "command": "markdown2in1.indentList",
-        "title": "Markdown 2-in-1 | Indent List",
-        "icon": "$(indent)"
-      },
-      {
-        "command": "markdown2in1.unindentList",
-        "title": "Markdown 2-in-1 | Unindent List",
-        "icon": "$(outdent)"
-      },
-      {
-        "command": "markdown2in1.toggleTaskCheck",
-        "title": "Markdown 2-in-1 | Toggle Task Check",
-        "icon": "$(check)"
-      },
-      {
-        "command": "markdown2in1.insertTableRowAbove",
-        "title": "Markdown 2-in-1 | Insert Table Row Above",
-        "icon": "$(arrow-up)"
-      },
-      {
-        "command": "markdown2in1.insertTableRowBelow",
-        "title": "Markdown 2-in-1 | Insert Table Row Below",
-        "icon": "$(arrow-down)"
-      },
-      {
-        "command": "markdown2in1.deleteTableRow",
-        "title": "Markdown 2-in-1 | Delete Table Row",
-        "icon": "$(trash)"
-      },
-      {
-        "command": "markdown2in1.insertTableColLeft",
-        "title": "Markdown 2-in-1 | Insert Table Column Left",
-        "icon": "$(arrow-left)"
-      },
-      {
-        "command": "markdown2in1.insertTableColRight",
-        "title": "Markdown 2-in-1 | Insert Table Column Right",
-        "icon": "$(arrow-right)"
-      },
-      {
-        "command": "markdown2in1.deleteTableCol",
-        "title": "Markdown 2-in-1 | Delete Table Column",
-        "icon": "$(trash)"
-      },
-      {
-        "command": "markdown2in1.tableAlignLeft",
-        "title": "Markdown 2-in-1 | Table Align Left",
-        "icon": "$(align-left)"
-      },
-      {
-        "command": "markdown2in1.tableAlignCenter",
-        "title": "Markdown 2-in-1 | Table Align Center",
-        "icon": "$(align-center)"
-      },
-      {
-        "command": "markdown2in1.tableAlignRight",
-        "title": "Markdown 2-in-1 | Table Align Right",
-        "icon": "$(align-right)"
-      },
-      {
-        "command": "markdown2in1.insertEmoji",
-        "title": "Markdown 2-in-1 | Insert Emoji",
-        "icon": "$(smiley)"
-      },
-      {
-        "command": "markdown2in1.toggleHeadingMenu",
-        "title": "Markdown 2-in-1 | Heading Menu",
-        "icon": "$(list-ordered)"
-      },
-      {
-        "command": "markdown2in1.insertBlockquoteAdvanced",
-        "title": "Markdown 2-in-1 | Insert Blockquote (Advanced)",
-        "icon": "$(quote)"
-      },
-      {
-        "command": "markdown2in1.toggleLinkInput",
-        "title": "Markdown 2-in-1 | Toggle Link Input",
-        "icon": "$(link)"
-      },
-      {
-        "command": "markdown2in1.toggleCodeBlockInput",
-        "title": "Markdown 2-in-1 | Toggle Code Block Input",
-        "icon": "$(code)"
-      },
-      {
-        "command": "markdown2in1.hideCodeBlockEdit",
-        "title": "Markdown 2-in-1 | Hide Code Block Edit",
-        "icon": "$(close)"
-      },
-      {
-        "command": "markdown2in1.selectAllCodeBlock",
-        "title": "Markdown 2-in-1 | Select All Code Block",
-        "icon": "$(select-all)"
-      },
-      {
-        "command": "markdown2in1.indentListAdvanced",
-        "title": "Markdown 2-in-1 | Indent List (Advanced)",
-        "icon": "$(indent)"
-      },
-      {
-        "command": "markdown2in1.unindentListAdvanced",
-        "title": "Markdown 2-in-1 | Unindent List (Advanced)",
-        "icon": "$(outdent)"
-      },
-      {
-        "command": "markdown2in1.tableMoveCaretToInput",
-        "title": "Markdown 2-in-1 | Table: Move Caret to Input",
-        "icon": "$(arrow-left)"
-      },
-      {
-        "command": "markdown2in1.tableMoveCaretPrevious",
-        "title": "Markdown 2-in-1 | Table: Move Caret to Previous Cell",
-        "icon": "$(arrow-left)"
-      },
-      {
-        "command": "markdown2in1.tableMoveCaretNext",
-        "title": "Markdown 2-in-1 | Table: Move Caret to Next Cell",
-        "icon": "$(arrow-right)"
-      },
-      {
-        "command": "markdown2in1.insertH6",
-        "title": "Markdown 2-in-1 | Insert H6 Heading",
-        "icon": "$(symbol-text)"
-      },
-      {
-        "command": "markdown2in1.atUser",
-        "title": "Markdown 2-in-1 | At User",
-        "icon": "$(mention)"
-      },
-      {
-        "command": "markdown2in1.removeMistyped",
-        "title": "Markdown 2-in-1 | Remove Mistyped",
-        "icon": "$(undo)"
+        "command": "markdown2in1.toggle",
+        "title": "Toggle Default/Markdown 2-in-1",
+        "icon": "$(multiple-windows)",
+        "category": "Markdown 2-in-1"
       }
     ],
     "keybindings": [
       {
-        "command": "markdown2in1.insertH1",
+        "command": "markdown2in1.h1",
         "key": "ctrl+alt+1",
         "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "markdown2in1.insertH2",
+        "command": "markdown2in1.h2",
         "key": "ctrl+alt+2",
         "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "markdown2in1.insertH3",
+        "command": "markdown2in1.h3",
         "key": "ctrl+alt+3",
         "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "markdown2in1.insertH4",
+        "command": "markdown2in1.h4",
         "key": "ctrl+alt+4",
         "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "markdown2in1.insertH5",
+        "command": "markdown2in1.h5",
         "key": "ctrl+alt+5",
         "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "markdown2in1.insertBold",
+        "command": "markdown2in1.h6",
+        "key": "ctrl+alt+6",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.h+",
+        "key": "ctrl+=",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.h-",
+        "key": "ctrl+-",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.bold",
         "key": "ctrl+b",
         "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "markdown2in1.insertItalic",
+        "command": "markdown2in1.italic",
         "key": "ctrl+i",
         "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "markdown2in1.insertList",
-        "key": "ctrl+l",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.insertOrderedList",
-        "key": "ctrl+o",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.insertLink",
-        "key": "ctrl+k",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.insertCodeBlock",
-        "key": "ctrl+u",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.insertInlineCode",
-        "key": "ctrl+g",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.insertBlockquote",
-        "key": "ctrl+;",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.insertTable",
-        "key": "ctrl+m",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.insertStrikethrough",
+        "command": "markdown2in1.strikethrough",
         "key": "ctrl+s",
         "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "markdown2in1.insertTaskList",
+        "command": "markdown2in1.link",
+        "key": "ctrl+k",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.inlinecode",
+        "key": "ctrl+g",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.unordered",
+        "key": "ctrl+l",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.ordered",
+        "key": "ctrl+o",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.checked",
         "key": "ctrl+j",
         "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "markdown2in1.insertHorizontalRule",
-        "key": "ctrl+shift+h",
+        "command": "markdown2in1.checked-toggle",
+        "key": "ctrl+shift+j",
         "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "markdown2in1.insertBlockBefore",
+        "command": "markdown2in1.indent",
+        "key": "ctrl+shift+i",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.unindent",
+        "key": "ctrl+shift+o",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.new-start",
         "key": "ctrl+shift+b",
         "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "markdown2in1.insertBlockEnd",
+        "command": "markdown2in1.new-end",
         "key": "ctrl+shift+e",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.move-up",
+        "key": "ctrl+shift+u",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.move-down",
+        "key": "ctrl+shift+d",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.remove",
+        "key": "ctrl+shift+x",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.new-table",
+        "key": "ctrl+m",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.new-row-above",
+        "key": "ctrl+shift+f",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.new-row-below",
+        "key": "ctrl+=",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.del-row",
+        "key": "ctrl+-",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.new-col-left",
+        "key": "ctrl+shift+g",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.new-col-right",
+        "key": "ctrl+shift+=",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.del-col",
+        "key": "ctrl+shift+-",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.align-left",
+        "key": "ctrl+shift+l",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.align-center",
+        "key": "ctrl+shift+c",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.align-right",
+        "key": "ctrl+shift+r",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.move-caret-out",
+        "key": "alt+enter",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.move-caret-prev",
+        "key": "shift+tab",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.move-caret-next",
+        "key": "tab",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.select-codeblock",
+        "key": "ctrl+a",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.codeblock",
+        "key": "ctrl+u",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.blockquote",
+        "key": "ctrl+;",
+        "when": "markdown2in1.isMarkdownEditorActive"
+      },
+      {
+        "command": "markdown2in1.hr",
+        "key": "ctrl+shift+h",
         "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
@@ -430,204 +531,441 @@
         "when": "markdown2in1.isMarkdownEditorActive"
       },
       {
-        "command": "markdown2in1.moveBlockUp",
-        "key": "ctrl+shift+u",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.moveBlockDown",
-        "key": "ctrl+shift+d",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.increaseHeading",
-        "key": "ctrl+=",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.decreaseHeading",
-        "key": "ctrl+-",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.indentList",
-        "key": "tab",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.unindentList",
-        "key": "shift+tab",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.toggleTaskCheck",
-        "key": "ctrl+shift+j",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.insertTableRowAbove",
-        "key": "ctrl+shift+f",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.insertTableRowBelow",
-        "key": "ctrl+=",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.deleteTableRow",
-        "key": "ctrl+-",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.insertTableColLeft",
-        "key": "ctrl+shift+g",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.insertTableColRight",
-        "key": "ctrl+shift+=",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.deleteTableCol",
-        "key": "ctrl+shift+-",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.tableAlignLeft",
-        "key": "ctrl+shift+l",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.tableAlignCenter",
-        "key": "ctrl+shift+c",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.tableAlignRight",
-        "key": "ctrl+shift+r",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.insertEmoji",
-        "key": ":",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.toggleHeadingMenu",
-        "key": "ctrl+h",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.insertBlockquoteAdvanced",
-        "key": "ctrl+shift+;",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.toggleLinkInput",
-        "key": "alt+enter",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.toggleCodeBlockInput",
-        "key": "alt+enter",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.hideCodeBlockEdit",
-        "key": "escape",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.selectAllCodeBlock",
-        "key": "ctrl+a",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.indentListAdvanced",
-        "key": "ctrl+shift+i",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.unindentListAdvanced",
-        "key": "ctrl+shift+o",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.tableMoveCaretToInput",
-        "key": "alt+enter",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.tableMoveCaretPrevious",
-        "key": "shift+tab",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.tableMoveCaretNext",
-        "key": "tab",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.insertH6",
-        "key": "ctrl+alt+6",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.atUser",
-        "key": "@",
-        "when": "markdown2in1.isMarkdownEditorActive"
-      },
-      {
-        "command": "markdown2in1.removeMistyped",
-        "key": "backspace",
+        "command": "markdown2in1.toggle",
+        "key": "ctrl+alt+e",
         "when": "markdown2in1.isMarkdownEditorActive"
       }
     ],
     "menus": {
-      "editor/title": [
+      "commandPalette": [
         {
-          "command": "markdown2in1.switch",
-          "when": "resourceExtname == '.md'",
-          "group": "navigation@-2"
+          "command": "markdown2in1.toggle",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.h1",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.h2",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.h3",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.h4",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.h5",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.h6",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.h+",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.h-",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.bold",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.italic",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.strikethrough",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.link",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.inlinecode",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.unordered",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.ordered",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.checked",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.checked-toggle",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.indent",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.unindent",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.new-start",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.new-end",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.move-up",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.move-down",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.remove",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.new-table",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.new-row-above",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.new-row-below",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.del-row",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.new-col-left",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.new-col-right",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.del-col",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.align-left",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.align-center",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.align-right",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.move-caret-out",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.move-caret-prev",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.move-caret-next",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.select-codeblock",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.codeblock",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.blockquote",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.hr",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.undo",
+          "when": "markdown2in1.isMarkdownEditorActive"
+        },
+        {
+          "command": "markdown2in1.redo",
+          "when": "markdown2in1.isMarkdownEditorActive"
         }
       ],
       "editor/context": [
         {
-          "command": "markdown2in1.insertH1",
-          "when": "editorTextFocus",
+          "command": "markdown2in1.toggle",
+          "when": "editorLangId == markdown || resourceExtname == '.md'",
           "group": "1_modification@1"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "markdown2in1.toggle",
+          "when": "editorLangId == markdown || resourceExtname == '.md'",
+          "group": "navigation@-2"
+        },
+        {
+          "command": "markdown2in1.undo",
+          "when": "editorLangId == markdown || resourceExtname == '.md'",
+          "group": "navigation@-2"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "markdown2in1.toggle",
+          "when": "markdown2in1.isMarkdownEditorActive",
+          "group": "navigation@-2"
+        },
+        {
+          "command": "markdown2in1.undo",
+          "when": "markdown2in1.isMarkdownEditorActive",
+          "group": "navigation@-2"
+        },
+        {
+          "command": "markdown2in1.redo",
+          "when": "markdown2in1.isMarkdownEditorActive",
+          "group": "navigation@-2"
+        }
+      ],
+      "webview/context": [
+        {
+          "command": "markdown2in1.h1",
+          "group": "2_section_ops@4",
+          "when": "webviewSection == h1"
+        },
+        {
+          "command": "markdown2in1.h2",
+          "group": "2_section_ops@4",
+          "when": "webviewSection == h2"
+        },
+        {
+          "command": "markdown2in1.h3",
+          "group": "2_section_ops@4",
+          "when": "webviewSection == h3"
+        },
+        {
+          "command": "markdown2in1.h4",
+          "group": "2_section_ops@4",
+          "when": "webviewSection == h4"
+        },
+        {
+          "command": "markdown2in1.h5",
+          "group": "2_section_ops@4",
+          "when": "webviewSection == h5"
+        },
+        {
+          "command": "markdown2in1.h6",
+          "group": "2_section_ops@4",
+          "when": "webviewSection == h6"
+        },
+        {
+          "command": "markdown2in1.link",
+          "group": "1_item_ops@5",
+          "when": "webviewItemElement == link"
+        },
+        {
+          "command": "markdown2in1.unordered",
+          "group": "2_section_ops@1",
+          "when": "webviewSection == unordered"
+        },
+        {
+          "command": "markdown2in1.ordered",
+          "group": "2_section_ops@1",
+          "when": "webviewSection == ordered"
+        },
+        {
+          "command": "markdown2in1.checked",
+          "group": "1_item_ops@1",
+          "when": "webviewItemElement == list-item"
+        },
+        {
+          "command": "markdown2in1.checked-toggle",
+          "group": "1_item_ops@1",
+          "when": "webviewItemElement == list-item"
+        },
+        {
+          "command": "markdown2in1.indent",
+          "group": "1_item_ops@1",
+          "when": "webviewItemElement == list-item"
+        },
+        {
+          "command": "markdown2in1.unindent",
+          "group": "1_item_ops@1",
+          "when": "webviewItemElement == list-item"
+        },
+        {
+          "command": "markdown2in1.new-row-above",
+          "group": "2_section_ops@2",
+          "when": "webviewSection == table"
+        },
+        {
+          "command": "markdown2in1.new-row-below",
+          "group": "2_section_ops@2",
+          "when": "webviewSection == table"
+        },
+        {
+          "command": "markdown2in1.del-row",
+          "group": "1_item_ops@2",
+          "when": "webviewItemElement == table-cell"
+        },
+        {
+          "command": "markdown2in1.new-col-left",
+          "group": "2_section_ops@2",
+          "when": "webviewSection == table"
+        },
+        {
+          "command": "markdown2in1.new-col-right",
+          "group": "2_section_ops@2",
+          "when": "webviewSection == table"
+        },
+        {
+          "command": "markdown2in1.del-col",
+          "group": "1_item_ops@2",
+          "when": "webviewItemElement == table-cell"
+        },
+        {
+          "command": "markdown2in1.align-left",
+          "group": "1_item_ops@2",
+          "when": "webviewItemElement == table-cell"
+        },
+        {
+          "command": "markdown2in1.align-center",
+          "group": "1_item_ops@2",
+          "when": "webviewItemElement == table-cell"
+        },
+        {
+          "command": "markdown2in1.align-right",
+          "group": "1_item_ops@2",
+          "when": "webviewItemElement == table-cell"
+        },
+        {
+          "command": "markdown2in1.move-caret-out",
+          "group": "1_item_ops@3",
+          "when": "webviewItemElement == table-cell"
+        },
+        {
+          "command": "markdown2in1.move-caret-prev",
+          "group": "1_item_ops@3",
+          "when": "webviewItemElement == table-cell"
+        },
+        {
+          "command": "markdown2in1.move-caret-next",
+          "group": "1_item_ops@3",
+          "when": "webviewItemElement == table-cell"
+        },
+        {
+          "command": "markdown2in1.blockquote",
+          "group": "2_section_ops@4",
+          "when": "webviewSection == blockquote"
+        },
+        {
+          "command": "markdown2in1.h+",
+          "group": "1_item_ops@4"
+        },
+        {
+          "command": "markdown2in1.h-",
+          "group": "1_item_ops@4"
+        },
+        {
+          "command": "markdown2in1.bold",
+          "group": "3_global_ops@1"
+        },
+        {
+          "command": "markdown2in1.italic",
+          "group": "3_global_ops@1"
+        },
+        {
+          "command": "markdown2in1.strikethrough",
+          "group": "3_global_ops@1"
+        },
+        {
+          "command": "markdown2in1.inlinecode",
+          "group": "3_global_ops@1"
+        },
+        {
+          "command": "markdown2in1.new-start",
+          "group": "2_section_ops@4"
+        },
+        {
+          "command": "markdown2in1.new-end",
+          "group": "2_section_ops@4"
+        },
+        {
+          "command": "markdown2in1.move-up",
+          "group": "2_section_ops@4"
+        },
+        {
+          "command": "markdown2in1.move-down",
+          "group": "2_section_ops@4"
+        },
+        {
+          "command": "markdown2in1.remove",
+          "group": "2_section_ops@4"
+        },
+        {
+          "command": "markdown2in1.new-table",
+          "group": "3_global_ops@2"
+        },
+        {
+          "command": "markdown2in1.select-codeblock",
+          "group": "2_section_ops@3"
+        },
+        {
+          "command": "markdown2in1.codeblock",
+          "group": "3_global_ops@2"
+        },
+        {
+          "command": "markdown2in1.hr",
+          "group": "3_global_ops@2"
+        },
+        {
+          "command": "markdown2in1.undo",
+          "group": "z_system@1"
+        },
+        {
+          "command": "markdown2in1.redo",
+          "group": "z_system@1"
         }
       ]
     },
-    "customEditors": [
-      {
-        "viewType": "markdown2in1",
-        "displayName": "Markdown 2-in-1",
-        "selector": [
-          {
-            "filenamePattern": "file:/**/*.MD"
-          },
-          {
-            "filenamePattern": "file:/**/*.mD"
-          },
-          {
-            "filenamePattern": "file:/**/*.Md"
-          },
-          {
-            "filenamePattern": "file:/**/*.md"
-          },
-          {
-            "filenamePattern": "file:/**/*.markdown"
-          }
-        ]
-      }
-    ],
     "configuration": {
-      "type": "object",
-      "title": "Markdown Editor",
+      "title": "Markdown 2-in-1",
       "properties": {
+        "markdown2in1.menus": {
+          "type": "object",
+          "default": {
+            "commandPalette": "toggle h1 h2 h3 h4 h5 h6 h+ h- bold italic strikethrough link inlinecode unordered ordered checked checked-toggle indent unindent new-start new-end move-up move-down remove new-table new-row-above new-row-below del-row new-col-left new-col-right del-col align-left align-center align-right move-caret-out move-caret-prev move-caret-next select-codeblock codeblock blockquote hr undo redo",
+            "editor/context": "toggle",
+            "editor/title": "toggle undo",
+            "editor/title/context": "toggle undo redo",
+            "statusBar": "Headings Lists bold italic strikethrough link inlinecode codeblock blockquote hr Tables"
+          },
+          "markdownDescription": "Customize menu... (options: h1, h2, etc.)"
+        },
         "markdown2in1.openOutline": {
           "type": "boolean",
           "default": true,
@@ -646,24 +984,24 @@
         "markdown2in1.previewCodeHighlight.showLineNumber": {
           "type": "boolean",
           "default": false,
-          "markdownDescription": "Show line numbers in markdown preview code window. Only applies when `#markdown2in1.previewCode#` is enabled."
+          "description": "Show line numbers."
         },
         "markdown2in1.workspacePathAsImageBasePath": {
           "type": "boolean",
           "default": false,
-          "description": "Using workspace path as markdown image base path."
+          "description": "Workspace as base path."
         },
         "markdown2in1.pasterImgPath": {
           "type": "string",
           "default": "image/${fileName}/${now}.png",
-          "description": "Markdown paste image path, variables: workspaceDir, fileName, now."
+          "description": "Image paste path."
         }
       }
     }
   },
   "scripts": {
     "dev": "npm run gen:contributes && node build.ts --mode=development",
-    "gen:contributes": "npx ts-node scripts/generateContributes.ts",
+    "gen:contributes": "npx ts-node src/contributes.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
     "build": "npm run gen:contributes && rimraf out && node build.ts --mode=production",
     "package": "vsce package --no-dependencies",
@@ -672,16 +1010,16 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.0",
-    "@types/vscode": "^1.64.0",
+    "@types/vscode": "^1.108.0",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
-    "esbuild": "^0.14.54",
+    "@vscode/vsce": "^3.7.1",
+    "esbuild": "^0.27.2",
     "esbuild-plugin-copy": "^1.3.0",
     "eslint": "^8.57.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-unused-imports": "^3.1.0",
-    "rimraf": "^6.0.1",
-    "@vscode/vsce": "^2.12.1"
+    "rimraf": "^6.0.1"
   },
   "dependencies": {
     "file-type": "^19.6.0"

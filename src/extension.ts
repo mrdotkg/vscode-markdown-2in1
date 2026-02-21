@@ -1,56 +1,54 @@
-import * as vscode from "vscode";
-import { Editor } from "./customMdEditor";
-import { MarkdownService } from "./editorServices";
-import { FileUtil } from "./common/fileUtil";
-import { Output } from "./common/output";
-import { Hotkeys } from "./common/hotkeys";
-export function activate(context: vscode.ExtensionContext) {
-  const config = vscode.workspace.getConfiguration("workbench");
-  const configKey = "editorAssociations";
-  const editorAssociations = config.get(configKey);
-  editorAssociations["git:/**/*.md"] = "default";
-  editorAssociations["gitlens:/**/*.md"] = "default";
-  editorAssociations["git-graph:/**/*.md"] = "default";
-  config.update(configKey, editorAssociations, true);
-  const viewOption = {
-    webviewOptions: { retainContextWhenHidden: true, enableFindWidget: true },
-  };
-  FileUtil.init(context);
-  const markdownService = new MarkdownService(context);
-  const markdownEditorProvider = new Editor(context);
-  
-  // Track when switching between editors
+import { commands, window, workspace, ExtensionContext } from "vscode";
+import { MarkdownCustomEditor } from "./markdownCustomEditor";
+import { MarkdownEditorService as MD } from "./markdownEditorServices";
+import { Features, ExtendedFeatures } from "./common/features";
+import { Holder } from "./common/holder";
+
+const prefix = "markdown2in1";
+const activeCtx = `${prefix}.isMarkdownEditorActive`;
+
+export function activate(context: ExtensionContext) {
+  // Batch update git editor associations
+  const config = workspace.getConfiguration("workbench");
+  const associations = { ...config.get("editorAssociations", {}) };
+  ["git", "gitlens", "git-graph"].forEach(
+    (s) => (associations[`${s}:/**/*.md`] = "default"),
+  );
+      // Search/Find results ke liye bhi same
+    // VS Code search results is scheme se open karta hai
+    associations[`search-editor:/**/*.md`] = "default";
+  config.update("editorAssociations", associations, true);
+
+  const reg = (id: string, handler: (...args: any[]) => any) =>
+    commands.registerCommand(`${prefix}.${id}`, handler);
+
   context.subscriptions.push(
-    vscode.window.onDidChangeActiveTextEditor(() => {
-      // Clear active webview if switching to a non-markdown editor
-      const activeEditor = vscode.window.activeTextEditor;
-      if (!activeEditor || activeEditor.document.languageId !== 'markdown') {
-        MarkdownService.setActiveWebview(null);
-        vscode.commands.executeCommand('setContext', 'markdown2in1.isMarkdownEditorActive', false);
+    window.onDidChangeActiveTextEditor((e) => {
+      if (e?.document.languageId !== "markdown") {
+        Holder.webview = null;
+        commands.executeCommand("setContext", activeCtx, false);
       }
-    })
-  );
-  context.subscriptions.push(
-    ...Hotkeys.map((config) =>
-      vscode.commands.registerCommand(config.command, () => {
-        if (config.keyEvent) {
-          MarkdownService.format(config.text, config.keyEvent);
-        }
-      })
+    }),
+    ...Features.map((f) => reg(f.command, () => MD.builtin(f.keyEvent))),
+    ...ExtendedFeatures.map((f) => reg(f.command, MD.toggle)),
+    reg("noop", () => {}),
+    window.registerCustomEditorProvider(
+      prefix,
+      new MarkdownCustomEditor(context),
+      {
+        webviewOptions: {
+          retainContextWhenHidden: true,
+          enableFindWidget: true,
+        },
+      },
     ),
-    vscode.commands.registerCommand("markdown2in1.switch", (uri) => {
-      markdownService.switchEditor(uri);
-    }),
-    vscode.commands.registerCommand("markdown2in1.paste", () => {
-      markdownService.loadClipboardImage();
-    }),
-    vscode.window.registerCustomEditorProvider(
-      "markdown2in1",
-      markdownEditorProvider,
-      viewOption
-    )
   );
-  
 }
 
-export function deactivate() {}
+export function deactivate() {
+  commands.executeCommand(
+    "setContext",
+    `${prefix}.isMarkdownEditorActive`,
+    false,
+  );
+}

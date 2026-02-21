@@ -141,16 +141,6 @@ pre.vditor-ir__marker--pre.vditor-ir__marker code{
   background-color: var(--hr-bg) !important;
 }
 
-.dropdown-menu.show:before,
-.dropdown-item {
-  background-color: var(--second-bg-color) !important;
-  color: var(--front-color);
-}
-
-.dropdown-item:hover {
-  background: var(--dropdown-hover-background) !important;
-}
-
 .vditor-reset--error {
   color: var(--error-color) !important;
 }
@@ -173,7 +163,7 @@ pre.vditor-ir__marker--pre.vditor-ir__marker code{
 }
 .vditor-reset table tr,
 pre.vditor-reset {
-    background-color: var(--bg-color) !important;
+    background-color: transparent !important;
     color: var(--front-color) !important;
 }
 .vditor-ir__marker.vditor-ir__marker--heading{
@@ -238,191 +228,7 @@ body.showEditorSelection [data-block]:hover:before {
 .vscode-high-contrast.showEditorSelection [data-block]:hover:before {
 	border-left: 3px solid rgba(255, 160, 0, 1);
 }
-/* ====================================
-   CONTEXT MENU STYLES
-   ==================================== */
-
-#context-menu {
-    position: fixed;
-    overflow: hidden;
-    outline: 1px solid var(--vscode-menu-border);
-    border-radius: 5px;
-    color: var(--vscode-menu-foreground);
-    background-color: var(--vscode-menu-background);
-    box-shadow: 0 2px 8px var(--vscode-widget-shadow);
-    z-index: 10000;
-    width: 280px;
-    max-height: 70vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 6px 0;
-    display: none;
-}
-
-/* Menu Group Container */
-#context-menu .menu-group {
-    padding: 0;
-    position: relative;
-}
-
-/* Menu Group Title (for multilevel groups) */
-#context-menu .menu-group-title {
-    flex: 1 1 auto;
-    display: flex;
-    height: 2em;
-    align-items: center;
-    position: relative;
-    margin: 0 4px;
-    border-radius: 4px;
-    padding: 0 12px;
-    justify-content: space-between;
-    white-space: nowrap;
-    cursor: pointer;
-    text-decoration: none;
-    color: var(--vscode-menu-foreground);
-    font-size: 13px;
-    background: transparent;
-    border: none;
-    box-sizing: border-box;
-    text-align: left;
-    overflow: hidden;
-}
-
-#context-menu .menu-group-title:hover {
-    background-color: var(--vscode-menu-selectionBackground);
-    color: var(--vscode-menu-selectionForeground);
-}
-
-/* Menu Group Items List */
-#context-menu .menu-group-items {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-/* Individual Menu Item */
-#context-menu .dropdown-item {
-    flex: 1 1 auto;
-    display: flex;
-    height: 2em;
-    align-items: center;
-    position: relative;
-    margin: 0 4px;
-    border-radius: 4px;
-    padding: 0 12px;
-    justify-content: space-between;
-    white-space: nowrap;
-    cursor: pointer;
-    text-decoration: none;
-    color: var(--vscode-menu-foreground);
-    font-size: 13px;
-    background: transparent;
-    border: none;
-    box-sizing: border-box;
-    text-align: left;
-    overflow: hidden;
-}
-
-#context-menu .dropdown-item span:first-child {
-    flex: 1;
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-#context-menu .dropdown-item:hover {
-    background-color: var(--vscode-menu-selectionBackground);
-    color: var(--vscode-menu-selectionForeground);
-}
-
-/* Top-level First Item (dropdown-item as direct child) */
-#context-menu > a.dropdown-item {
-    flex: 1 1 auto;
-    display: flex;
-    height: 2em;
-    align-items: center;
-    position: relative;
-    margin: 0 4px;
-    border-radius: 4px;
-    padding: 0 12px;
-    justify-content: space-between;
-    white-space: nowrap;
-    cursor: pointer;
-    text-decoration: none;
-    color: var(--vscode-menu-foreground);
-    font-size: 13px;
-}
-
-#context-menu > a.dropdown-item:hover {
-    background-color: var(--vscode-menu-selectionBackground);
-    color: var(--vscode-menu-selectionForeground);
-}
-
-/* Separator Line */
-#context-menu .context-menu-separator {
-    height: 1px;
-    background-color: var(--vscode-menu-separatorBackground);
-    margin: 4px 0;
-}
-
-/* Submenu Arrow Indicator */
-#context-menu .submenu-arrow {
-    margin-left: 8px;
-    margin-right: -6px;
-    font-size: 14px;
-    flex-shrink: 0;
-    opacity: 0.8;
-}
-
-/* Submenu (nested menu) */
-#context-menu .submenu {
-    position: fixed;
-    background-color: var(--vscode-menu-background);
-    outline: 1px solid var(--vscode-menu-border);
-    border-radius: 5px;
-    box-shadow: 0 2px 8px var(--vscode-widget-shadow);
-    width: 280px;
-    display: none;
-    margin: 0;
-    padding: 6px 0;
-    list-style: none;
-    z-index: 10001;
-    overflow-y: auto;
-    max-height: 70vh;
-}
-
-#context-menu .submenu.show {
-    display: block;
-}
-
-/* Submenu Item */
-#context-menu .submenu li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-#context-menu .submenu .dropdown-item {
-    flex: 1 1 auto;
-    display: flex;
-    height: 2em;
-    align-items: center;
-    position: relative;
-    margin: 0 4px;
-    border-radius: 4px;
-    padding: 0 12px;
-    justify-content: space-between;
-}
-
-#context-menu .submenu .dropdown-item:hover {
-    background-color: var(--vscode-menu-selectionBackground);
-    color: var(--vscode-menu-selectionForeground);
-}
-
-/* Keybinding Shortcut Text */
-#context-menu .keybinding {
-    margin-left: 20px;
-    /* font-size: 11px; */
-    /* opacity: 0.7; */
-    flex-shrink: 0;
+.vditor-hint{
+  background-color: var(--bg-color) !important;
+  color: var(--front-color) !important;
 }

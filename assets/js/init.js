@@ -1,125 +1,99 @@
 import {
+  annotateBlocks,
   openLink,
   imageParser,
   scrollEditor,
   addScrollListener,
   preventBlurPropagation,
   setupFocusManagement,
-  createContextMenu,
 } from "./util.js";
 
-let state;
-let editorContainerId = "editor";
-let vditorReady = false; // Track when Vditor is fully initialized
+const vscode = typeof acquireVsCodeApi !== "undefined" && acquireVsCodeApi();
+const events = {};
+const editorContainerId = "editor";
 
-function loadConfigs() {
-  const elem = document.getElementById("app-config");
-  try {
-    state = JSON.parse(elem.getHTML());
-    window.appState = state;
-    const { platform } = state;
-    document.getElementById("editor").classList.add(platform);
-    if (state.scrollBeyondLastLine) {
-        document.body.classList.add("scrollBeyondLastLine");
-      }
-  } catch (error) {}
-  return state;
-}
+const state = JSON.parse(document.getElementById("app-config").getHTML());
+// Context rules injected from TS side via ContextRegistry
+const contextRules = state.contextRules || [];
+document.getElementById(editorContainerId).classList.add(state.platform);
+document.body.classList.toggle(
+  "scrollBeyondLastLine",
+  state.scrollBeyondLastLine,
+);
 
-loadConfigs();
+window.addEventListener(
+  "message",
+  ({ data: d }) => d && events[d.type]?.(d.content),
+);
 
-function waitForHandler(callback) {
-  if (typeof vscodeEvent !== "undefined") {
-    callback();
-  } else {
-    setTimeout(() => waitForHandler(callback), 10);
-  }
-}
+window.handler = {
+  on: (e, fn) => ((events[e] = fn), window.handler),
+  emit: (e, d) => vscode?.postMessage({ type: e, content: d }),
+};
 
-function waitForVditor(callback) {
-  if (typeof Vditor !== "undefined") {
-    callback();
-  } else {
-    setTimeout(() => waitForVditor(callback), 10);
-  }
-}
-
-waitForHandler(() => {
-  waitForVditor(() => {
-    vscodeEvent
-      .on("open", async (md) => {
-        const { config } = md;
-
-        window.vditor = new Vditor(editorContainerId, {
-          customWysiwygToolbar: () => {},
-          value: md.content,
-          height: document.documentElement.clientHeight,
-          toolbarConfig: {
-            tipPosition: "south",
-            hide: config.hideToolbar,
-          },
-          cache: {
-            enable: false,
-          },
-          mode: "ir",
-          lang: config.editorLanguage || "en_US",
-          tab: "\t",
-          preview: {
-            theme: { current: "none" },
-            markdown: {
-              toc: false,
-              codeBlockPreview: true,
-              mark: false,
-            },
-            hljs: {
-              enable: true,
-              style: document.body.classList.contains("vscode-dark")
-                ? "vs2015"
-                : "vs",
-              lineNumber: config.previewCodeHighlight.showLineNumber,
-            },
-            extPath: md.rootPath,
-            math: {
-              engine: "KaTeX",
-              inlineDigit: true,
-            },
-            actions: [],
-            mode: "editor",
-          },
-          extPath: md.rootPath,
-          input(content) {
-            vscodeEvent.emit("save", content);
-          },
-          upload: {
-            url: "/image",
-            accept: "image/*",
-            handler(files) {
-              let reader = new FileReader();
-              reader.readAsBinaryString(files[0]);
-              reader.onloadend = () => {
-                vscodeEvent.emit("img", reader.result);
-              };
-            },
-          },
-          after() {
-            vscodeEvent.on("update", (content) => {
-              window.vditor.setValue(content);
-            });
-            
-            openLink();
-            createContextMenu(editorContainerId);
-            setTimeout(preventBlurPropagation, 50);
-            addScrollListener();
-            scrollEditor(md.scrollTop);
-            setupFocusManagement();
-            imageParser(true);
-            
-            // Mark Vditor as fully ready
-            vditorReady = true;
-            window.vditorReady = true;
-          },
-        });
-      })
-      .emit("init");
-  });
-});
+handler
+  .on("updateScrollBeyondLastLine", (v) =>
+    document.body.classList.toggle("scrollBeyondLastLine", v),
+  )
+  .on("updateActiveColorThemeKind", (v) =>
+    vditor.setTheme(v, v, v === "light" ? "vs" : "vs2015"),
+  )
+  .on("vditorCommand", (keyEvent) => {
+    window.vditor.focus();
+    ["keydown", "keypress", "keyup"].forEach((t) =>
+      (
+        document.activeElement ||
+        window.vditor.ir.element ||
+        window.vditor.wysiwyg.element
+      ).dispatchEvent(new KeyboardEvent(t, keyEvent)),
+    );
+    annotateBlocks(document.getElementById(editorContainerId), contextRules);
+  })
+  .on("open", (md) => {
+    const { config } = md;
+    window.vditor = new Vditor(editorContainerId, {
+      value: md.content,
+      height: document.documentElement.clientHeight,
+      mode: "ir",
+      lang: config.editorLanguage || "en_US",
+      tab: "  ",
+      toolbarConfig: { tipPosition: "south", hide: config.hideToolbar },
+      cache: { enable: false },
+      preview: {
+        theme: { current: "none" },
+        markdown: { toc: false, codeBlockPreview: true },
+        hljs: {
+          enable: true,
+          style: document.body.classList.contains("vscode-dark")
+            ? "vs2015"
+            : "vs",
+          lineNumber: config.previewCodeHighlight.showLineNumber,
+        },
+        extPath: md.rootPath,
+        math: { engine: "KaTeX", inlineDigit: true },
+        mode: "editor",
+      },
+      extPath: md.rootPath,
+      input: (c) => handler.emit("save", c),
+      upload: {
+        url: "/image",
+        accept: "image/*",
+        handler(files) {
+          const reader = new FileReader();
+          reader.onloadend = () => handler.emit("img", reader.result);
+          reader.readAsBinaryString(files[0]);
+        },
+      },
+      after() {
+        handler.on("update", (c) => window.vditor.setValue(c));
+        openLink();
+        annotateBlocks(document.querySelector(".vditor"), contextRules);
+        setTimeout(preventBlurPropagation, 50);
+        addScrollListener();
+        scrollEditor(md.scrollTop);
+        setupFocusManagement();
+        imageParser(true);
+      },
+    });
+  })
+  .emit("init");

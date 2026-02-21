@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -8,20 +8,18 @@
     <base href="{{baseUrl}}/" />
 
     <script src="assets/vditor/index.min.js"></script>
-    <script src="assets/js/vscapi.js"></script>
     <script src="assets/js/init.js" type="module"></script>
-    <script src="assets/js/formatter.js"></script>
 
     <link href="assets/vditor/index.css" rel="stylesheet" />
     <link href="assets/css/theme.css" rel="stylesheet" />
     <link href="assets/css/mdown.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
-
   </head>
 
   <body class="showEditorSelection">
     <div id="editor"></div>
-    <div class="dropdown-menu dropdown-menu-sm" id="context-menu" style="display: none"></div>
-    <script id="app-config" type="application/json">{{configs}}</script>
+    <script id="app-config" type="application/json">
+      {{configs}}
+    </script>
   </body>
 </html>
