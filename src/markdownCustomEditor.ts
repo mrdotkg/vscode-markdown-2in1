@@ -29,11 +29,6 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
   resolveCustomTextEditor(doc: TextDocument, panel: WebviewPanel) {
     const uriStr = (u: Uri) => panel.webview.asWebviewUri(u).toString();
     const extPath = this.context.extensionPath;
-    const activeCtx = "markdown2in1.isMarkdownEditorActive";
-(panel.options as any).enableFindWidget = {
-    ...panel.options,
-    enableFindWidget: true
-};
     this.webview = Object.assign(panel.webview, {
       options: {
         enableScripts: true,
@@ -69,7 +64,6 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
     Holder.webview = this.webview;
 
     const toggleUI = (active: boolean) => {
-      commands.executeCommand("setContext", activeCtx, active);
       active
         ? (this.statusBar.update(), this.statusBar.show())
         : this.statusBar.hide();
@@ -115,7 +109,9 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
     handler.panel.onDidChangeViewState((e: any) =>
       toggleUI(e.webviewPanel.active),
     );
-    handler.panel.onDidDispose(() => this.statusBar.hide());
+    handler.panel.onDidDispose(() => {
+      this.statusBar.hide();
+    });
 
     window.onDidChangeActiveColorTheme((e) =>
       this.postToWebview(

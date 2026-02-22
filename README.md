@@ -2,23 +2,37 @@
 
 ## Pre market release issues
 
-- [ ]  No unused code - CSS.
-- [ ]  Rename extension to MarkTwain.
-- [ ]  Integration with native Zoom via editor font size.
-- [ ]  Integration with native Find and replace (as in Claude AI chats).
-- [ ]  Integration with native Outlines
-- [ ]  Drag and drop Images
-- [ ]  on codeblock hover three ticks on top appear without visible takes a linespace
-- [ ]  Add global condition webview = editor in all commands.
-- [ ]  Paste images from clipboard.
-- [ ]  Code highlight theme switch on dark/light.
-- [ ]  On Keypress the commands are being executed twice.
-- [ ]  Disable full-screen.
-- [ ]  Webview Context options should be shown only in our own webviews, showing on default md preview webview as well.
-- [ ]  Correctly pick the editor where commands, statusbar, right click actions are run
-- [ ]  Try to implement [Mark Sharp](https://github.com/jonathanyeung/mark-sharp)
-- [ ]  On hover new styles appear, if i mousewheel up/down , styling still remains.
-- [ ]  Replace - Ctrl Shift F, Ctrl Shift H, Ctrl Y without conflicts.
+**Easy wins:**
+
+1. **Rename to Mark↓Twain** — ek baar ka kaam, pehle lock karo
+2. **Disable full-screen** — simple, quick
+3. **Code highlight theme dark/light** — straightforward
+4. **Codeblock three ticks hidden** — CSS fix hoga
+
+---
+
+**Medium:**
+
+5. **Replace shortcuts conflicts** — Ctrl Shift F, H, Y
+6. **Paste images from clipboard**
+7. **Drag and drop images**
+8. **Cursor dangle bug** — reproduce karke dekho
+
+---
+
+**Complex:**
+
+9. **Native Zoom** — editor font size sync
+10. **Native Find and Replace**
+11. **Native Outlines**
+12. **Cheat sheet command**
+
+---
+
+**Last:**
+
+13. **No unused CSS** — release se ek din pehle
+14. **Mark Sharp** — explore, stretch goal hai
 
 ## Features Not Identical to the built in Markdown Preview
 

@@ -5,20 +5,8 @@ import path from "path";
 
 const allFeatures = [...Features, ...ExtendedFeatures];
 const prefix = (cmd: string) => `markdown2in1.${cmd}`;
-const mdActive = "markdown2in1.isMarkdownEditorActive";
+const mdActive = "activeCustomEditorId == 'markdown2in1'";
 const mdFile = "editorLangId == markdown || resourceExtname == '.md'";
-
-const buildWebviewContextMenus = () => {
-  const items = Features.map((f: any) => ({
-    command: prefix(f.command),
-    group: f.contextGroup || (f.contextKey ? "1_item_ops@1" : undefined),
-    ...(f.contextKey && { when: `${f.contextKey} == ${f.vscWebviewContext}` }),
-  }));
-  return [
-    ...items.filter((i) => i.when),
-    ...items.filter((i) => !i.when && i.group),
-  ];
-};
 
 // Map helper for menus
 const mapMenu = (key: string, when: string, group?: string) =>
@@ -26,6 +14,16 @@ const mapMenu = (key: string, when: string, group?: string) =>
     .split(" ")
     .filter(Boolean)
     .map((cmd) => ({ command: prefix(cmd), when, ...(group && { group }) }));
+function isEquivalent(binding: string, evt: any): boolean {
+  // naive parse: split modifiers and key
+  const parts = binding.toLowerCase().split("+");
+  return (
+    !!evt.ctrlKey === parts.includes("ctrl") &&
+    !!evt.altKey === parts.includes("alt") &&
+    !!evt.shiftKey === parts.includes("shift") &&
+    parts.includes(evt.key.toLowerCase())
+  );
+}
 
 const contributes = {
   customEditors: [
@@ -47,11 +45,14 @@ const contributes = {
   })),
   keybindings: allFeatures
     .filter((f: any) => f.keybinding)
-    .map((f: any) => ({
-      command: prefix(f.command),
-      key: f.keybinding,
-      when: mdActive,
-    })),
+    .map((f: any) => {
+      const overlaps = f.keyEvent && isEquivalent(f.keybinding, f.keyEvent);
+      return {
+        command: prefix(f.command),
+        key: f.keybinding,
+        when: overlaps ? `${mdActive} && false` : `${mdActive} && true`,
+      };
+    }),
   menus: {
     commandPalette: mapMenu("commandPalette", mdActive),
     "editor/context": mapMenu("editor/context", mdFile, "1_modification@1"),
@@ -61,7 +62,11 @@ const contributes = {
       mdActive,
       "navigation@-2",
     ),
-    "webview/context": buildWebviewContextMenus(),
+    "webview/context": Features.map((f: any) => ({
+      command: prefix(f.command),
+      group: f.contextGroup || (f.contextKey ? "1_item_ops@1" : f.group),
+      when: `activeCustomEditorId == 'markdown2in1'${f.contextKey ? ` && ${f.contextKey} == ${f.vscWebviewContext}` : ""}`,
+    })),
   },
   configuration: {
     title: "Markdown 2-in-1",
