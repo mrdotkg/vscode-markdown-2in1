@@ -1,110 +1,160 @@
-# Mark↓Twain — Brand Style Checklist
+# Mark↓Pen — Brand Style Guide (v5)
 
-> **One rule to remember:** Agar display/UI hai → `Mark↓Twain` | Agar code/URL hai → `marktwain`
+> **One rule:** UI/display mein `Mark↓Pen` | Code/URL mein `markpen`
+
+---
+
+## 0. Butterops — Publisher Identity
+
+**Butterops** is the studio behind all products. Every product ships under this name.
+
+| Context | Format | Example |
+|---|---|---|
+| Publisher display name | `Butterops` | Always capitalized, never `butterOps` or `BUTTEROPS` |
+| VS Code publisher ID | `butterops` | `butterops.markpen`, `butterops.kalam` |
+| GitHub organization | `butterops` | `github.com/butterops` |
+| Website | `butterops.in` | Primary domain for all products |
+| Product listing format | `Butterops — Product Name` | `Butterops — Mark↓Pen`, `Butterops — Kalam` |
+
+**Butterops product family (current and planned):**
+
+| Product | Type | Status |
+|---|---|---|
+| `Mark↓Pen` | Markdown editor — VSCode extension | Active |
+| `Kalam` | Indic + Persian script editor — Standalone | In development |
+
+**Studio tagline (for About pages, GitHub org, website):**
+```
+Tools for people who write.
+```
 
 ---
 
 ## 1. Official Brand Name
 
-| Context | Format | Example |
-|---|---|---|
-| Everywhere (display) | `Mark↓Twain` | Tab title, marketplace, README heading |
-| Never | `mark↓twain` | — |
-| Never | `MARK↓TWAIN` | — |
-| Never | `Mark↓twain` | — |
-
----
-
-## 2. VS Code Extension
-
-| Context | Format | Example |
-|---|---|---|
-| Extension display name | `Mark↓Twain` | Marketplace title |
-| Publisher | `Butterops` | As-is, always capitalized |
-| Extension ID (`package.json`) | `marktwain` | `butterops.marktwain` |
-| Command prefix | `Mark↓Twain:` | `Mark↓Twain: Bold` |
-| Command names | `Mark↓Twain: Sentence Case` | Colon ke baad normal sentence case |
-| Easter egg commands | `Mark↓Twain: Whitewash` | Same format |
-
----
-
-## 3. Command Palette Examples
-
-```
-Mark↓Twain: Bold
-Mark↓Twain: Italic
-Mark↓Twain: Add Table
-Mark↓Twain: Insert Image
-Mark↓Twain: Toggle Preview
-Mark↓Twain: Whitewash          ← Easter egg (auto-format)
-Mark↓Twain: Raft Mode          ← Easter egg (distraction-free)
-Mark↓Twain: Mississippi        ← Easter egg (scroll to top)
-```
-
----
-
-## 4. Code & Technical
-
-| Context | Format | Example |
-|---|---|---|
-| `package.json` → `name` | `marktwain` | `"name": "marktwain"` |
-| `package.json` → `displayName` | `Mark↓Twain` | `"displayName": "Mark↓Twain"` |
-| GitHub repo name | `marktwain` | `github.com/butterops/marktwain` |
-| VS Code Extension ID | `butterops.marktwain` | Marketplace URL |
-| npm package (agar ho) | `marktwain` | `npm install marktwain` |
-| CSS class names | `marktwain-*` | `marktwain-editor`, `marktwain-preview` |
-
----
-
-## 5. Standalone Editor (Future)
-
 | Context | Format |
 |---|---|
-| App name | `Mark↓Twain` |
-| Full name | `Mark↓Twain Editor` |
-| By line | `Butterops presents Mark↓Twain Editor` |
-| Window title | `Mark↓Twain — filename.md` |
-| Binary/executable | `marktwain` |
+| Everywhere (display) | `Mark↓Pen` |
+| Code, URLs, IDs | `markpen` |
+| Never write | `mark↓pen` / `MARK↓PEN` / `Mark↓pen` |
 
 ---
 
-## 6. Themes (Internal names)
+## 2. Tagline
 
-| Theme | Internal ID |
-|---|---|
-| Mississippi Dark | `mississippi-dark` |
-| Hannibal Light | `hannibal-light` |
-| Huck's Sunset | `hucks-sunset` |
+```
+Write. See. Done.
+```
+
+Primary use: badges, marketplace subtitle, README header.
+
+**Alternate (for feature descriptions / onboarding tooltips):**
+```
+Markdown editor with live preview. No separate tab.
+```
 
 ---
 
-## 7. Toast / Notification Messages
+## 3. VS Code Extension
 
-Sirf **3 jagah** Easter eggs — baaki sab formal:
+| Context | Format | Example |
+|---|---|---|
+| Extension display name | `Mark↓Pen` | Marketplace title |
+| Publisher | `Butterops` | Always capitalized |
+| Extension ID | `markpen` | `butterops.markpen` |
+| Command prefix | `Mark↓Pen:` | `Mark↓Pen: Bold` |
+| Command names | Sentence case after colon | `Mark↓Pen: Add Table` |
+
+---
+
+## 4. Command Palette
+
+```
+Mark↓Pen: Bold
+Mark↓Pen: Italic
+Mark↓Pen: Strikethrough
+Mark↓Pen: Add Table
+Mark↓Pen: Insert Image
+Mark↓Pen: Insert Link
+Mark↓Pen: Format Document
+Mark↓Pen: Distraction Free Mode
+Mark↓Pen: Scroll to Top
+```
+
+---
+
+## 5. Toast / Notification Messages
+
+Functional only:
 
 | Trigger | Message |
 |---|---|
-| First install | `Welcome to Mark↓Twain. Even Twain started with a blank page.` |
-| 1,000 words | `Tom would be proud.` |
-| 5,000 words | `Huck Finn was 366 pages. You're getting there.` |
+| First install | `Mark↓Pen is ready. Open any .md file to begin.` |
+| Format Document run | `Document formatted successfully.` |
+| Insert Image (no file selected) | `No file selected. Please try again.` |
 
 ---
 
-## 8. Legal Footer (README + Marketplace description)
+## 6. Themes
+
+| Display Name | Internal ID |
+|---|---|
+| `Dark` | `markpen-dark` |
+| `Light` | `markpen-light` |
+| `High Contrast` | `markpen-high-contrast` |
+
+---
+
+## 7. Code & Technical
+
+| Context | Format | Example |
+|---|---|---|
+| `package.json` → `name` | `markpen` | `"name": "markpen"` |
+| `package.json` → `displayName` | `Mark↓Pen` | `"displayName": "Mark↓Pen"` |
+| GitHub repo | `markpen` | `github.com/butterops/markpen` |
+| VS Code Extension ID | `butterops.markpen` | Marketplace URL |
+| npm package | `markpen` | `npm install markpen` |
+| CSS class prefix | `markpen-*` | `markpen-editor`, `markpen-preview` |
+
+---
+
+## 8. Standalone Editor (Future)
+
+| Context | Format |
+|---|---|
+| App name | `Mark↓Pen` |
+| Full name | `Mark↓Pen Editor` |
+| Byline | `A Butterops product` |
+| Window title | `Mark↓Pen — filename.md` |
+| Binary/executable | `markpen` |
+
+---
+
+## 9. Legal Footer
+
+Use in README and Marketplace description:
 
 ```
-An unofficial tribute to the legendary American author Mark Twain.
+Mark↓Pen is developed and maintained by Butterops.
+
+The name "Mark↓Pen" combines "Mark" (as in Markdown) and "Pen" (writing instrument).
+It is a descriptive product name with no affiliation to any individual, institution,
+or rights holder.
+
+© 2025 Butterops. All rights reserved.
+Distributed under the [LICENSE NAME] License. See LICENSE for full terms.
 ```
 
 ---
 
-## 9. Quick Reference Card
+## 10. Quick Reference Card
 
 ```
-Display name   →  Mark↓Twain
-Publisher      →  Butterops
-Extension ID   →  butterops.marktwain
-GitHub         →  github.com/butterops/marktwain
-Commands       →  Mark↓Twain: [Action Name]
-Tagline        →  For those who write code, and those who write stories.
+Studio         →  Butterops
+Display name   →  Mark↓Pen
+Extension ID   →  butterops.markpen
+GitHub         →  github.com/butterops/markpen
+Commands       →  Mark↓Pen: [Action Name]
+Tagline        →  Write. See. Done.
+Studio site    →  butterops.in
 ```

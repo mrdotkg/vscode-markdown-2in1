@@ -17,7 +17,7 @@ export class StatusBar {
             ?.split("+")
             .map((k) => `\`${k.trim()}\``)
             .join(" + ") || "";
-        return `| [\`${f?.icon || ""}\` ${f?.title || c}](command:markdown2in1.${c}) | ${kb} |`;
+        return `| [\`${f?.icon || ""}\` ${f?.title || c}](command:markpen.${c}) | ${kb} |`;
       });
       const md = new vscode.MarkdownString(
         `| | |\n|--|--|\n${rows.join("\n")}`,
@@ -34,7 +34,7 @@ export class StatusBar {
       const f = findF(name);
 
       item.text = group ? `${name} $(triangle-down)` : f?.icon || "";
-      item.command = `markdown2in1.${group ? group.commands[0] : name}`;
+      item.command = `markpen.${group ? group.commands[0] : name}`;
       item.tooltip = getTooltip(group ? group.commands : [name]);
       this.items.set(name, item);
     });

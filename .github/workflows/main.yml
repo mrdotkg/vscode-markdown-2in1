@@ -25,6 +25,6 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         tag_name: v${{ github.run_number }}
-        files: ./markdown2in1-0.0.1.vsix
+        files: ./markpen-0.0.1.vsix
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

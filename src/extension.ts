@@ -4,7 +4,7 @@ import { MarkdownEditorService as MD } from "./markdownEditorServices";
 import { Features, ExtendedFeatures } from "./common/features";
 import { Holder } from "./common/holder";
 
-const customEditorId = "markdown2in1";
+const customEditorId = "markpen";
 
 export function activate(context: ExtensionContext) {
   // Batch update git editor associations

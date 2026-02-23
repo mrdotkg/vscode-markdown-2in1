@@ -8,7 +8,7 @@ export class MarkdownEditorService {
       commands.executeCommand(
         "vscode.openWith",
         target,
-        window.activeTextEditor ? "markdown2in1" : "default",
+        window.activeTextEditor ? "markpen" : "default",
       );
     }
   }

@@ -793,7 +793,7 @@ export const ExtendedFeatures = [
   // Extended
   {
     command: "toggle",
-    title: "Toggle Default/Markdown 2-in-1",
+    title: "Toggle Default/Mark↓Pen Editors",
     icon: "$(multiple-windows)",
     text: "Toggle",
     keybinding: "ctrl+alt+e",

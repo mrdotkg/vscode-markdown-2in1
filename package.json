@@ -1,12 +1,12 @@
 {
-  "name": "markdown2in1",
+  "name": "markpen",
   "version": "0.0.1",
   "publisher": "Butterops",
   "engines": {
     "vscode": "^1.108.0"
   },
   "license": "SEE LICENSE IN LICENSE.md",
-  "displayName": "Mark↓Twain",
+  "displayName": "Mark↓Pen",
   "description": "2-in-1 Editor plus Preview for Markdown files.",
   "categories": [
     "Other"
@@ -35,8 +35,8 @@
   "contributes": {
     "customEditors": [
       {
-        "viewType": "markdown2in1",
-        "displayName": "Markdown 2-in-1",
+        "viewType": "markpen",
+        "displayName": "Mark↓Pen",
         "priority": "default",
         "selector": [
           {
@@ -50,929 +50,929 @@
     ],
     "commands": [
       {
-        "command": "markdown2in1.h1",
+        "command": "markpen.h1",
         "title": "H1 Style Heading",
         "icon": "$(symbol-number)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.h2",
+        "command": "markpen.h2",
         "title": "H2 Style Heading",
         "icon": "$(symbol-number)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.h3",
+        "command": "markpen.h3",
         "title": "H3 Style Heading",
         "icon": "$(symbol-number)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.h4",
+        "command": "markpen.h4",
         "title": "H4 Style Heading",
         "icon": "$(symbol-number)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.h5",
+        "command": "markpen.h5",
         "title": "H5 Style Heading",
         "icon": "$(symbol-number)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.h6",
+        "command": "markpen.h6",
         "title": "H6 Style Heading",
         "icon": "$(symbol-number)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.h+",
+        "command": "markpen.h+",
         "title": "Increase Heading Level",
         "icon": "$(diff-added)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.h-",
+        "command": "markpen.h-",
         "title": "Decrease Heading Level",
         "icon": "$(diff-removed)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.bold",
+        "command": "markpen.bold",
         "title": "Bold",
         "icon": "$(bold)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.italic",
+        "command": "markpen.italic",
         "title": "Italic",
         "icon": "$(italic)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.strikethrough",
+        "command": "markpen.strikethrough",
         "title": "Strike",
         "icon": "$(strikethrough)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.link",
+        "command": "markpen.link",
         "title": "Link",
         "icon": "$(link)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.inlinecode",
+        "command": "markpen.inlinecode",
         "title": "Monospace",
         "icon": "$(symbol-string)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.unordered",
+        "command": "markpen.unordered",
         "title": "Unordered List",
         "icon": "$(list-unordered)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.ordered",
+        "command": "markpen.ordered",
         "title": "Ordered List",
         "icon": "$(list-ordered)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.checked",
+        "command": "markpen.checked",
         "title": "Checked List",
         "icon": "$(tasklist)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.checked-toggle",
+        "command": "markpen.checked-toggle",
         "title": "Toggle Checkbox Tick",
         "icon": "$(check)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.indent",
+        "command": "markpen.indent",
         "title": "Indent List",
         "icon": "$(indent)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.unindent",
+        "command": "markpen.unindent",
         "title": "Unindent List",
         "icon": "$(newline)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.new-start",
+        "command": "markpen.new-start",
         "title": "New Block to Before",
         "icon": "$(arrow-up)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.new-end",
+        "command": "markpen.new-end",
         "title": "New Block to End",
         "icon": "$(arrow-down)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.move-up",
+        "command": "markpen.move-up",
         "title": "Move Block Up",
         "icon": "$(arrow-circle-up)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.move-down",
+        "command": "markpen.move-down",
         "title": "Move Block Down",
         "icon": "$(arrow-circle-up)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.remove",
+        "command": "markpen.remove",
         "title": "Remove Block",
         "icon": "$(trash)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.new-table",
+        "command": "markpen.new-table",
         "title": "New Table",
         "icon": "$(table)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.new-row-above",
+        "command": "markpen.new-row-above",
         "title": "New Row Above",
         "icon": "$(arrow-up)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.new-row-below",
+        "command": "markpen.new-row-below",
         "title": "New Row Below",
         "icon": "$(arrow-down)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.del-row",
+        "command": "markpen.del-row",
         "title": "Delete Row",
         "icon": "$(split-vertical)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.new-col-left",
+        "command": "markpen.new-col-left",
         "title": "New Column Left",
         "icon": "$(arrow-left)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.new-col-right",
+        "command": "markpen.new-col-right",
         "title": "New Column Right",
         "icon": "$(arrow-right)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.del-col",
+        "command": "markpen.del-col",
         "title": "Delete Column",
         "icon": "$(split-horizontal)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.align-left",
+        "command": "markpen.align-left",
         "title": "Align Left",
         "icon": "$(layout-sidebar-left-dock)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.align-center",
+        "command": "markpen.align-center",
         "title": "Align Center",
         "icon": "$(layout-centered)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.align-right",
+        "command": "markpen.align-right",
         "title": "Align Right",
         "icon": "$(layout-sidebar-right-dock)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.move-caret-out",
+        "command": "markpen.move-caret-out",
         "title": "Move Out",
         "icon": "$(sign-out)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.move-caret-prev",
+        "command": "markpen.move-caret-prev",
         "title": "Move to Prev Cell",
         "icon": "$(debug-step-back)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.move-caret-next",
+        "command": "markpen.move-caret-next",
         "title": "Move to Next Cell",
         "icon": "$(debug-step-over)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.select-codeblock",
+        "command": "markpen.select-codeblock",
         "title": "Select All Code Block",
         "icon": "$(select-all)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.codeblock",
+        "command": "markpen.codeblock",
         "title": "Code Block",
         "icon": "$(code)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.blockquote",
+        "command": "markpen.blockquote",
         "title": "Block Quote",
         "icon": "$(quote)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.hr",
+        "command": "markpen.hr",
         "title": "Line",
         "icon": "$(horizontal-rule)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.undo",
+        "command": "markpen.undo",
         "title": "Undo",
         "icon": "$(discard)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.redo",
+        "command": "markpen.redo",
         "title": "Redo",
         "icon": "$(redo)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       },
       {
-        "command": "markdown2in1.toggle",
-        "title": "Toggle Default/Markdown 2-in-1",
+        "command": "markpen.toggle",
+        "title": "Toggle Default/Mark↓Pen Editors",
         "icon": "$(multiple-windows)",
-        "category": "Markdown 2-in-1"
+        "category": "Mark↓Pen"
       }
     ],
     "keybindings": [
       {
-        "command": "markdown2in1.h1",
+        "command": "markpen.h1",
         "key": "ctrl+alt+1",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.h2",
+        "command": "markpen.h2",
         "key": "ctrl+alt+2",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.h3",
+        "command": "markpen.h3",
         "key": "ctrl+alt+3",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.h4",
+        "command": "markpen.h4",
         "key": "ctrl+alt+4",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.h5",
+        "command": "markpen.h5",
         "key": "ctrl+alt+5",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.h6",
+        "command": "markpen.h6",
         "key": "ctrl+alt+6",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.h+",
+        "command": "markpen.h+",
         "key": "ctrl+=",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.h-",
+        "command": "markpen.h-",
         "key": "ctrl+-",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.bold",
+        "command": "markpen.bold",
         "key": "ctrl+b",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.italic",
+        "command": "markpen.italic",
         "key": "ctrl+i",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.strikethrough",
+        "command": "markpen.strikethrough",
         "key": "ctrl+s",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.link",
+        "command": "markpen.link",
         "key": "ctrl+k",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.inlinecode",
+        "command": "markpen.inlinecode",
         "key": "ctrl+g",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.unordered",
+        "command": "markpen.unordered",
         "key": "ctrl+l",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.ordered",
+        "command": "markpen.ordered",
         "key": "ctrl+o",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.checked",
+        "command": "markpen.checked",
         "key": "ctrl+j",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.checked-toggle",
+        "command": "markpen.checked-toggle",
         "key": "ctrl+shift+j",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.indent",
+        "command": "markpen.indent",
         "key": "ctrl+shift+i",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.unindent",
+        "command": "markpen.unindent",
         "key": "ctrl+shift+o",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.new-start",
+        "command": "markpen.new-start",
         "key": "ctrl+shift+b",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.new-end",
+        "command": "markpen.new-end",
         "key": "ctrl+shift+e",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.move-up",
+        "command": "markpen.move-up",
         "key": "ctrl+shift+u",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.move-down",
+        "command": "markpen.move-down",
         "key": "ctrl+shift+d",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.remove",
+        "command": "markpen.remove",
         "key": "ctrl+shift+x",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.new-table",
+        "command": "markpen.new-table",
         "key": "ctrl+m",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.new-row-above",
+        "command": "markpen.new-row-above",
         "key": "ctrl+shift+f",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.new-row-below",
+        "command": "markpen.new-row-below",
         "key": "ctrl+=",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.del-row",
+        "command": "markpen.del-row",
         "key": "ctrl+-",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.new-col-left",
+        "command": "markpen.new-col-left",
         "key": "ctrl+shift+g",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.new-col-right",
+        "command": "markpen.new-col-right",
         "key": "ctrl+shift+=",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.del-col",
+        "command": "markpen.del-col",
         "key": "ctrl+shift+-",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.align-left",
+        "command": "markpen.align-left",
         "key": "ctrl+shift+l",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.align-center",
+        "command": "markpen.align-center",
         "key": "ctrl+shift+c",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.align-right",
+        "command": "markpen.align-right",
         "key": "ctrl+shift+r",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.move-caret-out",
+        "command": "markpen.move-caret-out",
         "key": "alt+enter",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.move-caret-prev",
+        "command": "markpen.move-caret-prev",
         "key": "shift+tab",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.move-caret-next",
+        "command": "markpen.move-caret-next",
         "key": "tab",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.select-codeblock",
+        "command": "markpen.select-codeblock",
         "key": "ctrl+a",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.codeblock",
+        "command": "markpen.codeblock",
         "key": "ctrl+u",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.blockquote",
+        "command": "markpen.blockquote",
         "key": "ctrl+;",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.hr",
+        "command": "markpen.hr",
         "key": "ctrl+shift+h",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.undo",
+        "command": "markpen.undo",
         "key": "ctrl+z",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.redo",
+        "command": "markpen.redo",
         "key": "ctrl+y",
-        "when": "activeCustomEditorId == 'markdown2in1' && false"
+        "when": "activeCustomEditorId == 'markpen' && false"
       },
       {
-        "command": "markdown2in1.toggle",
+        "command": "markpen.toggle",
         "key": "ctrl+alt+e",
-        "when": "activeCustomEditorId == 'markdown2in1' && true"
+        "when": "activeCustomEditorId == 'markpen' && true"
       }
     ],
     "menus": {
       "commandPalette": [
         {
-          "command": "markdown2in1.toggle",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.toggle",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.h1",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.h1",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.h2",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.h2",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.h3",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.h3",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.h4",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.h4",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.h5",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.h5",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.h6",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.h6",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.h+",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.h+",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.h-",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.h-",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.bold",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.bold",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.italic",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.italic",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.strikethrough",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.strikethrough",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.link",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.link",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.inlinecode",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.inlinecode",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.unordered",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.unordered",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.ordered",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.ordered",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.checked",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.checked",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.checked-toggle",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.checked-toggle",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.indent",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.indent",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.unindent",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.unindent",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.new-start",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.new-start",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.new-end",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.new-end",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.move-up",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.move-up",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.move-down",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.move-down",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.remove",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.remove",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.new-table",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.new-table",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.new-row-above",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.new-row-above",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.new-row-below",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.new-row-below",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.del-row",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.del-row",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.new-col-left",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.new-col-left",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.new-col-right",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.new-col-right",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.del-col",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.del-col",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.align-left",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.align-left",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.align-center",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.align-center",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.align-right",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.align-right",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.move-caret-out",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.move-caret-out",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.move-caret-prev",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.move-caret-prev",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.move-caret-next",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.move-caret-next",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.select-codeblock",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.select-codeblock",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.codeblock",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.codeblock",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.blockquote",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.blockquote",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.hr",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.hr",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.undo",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.undo",
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.redo",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "command": "markpen.redo",
+          "when": "activeCustomEditorId == 'markpen'"
         }
       ],
       "editor/context": [
         {
-          "command": "markdown2in1.toggle",
+          "command": "markpen.toggle",
           "when": "editorLangId == markdown || resourceExtname == '.md'",
           "group": "1_modification@1"
         }
       ],
       "editor/title": [
         {
-          "command": "markdown2in1.toggle",
+          "command": "markpen.toggle",
           "when": "editorLangId == markdown || resourceExtname == '.md'",
           "group": "navigation@-2"
         },
         {
-          "command": "markdown2in1.undo",
+          "command": "markpen.undo",
           "when": "editorLangId == markdown || resourceExtname == '.md'",
           "group": "navigation@-2"
         }
       ],
       "editor/title/context": [
         {
-          "command": "markdown2in1.toggle",
-          "when": "activeCustomEditorId == 'markdown2in1'",
+          "command": "markpen.toggle",
+          "when": "activeCustomEditorId == 'markpen'",
           "group": "navigation@-2"
         },
         {
-          "command": "markdown2in1.undo",
-          "when": "activeCustomEditorId == 'markdown2in1'",
+          "command": "markpen.undo",
+          "when": "activeCustomEditorId == 'markpen'",
           "group": "navigation@-2"
         },
         {
-          "command": "markdown2in1.redo",
-          "when": "activeCustomEditorId == 'markdown2in1'",
+          "command": "markpen.redo",
+          "when": "activeCustomEditorId == 'markpen'",
           "group": "navigation@-2"
         }
       ],
       "webview/context": [
         {
-          "command": "markdown2in1.h1",
+          "command": "markpen.h1",
           "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewSection == h1"
+          "when": "activeCustomEditorId == 'markpen' && webviewSection == h1"
         },
         {
-          "command": "markdown2in1.h2",
+          "command": "markpen.h2",
           "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewSection == h2"
+          "when": "activeCustomEditorId == 'markpen' && webviewSection == h2"
         },
         {
-          "command": "markdown2in1.h3",
+          "command": "markpen.h3",
           "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewSection == h3"
+          "when": "activeCustomEditorId == 'markpen' && webviewSection == h3"
         },
         {
-          "command": "markdown2in1.h4",
+          "command": "markpen.h4",
           "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewSection == h4"
+          "when": "activeCustomEditorId == 'markpen' && webviewSection == h4"
         },
         {
-          "command": "markdown2in1.h5",
+          "command": "markpen.h5",
           "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewSection == h5"
+          "when": "activeCustomEditorId == 'markpen' && webviewSection == h5"
         },
         {
-          "command": "markdown2in1.h6",
+          "command": "markpen.h6",
           "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewSection == h6"
+          "when": "activeCustomEditorId == 'markpen' && webviewSection == h6"
         },
         {
-          "command": "markdown2in1.h+",
+          "command": "markpen.h+",
           "group": "1_item_ops@4",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.h-",
+          "command": "markpen.h-",
           "group": "1_item_ops@4",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.bold",
+          "command": "markpen.bold",
           "group": "3_global_ops@1",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.italic",
+          "command": "markpen.italic",
           "group": "3_global_ops@1",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.strikethrough",
+          "command": "markpen.strikethrough",
           "group": "3_global_ops@1",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.link",
+          "command": "markpen.link",
           "group": "1_item_ops@5",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewItemElement == link"
+          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == link"
         },
         {
-          "command": "markdown2in1.inlinecode",
+          "command": "markpen.inlinecode",
           "group": "3_global_ops@1",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.unordered",
+          "command": "markpen.unordered",
           "group": "2_section_ops@1",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewSection == unordered"
+          "when": "activeCustomEditorId == 'markpen' && webviewSection == unordered"
         },
         {
-          "command": "markdown2in1.ordered",
+          "command": "markpen.ordered",
           "group": "2_section_ops@1",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewSection == ordered"
+          "when": "activeCustomEditorId == 'markpen' && webviewSection == ordered"
         },
         {
-          "command": "markdown2in1.checked",
+          "command": "markpen.checked",
           "group": "1_item_ops@1",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewItemElement == list-item"
+          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == list-item"
         },
         {
-          "command": "markdown2in1.checked-toggle",
+          "command": "markpen.checked-toggle",
           "group": "1_item_ops@1",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewItemElement == list-item"
+          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == list-item"
         },
         {
-          "command": "markdown2in1.indent",
+          "command": "markpen.indent",
           "group": "1_item_ops@1",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewItemElement == list-item"
+          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == list-item"
         },
         {
-          "command": "markdown2in1.unindent",
+          "command": "markpen.unindent",
           "group": "1_item_ops@1",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewItemElement == list-item"
+          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == list-item"
         },
         {
-          "command": "markdown2in1.new-start",
+          "command": "markpen.new-start",
           "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.new-end",
+          "command": "markpen.new-end",
           "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.move-up",
+          "command": "markpen.move-up",
           "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.move-down",
+          "command": "markpen.move-down",
           "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.remove",
+          "command": "markpen.remove",
           "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.new-table",
+          "command": "markpen.new-table",
           "group": "3_global_ops@2",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.new-row-above",
+          "command": "markpen.new-row-above",
           "group": "2_section_ops@2",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewSection == table"
+          "when": "activeCustomEditorId == 'markpen' && webviewSection == table"
         },
         {
-          "command": "markdown2in1.new-row-below",
+          "command": "markpen.new-row-below",
           "group": "2_section_ops@2",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewSection == table"
+          "when": "activeCustomEditorId == 'markpen' && webviewSection == table"
         },
         {
-          "command": "markdown2in1.del-row",
+          "command": "markpen.del-row",
           "group": "1_item_ops@2",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewItemElement == table-cell"
+          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == table-cell"
         },
         {
-          "command": "markdown2in1.new-col-left",
+          "command": "markpen.new-col-left",
           "group": "2_section_ops@2",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewSection == table"
+          "when": "activeCustomEditorId == 'markpen' && webviewSection == table"
         },
         {
-          "command": "markdown2in1.new-col-right",
+          "command": "markpen.new-col-right",
           "group": "2_section_ops@2",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewSection == table"
+          "when": "activeCustomEditorId == 'markpen' && webviewSection == table"
         },
         {
-          "command": "markdown2in1.del-col",
+          "command": "markpen.del-col",
           "group": "1_item_ops@2",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewItemElement == table-cell"
+          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == table-cell"
         },
         {
-          "command": "markdown2in1.align-left",
+          "command": "markpen.align-left",
           "group": "1_item_ops@2",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewItemElement == table-cell"
+          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == table-cell"
         },
         {
-          "command": "markdown2in1.align-center",
+          "command": "markpen.align-center",
           "group": "1_item_ops@2",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewItemElement == table-cell"
+          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == table-cell"
         },
         {
-          "command": "markdown2in1.align-right",
+          "command": "markpen.align-right",
           "group": "1_item_ops@2",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewItemElement == table-cell"
+          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == table-cell"
         },
         {
-          "command": "markdown2in1.move-caret-out",
+          "command": "markpen.move-caret-out",
           "group": "1_item_ops@3",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewItemElement == table-cell"
+          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == table-cell"
         },
         {
-          "command": "markdown2in1.move-caret-prev",
+          "command": "markpen.move-caret-prev",
           "group": "1_item_ops@3",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewItemElement == table-cell"
+          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == table-cell"
         },
         {
-          "command": "markdown2in1.move-caret-next",
+          "command": "markpen.move-caret-next",
           "group": "1_item_ops@3",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewItemElement == table-cell"
+          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == table-cell"
         },
         {
-          "command": "markdown2in1.select-codeblock",
+          "command": "markpen.select-codeblock",
           "group": "2_section_ops@3",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.codeblock",
+          "command": "markpen.codeblock",
           "group": "3_global_ops@2",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.blockquote",
+          "command": "markpen.blockquote",
           "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markdown2in1' && webviewSection == blockquote"
+          "when": "activeCustomEditorId == 'markpen' && webviewSection == blockquote"
         },
         {
-          "command": "markdown2in1.hr",
+          "command": "markpen.hr",
           "group": "3_global_ops@2",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.undo",
+          "command": "markpen.undo",
           "group": "z_system@1",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markdown2in1.redo",
+          "command": "markpen.redo",
           "group": "z_system@1",
-          "when": "activeCustomEditorId == 'markdown2in1'"
+          "when": "activeCustomEditorId == 'markpen'"
         }
       ]
     },
     "configuration": {
-      "title": "Markdown 2-in-1",
+      "title": "Mark↓Pen",
       "properties": {
-        "markdown2in1.menus": {
+        "markpen.menus": {
           "type": "object",
           "default": {
             "commandPalette": "toggle h1 h2 h3 h4 h5 h6 h+ h- bold italic strikethrough link inlinecode unordered ordered checked checked-toggle indent unindent new-start new-end move-up move-down remove new-table new-row-above new-row-below del-row new-col-left new-col-right del-col align-left align-center align-right move-caret-out move-caret-prev move-caret-next select-codeblock codeblock blockquote hr undo redo",
@@ -983,32 +983,32 @@
           },
           "markdownDescription": "Customize menu... (options: h1, h2, etc.)"
         },
-        "markdown2in1.openOutline": {
+        "markpen.openOutline": {
           "type": "boolean",
           "default": true,
           "description": "Open markdown outline."
         },
-        "markdown2in1.hideToolbar": {
+        "markpen.hideToolbar": {
           "type": "boolean",
           "default": false,
           "description": "Hide markdown toolbar."
         },
-        "markdown2in1.previewCode": {
+        "markpen.previewCode": {
           "type": "boolean",
           "default": true,
           "description": "Preview code in markdown."
         },
-        "markdown2in1.previewCodeHighlight.showLineNumber": {
+        "markpen.previewCodeHighlight.showLineNumber": {
           "type": "boolean",
           "default": false,
           "description": "Show line numbers."
         },
-        "markdown2in1.workspacePathAsImageBasePath": {
+        "markpen.workspacePathAsImageBasePath": {
           "type": "boolean",
           "default": false,
           "description": "Workspace as base path."
         },
-        "markdown2in1.pasterImgPath": {
+        "markpen.pasterImgPath": {
           "type": "string",
           "default": "image/${fileName}/${now}.png",
           "description": "Image paste path."

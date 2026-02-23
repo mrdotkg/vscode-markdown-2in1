@@ -4,8 +4,8 @@ import { Holder } from "./common/holder";
 import path from "path";
 
 const allFeatures = [...Features, ...ExtendedFeatures];
-const prefix = (cmd: string) => `markdown2in1.${cmd}`;
-const mdActive = "activeCustomEditorId == 'markdown2in1'";
+const prefix = (cmd: string) => `markpen.${cmd}`;
+const mdActive = "activeCustomEditorId == 'markpen'";
 const mdFile = "editorLangId == markdown || resourceExtname == '.md'";
 
 // Map helper for menus
@@ -28,8 +28,8 @@ function isEquivalent(binding: string, evt: any): boolean {
 const contributes = {
   customEditors: [
     {
-      viewType: "markdown2in1",
-      displayName: "Markdown 2-in-1",
+      viewType: "markpen",
+      displayName: "Mark↓Pen",
       priority: "default",
       selector: [
         { filenamePattern: "**/*.md" },
@@ -41,7 +41,7 @@ const contributes = {
     command: prefix(f.command),
     title: f.title,
     icon: f.icon,
-    category: "Markdown 2-in-1",
+    category: "Mark↓Pen",
   })),
   keybindings: allFeatures
     .filter((f: any) => f.keybinding)
@@ -65,43 +65,43 @@ const contributes = {
     "webview/context": Features.map((f: any) => ({
       command: prefix(f.command),
       group: f.contextGroup || (f.contextKey ? "1_item_ops@1" : f.group),
-      when: `activeCustomEditorId == 'markdown2in1'${f.contextKey ? ` && ${f.contextKey} == ${f.vscWebviewContext}` : ""}`,
+      when: `activeCustomEditorId == 'markpen'${f.contextKey ? ` && ${f.contextKey} == ${f.vscWebviewContext}` : ""}`,
     })),
   },
   configuration: {
-    title: "Markdown 2-in-1",
+    title: "Mark↓Pen",
     properties: {
-      "markdown2in1.menus": {
+      "markpen.menus": {
         type: "object",
         default: Holder.menus,
         markdownDescription: "Customize menu... (options: h1, h2, etc.)",
       },
-      "markdown2in1.openOutline": {
+      "markpen.openOutline": {
         type: "boolean",
         default: true,
         description: "Open markdown outline.",
       },
-      "markdown2in1.hideToolbar": {
+      "markpen.hideToolbar": {
         type: "boolean",
         default: false,
         description: "Hide markdown toolbar.",
       },
-      "markdown2in1.previewCode": {
+      "markpen.previewCode": {
         type: "boolean",
         default: true,
         description: "Preview code in markdown.",
       },
-      "markdown2in1.previewCodeHighlight.showLineNumber": {
+      "markpen.previewCodeHighlight.showLineNumber": {
         type: "boolean",
         default: false,
         description: "Show line numbers.",
       },
-      "markdown2in1.workspacePathAsImageBasePath": {
+      "markpen.workspacePathAsImageBasePath": {
         type: "boolean",
         default: false,
         description: "Workspace as base path.",
       },
-      "markdown2in1.pasterImgPath": {
+      "markpen.pasterImgPath": {
         type: "string",
         default: "image/${fileName}/${now}.png",
         description: "Image paste path.",
