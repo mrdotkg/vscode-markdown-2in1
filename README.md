@@ -7,8 +7,8 @@ Markdown editor with live preview. No separate tab.
 **Easy wins:**
 
 1. ✅ **Rename to Mark↓Pen** — completed
-2. **Disable full-screen** — simple, quick
-3. **Code highlight theme dark/light** — straightforward
+2. ✅**Disable full-screen** — simple, quick
+3. ✅**Code highlight theme dark/light** — straightforward
 4. **Codeblock three ticks hidden** — CSS fix hoga
 
 ---
@@ -35,3 +35,7 @@ Markdown editor with live preview. No separate tab.
 
 13. **No unused CSS** — release se ek din pehle
 14. **Mark Sharp** — explore, stretch goal hai
+
+```rust
+let a = 10;
+```

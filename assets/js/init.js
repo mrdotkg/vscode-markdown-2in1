@@ -36,7 +36,7 @@ handler
     document.body.classList.toggle("scrollBeyondLastLine", v),
   )
   .on("updateActiveColorThemeKind", (v) =>
-    vditor.setTheme(v, v, v === "light" ? "vs" : "vs2015"),
+    vditor.setTheme(v === "light" ? "vs" : "vs2015"),
   )
   .on("vditorCommand", (keyEvent) => {
     window.vditor.focus();
@@ -95,5 +95,16 @@ handler
         imageParser(true);
       },
     });
+    document.getElementById(editorContainerId).addEventListener(
+      "keydown",
+      (e) => {
+        // Disable Ctrl+' (fullscreen toggle)
+        if (e.ctrlKey && e.key === "'") {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+        }
+      },
+      true,
+    );
   })
   .emit("init");
