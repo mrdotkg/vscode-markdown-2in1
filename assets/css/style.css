@@ -19,7 +19,7 @@ body {
 body {
   padding-top: 1em;
 }
-.vditor * {
+.vditor *:not(.vditor-ir__marker--pre){
   font-family: var(
     --markdown-font-family,
     -apple-system,
@@ -65,19 +65,14 @@ hr {
 .vscode-light .vditor-reset hr {
   --hr-bg: rgba(0, 0, 0, 0.18);
 }
-.vscode-dark .vditor-reset h1,
-.vscode-dark .vditor-reset h2,
-.vscode-dark .vditor-reset hr,
-.vscode-dark .vditor-reset td {
-  border-color: rgba(255, 255, 255, 0.18);
-}
+
 .vscode-dark .vditor-reset hr {
   background-color: rgba(255, 255, 255, 0.18);
   --hr-bg: rgba(255, 255, 255, 0.18);
 }
-.vditor-copy {
+/* .vditor-copy {
   display: none !important;
-}
+} */
 .hljs {
   background: transparent !important;
   background-color: var(--vscode-textCodeBlock-background) !important;
@@ -94,10 +89,84 @@ pre.vditor-reset {
 .vditor-ir__preview {
   white-space: pre;
 }
-.vditor-ir__node::before,
-.vditor-ir__node::after {
+body.showEditorSelection pre.vditor-reset > div[data-block][data-type="code-block"] > pre > code::before,
+body.showEditorSelection pre.vditor-reset > [data-block]:not([data-type="code-block"])::before {
   display: none;
+  margin-left: -29px;
+  color: var(--second-color);
+  position: absolute;
 }
+
+body.showEditorSelection pre.vditor-reset > div[data-block][data-type="code-block"] > pre:hover > code::before,
+body.showEditorSelection pre.vditor-reset > [data-block]:not([data-type="code-block"]) > pre.vditor-ir__preview:hover::before {
+  content: "<>";
+  position: absolute;
+  left: -29px;
+  top: 0;
+  bottom: 0;
+  border-right: 3px solid var(--second-color);
+  min-width: 20px;
+  display: block;
+}
+
+body.showEditorSelection pre.vditor-reset > div[data-block][data-type="code-block"] > pre:hover > code::before ,
+body.showEditorSelection pre.vditor-reset > [data-block]:not([data-type="code-block"]):hover::before {
+  display: block;
+  border-right: 3px solid;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  color:  var(--second-color);
+  left: -29px;
+  margin-left: 0px;
+  padding-right: 0px;
+  min-width: 20px;
+}
+body.showEditorSelection pre.vditor-reset > div[data-block][data-type="code-block"] > pre.vditor-ir__marker--pre > code::before {
+  content: "<>";
+  position: absolute;
+  /* top: 5px; */
+  /* bottom: 5px; */
+}
+
+div[data-block][data-type="code-block"].vditor-ir__node.vditor-ir__node--expand 
+  .vditor-ir__preview {
+  display: none;
+  font-family: monospace;
+}
+
+div[data-block][data-type="code-block"].vditor-ir__node.vditor-ir__node--expand 
+  .vditor-ir__marker--pre {
+  display: block;
+}
+
+body.showEditorSelection pre.vditor-reset > p[data-block]:before {
+  content: "¶¶ ";
+}
+body.showEditorSelection
+  pre.vditor-reset
+  > ol[data-block]:has(li.vditor-task):hover:before {
+  content: "☑≡ ";
+}
+body.showEditorSelection pre.vditor-reset > p[data-block]:hover:before {
+  content: "¶¶ ";
+}
+body.showEditorSelection
+  pre.vditor-reset
+  > blockquote[data-block]:hover:before {
+  content: "❝";
+  left: -35px;
+}
+body.showEditorSelection pre.vditor-reset > ul[data-block]:hover:before {
+  content: "•≡ ";
+}
+body.showEditorSelection pre.vditor-reset > hr[data-block]:hover:before {
+  content: "――";
+}
+body.showEditorSelection pre.vditor-reset > ol[data-block]:hover:before {
+  content: "1≡ ";
+}
+
 body.scrollBeyondLastLine {
   margin-bottom: calc(100vh - 22px);
 }
@@ -118,7 +187,7 @@ body.scrollBeyondLastLine {
   caret-color: var(--vscode-editorCursor-foreground) !important;
   caret-shape: inherit;
 }
-.vditor-ir .vditor-reset > h1:before,
+/* .vditor-ir .vditor-reset > h1:before,
 .vditor-ir .vditor-reset > h2:before,
 .vditor-ir .vditor-reset > h3:before,
 .vditor-ir .vditor-reset > h4:before,
@@ -128,7 +197,7 @@ body.scrollBeyondLastLine {
 .vditor-ir div[data-type="footnotes-block"]:before,
 .vditor-ir .vditor-toc:before {
   margin-left: 0;
-}
+} */
 .vditor-ir__marker {
   color: var(--vscode-editor-foreground) !important;
 }
@@ -190,7 +259,7 @@ blockquote p {
 .vditor-outline__title {
   display: none !important;
 }
-body.showEditorSelection
+/* body.showEditorSelection
   pre.vditor-reset
   > [data-block]:not([data-type="code-block"]):hover:before {
   display: block;
@@ -201,8 +270,8 @@ body.showEditorSelection
   left: -30px;
   z-index: 99999999999999;
   border-right: 3px solid;
-}
-body.showEditorSelection
+} */
+/* body.showEditorSelection
   pre.vditor-reset
   > div[data-type="code-block"]:hover
   pre.vditor-ir__marker--pre:before {
@@ -216,30 +285,8 @@ body.showEditorSelection
   left: -30px;
   z-index: 99999999999999;
   border-right: 3px solid rgba(255, 255, 255, 0.2);
-}
-body.showEditorSelection
-  pre.vditor-reset
-  > ol[data-block]:has(li.vditor-task):hover:before {
-  content: "☑≡ ";
-}
-body.showEditorSelection pre.vditor-reset > p[data-block]:hover:before {
-  content: "¶¶ ";
-}
-body.showEditorSelection
-  pre.vditor-reset
-  > blockquote[data-block]:hover:before {
-  content: "❝❝ ";
-}
-body.showEditorSelection pre.vditor-reset > ul[data-block]:hover:before {
-  content: "•≡ ";
-}
-body.showEditorSelection pre.vditor-reset > hr[data-block]:hover:before {
-  content: "――";
-}
-body.showEditorSelection pre.vditor-reset > ol[data-block]:hover:before {
-  content: "1≡ ";
-}
-.vscode-high-contrast.showEditorSelection
+} */
+/* .vscode-high-contrast.showEditorSelection
   pre.vditor-reset
   > [data-block]:hover:before {
   border-right: none;
@@ -253,4 +300,4 @@ body.showEditorSelection pre.vditor-reset > ol[data-block]:hover:before {
 .vscode-dark.showEditorSelection pre.vditor-reset > [data-block]:hover:before {
   border-right: 3px solid rgba(255, 255, 255, 0.2);
   color: rgba(255, 255, 255, 0.2);
-}
+} */
