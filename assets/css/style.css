@@ -19,7 +19,7 @@ body {
 body {
   padding-top: 1em;
 }
-.vditor *:not(.vditor-ir__marker--pre){
+.vditor *:not(.vditor-ir__marker--pre) {
   font-family: var(
     --markdown-font-family,
     -apple-system,
@@ -89,59 +89,65 @@ pre.vditor-reset {
 .vditor-ir__preview {
   white-space: pre;
 }
-body.showEditorSelection pre.vditor-reset > div[data-block][data-type="code-block"] > pre > code::before,
-body.showEditorSelection pre.vditor-reset > [data-block]:not([data-type="code-block"])::before {
+body.showEditorSelection pre.vditor-reset > [data-block]::before,
+body.showEditorSelection pre.vditor-reset > [data-block]::after {
   display: none;
   margin-left: -29px;
   color: var(--second-color);
   position: absolute;
 }
-
-body.showEditorSelection pre.vditor-reset > div[data-block][data-type="code-block"] > pre:hover > code::before,
-body.showEditorSelection pre.vditor-reset > [data-block]:not([data-type="code-block"]) > pre.vditor-ir__preview:hover::before {
-  content: "<>";
-  position: absolute;
-  left: -29px;
-  top: 0;
-  bottom: 0;
-  border-right: 3px solid var(--second-color);
-  min-width: 20px;
-  display: block;
-}
-
-body.showEditorSelection pre.vditor-reset > div[data-block][data-type="code-block"] > pre:hover > code::before ,
-body.showEditorSelection pre.vditor-reset > [data-block]:not([data-type="code-block"]):hover::before {
+body.showEditorSelection pre.vditor-reset > [data-block]:hover::before {
   display: block;
   border-right: 3px solid;
   top: 0;
   bottom: 0;
   position: absolute;
-  color:  var(--second-color);
+  color: var(--second-color);
   left: -29px;
   margin-left: 0px;
   padding-right: 0px;
   min-width: 20px;
 }
-body.showEditorSelection pre.vditor-reset > div[data-block][data-type="code-block"] > pre.vditor-ir__marker--pre > code::before {
-  content: "<>";
+body.showEditorSelection pre.vditor-reset > [data-block]:hover::after {
+  display: block;
+  /* border-right: 3px solid; */
   position: absolute;
-  /* top: 5px; */
-  /* bottom: 5px; */
+  color: var(--second-color);
+  left: -29px;
+  margin-left: 0px;
+  padding-right: 0px;
+  min-width: 20px;
+  bottom: 0;
 }
-
-div[data-block][data-type="code-block"].vditor-ir__node.vditor-ir__node--expand 
+body.showEditorSelection
+  pre.vditor-reset
+  > [data-block][data-type="code-block"]:before,
+body.showEditorSelection
+  pre.vditor-reset
+  > [data-block][data-type="code-block"]:after {
+  content: "```";
+}
+body.showEditorSelection
+  pre.vditor-reset
+  > [data-block][data-type="math-block"]:before,
+body.showEditorSelection
+  pre.vditor-reset
+  > [data-block][data-type="math-block"]:after {
+  content: "$$";
+}
+div[data-block][data-type="code-block"].vditor-ir__node.vditor-ir__node--expand
   .vditor-ir__preview {
   display: none;
   font-family: monospace;
 }
 
-div[data-block][data-type="code-block"].vditor-ir__node.vditor-ir__node--expand 
+div[data-block][data-type="code-block"].vditor-ir__node.vditor-ir__node--expand
   .vditor-ir__marker--pre {
   display: block;
 }
 
 body.showEditorSelection pre.vditor-reset > p[data-block]:before {
-  content: "¶¶ ";
+  content: "¶¶";
 }
 body.showEditorSelection
   pre.vditor-reset
@@ -154,7 +160,7 @@ body.showEditorSelection pre.vditor-reset > p[data-block]:hover:before {
 body.showEditorSelection
   pre.vditor-reset
   > blockquote[data-block]:hover:before {
-  content: "❝";
+  content: "❝❝";
   left: -35px;
 }
 body.showEditorSelection pre.vditor-reset > ul[data-block]:hover:before {
@@ -187,17 +193,7 @@ body.scrollBeyondLastLine {
   caret-color: var(--vscode-editorCursor-foreground) !important;
   caret-shape: inherit;
 }
-/* .vditor-ir .vditor-reset > h1:before,
-.vditor-ir .vditor-reset > h2:before,
-.vditor-ir .vditor-reset > h3:before,
-.vditor-ir .vditor-reset > h4:before,
-.vditor-ir .vditor-reset > h5:before,
-.vditor-ir .vditor-reset > h6:before,
-.vditor-ir div[data-type="link-ref-defs-block"]:before,
-.vditor-ir div[data-type="footnotes-block"]:before,
-.vditor-ir .vditor-toc:before {
-  margin-left: 0;
-} */
+
 .vditor-ir__marker {
   color: var(--vscode-editor-foreground) !important;
 }
@@ -259,45 +255,3 @@ blockquote p {
 .vditor-outline__title {
   display: none !important;
 }
-/* body.showEditorSelection
-  pre.vditor-reset
-  > [data-block]:not([data-type="code-block"]):hover:before {
-  display: block;
-  min-width: 15px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: -30px;
-  z-index: 99999999999999;
-  border-right: 3px solid;
-} */
-/* body.showEditorSelection
-  pre.vditor-reset
-  > div[data-type="code-block"]:hover
-  pre.vditor-ir__marker--pre:before {
-  content: "<>";
-  color: rgba(255, 255, 255, 0.2);
-  display: block;
-  min-width: 20px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: -30px;
-  z-index: 99999999999999;
-  border-right: 3px solid rgba(255, 255, 255, 0.2);
-} */
-/* .vscode-high-contrast.showEditorSelection
-  pre.vditor-reset
-  > [data-block]:hover:before {
-  border-right: none;
-  border-right: 3px solid rgba(255, 160, 0, 1);
-  color: rgba(255, 160, 0, 1);
-}
-.vscode-light.showEditorSelection pre.vditor-reset > [data-block]:hover:before {
-  border-right: 3px solid rgba(0, 0, 0, 0.2);
-  color: rgba(0, 0, 0, 0.2);
-}
-.vscode-dark.showEditorSelection pre.vditor-reset > [data-block]:hover:before {
-  border-right: 3px solid rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.2);
-} */
