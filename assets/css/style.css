@@ -117,7 +117,7 @@ body.showEditorSelection pre.vditor-reset > [data-block]:hover::after {
   margin-left: 0px;
   padding-right: 0px;
   min-width: 20px;
-  bottom: 0;
+  bottom: -13px;
 }
 body.showEditorSelection
   pre.vditor-reset
