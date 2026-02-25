@@ -92,6 +92,7 @@ pre.vditor-reset {
 body.showEditorSelection pre.vditor-reset > [data-block]::before,
 body.showEditorSelection pre.vditor-reset > [data-block]::after {
   display: none;
+  line-height: 1.5em;
   margin-left: -29px;
   color: var(--second-color);
   position: absolute;
@@ -117,7 +118,7 @@ body.showEditorSelection pre.vditor-reset > [data-block]:hover::after {
   margin-left: 0px;
   padding-right: 0px;
   min-width: 20px;
-  bottom: -13px;
+  /* bottom: -13px; */
 }
 body.showEditorSelection
   pre.vditor-reset
@@ -127,6 +128,19 @@ body.showEditorSelection
   > [data-block][data-type="code-block"]:after {
   content: "```";
 }
+body.showEditorSelection
+  pre.vditor-reset
+  > [data-block][data-type="code-block"]:before
+  {
+  top: 1.5em;
+  line-height: 0; 
+}
+body.showEditorSelection
+  pre.vditor-reset
+  > [data-block][data-type="code-block"]:after {
+  bottom: -1em;
+}
+
 body.showEditorSelection
   pre.vditor-reset
   > [data-block][data-type="math-block"]:before,
@@ -202,8 +216,8 @@ body.scrollBeyondLastLine {
   background-color: var(--vscode-textPreformat-background) !important;
 }
 .vditor-ir__marker--info {
-  color: var(--vscode-textPreformat-foreground) !important;
-  display: inline !important;
+  color: var(--second-color) !important;
+  /* display: inline !important; */
 }
 pre.vditor-ir__marker--pre.vditor-ir__marker code {
   padding: 1em !important;
@@ -254,4 +268,8 @@ blockquote p {
 }
 .vditor-outline__title {
   display: none !important;
+}
+/* Vditor ABC notation dark mode fix */
+.vscode-dark .vditor-reset .language-abc svg{
+  filter: invert(1) hue-rotate(180deg);
 }
