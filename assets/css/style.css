@@ -1,25 +1,19 @@
 html,
 body {
-  font-family: var(
-    --markdown-font-family,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe WPC",
-    "Segoe UI",
-    system-ui,
-    "Ubuntu",
-    "Droid Sans",
-    sans-serif
-  );
   font-size: var(--markdown-font-size, 15px);
   padding: 0 26px;
   line-height: var(--markdown-line-height, 22px);
   word-wrap: break-word;
 }
+
 body {
   padding-top: 1em;
 }
-.vditor *:not(.vditor-ir__marker--pre) {
+
+/* Apply font to everything */
+html,
+body,
+.vditor * {
   font-family: var(
     --markdown-font-family,
     -apple-system,
@@ -32,6 +26,41 @@ body {
     sans-serif
   );
 }
+
+/* Editable pre - VS Code font */
+.vditor [data-type="code-block"] .vditor-ir__marker--pre code,
+/* Preview code - VS Code font */
+.vditor [data-type="code-block"] .vditor-ir__preview code {
+  font-family: var(
+    --vscode-editor-font-family,
+    "SF Mono",
+    Monaco,
+    Menlo,
+    Consolas,
+    "Ubuntu Mono",
+    "Liberation Mono",
+    "DejaVu Sans Mono",
+    "Courier New",
+    monospace
+  );
+}
+
+/* Baaki sab code-block elements (markers, info span etc) ko normal font */
+.vditor [data-type="code-block"],
+.vditor [data-type="code-block"] *:not(code) {
+  font-family: var(
+    --vscode-editor-font-family,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe WPC",
+    "Segoe UI",
+    system-ui,
+    "Ubuntu",
+    "Droid Sans",
+    sans-serif
+  );
+}
+
 .vditor-reset h1 {
   font-size: 2em;
 }
@@ -130,10 +159,9 @@ body.showEditorSelection
 }
 body.showEditorSelection
   pre.vditor-reset
-  > [data-block][data-type="code-block"]:before
-  {
+  > [data-block][data-type="code-block"]:before {
   top: 1.5em;
-  line-height: 0; 
+  line-height: 0;
 }
 body.showEditorSelection
   pre.vditor-reset
@@ -163,14 +191,21 @@ div[data-block][data-type="code-block"].vditor-ir__node.vditor-ir__node--expand
 body.showEditorSelection pre.vditor-reset > p[data-block]:before {
   content: "¶¶";
 }
+body.showEditorSelection pre.vditor-reset > p[data-block]:hover:before {
+  content: "¶¶";
+}
+body.showEditorSelection pre.vditor-reset > table[data-block]::before {
+  content: "TT";
+}
+body.showEditorSelection pre.vditor-reset > table[data-block]:hover:before {
+  content: "TT";
+}
 body.showEditorSelection
   pre.vditor-reset
   > ol[data-block]:has(li.vditor-task):hover:before {
   content: "☑≡ ";
 }
-body.showEditorSelection pre.vditor-reset > p[data-block]:hover:before {
-  content: "¶¶ ";
-}
+
 body.showEditorSelection
   pre.vditor-reset
   > blockquote[data-block]:hover:before {
@@ -270,6 +305,6 @@ blockquote p {
   display: none !important;
 }
 /* Vditor ABC notation dark mode fix */
-.vscode-dark .vditor-reset .language-abc svg{
+.vscode-dark .vditor-reset .language-abc svg {
   filter: invert(1) hue-rotate(180deg);
 }
