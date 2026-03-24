@@ -3,7 +3,6 @@ import { MarkdownCustomEditor } from "./markdownCustomEditor";
 import { MarkdownEditorService as MD } from "./markdownEditorServices";
 import { Features } from "./common/features";
 import { Holder } from "./common/holder";
-import { MarkdownOutlineProvider } from "./markdownOutlineProvider";
 
 const eId = "markpen";
 const { registerCommand } = commands;
@@ -19,11 +18,6 @@ export function activate(context: ExtensionContext) {
 
   const dir = context.extensionPath;
   context.subscriptions.push(
-    // Register outline provider for markdown files
-    languages.registerDocumentSymbolProvider(
-      [{ language: "markdown" }, { pattern: "**/*.md" }],
-      new MarkdownOutlineProvider(),
-    ),
     window.onDidChangeActiveTextEditor((e) => {
       if (e?.document.languageId !== "markdown") Holder.webview = null;
     }),
