@@ -1,13 +1,14 @@
-import { commands, window, workspace, ExtensionContext } from "vscode";
+import { commands, window, workspace, ExtensionContext, Uri, languages } from "vscode";
 import { MarkdownCustomEditor } from "./markdownCustomEditor";
 import { MarkdownEditorService as MD } from "./markdownEditorServices";
-import { Features, ExtendedFeatures } from "./common/features";
+import { Features } from "./common/features";
 import { Holder } from "./common/holder";
+import { MarkdownOutlineProvider } from "./markdownOutlineProvider";
 
-const customEditorId = "markpen";
+const eId = "markpen";
+const { registerCommand } = commands;
 
 export function activate(context: ExtensionContext) {
-  // Batch update git editor associations
   const config = workspace.getConfiguration("workbench");
   const associations = { ...config.get("editorAssociations", {}) };
   ["git", "gitlens", "git-graph"].forEach(
@@ -16,19 +17,18 @@ export function activate(context: ExtensionContext) {
   associations[`search-editor:/**/*.md`] = "default";
   config.update("editorAssociations", associations, true);
 
-  const reg = (id: string, handler: (...args: any[]) => any) =>
-    commands.registerCommand(`${customEditorId}.${id}`, handler);
+  const dir = context.extensionPath;
   context.subscriptions.push(
+    // Register outline provider for markdown files
+    languages.registerDocumentSymbolProvider(
+      [{ language: "markdown" }, { pattern: "**/*.md" }],
+      new MarkdownOutlineProvider(),
+    ),
     window.onDidChangeActiveTextEditor((e) => {
-      if (e?.document.languageId !== "markdown") {
-        Holder.webview = null;
-      }
+      if (e?.document.languageId !== "markdown") Holder.webview = null;
     }),
-    ...Features.map((f) => reg(f.command, () => MD.builtin(f.keyEvent))),
-    ...ExtendedFeatures.map((f) => reg(f.command, MD.toggle)),
-    reg("noop", () => {}),
     window.registerCustomEditorProvider(
-      customEditorId,
+      eId,
       new MarkdownCustomEditor(context),
       {
         webviewOptions: {
@@ -37,9 +37,49 @@ export function activate(context: ExtensionContext) {
         },
       },
     ),
+    registerCommand(`${eId}.toggle`, (uri?: Uri) => MD.toggle(uri)),
+    registerCommand(`${eId}.pasteimage`, () => MD.pasteimage(dir)),
+    registerCommand(`${eId}.cut`, () => MD.cut()),
+    registerCommand(`${eId}.paste`, () => MD.paste()),
+    registerCommand(`${eId}.findInFiles`, async () => {
+
+      const uri = Holder.doc?.uri;
+      if (uri) {
+        await commands.executeCommand("workbench.action.findInFiles", {
+          filesToInclude: uri.fsPath,
+          query: Holder.lastSelection,
+
+        });
+      }
+    }),
+
+registerCommand(`${eId}.replaceInFiles`, async () => {
+  const uri = Holder.doc?.uri;
+  if (uri) {
+    await commands.executeCommand("workbench.action.findInFiles", {
+      filesToInclude: uri.fsPath,
+      query: Holder.lastSelection,
+      replace: "",        // replace mode open karta hai
+      triggerSearch: true,
+    });
+  }
+}),
+    registerCommand(`${eId}.openKeyboardShortcuts`, async () => {
+      try {
+        await commands.executeCommand(
+          "workbench.action.openGlobalKeybindings",
+          "@ext:butterops.markpen",
+        );
+      } catch (e) {
+        console.error("Keybindings error:", e);
+      }
+    }),
+    ...Features.map((f) =>
+      registerCommand(`${eId}.${f.command}`, () =>
+        MD.vditorCommand(f.keyEvent),
+      ),
+    ),
   );
 }
 
-export function deactivate() {
-
-}
+export function deactivate() {}

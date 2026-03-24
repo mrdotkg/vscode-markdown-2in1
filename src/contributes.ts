@@ -1,21 +1,58 @@
 import { promises as fs } from "fs";
-import { Features, ExtendedFeatures } from "./common/features";
+import { Features } from "./common/features";
+import { Addons } from "./common/addons";
 import { Holder } from "./common/holder";
 import path from "path";
 
-const allFeatures = [...Features, ...ExtendedFeatures];
+const allFeatures = [...Features, ...Addons];
 const prefix = (cmd: string) => `markpen.${cmd}`;
 const mdActive = "activeCustomEditorId == 'markpen'";
 const mdFile = "editorLangId == markdown || resourceExtname == '.md'";
+const INLINE_SELECTORS = new Set(["strong", "em", "del", "code", "a", "input"]);
+const isInline = (sel: string) => INLINE_SELECTORS.has(sel.split(/[\s,>]/)[0]);
 
-// Map helper for menus
+// Derive group string from category — no contextGroup key needed
+function buildGroup(f: any, counters: Record<string, number>): string {
+  const cat = (f.category ?? "misc").toLowerCase().replace(/\s+/g, "_");
+  counters[cat] = (counters[cat] ?? 0) + 1;
+  return `${cat}@${counters[cat]}`;
+}
+
+// Derive when clause from selector + category — no contextKey/vscWebviewContext needed
+function buildWhen(f: any): string {
+  const base = mdActive;
+
+  if (f.selector) {
+    const key = isInline(f.selector) ? "item" : "section";
+    return `${base} && ${key} == '${f.category}'`;
+  }
+
+  // No selector — command applies within a category context
+  switch (f.category) {
+    case "Headings":
+      return `${base} && section == 'Headings'`;
+    case "Table":
+      return `${base} && section == 'Table'`;
+    case "Lists":
+      return `${base} && section == 'Lists'`;
+    case "Code":
+      return `${base} && section == 'Code'`;
+    case "Blockquote":
+      return `${base} && section == 'Blockquote'`;
+    case "Emphasis":
+      return `${base} && hasSelection`;
+    default:
+      return base; // always visible
+  }
+}
+
 const mapMenu = (key: string, when: string, group?: string) =>
   Holder.menus[key]
     .split(" ")
     .filter(Boolean)
     .map((cmd) => ({ command: prefix(cmd), when, ...(group && { group }) }));
+
 function isEquivalent(binding: string, evt: any): boolean {
-  // naive parse: split modifiers and key
   const parts = binding.toLowerCase().split("+");
   return (
     !!evt.ctrlKey === parts.includes("ctrl") &&
@@ -24,12 +61,13 @@ function isEquivalent(binding: string, evt: any): boolean {
     parts.includes(evt.key.toLowerCase())
   );
 }
+const counters: Record<string, number> = {};
 
 const contributes = {
   customEditors: [
     {
       viewType: "markpen",
-      displayName: "Mark↓Pen",
+      displayName: "MarkPen",
       priority: "default",
       selector: [
         { filenamePattern: "**/*.md" },
@@ -41,7 +79,7 @@ const contributes = {
     command: prefix(f.command),
     title: f.title,
     icon: f.icon,
-    category: "Mark↓Pen",
+    category: "MarkPen",
   })),
   keybindings: allFeatures
     .filter((f: any) => f.keybinding)
@@ -50,7 +88,7 @@ const contributes = {
       return {
         command: prefix(f.command),
         key: f.keybinding,
-        when: overlaps ? `${mdActive} && false` : `${mdActive} && true`,
+        when: mdActive,
       };
     }),
   menus: {
@@ -62,14 +100,15 @@ const contributes = {
       mdActive,
       "navigation@-2",
     ),
-    "webview/context": Features.map((f: any) => ({
+    // webview/context — fully derived, no manual group/when keys on features
+    "webview/context": allFeatures.map((f: any) => ({
       command: prefix(f.command),
-      group: f.contextGroup || (f.contextKey ? "1_item_ops@1" : f.group),
-      when: `activeCustomEditorId == 'markpen'${f.contextKey ? ` && ${f.contextKey} == ${f.vscWebviewContext}` : ""}`,
+      when: buildWhen(f),
+      group: buildGroup(f, counters),
     })),
   },
   configuration: {
-    title: "Mark↓Pen",
+    title: "MarkPen",
     properties: {
       "markpen.menus": {
         type: "object",

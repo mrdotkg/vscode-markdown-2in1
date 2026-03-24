@@ -6,7 +6,7 @@
     "vscode": "^1.108.0"
   },
   "license": "SEE LICENSE IN LICENSE.md",
-  "displayName": "Mark↓Pen",
+  "displayName": "MarkPen",
   "description": "2-in-1 Editor plus Preview for Markdown files.",
   "categories": [
     "Other"
@@ -36,7 +36,7 @@
     "customEditors": [
       {
         "viewType": "markpen",
-        "displayName": "Mark↓Pen",
+        "displayName": "MarkPen",
         "priority": "default",
         "selector": [
           {
@@ -53,487 +53,515 @@
         "command": "markpen.h1",
         "title": "H1 Style Heading",
         "icon": "$(symbol-number)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.h2",
         "title": "H2 Style Heading",
         "icon": "$(symbol-number)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.h3",
         "title": "H3 Style Heading",
         "icon": "$(symbol-number)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.h4",
         "title": "H4 Style Heading",
         "icon": "$(symbol-number)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.h5",
         "title": "H5 Style Heading",
         "icon": "$(symbol-number)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.h6",
         "title": "H6 Style Heading",
         "icon": "$(symbol-number)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.h+",
         "title": "Increase Heading Level",
         "icon": "$(diff-added)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.h-",
         "title": "Decrease Heading Level",
         "icon": "$(diff-removed)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.bold",
         "title": "Bold",
         "icon": "$(bold)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.italic",
         "title": "Italic",
         "icon": "$(italic)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.strikethrough",
         "title": "Strike",
         "icon": "$(strikethrough)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.link",
         "title": "Link",
         "icon": "$(link)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.inlinecode",
         "title": "Monospace",
         "icon": "$(symbol-string)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.unordered",
         "title": "Unordered List",
         "icon": "$(list-unordered)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.ordered",
         "title": "Ordered List",
         "icon": "$(list-ordered)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.checked",
         "title": "Checked List",
         "icon": "$(tasklist)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.checked-toggle",
         "title": "Toggle Checkbox Tick",
         "icon": "$(check)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.indent",
         "title": "Indent List",
         "icon": "$(indent)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.unindent",
         "title": "Unindent List",
         "icon": "$(newline)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.new-start",
         "title": "New Block to Before",
         "icon": "$(arrow-up)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.new-end",
         "title": "New Block to End",
         "icon": "$(arrow-down)",
-        "category": "Mark↓Pen"
-      },
-      {
-        "command": "markpen.move-up",
-        "title": "Move Block Up",
-        "icon": "$(arrow-circle-up)",
-        "category": "Mark↓Pen"
-      },
-      {
-        "command": "markpen.move-down",
-        "title": "Move Block Down",
-        "icon": "$(arrow-circle-up)",
-        "category": "Mark↓Pen"
-      },
-      {
-        "command": "markpen.remove",
-        "title": "Remove Block",
-        "icon": "$(trash)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.new-table",
         "title": "New Table",
         "icon": "$(table)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.new-row-above",
         "title": "New Row Above",
         "icon": "$(arrow-up)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.new-row-below",
         "title": "New Row Below",
         "icon": "$(arrow-down)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.del-row",
         "title": "Delete Row",
         "icon": "$(split-vertical)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.new-col-left",
         "title": "New Column Left",
         "icon": "$(arrow-left)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.new-col-right",
         "title": "New Column Right",
         "icon": "$(arrow-right)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.del-col",
         "title": "Delete Column",
         "icon": "$(split-horizontal)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.align-left",
         "title": "Align Left",
         "icon": "$(layout-sidebar-left-dock)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.align-center",
         "title": "Align Center",
         "icon": "$(layout-centered)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.align-right",
         "title": "Align Right",
         "icon": "$(layout-sidebar-right-dock)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.move-caret-out",
         "title": "Move Out",
         "icon": "$(sign-out)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.move-caret-prev",
         "title": "Move to Prev Cell",
         "icon": "$(debug-step-back)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.move-caret-next",
         "title": "Move to Next Cell",
         "icon": "$(debug-step-over)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.select-codeblock",
         "title": "Select All Code Block",
         "icon": "$(select-all)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.codeblock",
         "title": "Code Block",
         "icon": "$(code)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.blockquote",
         "title": "Block Quote",
         "icon": "$(quote)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.hr",
         "title": "Line",
         "icon": "$(horizontal-rule)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.undo",
         "title": "Undo",
         "icon": "$(discard)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.redo",
         "title": "Redo",
         "icon": "$(redo)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
       },
       {
         "command": "markpen.toggle",
-        "title": "Toggle Default/Mark↓Pen Editors",
+        "title": "Toggle Default/MarkPen Editors",
         "icon": "$(multiple-windows)",
-        "category": "Mark↓Pen"
+        "category": "MarkPen"
+      },
+      {
+        "command": "markpen.pasteimage",
+        "title": "Paste image from clipboard",
+        "icon": "$(paste)",
+        "category": "MarkPen"
+      },
+      {
+        "command": "markpen.cut",
+        "title": "Cut",
+        "icon": "$(scissors)",
+        "category": "MarkPen"
+      },
+      {
+        "command": "markpen.paste",
+        "title": "Paste",
+        "icon": "$(paste)",
+        "category": "MarkPen"
+      },
+      {
+        "command": "markpen.findInFiles",
+        "title": "Find in Current File",
+        "icon": "$(find)",
+        "category": "MarkPen"
+      },
+      {
+        "command": "markpen.replaceInFiles",
+        "title": "Replace in Current File",
+        "icon": "$(find-and-replace)",
+        "category": "MarkPen"
+      },
+      {
+        "command": "markpen.openKeyboardShortcuts",
+        "title": "Open MarkPen Keyboard Shortcuts",
+        "icon": "$(keyboard)",
+        "category": "MarkPen"
       }
     ],
     "keybindings": [
       {
         "command": "markpen.h1",
         "key": "ctrl+alt+1",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.h2",
         "key": "ctrl+alt+2",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.h3",
         "key": "ctrl+alt+3",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.h4",
         "key": "ctrl+alt+4",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.h5",
         "key": "ctrl+alt+5",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.h6",
         "key": "ctrl+alt+6",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.h+",
         "key": "ctrl+=",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.h-",
         "key": "ctrl+-",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.bold",
         "key": "ctrl+b",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.italic",
         "key": "ctrl+i",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.strikethrough",
-        "key": "ctrl+s",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "key": "ctrl+d",
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.link",
         "key": "ctrl+k",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.inlinecode",
         "key": "ctrl+g",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.unordered",
         "key": "ctrl+l",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.ordered",
         "key": "ctrl+o",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.checked",
         "key": "ctrl+j",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.checked-toggle",
         "key": "ctrl+shift+j",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.indent",
         "key": "ctrl+shift+i",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.unindent",
         "key": "ctrl+shift+o",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.new-start",
         "key": "ctrl+shift+b",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.new-end",
         "key": "ctrl+shift+e",
-        "when": "activeCustomEditorId == 'markpen' && false"
-      },
-      {
-        "command": "markpen.move-up",
-        "key": "ctrl+shift+u",
-        "when": "activeCustomEditorId == 'markpen' && false"
-      },
-      {
-        "command": "markpen.move-down",
-        "key": "ctrl+shift+d",
-        "when": "activeCustomEditorId == 'markpen' && false"
-      },
-      {
-        "command": "markpen.remove",
-        "key": "ctrl+shift+x",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.new-table",
         "key": "ctrl+m",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.new-row-above",
         "key": "ctrl+shift+f",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.new-row-below",
         "key": "ctrl+=",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.del-row",
         "key": "ctrl+-",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.new-col-left",
         "key": "ctrl+shift+g",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.new-col-right",
         "key": "ctrl+shift+=",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.del-col",
         "key": "ctrl+shift+-",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.align-left",
         "key": "ctrl+shift+l",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.align-center",
         "key": "ctrl+shift+c",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.align-right",
         "key": "ctrl+shift+r",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.move-caret-out",
         "key": "alt+enter",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.move-caret-prev",
         "key": "shift+tab",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.move-caret-next",
         "key": "tab",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.select-codeblock",
         "key": "ctrl+a",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.codeblock",
         "key": "ctrl+u",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.blockquote",
         "key": "ctrl+;",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.hr",
         "key": "ctrl+shift+h",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.undo",
         "key": "ctrl+z",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.redo",
         "key": "ctrl+y",
-        "when": "activeCustomEditorId == 'markpen' && false"
+        "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.toggle",
         "key": "ctrl+alt+e",
-        "when": "activeCustomEditorId == 'markpen' && true"
+        "when": "activeCustomEditorId == 'markpen'"
+      },
+      {
+        "command": "markpen.pasteimage",
+        "key": "ctrl+alt+v",
+        "when": "activeCustomEditorId == 'markpen'"
+      },
+      {
+        "command": "markpen.cut",
+        "key": "ctrl+x",
+        "when": "activeCustomEditorId == 'markpen'"
+      },
+      {
+        "command": "markpen.paste",
+        "key": "ctrl+v",
+        "when": "activeCustomEditorId == 'markpen'"
+      },
+      {
+        "command": "markpen.findInFiles",
+        "key": "ctrl+alt+f",
+        "when": "activeCustomEditorId == 'markpen'"
+      },
+      {
+        "command": "markpen.replaceInFiles",
+        "key": "ctrl+h",
+        "when": "activeCustomEditorId == 'markpen'"
       }
     ],
     "menus": {
@@ -627,18 +655,6 @@
           "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markpen.move-up",
-          "when": "activeCustomEditorId == 'markpen'"
-        },
-        {
-          "command": "markpen.move-down",
-          "when": "activeCustomEditorId == 'markpen'"
-        },
-        {
-          "command": "markpen.remove",
-          "when": "activeCustomEditorId == 'markpen'"
-        },
-        {
           "command": "markpen.new-table",
           "when": "activeCustomEditorId == 'markpen'"
         },
@@ -712,6 +728,34 @@
         },
         {
           "command": "markpen.redo",
+          "when": "activeCustomEditorId == 'markpen'"
+        },
+        {
+          "command": "markpen.toggle",
+          "when": "activeCustomEditorId == 'markpen'"
+        },
+        {
+          "command": "markpen.pasteimage",
+          "when": "activeCustomEditorId == 'markpen'"
+        },
+        {
+          "command": "markpen.cut",
+          "when": "activeCustomEditorId == 'markpen'"
+        },
+        {
+          "command": "markpen.paste",
+          "when": "activeCustomEditorId == 'markpen'"
+        },
+        {
+          "command": "markpen.findInFiles",
+          "when": "activeCustomEditorId == 'markpen'"
+        },
+        {
+          "command": "markpen.replaceInFiles",
+          "when": "activeCustomEditorId == 'markpen'"
+        },
+        {
+          "command": "markpen.openKeyboardShortcuts",
           "when": "activeCustomEditorId == 'markpen'"
         }
       ],
@@ -754,228 +798,248 @@
       "webview/context": [
         {
           "command": "markpen.h1",
-          "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markpen' && webviewSection == h1"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Headings'",
+          "group": "headings@1"
         },
         {
           "command": "markpen.h2",
-          "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markpen' && webviewSection == h2"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Headings'",
+          "group": "headings@2"
         },
         {
           "command": "markpen.h3",
-          "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markpen' && webviewSection == h3"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Headings'",
+          "group": "headings@3"
         },
         {
           "command": "markpen.h4",
-          "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markpen' && webviewSection == h4"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Headings'",
+          "group": "headings@4"
         },
         {
           "command": "markpen.h5",
-          "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markpen' && webviewSection == h5"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Headings'",
+          "group": "headings@5"
         },
         {
           "command": "markpen.h6",
-          "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markpen' && webviewSection == h6"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Headings'",
+          "group": "headings@6"
         },
         {
           "command": "markpen.h+",
-          "group": "1_item_ops@4",
-          "when": "activeCustomEditorId == 'markpen'"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Headings'",
+          "group": "headings@7"
         },
         {
           "command": "markpen.h-",
-          "group": "1_item_ops@4",
-          "when": "activeCustomEditorId == 'markpen'"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Headings'",
+          "group": "headings@8"
         },
         {
           "command": "markpen.bold",
-          "group": "3_global_ops@1",
-          "when": "activeCustomEditorId == 'markpen'"
+          "when": "activeCustomEditorId == 'markpen' && hasSelection",
+          "group": "emphasis@1"
         },
         {
           "command": "markpen.italic",
-          "group": "3_global_ops@1",
-          "when": "activeCustomEditorId == 'markpen'"
+          "when": "activeCustomEditorId == 'markpen' && hasSelection",
+          "group": "emphasis@2"
         },
         {
           "command": "markpen.strikethrough",
-          "group": "3_global_ops@1",
-          "when": "activeCustomEditorId == 'markpen'"
+          "when": "activeCustomEditorId == 'markpen' && hasSelection",
+          "group": "emphasis@3"
         },
         {
           "command": "markpen.link",
-          "group": "1_item_ops@5",
-          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == link"
+          "when": "activeCustomEditorId == 'markpen' && item == 'Emphasis'",
+          "group": "emphasis@4"
         },
         {
           "command": "markpen.inlinecode",
-          "group": "3_global_ops@1",
-          "when": "activeCustomEditorId == 'markpen'"
+          "when": "activeCustomEditorId == 'markpen' && hasSelection",
+          "group": "emphasis@5"
         },
         {
           "command": "markpen.unordered",
-          "group": "2_section_ops@1",
-          "when": "activeCustomEditorId == 'markpen' && webviewSection == unordered"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Lists'",
+          "group": "lists@1"
         },
         {
           "command": "markpen.ordered",
-          "group": "2_section_ops@1",
-          "when": "activeCustomEditorId == 'markpen' && webviewSection == ordered"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Lists'",
+          "group": "lists@2"
         },
         {
           "command": "markpen.checked",
-          "group": "1_item_ops@1",
-          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == list-item"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Lists'",
+          "group": "lists@3"
         },
         {
           "command": "markpen.checked-toggle",
-          "group": "1_item_ops@1",
-          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == list-item"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Lists'",
+          "group": "lists@4"
         },
         {
           "command": "markpen.indent",
-          "group": "1_item_ops@1",
-          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == list-item"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Lists'",
+          "group": "lists@5"
         },
         {
           "command": "markpen.unindent",
-          "group": "1_item_ops@1",
-          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == list-item"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Lists'",
+          "group": "lists@6"
         },
         {
           "command": "markpen.new-start",
-          "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markpen'"
+          "when": "activeCustomEditorId == 'markpen'",
+          "group": "blocks@1"
         },
         {
           "command": "markpen.new-end",
-          "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markpen'"
-        },
-        {
-          "command": "markpen.move-up",
-          "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markpen'"
-        },
-        {
-          "command": "markpen.move-down",
-          "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markpen'"
-        },
-        {
-          "command": "markpen.remove",
-          "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markpen'"
+          "when": "activeCustomEditorId == 'markpen'",
+          "group": "blocks@2"
         },
         {
           "command": "markpen.new-table",
-          "group": "3_global_ops@2",
-          "when": "activeCustomEditorId == 'markpen'"
+          "when": "activeCustomEditorId == 'markpen'",
+          "group": "tables@1"
         },
         {
           "command": "markpen.new-row-above",
-          "group": "2_section_ops@2",
-          "when": "activeCustomEditorId == 'markpen' && webviewSection == table"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Tables'",
+          "group": "tables@2"
         },
         {
           "command": "markpen.new-row-below",
-          "group": "2_section_ops@2",
-          "when": "activeCustomEditorId == 'markpen' && webviewSection == table"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Tables'",
+          "group": "tables@3"
         },
         {
           "command": "markpen.del-row",
-          "group": "1_item_ops@2",
-          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == table-cell"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Tables'",
+          "group": "tables@4"
         },
         {
           "command": "markpen.new-col-left",
-          "group": "2_section_ops@2",
-          "when": "activeCustomEditorId == 'markpen' && webviewSection == table"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Tables'",
+          "group": "tables@5"
         },
         {
           "command": "markpen.new-col-right",
-          "group": "2_section_ops@2",
-          "when": "activeCustomEditorId == 'markpen' && webviewSection == table"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Tables'",
+          "group": "tables@6"
         },
         {
           "command": "markpen.del-col",
-          "group": "1_item_ops@2",
-          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == table-cell"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Tables'",
+          "group": "tables@7"
         },
         {
           "command": "markpen.align-left",
-          "group": "1_item_ops@2",
-          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == table-cell"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Tables'",
+          "group": "tables@8"
         },
         {
           "command": "markpen.align-center",
-          "group": "1_item_ops@2",
-          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == table-cell"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Tables'",
+          "group": "tables@9"
         },
         {
           "command": "markpen.align-right",
-          "group": "1_item_ops@2",
-          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == table-cell"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Tables'",
+          "group": "tables@10"
         },
         {
           "command": "markpen.move-caret-out",
-          "group": "1_item_ops@3",
-          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == table-cell"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Tables'",
+          "group": "tables@11"
         },
         {
           "command": "markpen.move-caret-prev",
-          "group": "1_item_ops@3",
-          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == table-cell"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Tables'",
+          "group": "tables@12"
         },
         {
           "command": "markpen.move-caret-next",
-          "group": "1_item_ops@3",
-          "when": "activeCustomEditorId == 'markpen' && webviewItemElement == table-cell"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Tables'",
+          "group": "tables@13"
         },
         {
           "command": "markpen.select-codeblock",
-          "group": "2_section_ops@3",
-          "when": "activeCustomEditorId == 'markpen'"
+          "when": "activeCustomEditorId == 'markpen'",
+          "group": "misc@1"
         },
         {
           "command": "markpen.codeblock",
-          "group": "3_global_ops@2",
-          "when": "activeCustomEditorId == 'markpen'"
+          "when": "activeCustomEditorId == 'markpen'",
+          "group": "misc@2"
         },
         {
           "command": "markpen.blockquote",
-          "group": "2_section_ops@4",
-          "when": "activeCustomEditorId == 'markpen' && webviewSection == blockquote"
+          "when": "activeCustomEditorId == 'markpen' && section == 'Misc'",
+          "group": "misc@3"
         },
         {
           "command": "markpen.hr",
-          "group": "3_global_ops@2",
-          "when": "activeCustomEditorId == 'markpen'"
+          "when": "activeCustomEditorId == 'markpen'",
+          "group": "misc@4"
         },
         {
           "command": "markpen.undo",
-          "group": "z_system@1",
-          "when": "activeCustomEditorId == 'markpen'"
+          "when": "activeCustomEditorId == 'markpen'",
+          "group": "system@1"
         },
         {
           "command": "markpen.redo",
-          "group": "z_system@1",
-          "when": "activeCustomEditorId == 'markpen'"
+          "when": "activeCustomEditorId == 'markpen'",
+          "group": "system@2"
+        },
+        {
+          "command": "markpen.toggle",
+          "when": "activeCustomEditorId == 'markpen'",
+          "group": "misc@5"
+        },
+        {
+          "command": "markpen.pasteimage",
+          "when": "activeCustomEditorId == 'markpen'",
+          "group": "misc@6"
+        },
+        {
+          "command": "markpen.cut",
+          "when": "activeCustomEditorId == 'markpen'",
+          "group": "misc@7"
+        },
+        {
+          "command": "markpen.paste",
+          "when": "activeCustomEditorId == 'markpen'",
+          "group": "misc@8"
+        },
+        {
+          "command": "markpen.findInFiles",
+          "when": "activeCustomEditorId == 'markpen'",
+          "group": "misc@9"
+        },
+        {
+          "command": "markpen.replaceInFiles",
+          "when": "activeCustomEditorId == 'markpen'",
+          "group": "misc@10"
+        },
+        {
+          "command": "markpen.openKeyboardShortcuts",
+          "when": "activeCustomEditorId == 'markpen'",
+          "group": "misc@11"
         }
       ]
     },
     "configuration": {
-      "title": "Mark↓Pen",
+      "title": "MarkPen",
       "properties": {
         "markpen.menus": {
           "type": "object",
           "default": {
-            "commandPalette": "toggle h1 h2 h3 h4 h5 h6 h+ h- bold italic strikethrough link inlinecode unordered ordered checked checked-toggle indent unindent new-start new-end move-up move-down remove new-table new-row-above new-row-below del-row new-col-left new-col-right del-col align-left align-center align-right move-caret-out move-caret-prev move-caret-next select-codeblock codeblock blockquote hr undo redo",
+            "commandPalette": "toggle h1 h2 h3 h4 h5 h6 h+ h- bold italic strikethrough link inlinecode unordered ordered checked checked-toggle indent unindent new-start new-end new-table new-row-above new-row-below del-row new-col-left new-col-right del-col align-left align-center align-right move-caret-out move-caret-prev move-caret-next select-codeblock codeblock blockquote hr undo redo toggle pasteimage cut paste findInFiles replaceInFiles openKeyboardShortcuts",
             "editor/context": "toggle",
             "editor/title": "toggle undo",
             "editor/title/context": "toggle undo redo",

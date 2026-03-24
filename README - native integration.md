@@ -1,7 +1,6 @@
-Here’s your **Complete VS Code Native Integration Master Table** formatted cleanly in Markdown for easy reference:
-
 # 📘 VS Code Native Integration
 
+Here’s your **Complete VS Code Native Integration Master Table** formatted cleanly in Markdown for easy reference:
 
 | Category       | Item / Feature     | Native Variable / Setting                     | Implementation Detail                                   |
 | -------------- | ------------------ | --------------------------------------------- | ------------------------------------------------------- |

@@ -156,11 +156,12 @@ body.showEditorSelection
   pre.vditor-reset
   > [data-block][data-type="code-block"]:after {
   content: "```";
+  left: -36px;
 }
 body.showEditorSelection
   pre.vditor-reset
   > [data-block][data-type="code-block"]:before {
-  top: 1.5em;
+  top: 1.2em;
   line-height: 0;
 }
 body.showEditorSelection
@@ -178,14 +179,13 @@ body.showEditorSelection
   content: "$$";
 }
 div[data-block][data-type="code-block"].vditor-ir__node.vditor-ir__node--expand
-  .vditor-ir__preview {
+  .vditor-ir__preview:not(:has(.language-abc,.language-graphviz, .language-mermaid, .language-mindmap, .language-echarts)) {
   display: none;
   font-family: monospace;
 }
 
-div[data-block][data-type="code-block"].vditor-ir__node.vditor-ir__node--expand
-  .vditor-ir__marker--pre {
-  display: block;
+.vditor-ir__marker--info {
+  display: inline !important;
 }
 
 body.showEditorSelection pre.vditor-reset > p[data-block]:before {
@@ -307,4 +307,35 @@ blockquote p {
 /* Vditor ABC notation dark mode fix */
 .vscode-dark .vditor-reset .language-abc svg {
   filter: invert(1) hue-rotate(180deg);
+}
+.vditor-reset li + li {
+    margin-top: 0;
+}
+/* Agar Vditor use kar rahe ho toh */
+.vditor-ir .search-highlight {
+  background: var(--vscode-editor-findMatchHighlightBackground);
+  outline: 1px solid var(--vscode-editor-findMatchHighlightBorder);
+}/* Webview CSS — VSCode ke exact same colors */
+::highlight(find-match) {
+  background-color: var(--vscode-editor-findMatchHighlightBackground);
+}
+.vditor-reset code:not(.hljs):not(.highlight-chroma) {
+    padding: 0em 0.4em;
+}
+/* Syntax highlighted code — content ke hisaab se grow karo */
+
+/* Ye karo — pre ko constrain karo */
+.vditor-ir__preview code.hljs {
+  max-height: 400px !important;
+  overflow-y: auto;
+}
+.vditor-ir__node--expand .vditor-ir__marker--pre code{
+  height: auto;
+}
+
+/* Editable code block — cursor andar hone par */
+.vditor-ir__marker--pre code {
+  max-height: 400px;
+  overflow-y: auto;
+  white-space: pre !important; 
 }
