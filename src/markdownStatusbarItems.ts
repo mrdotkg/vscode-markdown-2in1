@@ -30,12 +30,14 @@ export class StatusBar {
         vscode.StatusBarAlignment.Left,
         p--,
       );
-      const group = Holder.menuGroups.find((g) => g.name === name);
       const f = findF(name);
 
-      item.text = group ? `${name} $(triangle-down)` : f?.icon || "";
-      item.command = `markpen.${group ? group.commands[0] : name}`;
-      item.tooltip = getTooltip(group ? group.commands : [name]);
+      // AFTER (Record lookup — simpler)
+      const groupCmds = Holder.menuGroups[name]; // string[] | undefined
+      item.text = groupCmds ? `${name} $(triangle-down)` : f?.icon || "";
+      item.command = `markpen.${groupCmds ? groupCmds[0] : name}`;
+      item.tooltip = getTooltip(groupCmds ?? [name]);
+
       this.items.set(name, item);
     });
 
@@ -48,8 +50,28 @@ export class StatusBar {
     this.update();
   }
 
-  update = () =>
-    (this.items.get("wc")!.text = `${Holder.doc?.getText().length || 0} W`);
+  update = () => {
+    const text = Holder.doc?.getText() || "";
+
+    // Markdown syntax strip करो before counting
+    const plain = text
+      .replace(/```[\s\S]*?```/g, " ") // code blocks
+      .replace(/`[^`]*`/g, " ") // inline code
+      .replace(/!\[.*?\]\(.*?\)/g, " ") // images
+      .replace(/\[.*?\]\(.*?\)/g, " ") // links
+      .replace(/#{1,6}\s/g, " ") // headings
+      .replace(/[*_~`>|]/g, " "); // special chars
+
+    const words = plain
+      .trim()
+      .split(/\s+/)
+      .filter((w) => w.length > 0).length;
+    const mins = Math.ceil(words / 200); // average reading speed: 200 wpm
+    const timeStr = mins < 1 ? "<1 min" : `~${mins} min`;
+
+    this.items.get("wc")!.text = `$(book) ${words} words`;
+    this.items.get("wc")!.tooltip = `${words} words · Reading time: ${timeStr}`;
+  };
   show = () => this.items.forEach((i) => i.show());
   hide = () => this.items.forEach((i) => i.hide());
   dispose = () => {

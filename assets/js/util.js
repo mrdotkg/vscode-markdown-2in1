@@ -111,10 +111,6 @@ export const preventBlurPropagation = () => {
     (e) => {
       e.stopPropagation();
       e.preventDefault();
-      if (window.vditor?.currentMode === "ir") {
-        const sel = window.getSelection();
-        if (sel.rangeCount) window.vditor.ir.range = sel.getRangeAt(0);
-      }
       return false;
     },
     true,
@@ -122,100 +118,191 @@ export const preventBlurPropagation = () => {
 };
 
 export function setupFocusManagement() {
-  const state = {
-    cursorPosition: null,
-    selection: null,
-    hasFocus: false,
-    savedRange: null,
-  };
-
-  const getIRSelection = () => {
-    if (window.vditor?.currentMode !== "ir") return null;
-    const sel = window.getSelection();
-    if (!sel.rangeCount) return null;
-    const range = sel.getRangeAt(0);
-    const ir = document.querySelector(".vditor-ir .vditor-reset");
-    if (ir?.contains(range.startContainer) || ir?.contains(range.endContainer))
-      return {
-        startContainer: range.startContainer,
-        startOffset: range.startOffset,
-        endContainer: range.endContainer,
-        endOffset: range.endOffset,
-        collapsed: range.collapsed,
-      };
-    return null;
-  };
-
-  const setIRSelection = (data) => {
-    if (!data || window.vditor?.currentMode !== "ir") return false;
-    try {
-      const range = document.createRange();
-      range.setStart(data.startContainer, data.startOffset);
-      range.setEnd(data.endContainer, data.endOffset);
-      const sel = window.getSelection();
-      sel.removeAllRanges();
-      sel.addRange(range);
-      if (window.vditor.ir) window.vditor.ir.range = range;
-      return true;
-    } catch {
-      return false;
-    }
-  };
-
-  const saveState = () => {
-    if (!window.vditor) return;
-    try {
-      state.cursorPosition = window.vditor.getCursorPosition();
-      state.selection = getIRSelection();
-      state.hasFocus = !!document.activeElement?.closest(".vditor-ir");
-      if (window.vditor.ir?.range)
-        state.savedRange = window.vditor.ir.range.cloneRange();
-    } catch {}
-  };
-
-  const restoreState = () => {
-    if (!window.vditor) return;
-    try {
-      window.vditor.focus();
-      if (window.vditor.currentMode === "ir") {
-        setTimeout(() => {
-          if (
-            !(state.selection && setIRSelection(state.selection)) &&
-            state.savedRange
-          ) {
-            const sel = window.getSelection();
-            sel.removeAllRanges();
-            sel.addRange(state.savedRange);
-            if (window.vditor.ir) window.vditor.ir.range = state.savedRange;
-          }
-        }, 10);
-      }
-    } catch {}
-  };
-
-  window.addEventListener("blur", saveState);
-  window.addEventListener("focus", () => setTimeout(restoreState, 50));
+  window.addEventListener("focus", () => window.vditor.focus());
 }
 
 export function annotateBlocks(root, rules = []) {
-  if (!rules || rules.length === 0) return;
-  
-  rules.forEach((rule) => {
-    // Handle both old array format and new ContextRule format for backward compatibility
-    const selector = typeof rule === "string" ? rule[0] : rule.selector;
-    const contextKey = typeof rule === "string" ? null : rule.contextKey;
-    const contextName = typeof rule === "string" ? rule[1] : rule.vscWebviewContext;
-    
-    if (!selector) return;
-    
+  rules.forEach(({ selector, category, contextKey }) => {
+    if (!selector || !contextKey) return;
     root.querySelectorAll(selector).forEach((el) => {
-      const ctx = {};
-      if (contextKey && contextName) {
-        ctx[contextKey] = contextName;
-      }
-      if (Object.keys(ctx).length) {
-        el.dataset.vscodeContext = JSON.stringify(ctx);
-      }
+      // NOTE: no preventDefaultContextMenuItems here — root handles it
+      el.dataset.vscodeContext = JSON.stringify({
+        [contextKey]: category,
+      });
     });
   });
 }
+
+export function setupContextSystem(editorRoot, rules) {
+  // Root context
+  editorRoot.dataset.vscodeContext = JSON.stringify({
+    preventDefaultContextMenuItems: true,
+    hasSelection: false,
+  });
+
+  // Child elements annotation — DOM change pe re-run
+  const annotate = debounce(() => annotateBlocks(editorRoot, rules), 80);
+  new MutationObserver((mutations) => {
+    if (mutations.some((m) => m.addedNodes.length)) annotate();
+  }).observe(editorRoot, { childList: true, subtree: true });
+
+  // Selection state
+  document.addEventListener(
+    "selectionchange",
+    debounce(() => {
+      patchContext(editorRoot, {
+        hasSelection: !!window.getSelection()?.toString().trim(),
+      });
+    }, 30),
+  );
+
+  annotate(); // initial pass
+}
+
+function patchContext(el, patch) {
+  try {
+    const ctx = JSON.parse(el.dataset.vscodeContext || "{}");
+    el.dataset.vscodeContext = JSON.stringify({ ...ctx, ...patch });
+  } catch (e) {
+    console.error("patchContext failed", e);
+  }
+}
+
+function debounce(fn, ms) {
+  let t;
+  return (...args) => {
+    clearTimeout(t);
+    t = setTimeout(() => fn(...args), ms);
+  };
+}
+function isCompose(e) {
+  return e.metaKey || e.ctrlKey;
+}
+function matchShortcut(hotkey, event) {
+  const matchAlt = (hotkey.match(/!/) != null) == event.altKey;
+  const matchMeta = (hotkey.match(/⌘/) != null) == event.metaKey;
+  const matchCtrl = (hotkey.match(/\^/) != null) == event.ctrlKey;
+  const matchShifter = (hotkey.match(/\+/) != null) == event.shiftKey;
+
+  if (matchAlt && matchCtrl && matchShifter && matchMeta) {
+    return hotkey.match(new RegExp(`\\b${event.key}\\b`, "i"));
+  }
+}
+const isMac = navigator.userAgent.includes("Mac OS");
+// const keys = ['"', "{", "(", "`", "*"];
+const keyCodes = [222, 219, 57, 192, 56];
+export const autoSymbol = (handler, editor, config) => {
+  let _exec = document.execCommand.bind(document);
+  document.execCommand = (cmd, ...args) => {
+    if (cmd === "delete") {
+      setTimeout(() => {
+        return _exec(cmd, ...args);
+      });
+    } else {
+      return _exec(cmd, ...args);
+    }
+  };
+  window.addEventListener(
+    "keydown",
+    async (e) => {
+      if (matchShortcut("^⌘e", e) || matchShortcut("^!e", e)) {
+        e.stopPropagation();
+        e.preventDefault();
+        return handler.emit("editInVSCode", true);
+      }
+
+      if (
+        isMac &&
+        config.preventMacOptionKey &&
+        e.altKey &&
+        e.shiftKey &&
+        ["Digit1", "Digit2", "KeyW"].includes(e.code)
+      ) {
+        return e.preventDefault();
+      }
+      if (e.code == "F12") return handler.emit("developerTool");
+      if (isCompose(e)) {
+        if (e.altKey && isMac) {
+          e.preventDefault();
+        }
+        switch (e.code) {
+          case "KeyS":
+            vscodeEvent.emit("doSave", editor.getValue());
+            e.stopPropagation();
+            e.preventDefault();
+            break;
+          case "KeyV":
+            if (e.shiftKey) {
+              const text = await navigator.clipboard.readText();
+              if (text) document.execCommand("insertText", false, text.trim());
+              e.stopPropagation();
+            } else if (document.getSelection()?.toString()) {
+              // 修复剪切后选中文本没有被清除
+              document.execCommand("delete");
+            }
+            e.preventDefault();
+            break;
+        }
+      }
+      if (!keyCodes.includes(e.keyCode)) return;
+      const selectText = document.getSelection().toString();
+      if (selectText != "") {
+        return;
+      }
+      if (e.key == "(") {
+        document.execCommand("insertText", false, ")");
+        document.getSelection().modify("move", "left", "character");
+      } else if (e.key == "{") {
+        document.execCommand("insertText", false, "}");
+        document.getSelection().modify("move", "left", "character");
+      } else if (e.key == '"') {
+        document.execCommand("insertText", false, e.key);
+        document.getSelection().modify("move", "left", "character");
+      } else if (e.key == "[") {
+        document.execCommand("insertText", false, "]");
+        document.getSelection().modify("move", "left", "character");
+      } else if (e.key == "`") {
+        document.execCommand("insertText", false, "`");
+        document.getSelection().modify("move", "left", "character");
+      } else if (e.key == "*") {
+        document.execCommand("insertText", false, "*");
+        document.getSelection().modify("move", "left", "character");
+      }
+    },
+    isMac ? true : undefined,
+  );
+
+  window.onresize = () => {
+    document.getElementById("editor").style.height =
+      `${document.documentElement.clientHeight}px`;
+  };
+  let app;
+  let needFocus = false;
+  window.onblur = () => {
+    if (!app) {
+      app = document.querySelector(".vditor-reset");
+    }
+    // 纯文本没有offsetTop, 所以需要拿父节点
+    const targetNode = document.getSelection()?.baseNode?.parentNode;
+    // 如果编辑器现在没有获得焦点, 则无需重获焦点
+    if (!app?.contains(targetNode)) {
+      needFocus = false;
+      return;
+    }
+    // 判断是否需要聚焦
+    const curPosition = targetNode?.offsetTop ?? 0;
+    const appPosition = app?.scrollTop ?? 0;
+    if (appPosition - curPosition < window.innerHeight) {
+      needFocus = true;
+    }
+  };
+  window.onfocus = () => {
+    if (!app) {
+      app = document.querySelector(".vditor-reset");
+    }
+    if (needFocus) {
+      app.focus();
+      needFocus = false;
+    }
+  };
+};

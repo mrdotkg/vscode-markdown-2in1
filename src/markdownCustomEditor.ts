@@ -39,6 +39,7 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
     doc: TextDocument,
     handler: any,
     toggleUI: Function,
+    rootPath: string, // ← add this
   ) {
     let lastSave = 0;
     const scrollKey = `scrollTop_${doc.uri.fsPath}`;
@@ -61,6 +62,8 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
       .on("init", () => {
         handler.emit("open", {
           title: basename(doc.uri.fsPath),
+          rootPath, // ← add this
+
           config: workspace.getConfiguration("markpen"),
           scrollTop: this.context.workspaceState.get(scrollKey, 0),
           language: env.language,
@@ -85,11 +88,16 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
       .on("scroll", ({ scrollTop }: any) =>
         this.context.workspaceState.update(scrollKey, scrollTop),
       )
+
+      .on("selectionChange", (text) => {
+        Holder.lastSelection = text ?? "";
+      })
       .on("save", (newVal: string) => {
         lastSave = Date.now();
         this.content = newVal;
         this.statusBar.update();
         this.updateTextDocument(doc, newVal);
+        doc.save(); // ← VSCode ko batao "ye already save hai"
       });
   }
 
@@ -131,18 +139,25 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
     Holder.webview = this.webview;
 
     const toggleUI = (active: boolean) => {
-      active
-        ? (this.statusBar.update(), this.statusBar.show())
-        : this.statusBar.hide();
+      Holder.isCustomEditorActive = active;
       if (active) {
+        this.statusBar.update();
+        this.statusBar.show();
         Holder.doc = doc;
         Holder.webview = this.webview;
+      } else {
+        this.statusBar.hide();
       }
     };
 
     toggleUI(panel.active);
-    this.setupEditorEvents(doc, Handler.bind(panel, doc.uri), toggleUI);
-
+    // still in resolveCustomTextEditor, already has uriStr and extPath in scope
+    this.setupEditorEvents(
+      doc,
+      Handler.bind(panel, doc.uri),
+      toggleUI,
+      uriStr(Uri.file(extPath)), // ← pass rootPath here
+    );
     workspace.onDidChangeConfiguration(
       (e) =>
         e.affectsConfiguration("editor.scrollBeyondLastLine") &&
