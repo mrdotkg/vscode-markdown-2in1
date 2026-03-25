@@ -70,7 +70,7 @@ handler
       }
       ["keydown", "keypress", "keyup"].forEach((t) =>
         (document.activeElement || window.vditor.ir.element).dispatchEvent(
-          new KeyboardEvent(t, keyEvent),
+          new KeyboardEvent(t, { ...keyEvent, bubbles: false }),
         ),
       );
     }

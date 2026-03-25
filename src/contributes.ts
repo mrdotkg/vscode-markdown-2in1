@@ -54,10 +54,13 @@ const mapMenu = (key: string, when: string, group?: string) =>
 
 function isEquivalent(binding: string, evt: any): boolean {
   const parts = binding.toLowerCase().split("+");
+  const isMac = navigator.platform.toUpperCase().includes("MAC");
+  const cmdPressed = isMac ? evt.metaKey : evt.ctrlKey;
+  
   return (
-    !!evt.ctrlKey === parts.includes("ctrl") &&
-    !!evt.altKey === parts.includes("alt") &&
-    !!evt.shiftKey === parts.includes("shift") &&
+    cmdPressed === (parts.includes("cmd") || parts.includes("ctrl")) &&
+    !!evt.altKey   === parts.includes("alt")   &&
+    !!evt.shiftKey === parts.includes("shift")  &&
     parts.includes(evt.key.toLowerCase())
   );
 }
