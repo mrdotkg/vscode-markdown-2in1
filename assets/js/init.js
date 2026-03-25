@@ -63,6 +63,11 @@ handler
     if (!nativeHandled) {
       // Menu / palette triggered — vditor has no idea, dispatch synthetic keys
       window.vditor.focus();
+      // On macOS, replace ctrlKey with metaKey for command key support
+      if (state.platform === 'darwin' && keyEvent.ctrlKey) {
+        keyEvent.metaKey = true;
+        keyEvent.ctrlKey = false;
+      }
       ["keydown", "keypress", "keyup"].forEach((t) =>
         (document.activeElement || window.vditor.ir.element).dispatchEvent(
           new KeyboardEvent(t, keyEvent),

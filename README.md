@@ -12,3 +12,4 @@ Markdown editor with live preview. No separate tab.
 * 2 md files open hain markpen me. Ek close kiya to statusbar itmes dispose ho jate hain, ab dusra file editor me hai to statusbaritem re init nahi hote.
 * README + icon + .vscodeignore + package.json — publish
 * Test Windows/Mac/Linux — publish se pehle zaroori
+* editor blur event pe wapis focus ho ja rha hai, for example unable to write in ai chat with markpen editor open, as the eidtor gets focussed.

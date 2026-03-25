@@ -85,11 +85,15 @@ const contributes = {
     .filter((f: any) => f.keybinding)
     .map((f: any) => {
       const overlaps = f.keyEvent && isEquivalent(f.keybinding, f.keyEvent);
-      return {
+      const binding: any = {
         command: prefix(f.command),
         key: f.keybinding,
         when: mdActive,
       };
+      if (f.keybinding.startsWith('ctrl')) {
+        binding.mac = f.keybinding.replace(/^ctrl/, 'cmd');
+      }
+      return binding;
     }),
   menus: {
     commandPalette: mapMenu("commandPalette", mdActive),
