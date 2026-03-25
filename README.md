@@ -4,7 +4,11 @@ Markdown editor with live preview. No separate tab.
 
 ## Pre market release **issues**
 
-* Css - cleanup, Mardown font size, editor font size integration.
-* bhai Copy Ctrl+C expose karo. zaruri hai.
-* **README + icon + `.vscodeignore` + `package.json`** — bina iske publish nahi hoga
-* **Test Windows/Mac/Linux** — publish se pehle zaroori
+* CSS
+  * cleanup,
+  * Mardown font size, editor font size integration.
+  * Initial pre HLJS code block white-space and max-heights are different to
+* Expose Copy operation, make sure to copy selection in the Cut operation.
+* 2 md files open hain markpen me. Ek close kiya to statusbar itmes dispose ho jate hain, ab dusra file editor me hai to statusbaritem re init nahi hote.
+* README + icon + .vscodeignore + package.json — publish
+* Test Windows/Mac/Linux — publish se pehle zaroori

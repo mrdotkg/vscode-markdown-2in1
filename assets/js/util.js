@@ -1,43 +1,70 @@
-export const openLink = () => {
-  const clickCallback = (e) => {
-    const ele = e.target;
-    e.stopPropagation();
-    if (!(isCompose(e) || ["dblclick", "auxclick"].includes(e.type))) return;
+export function setupCursorTracking() {
+  let debounceTimer = null;
 
-    if (ele.tagName === "A") handler.emit("openLink", ele.href);
-    else if (ele.tagName === "IMG") {
-      const parent = ele.parentElement;
-      if (parent?.tagName === "A" && parent.href)
-        return handler.emit("openLink", parent.href);
-      if (ele.src?.startsWith("http")) handler.emit("openLink", ele.src);
-    }
-  };
+  document.addEventListener("selectionchange", () => {
+    // rangeCount check — yehi crash ka reason hai
+    if (!window.vditor || !window.getSelection().rangeCount) return;
 
-  document
-    .querySelector(".vditor-wysiwyg")
-    .addEventListener(
-      "click",
-      (e) => (e.ctrlKey || e.metaKey) && clickCallback(e),
-    );
-
-  document.querySelector(".vditor-ir").addEventListener("click", (e) => {
-    if (!(e.ctrlKey || e.metaKey)) return;
-    let ele = e.target;
-    if (ele.classList.contains("vditor-ir__link"))
-      ele = ele.nextElementSibling?.nextElementSibling?.nextElementSibling;
-    if (ele.classList.contains("vditor-ir__marker--link"))
-      handler.emit("openLink", ele.textContent);
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      const pos = window.vditor.getCursorPosition();
+      if (pos) window.handler.emit("cursor", pos);
+    }, 200);
   });
-};
+}
+
+export function setupFocusManagement() {
+  // Scroll-to-top bug fix on focus — bas itna
+  window.addEventListener("focus", () => {
+    setTimeout(() => {
+      if (!window.vditor) return;
+      const savedScrollY = window.scrollY;
+      window.vditor.focus(); // vditor.ir.range internally use karta hai
+      setTimeout(() => window.scrollTo(0, savedScrollY), 10);
+    }, 50);
+  });
+}
+
+export function restoreCursorFromPoint(pos) {
+  if (!pos) return;
+  const editor = document.querySelector(".vditor-ir .vditor-reset");
+  if (!editor) return;
+
+  // Editor ka bounding rect lo — pos editor-relative hai, screen-relative chahiye
+  const rect = editor.getBoundingClientRect();
+  const x = rect.left + pos.left;
+  const y = rect.top + pos.top;
+
+  // Browser se pucho — is pixel par kaun sa text node + offset hai
+  const range =
+    document.caretRangeFromPoint?.(x, y) || // Chrome/Safari
+    (document.caretPositionFromPoint &&
+      (() => {
+        const cp = document.caretPositionFromPoint(x, y);
+        if (!cp) return null;
+        const r = document.createRange();
+        r.setStart(cp.offsetNode, cp.offset);
+        r.collapse(true);
+        return r;
+      })());
+
+  if (!range) return;
+
+  const sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+  if (window.vditor.ir) window.vditor.ir.range = range;
+  window.vditor.focus();
+}
 
 export const addScrollListener = () => {
   const container = [
     ".vditor-reset",
-    ".vditor-ir .vditor-reset",
-    ".vditor-wysiwyg .vditor-reset",
-    ".vditor-ir__preview",
-    ".vditor-ir",
-    ".vditor",
+    // ".vditor-ir .vditor-reset",
+    // ".vditor-wysiwyg .vditor-reset",
+    // ".vditor-ir__preview",
+    // ".vditor-ir",
+    // ".vditor",
   ]
     .map((sel) => document.querySelector(sel))
     .find(Boolean);
@@ -84,6 +111,38 @@ export function scrollEditor(top) {
   }, 10);
 }
 
+export const openLink = () => {
+  const clickCallback = (e) => {
+    const ele = e.target;
+    e.stopPropagation();
+    if (!(isCompose(e) || ["dblclick", "auxclick"].includes(e.type))) return;
+
+    if (ele.tagName === "A") handler.emit("openLink", ele.href);
+    else if (ele.tagName === "IMG") {
+      const parent = ele.parentElement;
+      if (parent?.tagName === "A" && parent.href)
+        return handler.emit("openLink", parent.href);
+      if (ele.src?.startsWith("http")) handler.emit("openLink", ele.src);
+    }
+  };
+
+  document
+    .querySelector(".vditor-wysiwyg")
+    .addEventListener(
+      "click",
+      (e) => (e.ctrlKey || e.metaKey) && clickCallback(e),
+    );
+
+  document.querySelector(".vditor-ir").addEventListener("click", (e) => {
+    if (!(e.ctrlKey || e.metaKey)) return;
+    let ele = e.target;
+    if (ele.classList.contains("vditor-ir__link"))
+      ele = ele.nextElementSibling?.nextElementSibling?.nextElementSibling;
+    if (ele.classList.contains("vditor-ir__marker--link"))
+      handler.emit("openLink", ele.textContent);
+  });
+};
+
 export const imageParser = (viewAbsoluteLocal) => {
   if (!viewAbsoluteLocal) return;
   new MutationObserver((mutations) => {
@@ -116,10 +175,6 @@ export const preventBlurPropagation = () => {
     true,
   );
 };
-
-export function setupFocusManagement() {
-  window.addEventListener("focus", () => window.vditor.focus());
-}
 
 export function annotateBlocks(root, rules = []) {
   rules.forEach(({ selector, category, contextKey }) => {
@@ -189,8 +244,8 @@ function matchShortcut(hotkey, event) {
   }
 }
 const isMac = navigator.userAgent.includes("Mac OS");
-// const keys = ['"', "{", "(", "`", "*"];
-const keyCodes = [222, 219, 57, 192, 56];
+const keyCodes = [222, 219, 57, 192, 56]; // const keys = ['"', "{", "(", "`", "*"];
+
 export const autoSymbol = (handler, editor, config) => {
   let _exec = document.execCommand.bind(document);
   document.execCommand = (cmd, ...args) => {
@@ -282,14 +337,11 @@ export const autoSymbol = (handler, editor, config) => {
     if (!app) {
       app = document.querySelector(".vditor-reset");
     }
-    // 纯文本没有offsetTop, 所以需要拿父节点
     const targetNode = document.getSelection()?.baseNode?.parentNode;
-    // 如果编辑器现在没有获得焦点, 则无需重获焦点
     if (!app?.contains(targetNode)) {
       needFocus = false;
       return;
     }
-    // 判断是否需要聚焦
     const curPosition = targetNode?.offsetTop ?? 0;
     const appPosition = app?.scrollTop ?? 0;
     if (appPosition - curPosition < window.innerHeight) {

@@ -1,4 +1,6 @@
 import {
+  restoreCursorFromPoint,
+  setupCursorTracking,
   autoSymbol,
   setupContextSystem,
   openLink,
@@ -115,7 +117,13 @@ handler
       },
 
       after() {
-
+        
+        setupCursorTracking();
+        if (md.cursor) {
+          console.log("cursor",md.cursor)
+          // Vditor render hone ke baad restore karo
+          setTimeout(() =>restoreCursorFromPoint(md.cursor), 150);
+        }
         autoSymbol(handler, EDITOR, config);
 
         // Track trusted keystrokes for hotkeys
@@ -151,10 +159,7 @@ handler
         openLink();
 
         // Track html changes and set updated context to the elements.
-        setupContextSystem(
-          document.getElementById("editor"),
-          rules,
-        );
+        setupContextSystem(document.getElementById("editor"), rules);
 
         // Stop IR markers from disappearing on blur
         preventBlurPropagation();

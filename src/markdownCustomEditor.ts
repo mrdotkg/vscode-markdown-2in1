@@ -43,6 +43,7 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
   ) {
     let lastSave = 0;
     const scrollKey = `scrollTop_${doc.uri.fsPath}`;
+    const cursorKey = `cursor_${doc.uri.fsPath}`;
 
     handler.panel.onDidChangeViewState((e: any) =>
       toggleUI(e.webviewPanel.active),
@@ -66,6 +67,7 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
 
           config: workspace.getConfiguration("markpen"),
           scrollTop: this.context.workspaceState.get(scrollKey, 0),
+          cursor: this.context.workspaceState.get(cursorKey, null),
           language: env.language,
           content: this.content,
         });
@@ -88,7 +90,9 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
       .on("scroll", ({ scrollTop }: any) =>
         this.context.workspaceState.update(scrollKey, scrollTop),
       )
-
+      .on("cursor", (pos) => {
+        this.context.workspaceState.update(cursorKey, pos);
+      })
       .on("selectionChange", (text) => {
         Holder.lastSelection = text ?? "";
       })
