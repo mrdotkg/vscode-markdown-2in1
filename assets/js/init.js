@@ -71,7 +71,12 @@ handler
     }
   })
 
-  .on("vditorCut", () => window.vditor.deleteValue())
+  .on("vditorCut", () =>{
+    const wv = window.vditor
+    wv.focus() 
+    navigator.clipboard.writeText(wv.getSelection())
+    wv.deleteValue()
+  })
 
   .on("vditorPaste", async () => {
     window.vditor.focus();

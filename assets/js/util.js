@@ -14,15 +14,7 @@ export function setupCursorTracking() {
 }
 
 export function setupFocusManagement() {
-  // Scroll-to-top bug fix on focus — bas itna
-  window.addEventListener("focus", () => {
-    setTimeout(() => {
-      if (!window.vditor) return;
-      const savedScrollY = window.scrollY;
-      window.vditor.focus(); // vditor.ir.range internally use karta hai
-      setTimeout(() => window.scrollTo(0, savedScrollY), 10);
-    }, 50);
-  });
+  window.addEventListener("focus", () => window.vditor.focus());
 }
 
 export function restoreCursorFromPoint(pos) {
