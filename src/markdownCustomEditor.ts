@@ -21,7 +21,8 @@ import { Holder } from "./common/holder";
 
 export class MarkdownCustomEditor implements CustomTextEditorProvider {
   constructor(private context: ExtensionContext) {}
-  private statusBar = new StatusBar();
+  private static statusBar?: StatusBar;
+  private static openEditors = new Set<string>(); // Track open editor URIs
   private webview!: Webview;
   private content!: string;
   private getFolders = () =>
@@ -48,9 +49,6 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
     handler.panel.onDidChangeViewState((e: any) =>
       toggleUI(e.webviewPanel.active),
     );
-    handler.panel.onDidDispose(() => {
-      this.statusBar.hide();
-    });
 
     window.onDidChangeActiveColorTheme((e) =>
       this.postToWebview(
@@ -61,6 +59,9 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
 
     handler
       .on("init", () => {
+        if (!MarkdownCustomEditor.statusBar) {
+          MarkdownCustomEditor.statusBar = new StatusBar();
+        }
         handler.emit("open", {
           title: basename(doc.uri.fsPath),
           rootPath, // ← add this
@@ -71,13 +72,14 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
           language: env.language,
           content: this.content,
         });
-        this.statusBar.update();
+        MarkdownCustomEditor.statusBar?.update();
+        MarkdownCustomEditor.statusBar?.show();
       })
       .on("externalUpdate", (e: any) => {
         const text = e.document.getText()?.replace(/\r/g, "");
         if (Date.now() - lastSave < 800 || this.content === text) return;
         this.content = text;
-        this.statusBar.update();
+        MarkdownCustomEditor.statusBar?.update();
         handler.emit("update", text);
       })
       .on("command", (cmd: string) => commands.executeCommand(cmd))
@@ -99,7 +101,7 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
       .on("save", (newVal: string) => {
         lastSave = Date.now();
         this.content = newVal;
-        this.statusBar.update();
+        MarkdownCustomEditor.statusBar?.update();
         this.updateTextDocument(doc, newVal);
         doc.save(); // ← VSCode ko batao "ye already save hai"
       });
@@ -145,16 +147,33 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
     const toggleUI = (active: boolean) => {
       Holder.isCustomEditorActive = active;
       if (active) {
-        this.statusBar.update();
-        this.statusBar.show();
+        if (!MarkdownCustomEditor.statusBar) {
+          MarkdownCustomEditor.statusBar = new StatusBar();
+        }
+        // Set doc and webview FIRST before updating status bar
         Holder.doc = doc;
         Holder.webview = this.webview;
+        MarkdownCustomEditor.statusBar?.update();
+        MarkdownCustomEditor.statusBar?.show();
       } else {
-        this.statusBar.hide();
+        MarkdownCustomEditor.statusBar?.hide();
       }
     };
 
     toggleUI(panel.active);
+    
+    // Track this editor
+    const docUri = doc.uri.toString();
+    MarkdownCustomEditor.openEditors.add(docUri);
+    
+    // Listen for panel close to hide statusbar if no more markdown editors are active
+    panel.onDidDispose(() => {
+      MarkdownCustomEditor.openEditors.delete(docUri);
+      if (MarkdownCustomEditor.openEditors.size === 0) {
+        MarkdownCustomEditor.statusBar?.hide();
+      }
+    });
+    
     // still in resolveCustomTextEditor, already has uriStr and extPath in scope
     this.setupEditorEvents(
       doc,

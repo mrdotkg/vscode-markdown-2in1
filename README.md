@@ -7,13 +7,13 @@ Markdown editor with live preview. No separate tab.
 * CSS
   * Mardown font size, editor font size integration.
   * Initial pre HLJS code block white-space and max-heights are different to
-* Expose Copy operation, make sure to copy selection in the Cut operation.
-* 2 md files open hain markpen me. Ek close kiya to statusbar itmes dispose ho jate hain, ab dusra file editor me hai to statusbaritem re init nahi hote.
+* General hotkeys like `Ctrl+A` or `Ctrl+C` or `Ctrl+X` are consumed by Markpen editor if open in front, even though focus is on AI chat, sidebar, panels etc.
+* Expose Copy operation.
 * README + icon + .vscodeignore + package.json — publish
 * Test Windows/Mac/Linux — publish se pehle zaroori
-
 
 ### Fixed
 
 * Cut now copies the text as well.
 * There is no scroll on focus now, no flickering on tab click
+* Statusbar shopw, hide and update is consistent with UI.
