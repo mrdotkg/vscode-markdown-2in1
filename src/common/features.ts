@@ -474,7 +474,7 @@ export const Features = [
     command: "new-row-above",
     title: "New Row Above",
     icon: "$(arrow-up)",
-    keybinding: "ctrl+shift+f",
+    keybinding: "ctrl+shift+alt+f",
     category: "Tables",
     selector: "table",
     contextKey: "webviewSection",

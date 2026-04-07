@@ -88,7 +88,7 @@ const contributes = {
       return {
         command: prefix(f.command),
         key: f.keybinding,
-        when: mdActive,
+        when: mdActive + ` && webviewFocus`,
       };
     }),
   menus: {

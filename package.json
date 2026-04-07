@@ -336,232 +336,232 @@
       {
         "command": "markpen.h1",
         "key": "ctrl+alt+1",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.h2",
         "key": "ctrl+alt+2",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.h3",
         "key": "ctrl+alt+3",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.h4",
         "key": "ctrl+alt+4",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.h5",
         "key": "ctrl+alt+5",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.h6",
         "key": "ctrl+alt+6",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.h+",
         "key": "ctrl+=",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.h-",
         "key": "ctrl+-",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.bold",
         "key": "ctrl+b",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.italic",
         "key": "ctrl+i",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.strikethrough",
         "key": "ctrl+d",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.link",
         "key": "ctrl+k",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.inlinecode",
         "key": "ctrl+g",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.unordered",
         "key": "ctrl+l",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.ordered",
         "key": "ctrl+o",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.checked",
         "key": "ctrl+j",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.checked-toggle",
         "key": "ctrl+shift+j",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.indent",
         "key": "ctrl+shift+i",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.unindent",
         "key": "ctrl+shift+o",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.new-start",
         "key": "ctrl+shift+b",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.new-end",
         "key": "ctrl+shift+e",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.new-table",
         "key": "ctrl+m",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.new-row-above",
-        "key": "ctrl+shift+f",
-        "when": "activeCustomEditorId == 'markpen'"
+        "key": "ctrl+shift+alt+f",
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.new-row-below",
         "key": "ctrl+=",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.del-row",
         "key": "ctrl+-",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.new-col-left",
         "key": "ctrl+shift+g",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.new-col-right",
         "key": "ctrl+shift+=",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.del-col",
         "key": "ctrl+shift+-",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.align-left",
         "key": "ctrl+shift+l",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.align-center",
         "key": "ctrl+shift+c",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.align-right",
         "key": "ctrl+shift+r",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.move-caret-out",
         "key": "alt+enter",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.move-caret-prev",
         "key": "shift+tab",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.move-caret-next",
         "key": "tab",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.select-codeblock",
         "key": "ctrl+a",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.codeblock",
         "key": "ctrl+u",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.blockquote",
         "key": "ctrl+;",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.hr",
         "key": "ctrl+shift+h",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.undo",
         "key": "ctrl+z",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.redo",
         "key": "ctrl+y",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.toggle",
         "key": "ctrl+alt+e",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.pasteimage",
         "key": "ctrl+alt+v",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.cut",
         "key": "ctrl+x",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.paste",
         "key": "ctrl+v",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.findInFiles",
         "key": "ctrl+alt+f",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
         "command": "markpen.replaceInFiles",
         "key": "ctrl+h",
-        "when": "activeCustomEditorId == 'markpen'"
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       }
     ],
     "menus": {
