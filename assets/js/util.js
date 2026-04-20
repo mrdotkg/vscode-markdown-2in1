@@ -107,7 +107,7 @@ export const openLink = () => {
   const clickCallback = (e) => {
     const ele = e.target;
     e.stopPropagation();
-    if (!(isCompose(e) || ["dblclick", "auxclick"].includes(e.type))) return;
+    if (!(isLeaderKey(e) || ["dblclick", "auxclick"].includes(e.type))) return;
 
     if (ele.tagName === "A") handler.emit("openLink", ele.href);
     else if (ele.tagName === "IMG") {
@@ -197,10 +197,17 @@ export function setupContextSystem(editorRoot, rules) {
   document.addEventListener(
     "selectionchange",
     debounce(() => {
-      patchContext(editorRoot, {
-        hasSelection: !!window.getSelection()?.toString().trim(),
-      });
+      const hasSelection = !!window.getSelection()?.toString().trim();
+      patchContext(editorRoot, { hasSelection });
+      handler.emit("contextChange", { hasSelection, ...getActiveContext() });
     }, 30),
+  );
+  editorRoot.addEventListener(
+    "click",
+    debounce(() => {
+      const hasSelection = !!window.getSelection()?.toString().trim();
+      handler.emit("contextChange", { hasSelection, ...getActiveContext() });
+    }, 50),
   );
 
   annotate(); // initial pass
@@ -214,7 +221,22 @@ function patchContext(el, patch) {
     console.error("patchContext failed", e);
   }
 }
-
+function getActiveContext() {
+  const sel = window.getSelection();
+  if (!sel?.rangeCount) return {};
+  let el = sel.getRangeAt(0).startContainer;
+  if (el?.nodeType === 3) el = el.parentElement;
+  while (el && el !== document.body) {
+    if (el.dataset?.vscodeContext) {
+      try {
+        const ctx = JSON.parse(el.dataset.vscodeContext);
+        if (ctx.section || ctx.item) return ctx;
+      } catch {}
+    }
+    el = el.parentElement;
+  }
+  return {};
+}
 function debounce(fn, ms) {
   let t;
   return (...args) => {
@@ -222,7 +244,7 @@ function debounce(fn, ms) {
     t = setTimeout(() => fn(...args), ms);
   };
 }
-function isCompose(e) {
+function isLeaderKey(e) {
   return e.metaKey || e.ctrlKey;
 }
 function matchShortcut(hotkey, event) {
@@ -268,7 +290,7 @@ export const autoSymbol = (handler, editor, config) => {
         return e.preventDefault();
       }
       if (e.code == "F12") return handler.emit("developerTool");
-      if (isCompose(e)) {
+      if (isLeaderKey(e)) {
         if (e.altKey && isMac) {
           e.preventDefault();
         }
@@ -284,7 +306,7 @@ export const autoSymbol = (handler, editor, config) => {
               if (text) document.execCommand("insertText", false, text.trim());
               e.stopPropagation();
             } else if (document.getSelection()?.toString()) {
-              // 修复剪切后选中文本没有被清除
+              // "Fix the issue where the selected text is not cleared after cutting."
               document.execCommand("delete");
             }
             e.preventDefault();

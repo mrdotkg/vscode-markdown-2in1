@@ -6,44 +6,34 @@ import path from "path";
 
 const allFeatures = [...Features, ...Addons];
 const prefix = (cmd: string) => `markpen.${cmd}`;
-const mdActive = "activeCustomEditorId == 'markpen'";
-const mdFile = "editorLangId == markdown || resourceExtname == '.md'";
-const INLINE_SELECTORS = new Set(["strong", "em", "del", "code", "a", "input"]);
-const isInline = (sel: string) => INLINE_SELECTORS.has(sel.split(/[\s,>]/)[0]);
+const editorIsActive = "activeCustomEditorId == 'markpen'";
+const fileIsMarkdown = "editorLangId == markdown || resourceExtname == '.md'";
+const CATEGORY_ORDER = ["Table", "Heading", "List", "Code", "Insert", "Format"];
 
-// Derive group string from category — no contextGroup key needed
-function buildGroup(f: any, counters: Record<string, number>): string {
-  const cat = (f.category ?? "misc").toLowerCase().replace(/\s+/g, "_");
-  counters[cat] = (counters[cat] ?? 0) + 1;
-  return `${cat}@${counters[cat]}`;
+// Group features by category for organized menu layout
+function groupByCategory(): Record<string, any[]> {
+  const groups: Record<string, any[]> = {};
+  allFeatures.forEach((f: any) => {
+    const cat = f.category ?? "Other";
+    (groups[cat] ??= []).push(f);
+  });
+  return groups;
 }
 
-// Derive when clause from selector + category — no contextKey/vscWebviewContext needed
+function buildCategoryGroup(category: string, itemIndex: number): string {
+  const orderIndex = CATEGORY_ORDER.indexOf(category);
+  if (orderIndex === -1) {
+    return `${category.toLowerCase()}@${itemIndex}`;
+  }
+  return `${orderIndex}_${category.toLowerCase()}@${itemIndex}`;
+}
+
 function buildWhen(f: any): string {
-  const base = mdActive;
-
-  if (f.selector) {
-    const key = isInline(f.selector) ? "item" : "section";
-    return `${base} && ${key} == '${f.category}'`;
+  if (["Heading", "Table", "List", "Code"].includes(f.category)) {
+    return `${editorIsActive} && section == '${f.category}'`;
   }
 
-  // No selector — command applies within a category context
-  switch (f.category) {
-    case "Headings":
-      return `${base} && section == 'Headings'`;
-    case "Table":
-      return `${base} && section == 'Table'`;
-    case "Lists":
-      return `${base} && section == 'Lists'`;
-    case "Code":
-      return `${base} && section == 'Code'`;
-    case "Blockquote":
-      return `${base} && section == 'Blockquote'`;
-    case "Emphasis":
-      return `${base} && hasSelection`;
-    default:
-      return base; // always visible
-  }
+  return editorIsActive;
 }
 
 const mapMenu = (key: string, when: string, group?: string) =>
@@ -51,17 +41,6 @@ const mapMenu = (key: string, when: string, group?: string) =>
     .split(" ")
     .filter(Boolean)
     .map((cmd) => ({ command: prefix(cmd), when, ...(group && { group }) }));
-
-function isEquivalent(binding: string, evt: any): boolean {
-  const parts = binding.toLowerCase().split("+");
-  return (
-    !!evt.ctrlKey === parts.includes("ctrl") &&
-    !!evt.altKey === parts.includes("alt") &&
-    !!evt.shiftKey === parts.includes("shift") &&
-    parts.includes(evt.key.toLowerCase())
-  );
-}
-const counters: Record<string, number> = {};
 
 const contributes = {
   customEditors: [
@@ -84,28 +63,38 @@ const contributes = {
   keybindings: allFeatures
     .filter((f: any) => f.keybinding)
     .map((f: any) => {
-      const overlaps = f.keyEvent && isEquivalent(f.keybinding, f.keyEvent);
       return {
         command: prefix(f.command),
         key: f.keybinding,
-        when: mdActive + ` && webviewFocus`,
+        when: editorIsActive + ` && webviewFocus`,
       };
     }),
   menus: {
-    commandPalette: mapMenu("commandPalette", mdActive),
-    "editor/context": mapMenu("editor/context", mdFile, "1_modification@1"),
-    "editor/title": mapMenu("editor/title", mdFile, "navigation@-2"),
+    commandPalette: mapMenu("commandPalette", editorIsActive),
+    "editor/context": mapMenu(
+      "editor/context",
+      fileIsMarkdown,
+      "1_modification@1",
+    ),
+    "editor/title": mapMenu("editor/title", fileIsMarkdown, "navigation@-2"),
     "editor/title/context": mapMenu(
       "editor/title/context",
-      mdActive,
+      editorIsActive,
       "navigation@-2",
     ),
-    // webview/context — fully derived, no manual group/when keys on features
-    "webview/context": allFeatures.map((f: any) => ({
-      command: prefix(f.command),
-      when: buildWhen(f),
-      group: buildGroup(f, counters),
-    })),
+    // webview/context — flat category-grouped with visibility logic (like statusbar)
+    "webview/context": (() => {
+      const categoryGroups = groupByCategory();
+      const orderedGroups = CATEGORY_ORDER.filter((cat) => categoryGroups[cat]);
+
+      return orderedGroups.flatMap((category) =>
+        categoryGroups[category].map((f: any, itemIndex: number) => ({
+          command: prefix(f.command),
+          when: buildWhen(f),
+          group: buildCategoryGroup(category, itemIndex),
+        })),
+      );
+    })(),
   },
   configuration: {
     title: "MarkPen",

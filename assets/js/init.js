@@ -95,6 +95,7 @@ handler
       tab: "  ",
       toolbarConfig: { tipPosition: "south", hide: config.hideToolbar },
       cache: { enable: false },
+      customWysiwygToolbar: ()=>{}, 
       preview: {
         theme: { current: "none" },
         markdown: { toc: false, codeBlockPreview: true },

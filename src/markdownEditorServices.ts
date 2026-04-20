@@ -7,6 +7,9 @@ import { fileTypeFromFile } from "file-type";
 const extId = "markpen";
 
 export class MarkdownEditorService {
+  // Track the current heading level for toggle functionality (0-6, where 0 = paragraph)
+  private static currentHeadingLevel = 0;
+
   static toggle(uri?: Uri) {
     const target =
       uri || window.activeTextEditor?.document.uri || Holder.doc?.uri;
@@ -17,6 +20,23 @@ export class MarkdownEditorService {
       commands.executeCommand("vscode.openWith", target, editor);
     }
   }
+
+  static cycleHeading() {
+    // Cycle through heading levels: 0 (paragraph) → 1 → 2 → 3 → 4 → 5 → 6 → 0
+    this.currentHeadingLevel = (this.currentHeadingLevel + 1) % 7;
+    const headingLevel = this.currentHeadingLevel;
+    const command = headingLevel === 0 ? "h0" : `h${headingLevel}`;
+    
+    // Find the corresponding feature to get the keyEvent
+    const feature = require("./common/features").Features.find(
+      (f: any) => f.command === command
+    );
+    
+    if (feature) {
+      this.vditorCommand(feature.keyEvent);
+    }
+  }
+
   static vditorCommand = (c: any) =>
     Holder.webview?.postMessage({ type: "vditorCommand", content: c });
   static noop = () => {};

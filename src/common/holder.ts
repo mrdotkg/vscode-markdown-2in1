@@ -30,7 +30,7 @@ export class Holder {
       }));
   })();
 
-  // Derive menu groups purely from category
+  // Group Features by Category, default group Misc.
   static menuGroups: Record<string, string[]> = (() => {
     const groups: Record<string, string[]> = {};
     Features.forEach((f: any) => {
@@ -52,18 +52,10 @@ export class Holder {
     "editor/title": "toggle undo",
     "editor/title/context": "toggle undo redo",
     statusBar:
-      "Headings Lists bold italic strikethrough link inlinecode codeblock blockquote hr Tables",
+      "cycleHeading bold italic strikethrough link inlinecode unordered ordered checked blockquote",
   };
 
   static exportContextRulesForWebview = () =>
     JSON.stringify(this.contextRules);
   static getAllCommands = () => Features.map((f: any) => f.command);
 }
-
-// Minimal Compatibility Layer
-export const ContextRegistry = {
-  rules: Holder.contextRules,
-  exportForWebview: Holder.exportContextRulesForWebview,
-  getContexts: () => Holder.contexts,
-  getAllCommands: Holder.getAllCommands,
-};

@@ -32,6 +32,7 @@ export function activate(context: ExtensionContext) {
       },
     ),
     registerCommand(`${eId}.toggle`, (uri?: Uri) => MD.toggle(uri)),
+    registerCommand(`${eId}.cycleHeading`, () => MD.cycleHeading()),
     registerCommand(`${eId}.pasteimage`, () => MD.pasteimage(dir)),
     registerCommand(`${eId}.cut`, () => MD.cut()),
     registerCommand(`${eId}.paste`, () => MD.paste()),

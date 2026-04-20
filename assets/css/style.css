@@ -302,7 +302,7 @@ blockquote p {
   border: none !important;
 }
 .vditor-outline__title {
-  display: none !important;
+  /* display: none !important; */
 }
 /* Vditor ABC notation dark mode fix */
 .vscode-dark .vditor-reset .language-abc svg {

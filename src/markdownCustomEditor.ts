@@ -72,8 +72,7 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
           language: env.language,
           content: this.content,
         });
-        MarkdownCustomEditor.statusBar?.update();
-        MarkdownCustomEditor.statusBar?.show();
+        MarkdownCustomEditor.statusBar?.update(true);
       })
       .on("externalUpdate", (e: any) => {
         const text = e.document.getText()?.replace(/\r/g, "");
@@ -97,6 +96,9 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
       })
       .on("selectionChange", (text) => {
         Holder.lastSelection = text ?? "";
+      })
+      .on("contextChange", (ctx: any) => {
+        MarkdownCustomEditor.statusBar?.update(undefined, ctx);
       })
       .on("save", (newVal: string) => {
         lastSave = Date.now();
@@ -150,30 +152,26 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
         if (!MarkdownCustomEditor.statusBar) {
           MarkdownCustomEditor.statusBar = new StatusBar();
         }
-        // Set doc and webview FIRST before updating status bar
         Holder.doc = doc;
         Holder.webview = this.webview;
-        MarkdownCustomEditor.statusBar?.update();
-        MarkdownCustomEditor.statusBar?.show();
-      } else {
-        MarkdownCustomEditor.statusBar?.hide();
       }
+      MarkdownCustomEditor.statusBar?.update(active);
     };
 
     toggleUI(panel.active);
-    
+
     // Track this editor
     const docUri = doc.uri.toString();
     MarkdownCustomEditor.openEditors.add(docUri);
-    
+
     // Listen for panel close to hide statusbar if no more markdown editors are active
     panel.onDidDispose(() => {
       MarkdownCustomEditor.openEditors.delete(docUri);
       if (MarkdownCustomEditor.openEditors.size === 0) {
-        MarkdownCustomEditor.statusBar?.hide();
+        MarkdownCustomEditor.statusBar?.update(false);
       }
     });
-    
+
     // still in resolveCustomTextEditor, already has uriStr and extPath in scope
     this.setupEditorEvents(
       doc,

@@ -1,81 +1,192 @@
 import * as vscode from "vscode";
 import { Features } from "./common/features";
+import { Addons } from "./common/addons";
 import { Holder } from "./common/holder";
 
+interface Ctx {
+  section?: string;
+  item?: string;
+  hasSelection?: boolean;
+}
+
+const INLINE = new Set(["strong", "em", "del", "code", "a", "input"]);
+const isInline = (sel: string) => INLINE.has(sel.split(/[\s,>]/)[0]);
+
+function ctxWhen(f: any): (ctx: Ctx) => boolean {
+  if (f.selector) {
+    const key = isInline(f.selector) ? "item" : "section";
+    return key === "item"
+      ? (ctx) => ctx.item === f.category || !!ctx.hasSelection
+      : (ctx) => ctx.section === f.category;
+  }
+  return (ctx) =>
+    ["Heading", "List", "Table", "Code", "Format"].includes(f.category)
+      ? ctx.section === f.category
+      : true;
+}
+
+function isContextDependent(f: any): boolean {
+  return (
+    f.selector ||
+    ["Heading", "List", "Table", "Code", "Format"].includes(f.category)
+  );
+}
+
 export class StatusBar {
-  private items = new Map<string, vscode.StatusBarItem>();
+  private items = new Map<
+    string,
+    { item: vscode.StatusBarItem; when: (ctx: Ctx) => boolean }
+  >();
+  private wc: vscode.StatusBarItem;
+  private active = false;
+  private ctx: Ctx = {};
 
   constructor() {
-    let p = 100;
-    const findF = (cmd: string) => Features.find((f) => f.command === cmd);
+    const all = [...Addons, ...Features] as any[];
+    const findF = (cmd: string) =>
+      Features.find((f) => f.command === cmd) ||
+      Addons.find((a) => a.command === cmd);
+    const cap = (k: string) => k.trim().replace(/^./, (c) => c.toUpperCase());
 
-    const getTooltip = (cmds: string[]) => {
+    const formatTooltip = (
+      cmds: string[],
+      sep = true,
+    ): vscode.MarkdownString => {
       const rows = cmds.map((c) => {
         const f = findF(c);
         const kb =
           f?.keybinding
             ?.split("+")
-            .map((k) => `\`${k.trim()}\``)
+            .map((k) => `\`${cap(k)}\``)
             .join(" + ") || "";
-        return `| [\`${f?.icon || ""}\` ${f?.title || c}](command:markpen.${c}) | ${kb} |`;
+        const title = `[\`${f?.icon || ""}\` ${f?.title || c}](command:markpen.${c})`;
+        return `${title} ${kb ? `(${kb})` : ""}`;
       });
       const md = new vscode.MarkdownString(
-        `| | |\n|--|--|\n${rows.join("\n")}`,
+        rows.join(sep ? "\n\n---\n\n" : "\n"),
       );
-      return Object.assign(md, { isTrusted: true, supportThemeIcons: true });
+      md.isTrusted = true;
+      md.supportThemeIcons = true;
+      return md;
     };
 
-    Holder.menus.statusBar.split(" ").forEach((name) => {
+    const moreItems = vscode.window.createStatusBarItem(
+      vscode.StatusBarAlignment.Right,
+      2,
+    );
+    moreItems.text = "$(triangle-down)MarkPen";
+
+    // Get insert commands dynamically from category "Insert"
+    const insertCmds = all.filter((f: any) => f.category === "Insert").map((f: any) => f.command);
+    
+    const insertItems = vscode.window.createStatusBarItem(
+      vscode.StatusBarAlignment.Left,
+      501,
+    );
+    insertItems.text = "$(plus) Insert $(triangle-down)";
+    insertItems.tooltip = formatTooltip(insertCmds);
+
+    let p = 500;
+    const moreItemsList: any[] = [];
+
+    // Get Format category items for status bar
+    const formatCmds = all.filter((f: any) => f.category === "Format").map((f: any) => f.command);
+
+    for (const f of all) {
+      // Add to status bar if in Format category
+      if (formatCmds.includes(f.command)) {
+        const item = vscode.window.createStatusBarItem(
+          vscode.StatusBarAlignment.Left,
+          p--,
+        );
+        item.command = `markpen.${f.command}`;
+        item.text = f.icon;
+        item.tooltip = formatTooltip([f.command], false);
+        this.items.set(f.command, { item, when: () => true });
+      } else if (!insertCmds.includes(f.command) && !["Heading", "List", "Table"].includes(f.category)) {
+        // Everything else (except Insert, Heading, List, Table) goes to More
+        moreItemsList.push(f);
+      }
+    }
+
+    if (moreItemsList.length) {
+      moreItems.tooltip = formatTooltip(moreItemsList.map((f) => f.command));
+    }
+
+    // Add Insert and More buttons to the items map for proper management
+    this.items.set("insert-button", { item: insertItems, when: () => true });
+    if (moreItemsList.length) {
+      this.items.set("more-button", { item: moreItems, when: () => true });
+    }
+
+    ["Heading", "List", "Table"].forEach((cat, i) => {
       const item = vscode.window.createStatusBarItem(
         vscode.StatusBarAlignment.Left,
-        p--,
+        490 - i,
       );
-      const f = findF(name);
-
-      // AFTER (Record lookup — simpler)
-      const groupCmds = Holder.menuGroups[name]; // string[] | undefined
-      item.text = groupCmds ? `${name} $(triangle-down)` : f?.icon || "";
-      item.command = `markpen.${groupCmds ? groupCmds[0] : name}`;
-      item.tooltip = getTooltip(groupCmds ?? [name]);
-
-      this.items.set(name, item);
+      const feats = Features.filter((f: any) => f.category === cat);
+      item.text =
+        cat === "Heading"
+          ? "$(symbol-number) Heading $(triangle-down)"
+          : cat === "List"
+            ? "$(list-unordered) List $(triangle-down)"
+            : "$(table) Table $(triangle-down)";
+      item.tooltip = formatTooltip(feats.map((f) => f.command));
+      const when =
+        cat === "List"
+          ? (ctx: Ctx) => ["List", "Format"].includes(ctx.section || "")
+          : (ctx: Ctx) => ctx.section === cat;
+      this.items.set(`category-${cat}`, { item, when });
     });
 
-    const wc = vscode.window.createStatusBarItem(
+    this.wc = vscode.window.createStatusBarItem(
       vscode.StatusBarAlignment.Right,
-      p,
+      1,
     );
-    wc.tooltip = "Word Count";
-    this.items.set("wc", wc);
-    this.update();
+    this.wc.tooltip = "Word count";
   }
 
-  update = () => {
-    const text = Holder.doc?.getText() || "";
+  update(active?: boolean, ctx?: Ctx) {
+    if (active !== undefined) this.active = active;
+    if (ctx !== undefined) this.ctx = ctx;
+    if (active === false) this.ctx = {};
+    this._wc();
+    this._render();
+  }
 
-    // Markdown syntax strip करो before counting
+  dispose() {
+    this.items.forEach(({ item }) => item.dispose());
+    this.items.clear();
+    this.wc.dispose();
+  }
+
+  private _render() {
+    if (!this.active) {
+      this.items.forEach(({ item }) => item.hide());
+      this.wc.hide();
+      return;
+    }
+    this.wc.show();
+    this.items.forEach(({ item, when }) =>
+      when(this.ctx) ? item.show() : item.hide(),
+    );
+  }
+
+  private _wc() {
+    const text = Holder.doc?.getText() ?? "";
     const plain = text
-      .replace(/```[\s\S]*?```/g, " ") // code blocks
-      .replace(/`[^`]*`/g, " ") // inline code
-      .replace(/!\[.*?\]\(.*?\)/g, " ") // images
-      .replace(/\[.*?\]\(.*?\)/g, " ") // links
-      .replace(/#{1,6}\s/g, " ") // headings
-      .replace(/[*_~`>|]/g, " "); // special chars
-
+      .replace(/```[\s\S]*?```/g, " ")
+      .replace(/`[^`]*`/g, " ")
+      .replace(/!\[.*?\]\(.*?\)/g, " ")
+      .replace(/\[.*?\]\(.*?\)/g, " ")
+      .replace(/#{1,6}\s/g, " ")
+      .replace(/[*_~`>|]/g, " ");
     const words = plain
       .trim()
       .split(/\s+/)
       .filter((w) => w.length > 0).length;
-    const mins = Math.ceil(words / 200); // average reading speed: 200 wpm
-    const timeStr = mins < 1 ? "<1 min" : `~${mins} min`;
-
-    this.items.get("wc")!.text = `$(book) ${words} words`;
-    this.items.get("wc")!.tooltip = `${words} words · Reading time: ${timeStr}`;
-  };
-  show = () => this.items.forEach((i) => i.show());
-  hide = () => this.items.forEach((i) => i.hide());
-  dispose = () => {
-    this.items.forEach((i) => i.dispose());
-    this.items.clear();
-  };
+    const mins = Math.ceil(words / 200);
+    this.wc.text = `${words} words`;
+    this.wc.tooltip = `${words} words · ${mins < 1 ? "<1 min" : `~${mins} min`} read`;
+  }
 }
