@@ -2,8 +2,9 @@ html,
 body {
   font-size: var(--markdown-font-size, 15px);
   padding: 0 26px;
-  line-height: var(--markdown-line-height, 22px);
+  line-height: var(--markdown-line-height, 1.5em);
   word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 body {
@@ -270,15 +271,13 @@ pre.vditor-ir__marker--pre.vditor-ir__marker code {
   color: var(--front-color);
 }
 .vditor-reset {
-  font-size: var(--vscode-editor-font-size);
+  font-size: var(--markdown-font-size);
 }
 .vditor-reset table tr {
   background-color: transparent !important;
   color: var(--front-color) !important;
 }
-.vditor-ir__marker.vditor-ir__marker--heading {
-  color: var(--dropdown-hover-background) !important;
-}
+
 blockquote,
 blockquote p {
   background-color: var(--vscode-textBlockQuote-background) !important;

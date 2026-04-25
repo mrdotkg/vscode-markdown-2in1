@@ -11,6 +11,67 @@ import {
   setupFocusManagement,
 } from "./util.js";
 
+// ─── Zoom Utilities ──────────────────────────────────────────────────────────
+const MIN_ZOOM = -5;  // Roughly 84% (2^(-5/10))
+const MAX_ZOOM = 5;   // Roughly 148% (2^(5/10))
+const ZOOM_STEP = 1;  // Increment by 1 level
+let tempZoom = 0;     // Shared temp zoom state - accessible to all handlers
+let currentBaseFontSize = 15;  // Store base font size for broadcast updates
+let currentZoomConfig = {};    // Store current zoom config for broadcast updates
+
+// Convert zoom level to multiplier (matches VS Code: 2^(zoomLevel/10))
+const getZoomMultiplier = (zoomLevel) => Math.pow(2, zoomLevel / 10);
+
+const applyZoom = (baseFontSize, zoomConfig) => {
+  // If mouseWheelZoom is on, apply temporary session zoom
+  // Otherwise, apply window.zoomLevel from config
+  const zoomLevel = zoomConfig.mouseWheelZoom ? zoomConfig.tempZoom : zoomConfig.zoomLevel;
+  const multiplier = getZoomMultiplier(zoomLevel);
+  
+  
+  // Use CSS transform: scale() at the document root - this affects everything proportionally
+  // This is how VS Code's window zoom works
+  const root = document.documentElement;
+  root.style.transform = `scale(${multiplier})`;
+  root.style.transformOrigin = "0 0";
+  // set root --markdown-font-size variable to baseFontSize * multiplier to ensure markdown preview scales with editor zoom
+  root.style.setProperty("--markdown-font-size", `${baseFontSize * multiplier}px`);
+
+};
+
+const setupZoom = (baseFontSize, zoomConfig) => {
+  // Store for use in broadcast handlers
+  currentBaseFontSize = baseFontSize;
+  currentZoomConfig = { ...zoomConfig };
+  
+  
+  if (!zoomConfig.mouseWheelZoom) {
+    // If mouseWheelZoom is off, just apply the window.zoomLevel once
+    applyZoom(baseFontSize, { ...zoomConfig, tempZoom: 0 });
+    return;
+  }
+
+  // If mouseWheelZoom is on, setup Ctrl+wheel for temporary session zoom
+
+  const wheelHandler = (e) => {
+    if (!e.ctrlKey) return;
+    e.preventDefault();
+    tempZoom += e.deltaY < 0 ? ZOOM_STEP : -ZOOM_STEP;
+    tempZoom = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, tempZoom));
+    applyZoom(baseFontSize, { ...zoomConfig, tempZoom });
+    // Broadcast temp zoom change to all other tabs
+    handler.emit("tempZoomChanged", { tempZoom });
+  };
+
+  // Attach to the editor element for better event capture
+  const editor = document.getElementById("editor");
+  if (editor) {
+    editor.addEventListener("wheel", wheelHandler, { passive: false });
+  } else {
+    window.addEventListener("wheel", wheelHandler, { passive: false });
+  }
+};
+
 // ─── Bootstrap ───────────────────────────────────────────────────────────────
 const vscode = typeof acquireVsCodeApi !== "undefined" && acquireVsCodeApi();
 const events = {};
@@ -84,8 +145,52 @@ handler
     if (text) window.vditor.updateValue(text);
   })
 
+  .on("updateMdConfig", (mdConfig) => {
+    console.log("[markpen] Received updateMdConfig:", mdConfig);
+    if (mdConfig?.fontSize && mdConfig?.zoomLevel !== undefined) {
+      // Store the config for broadcast updates
+      currentBaseFontSize = mdConfig.fontSize;
+      currentZoomConfig = {
+        zoomLevel: mdConfig.zoomLevel,
+        mouseWheelZoom: mdConfig.mouseWheelZoom || false,
+        tempZoom: 0
+      };
+      // Reset temp zoom when config updates
+      tempZoom = 0;
+      applyZoom(mdConfig.fontSize, currentZoomConfig);
+    }
+    if (mdConfig?.fontFamily != null) {
+      document.documentElement.style.setProperty(
+        "--markdown-font-family",
+        mdConfig.fontFamily
+      );
+    }
+  })
+
+  .on("updateTempZoom", (data) => {
+    // Broadcast from another tab - update local tempZoom and apply
+    tempZoom = data.tempZoom;
+    applyZoom(currentBaseFontSize, { ...currentZoomConfig, tempZoom });
+  })
+
   .on("open", (md) => {
-    const { config } = md;
+    const { config, mdConfig, editorConfig } = md;
+    // Apply markdown preview settings before Vditor init
+    if (mdConfig?.fontSize && mdConfig?.zoomLevel !== undefined) {
+      applyZoom(mdConfig.fontSize, {
+        zoomLevel: mdConfig.zoomLevel,
+        mouseWheelZoom: mdConfig.mouseWheelZoom || false,
+        tempZoom: 0
+      });
+    }
+    
+    // Apply markdown config CSS variables
+    if (mdConfig?.fontFamily != null) {
+      document.documentElement.style.setProperty(
+        "--markdown-font-family",
+        mdConfig.fontFamily
+      );
+    }
 
     window.vditor = new Vditor(EDITOR, {
       value: md.content,
@@ -123,10 +228,14 @@ handler
       },
 
       after() {
+        // Setup Ctrl+wheel zoom with mouseWheelZoom support
+        setupZoom(md.mdConfig?.fontSize || 14, {
+          zoomLevel: md.mdConfig?.zoomLevel || 0,
+          mouseWheelZoom: md.mdConfig?.mouseWheelZoom || false
+        });
         
         setupCursorTracking();
         if (md.cursor) {
-          console.log("cursor",md.cursor)
           // Vditor render hone ke baad restore karo
           setTimeout(() =>restoreCursorFromPoint(md.cursor), 150);
         }

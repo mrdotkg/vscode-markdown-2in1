@@ -23,6 +23,16 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
   constructor(private context: ExtensionContext) {}
   private static statusBar?: StatusBar;
   private static openEditors = new Set<string>(); // Track open editor URIs
+  private static webviews = new Map<string, Webview>(); // Map of docUri -> webview
+  private static currentTempZoom = 0; // Shared temp zoom state across all tabs
+  
+  // Static method to broadcast to all webviews
+  static broadcastToWebviews(type: string, value: any) {
+    this.webviews.forEach((webview) =>
+      webview.postMessage({ type, content: value }),
+    );
+  }
+
   private webview!: Webview;
   private content!: string;
   private getFolders = () =>
@@ -62,11 +72,41 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
         if (!MarkdownCustomEditor.statusBar) {
           MarkdownCustomEditor.statusBar = new StatusBar();
         }
+        
+        // Get markdown preview settings (canonical for markdown rendering)
+        const mdPrev = workspace.getConfiguration("markdown.preview");
+        const ed = workspace.getConfiguration("editor");
+        const win = workspace.getConfiguration("window");
+        
+        const mdConfig = {
+          fontFamily: mdPrev.get<string>("fontFamily"),
+          fontSize: mdPrev.get<number>("fontSize") || 15,
+          zoomLevel: win.get<number>("zoomLevel") || 0,
+          mouseWheelZoom: ed.get<boolean>("mouseWheelZoom") || false,
+          breaks: mdPrev.get<boolean>("breaks") || false,
+          linkify: mdPrev.get<boolean>("linkify") || false,
+          typographer: mdPrev.get<boolean>("typographer") || false,
+          styles: mdPrev.get<string[]>("styles") ?? [],
+        };
+        
+        const editorConfig = {
+          wordWrap: ed.get<string>("wordWrap") || "on",
+          wordWrapColumn: ed.get<number>("wordWrapColumn") || 80,
+          smoothScrolling: ed.get<boolean>("smoothScrolling") || false,
+          cursorStyle: ed.get<string>("cursorStyle") || "line",
+          cursorBlinking: ed.get<string>("cursorBlinking") || "blink",
+          letterSpacing: ed.get<number>("letterSpacing") || 0,
+          tabSize: ed.get<number>("tabSize") || 2,
+          fontLigatures: ed.get<boolean>("fontLigatures") || false,
+          fontWeight: ed.get<string>("fontWeight") || "normal",
+        };
         handler.emit("open", {
           title: basename(doc.uri.fsPath),
-          rootPath, // ← add this
-
+          rootPath,
+          
           config: workspace.getConfiguration("markpen"),
+          mdConfig,
+          editorConfig,
           scrollTop: this.context.workspaceState.get(scrollKey, 0),
           cursor: this.context.workspaceState.get(cursorKey, null),
           language: env.language,
@@ -106,6 +146,13 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
         MarkdownCustomEditor.statusBar?.update();
         this.updateTextDocument(doc, newVal);
         doc.save(); // ← VSCode ko batao "ye already save hai"
+      })
+      .on("tempZoomChanged", (data: any) => {
+        // When temp zoom changes in one tab, broadcast to all tabs
+        MarkdownCustomEditor.currentTempZoom = data.tempZoom;
+        MarkdownCustomEditor.broadcastToWebviews("updateTempZoom", {
+          tempZoom: data.tempZoom
+        });
       });
   }
 
@@ -152,26 +199,31 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
         if (!MarkdownCustomEditor.statusBar) {
           MarkdownCustomEditor.statusBar = new StatusBar();
         }
+        // Set doc and webview FIRST before updating status bar
         Holder.doc = doc;
         Holder.webview = this.webview;
+        MarkdownCustomEditor.statusBar?.update(true);
+      } else {
+        MarkdownCustomEditor.statusBar?.update(false);
       }
-      MarkdownCustomEditor.statusBar?.update(active);
     };
 
     toggleUI(panel.active);
-
+    
     // Track this editor
     const docUri = doc.uri.toString();
     MarkdownCustomEditor.openEditors.add(docUri);
-
+    MarkdownCustomEditor.webviews.set(docUri, this.webview);
+    
     // Listen for panel close to hide statusbar if no more markdown editors are active
     panel.onDidDispose(() => {
       MarkdownCustomEditor.openEditors.delete(docUri);
+      MarkdownCustomEditor.webviews.delete(docUri);
       if (MarkdownCustomEditor.openEditors.size === 0) {
         MarkdownCustomEditor.statusBar?.update(false);
       }
     });
-
+    
     // still in resolveCustomTextEditor, already has uriStr and extPath in scope
     this.setupEditorEvents(
       doc,

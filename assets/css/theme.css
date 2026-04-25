@@ -1,4 +1,5 @@
 :root {
+  /* Color Variables */
   --hr-bg: var(--vscode-panel-border);
   --ext-border-color: var(--vscode-quickInputTitle-background);
   --bg-color: var(--vscode-editor-background);
@@ -8,4 +9,9 @@
   --list-hover-color: var(--vscode-terminal-ansiBlue);
   --dropdown-hover-background: var(--vscode-menu-selectionBackground);
   --error-color: var(--vscode-charts-red);
+
+  /* Markdown Preview Config Variables */
+  --markdown-font-size: 15px;
+  --markdown-line-height: 1.5em;
+  --markdown-font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", system-ui, "Ubuntu", "Droid Sans", sans-serif;
 }
