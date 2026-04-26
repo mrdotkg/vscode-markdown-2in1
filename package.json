@@ -171,19 +171,19 @@
       },
       {
         "command": "markpen.new-start",
-        "title": "Para (before)",
+        "title": "Empty Paragraph (before)",
         "icon": "$(arrow-up)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.new-end",
-        "title": "Para (after)",
+        "title": "Empty Paragraph (after)",
         "icon": "$(arrow-down)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.new-table",
-        "title": "New Table",
+        "title": "Empty 3x3 Table (after)",
         "icon": "$(table)",
         "category": "MarkPen"
       },
@@ -261,7 +261,7 @@
       },
       {
         "command": "markpen.codeblock",
-        "title": "Code Block",
+        "title": "Fenced Code Block (after)",
         "icon": "$(code)",
         "category": "MarkPen"
       },
@@ -273,7 +273,7 @@
       },
       {
         "command": "markpen.hr",
-        "title": "New Line",
+        "title": "Horizontal Line (after)",
         "icon": "$(horizontal-rule)",
         "category": "MarkPen"
       },
@@ -287,24 +287,6 @@
         "command": "markpen.redo",
         "title": "Redo",
         "icon": "$(redo)",
-        "category": "MarkPen"
-      },
-      {
-        "command": "markpen.toggle",
-        "title": "Toggle Editor",
-        "icon": "$(multiple-windows)",
-        "category": "MarkPen"
-      },
-      {
-        "command": "markpen.cycleHeading",
-        "title": "Cycle H1-H6 & Paragraph",
-        "icon": "$(symbol-number)",
-        "category": "MarkPen"
-      },
-      {
-        "command": "markpen.pasteimage",
-        "title": "Paste Image",
-        "icon": "$(copy)",
         "category": "MarkPen"
       },
       {
@@ -329,6 +311,24 @@
         "command": "markpen.replaceInFiles",
         "title": "Replace",
         "icon": "$(replace)",
+        "category": "MarkPen"
+      },
+      {
+        "command": "markpen.toggle",
+        "title": "Toggle Editor",
+        "icon": "$(multiple-windows)",
+        "category": "MarkPen"
+      },
+      {
+        "command": "markpen.cycleHeading",
+        "title": "Cycle H1-H6 & Paragraph",
+        "icon": "$(symbol-number)",
+        "category": "MarkPen"
+      },
+      {
+        "command": "markpen.pasteimage",
+        "title": "Paste Image",
+        "icon": "$(copy)",
         "category": "MarkPen"
       },
       {
@@ -540,21 +540,6 @@
         "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       },
       {
-        "command": "markpen.toggle",
-        "key": "ctrl+alt+e",
-        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
-      },
-      {
-        "command": "markpen.cycleHeading",
-        "key": "ctrl+alt+h",
-        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
-      },
-      {
-        "command": "markpen.pasteimage",
-        "key": "ctrl+alt+v",
-        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
-      },
-      {
         "command": "markpen.cut",
         "key": "ctrl+x",
         "when": "activeCustomEditorId == 'markpen' && webviewFocus"
@@ -572,6 +557,21 @@
       {
         "command": "markpen.replaceInFiles",
         "key": "ctrl+h",
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
+      },
+      {
+        "command": "markpen.toggle",
+        "key": "ctrl+alt+e",
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
+      },
+      {
+        "command": "markpen.cycleHeading",
+        "key": "ctrl+alt+h",
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
+      },
+      {
+        "command": "markpen.pasteimage",
+        "key": "ctrl+alt+v",
         "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       }
     ],
@@ -742,18 +742,6 @@
           "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markpen.toggle",
-          "when": "activeCustomEditorId == 'markpen'"
-        },
-        {
-          "command": "markpen.cycleHeading",
-          "when": "activeCustomEditorId == 'markpen'"
-        },
-        {
-          "command": "markpen.pasteimage",
-          "when": "activeCustomEditorId == 'markpen'"
-        },
-        {
           "command": "markpen.cut",
           "when": "activeCustomEditorId == 'markpen'"
         },
@@ -767,6 +755,18 @@
         },
         {
           "command": "markpen.replaceInFiles",
+          "when": "activeCustomEditorId == 'markpen'"
+        },
+        {
+          "command": "markpen.toggle",
+          "when": "activeCustomEditorId == 'markpen'"
+        },
+        {
+          "command": "markpen.cycleHeading",
+          "when": "activeCustomEditorId == 'markpen'"
+        },
+        {
+          "command": "markpen.pasteimage",
           "when": "activeCustomEditorId == 'markpen'"
         },
         {
@@ -1014,7 +1014,7 @@
         "markpen.menus": {
           "type": "object",
           "default": {
-            "commandPalette": "toggle h0 h1 h2 h3 h4 h5 h6 h+ h- bold italic strikethrough link inlinecode unordered ordered checked checked-toggle indent unindent new-start new-end new-table new-row-above new-row-below del-row new-col-left new-col-right del-col align-left align-center align-right move-caret-prev move-caret-next select-codeblock codeblock blockquote hr undo redo toggle cycleHeading pasteimage cut paste findInFiles replaceInFiles openKeyboardShortcuts",
+            "commandPalette": "toggle h0 h1 h2 h3 h4 h5 h6 h+ h- bold italic strikethrough link inlinecode unordered ordered checked checked-toggle indent unindent new-start new-end new-table new-row-above new-row-below del-row new-col-left new-col-right del-col align-left align-center align-right move-caret-prev move-caret-next select-codeblock codeblock blockquote hr undo redo cut paste findInFiles replaceInFiles toggle cycleHeading pasteimage openKeyboardShortcuts",
             "editor/context": "toggle",
             "editor/title": "toggle undo",
             "editor/title/context": "toggle undo redo",

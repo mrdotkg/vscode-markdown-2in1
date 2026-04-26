@@ -179,7 +179,7 @@ export const Features = [
   // Block Elements
   {
     command: "new-start",
-    title: "Para (before)",
+    title: "Empty Paragraph (before)",
     icon: "$(arrow-up)",
     keybinding: "ctrl+shift+b",
     category: "Insert",
@@ -187,7 +187,7 @@ export const Features = [
   },
   {
     command: "new-end",
-    title: "Para (after)",
+    title: "Empty Paragraph (after)",
     icon: "$(arrow-down)",
     keybinding: "ctrl+shift+e",
     category: "Insert",
@@ -196,7 +196,7 @@ export const Features = [
   // Table
   {
     command: "new-table",
-    title: "New Table",
+    title: "Empty 3x3 Table (after)",
     icon: "$(table)",
     keybinding: "ctrl+m",
     category: "Insert",
@@ -313,7 +313,7 @@ export const Features = [
   },
   {
     command: "codeblock",
-    title: "Code Block",
+    title: "Fenced Code Block (after)",
     icon: "$(code)",
     keybinding: "ctrl+u",
     category: "Insert",
@@ -330,7 +330,7 @@ export const Features = [
   },
   {
     command: "hr",
-    title: "New Line",
+    title: "Horizontal Line (after)",
     icon: "$(horizontal-rule)",
     keybinding: "ctrl+shift+h",
     category: "Insert",

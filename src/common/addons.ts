@@ -1,27 +1,5 @@
 export const Addons = [
   {
-    command: "toggle",
-    title: "Toggle Editor",
-    icon: "$(multiple-windows)",
-    text: "Toggle",
-    keybinding: "ctrl+alt+e",
-  },
-  {
-    command: "cycleHeading",
-    title: "Cycle H1-H6 & Paragraph",
-    category: "Format",
-    icon: "$(symbol-number)",
-    text: " H1-H6 / Paragraph",
-    keybinding: "ctrl+alt+h",
-  },
-  {
-    command: "pasteimage",
-    title: "Paste Image",
-    icon: "$(copy)",
-    text: "Paste Image",
-    keybinding: "ctrl+alt+v",
-  },
-  {
     command: "cut",
     title: "Cut",
     icon: "$(edit)",
@@ -49,6 +27,29 @@ export const Addons = [
     text: "Replace",
     keybinding: "ctrl+h",
   },
+  {
+    command: "toggle",
+    title: "Toggle Editor",
+    icon: "$(multiple-windows)",
+    text: "Toggle",
+    keybinding: "ctrl+alt+e",
+  },
+  {
+    command: "cycleHeading",
+    title: "Cycle H1-H6 & Paragraph",
+    category: "Format",
+    icon: "$(symbol-number)",
+    text: " H1-H6 / Paragraph",
+    keybinding: "ctrl+alt+h",
+  },
+  {
+    command: "pasteimage",
+    title: "Paste Image",
+    icon: "$(copy)",
+    text: "Paste Image",
+    keybinding: "ctrl+alt+v",
+  },
+
   {
     command: "openKeyboardShortcuts",
     title: "MarkPen Hotkeys",

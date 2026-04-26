@@ -9,29 +9,6 @@ interface Ctx {
   hasSelection?: boolean;
 }
 
-const INLINE = new Set(["strong", "em", "del", "code", "a", "input"]);
-const isInline = (sel: string) => INLINE.has(sel.split(/[\s,>]/)[0]);
-
-function ctxWhen(f: any): (ctx: Ctx) => boolean {
-  if (f.selector) {
-    const key = isInline(f.selector) ? "item" : "section";
-    return key === "item"
-      ? (ctx) => ctx.item === f.category || !!ctx.hasSelection
-      : (ctx) => ctx.section === f.category;
-  }
-  return (ctx) =>
-    ["Heading", "List", "Table", "Code", "Format"].includes(f.category)
-      ? ctx.section === f.category
-      : true;
-}
-
-function isContextDependent(f: any): boolean {
-  return (
-    f.selector ||
-    ["Heading", "List", "Table", "Code", "Format"].includes(f.category)
-  );
-}
-
 export class StatusBar {
   private items = new Map<
     string,
