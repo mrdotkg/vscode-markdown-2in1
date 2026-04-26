@@ -324,17 +324,40 @@ blockquote p {
 /* Syntax highlighted code — content ke hisaab se grow karo */
 
 /* Ye karo — pre ko constrain karo */
-.vditor-ir__preview code.hljs {
-  max-height: 400px !important;
+.vditor-ir__preview pre code,
+.vditor-ir__preview pre code.hljs {
+  /* max-height: 400px !important; */
   overflow-y: auto;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
 }
+
+pre.vditor-reset > [data-block][data-type="code-block"],
+.vditor-ir__preview pre {
+  margin-bottom: 15px;
+}
+
+.vditor-ir__node > [data-type="code-block-info"] {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.12s ease-in-out;
+}
+.vditor-ir__node--expand > [data-type="code-block-info"] {
+  display: block;
+  opacity: 1;
+}
+
 .vditor-ir__node--expand .vditor-ir__marker--pre code{
   height: auto;
 }
 
 /* Editable code block — cursor andar hone par */
 .vditor-ir__marker--pre code {
-  max-height: 400px;
+  /* max-height: 400px; */
   overflow-y: auto;
-  white-space: pre !important; 
+  white-space: pre !important;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
 }
