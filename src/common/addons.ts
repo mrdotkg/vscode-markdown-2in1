@@ -20,8 +20,6 @@ export const Addons = [
     icon: "$(copy)",
     text: "Paste Image",
     keybinding: "ctrl+alt+v",
-    contextKey: "clipboardHasImage",
-    vscWebviewContext: true,
   },
   {
     command: "cut",
@@ -29,8 +27,6 @@ export const Addons = [
     icon: "$(edit)",
     text: "Cut",
     keybinding: "ctrl+x",
-    contextKey: "vditorHasSelection",
-    vscWebviewContext: true,
   },
   {
     command: "paste",
@@ -38,8 +34,6 @@ export const Addons = [
     icon: "$(inbox)",
     text: "Paste",
     keybinding: "ctrl+v",
-    contextKey: "vditorHasClipboard",
-    vscWebviewContext: true,
   },
   {
     command: "findInFiles",

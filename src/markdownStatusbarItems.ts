@@ -59,8 +59,8 @@ export class StatusBar {
             ?.split("+")
             .map((k) => `\`${cap(k)}\``)
             .join(" + ") || "";
-        const title = `[\`${f?.icon || ""}\` ${f?.title || c}](command:markpen.${c})`;
-        return `${title} ${kb ? `(${kb})` : ""}`;
+        const title = `\`${f?.icon || ""}\` ${f?.title || c}`;
+        return `[${title} ${kb ? ` ${kb}` : ""}](command:markpen.${c})`;
       });
       const md = new vscode.MarkdownString(
         rows.join(sep ? "\n\n---\n\n" : "\n"),

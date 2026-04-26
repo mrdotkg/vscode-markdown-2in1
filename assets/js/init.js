@@ -101,6 +101,53 @@ const toKeyString = ({ ctrlKey, altKey, shiftKey, key }) =>
   [ctrlKey && "ctrl", altKey && "alt", shiftKey && "shift", key?.toLowerCase()]
     .filter(Boolean)
     .join("+");
+    
+function parseKeyString(keyString) {
+  const parts = keyString.split("+");
+  const eventInit = {
+    key: "",
+    code: "",
+    ctrlKey: false,
+    altKey: false,
+    shiftKey: false,
+    metaKey: false,
+    bubbles: true,
+    cancelable: true,
+  };
+
+  parts.forEach(part => {
+    const p = part.trim().toLowerCase();
+    switch (p) {
+      case "ctrl":
+        eventInit.ctrlKey = true;
+        break;
+      case "alt":
+        eventInit.altKey = true;
+        break;
+      case "shift":
+        eventInit.shiftKey = true;
+        break;
+      case "meta":
+      case "cmd":
+      case "command":
+        eventInit.metaKey = true;
+        break;
+      default:
+        // actual key
+        eventInit.key = part;
+        if (/^[0-9]$/.test(part)) {
+          eventInit.code = "Digit" + part;
+        } else if (/^[a-z]$/i.test(part)) {
+          eventInit.code = "Key" + part.toUpperCase();
+        } else {
+          eventInit.code = part;
+        }
+        break;
+    }
+  });
+
+  return eventInit;
+}
 
 // ─── Handlers ────────────────────────────────────────────────────────────────
 handler
@@ -117,8 +164,8 @@ handler
     window.vditor.insertMD(markdown);
   })
 
-  .on("vditorCommand", (keyEvent) => {
-    const nativeHandled = lastNativeKey === toKeyString(keyEvent);
+  .on("vditorCommand", (hotkeys) => {
+    const nativeHandled = lastNativeKey === hotkeys;
     lastNativeKey = null;
 
     if (!nativeHandled) {
@@ -126,7 +173,7 @@ handler
       window.vditor.focus();
       ["keydown", "keypress", "keyup"].forEach((t) =>
         (document.activeElement || window.vditor.ir.element).dispatchEvent(
-          new KeyboardEvent(t, keyEvent),
+          new KeyboardEvent(t, parseKeyString(hotkeys)),
         ),
       );
     }

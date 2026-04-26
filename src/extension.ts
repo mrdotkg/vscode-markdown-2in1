@@ -103,7 +103,7 @@ export function activate(context: ExtensionContext) {
     }),
     ...Features.map((f) =>
       registerCommand(`${eId}.${f.command}`, () =>
-        MD.vditorCommand(f.keyEvent),
+        MD.vditorCommand(f.hotkey),
       ),
     ),
   );

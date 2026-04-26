@@ -27,13 +27,13 @@ export class MarkdownEditorService {
     const headingLevel = this.currentHeadingLevel;
     const command = headingLevel === 0 ? "h0" : `h${headingLevel}`;
     
-    // Find the corresponding feature to get the keyEvent
+    // Find the corresponding feature to get the hotkey
     const feature = require("./common/features").Features.find(
       (f: any) => f.command === command
     );
     
     if (feature) {
-      this.vditorCommand(feature.keyEvent);
+      this.vditorCommand(feature.hotkey);
     }
   }
 

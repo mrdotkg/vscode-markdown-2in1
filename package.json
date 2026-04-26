@@ -52,55 +52,55 @@
       {
         "command": "markpen.h0",
         "title": "Remove Heading",
-        "icon": "H0",
+        "icon": "$(symbol-number)0",
         "category": "MarkPen"
       },
       {
         "command": "markpen.h1",
         "title": "H1 Style Heading",
-        "icon": "H1",
+        "icon": "$(symbol-number)1",
         "category": "MarkPen"
       },
       {
         "command": "markpen.h2",
         "title": "H2 Style Heading",
-        "icon": "H2",
+        "icon": "$(symbol-number)2",
         "category": "MarkPen"
       },
       {
         "command": "markpen.h3",
         "title": "H3 Style Heading",
-        "icon": "H3",
+        "icon": "$(symbol-number)3",
         "category": "MarkPen"
       },
       {
         "command": "markpen.h4",
         "title": "H4 Style Heading",
-        "icon": "H4",
+        "icon": "$(symbol-number)4",
         "category": "MarkPen"
       },
       {
         "command": "markpen.h5",
         "title": "H5 Style Heading",
-        "icon": "H5",
+        "icon": "$(symbol-number)5",
         "category": "MarkPen"
       },
       {
         "command": "markpen.h6",
         "title": "H6 Style Heading",
-        "icon": "H6",
+        "icon": "$(symbol-number)6",
         "category": "MarkPen"
       },
       {
         "command": "markpen.h+",
         "title": "Heading Level +1",
-        "icon": "$(diff-added)",
+        "icon": "$(symbol-number)+",
         "category": "MarkPen"
       },
       {
         "command": "markpen.h-",
         "title": "Heading Level - 1",
-        "icon": "$(diff-removed)",
+        "icon": "$(symbol-number)-",
         "category": "MarkPen"
       },
       {

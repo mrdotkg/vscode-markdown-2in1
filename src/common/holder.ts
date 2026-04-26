@@ -39,13 +39,6 @@ export class Holder {
     return groups;
   })();
 
-  static contexts = Object.fromEntries(
-    this.contextRules.map((r: any) => [
-      r.selector,
-      `${r.contextKey} == ${r.vscWebviewContext}`,
-    ]),
-  );
-
   static menus = {
     commandPalette: `toggle ${Features.map((f: any) => f.command).join(" ")} ${Addons.map((a: any) => a.command).join(" ")}`,
     "editor/context": "toggle",
