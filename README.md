@@ -4,8 +4,11 @@ Markdown editor with live preview. No separate tab.
 
 ## Pre market release **issues**
 
-
-1. Expose Copy Ctrl+C, Remove Heading Ctrl+H.
+1. CSS Initial pre HLJS code block does not show a vertical scroll but after rendering hljs the vertical scroilol appears makes a flicker screen need to be fixed. Also For CodeBlocks -
+   1. Preview ->Pre-Code 15px bottom margin
+   2. Editor -> Pre 15px bottom margin
+   3. data-type="code-block-info" visibility toggle on focus/blur
+2. Expose Copy Ctrl+C, Remove Heading Ctrl+H.
 3. When inside a code block editing, Select all code  block with `Ctrl+A` hotkey is not working.
 4. README + icon + .vscodeignore + package.json — publish
 5. Test Windows/Mac/Linux — publish se pehle zaroori
