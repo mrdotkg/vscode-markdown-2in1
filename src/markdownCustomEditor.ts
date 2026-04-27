@@ -25,7 +25,7 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
   private static openEditors = new Set<string>(); // Track open editor URIs
   private static webviews = new Map<string, Webview>(); // Map of docUri -> webview
   private static currentTempZoom = 0; // Shared temp zoom state across all tabs
-  
+
   // Static method to broadcast to all webviews
   static broadcastToWebviews(type: string, value: any) {
     this.webviews.forEach((webview) =>
@@ -33,14 +33,14 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
     );
   }
 
-  private webview!: Webview;
-  private content!: string;
+  // private webview!: Webview;
+  // private content!: string;
   private getFolders = () =>
     Array.from({ length: 26 }, (_, i) =>
       Uri.file(`${String.fromCharCode(65 + i)}:/`),
     );
-  private postToWebview = (type: string, value: any) =>
-    this.webview.postMessage({ type, value });
+  // private postToWebview = (type: string, value: any) =>
+  //   this.webview.postMessage({ type, value });
   private updateTextDocument = (doc: TextDocument, content: string) => {
     const edit = new WorkspaceEdit();
     edit.replace(doc.uri, new Range(0, 0, doc.lineCount, 0), content);
@@ -50,18 +50,22 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
     doc: TextDocument,
     handler: any,
     toggleUI: Function,
-    rootPath: string, // ← add this
+    rootPath: string,
+    webview: Webview, // ← new
+    getContent: () => string, // ← new
+    setContent: (v: string) => void, // ← new
   ) {
     let lastSave = 0;
     const scrollKey = `scrollTop_${doc.uri.fsPath}`;
     const cursorKey = `cursor_${doc.uri.fsPath}`;
-
+    const postToWebview = (type: string, value: any) =>
+      webview.postMessage({ type, value });
     handler.panel.onDidChangeViewState((e: any) =>
       toggleUI(e.webviewPanel.active),
     );
 
     window.onDidChangeActiveColorTheme((e) =>
-      this.postToWebview(
+      postToWebview(
         "updateActiveColorThemeKind",
         e.kind === ColorThemeKind.Dark ? "dark" : "light",
       ),
@@ -72,12 +76,12 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
         if (!MarkdownCustomEditor.statusBar) {
           MarkdownCustomEditor.statusBar = new StatusBar();
         }
-        
+
         // Get markdown preview settings (canonical for markdown rendering)
         const mdPrev = workspace.getConfiguration("markdown.preview");
         const ed = workspace.getConfiguration("editor");
         const win = workspace.getConfiguration("window");
-        
+
         const mdConfig = {
           fontFamily: mdPrev.get<string>("fontFamily"),
           fontSize: mdPrev.get<number>("fontSize") || 15,
@@ -88,7 +92,7 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
           typographer: mdPrev.get<boolean>("typographer") || false,
           styles: mdPrev.get<string[]>("styles") ?? [],
         };
-        
+
         const editorConfig = {
           wordWrap: ed.get<string>("wordWrap") || "on",
           wordWrapColumn: ed.get<number>("wordWrapColumn") || 80,
@@ -103,21 +107,21 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
         handler.emit("open", {
           title: basename(doc.uri.fsPath),
           rootPath,
-          
+
           config: workspace.getConfiguration("markpen"),
           mdConfig,
           editorConfig,
           scrollTop: this.context.workspaceState.get(scrollKey, 0),
           cursor: this.context.workspaceState.get(cursorKey, null),
           language: env.language,
-          content: this.content,
+          content: getContent(),
         });
         MarkdownCustomEditor.statusBar?.update(true);
       })
       .on("externalUpdate", (e: any) => {
         const text = e.document.getText()?.replace(/\r/g, "");
-        if (Date.now() - lastSave < 800 || this.content === text) return;
-        this.content = text;
+        if (Date.now() - lastSave < 800 || getContent() === text) return;
+        setContent(text);
         MarkdownCustomEditor.statusBar?.update();
         handler.emit("update", text);
       })
@@ -142,7 +146,7 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
       })
       .on("save", (newVal: string) => {
         lastSave = Date.now();
-        this.content = newVal;
+        setContent(newVal);
         MarkdownCustomEditor.statusBar?.update();
         this.updateTextDocument(doc, newVal);
         doc.save(); // ← VSCode ko batao "ye already save hai"
@@ -151,15 +155,16 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
         // When temp zoom changes in one tab, broadcast to all tabs
         MarkdownCustomEditor.currentTempZoom = data.tempZoom;
         MarkdownCustomEditor.broadcastToWebviews("updateTempZoom", {
-          tempZoom: data.tempZoom
+          tempZoom: data.tempZoom,
         });
       });
   }
 
   resolveCustomTextEditor(doc: TextDocument, panel: WebviewPanel) {
+    let content = doc.getText();
     const uriStr = (u: Uri) => panel.webview.asWebviewUri(u).toString();
     const extPath = this.context.extensionPath;
-    this.webview = Object.assign(panel.webview, {
+    const webview = Object.assign(panel.webview, {
       options: {
         enableScripts: true,
         localResourceRoots: [Uri.file("/"), ...this.getFolders()],
@@ -189,9 +194,12 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
         ),
     });
 
-    this.content = doc.getText();
+    // this.content = doc.getText();
     Holder.doc = doc;
-    Holder.webview = this.webview;
+    Holder.webview = webview;
+
+    const postToWebview = (type: string, value: any) =>
+      webview.postMessage({ type, value });
 
     const toggleUI = (active: boolean) => {
       Holder.isCustomEditorActive = active;
@@ -201,7 +209,7 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
         }
         // Set doc and webview FIRST before updating status bar
         Holder.doc = doc;
-        Holder.webview = this.webview;
+        Holder.webview = webview;
         MarkdownCustomEditor.statusBar?.update(true);
       } else {
         MarkdownCustomEditor.statusBar?.update(false);
@@ -209,12 +217,12 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
     };
 
     toggleUI(panel.active);
-    
+
     // Track this editor
     const docUri = doc.uri.toString();
     MarkdownCustomEditor.openEditors.add(docUri);
-    MarkdownCustomEditor.webviews.set(docUri, this.webview);
-    
+    MarkdownCustomEditor.webviews.set(docUri, webview);
+
     // Listen for panel close to hide statusbar if no more markdown editors are active
     panel.onDidDispose(() => {
       MarkdownCustomEditor.openEditors.delete(docUri);
@@ -223,18 +231,23 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
         MarkdownCustomEditor.statusBar?.update(false);
       }
     });
-    
+
     // still in resolveCustomTextEditor, already has uriStr and extPath in scope
     this.setupEditorEvents(
       doc,
       Handler.bind(panel, doc.uri),
       toggleUI,
-      uriStr(Uri.file(extPath)), // ← pass rootPath here
+      uriStr(Uri.file(extPath)),
+      webview, // ← pass local webview
+      () => content, // ← getter
+      (v) => {
+        content = v;
+      }, // ← setter
     );
     workspace.onDidChangeConfiguration(
       (e) =>
         e.affectsConfiguration("editor.scrollBeyondLastLine") &&
-        this.postToWebview(
+        postToWebview(
           "updateScrollBeyondLastLine",
           workspace.getConfiguration("editor").get("scrollBeyondLastLine"),
         ),

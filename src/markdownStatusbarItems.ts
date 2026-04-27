@@ -31,14 +31,20 @@ export class StatusBar {
     ): vscode.MarkdownString => {
       const rows = cmds.map((c) => {
         const f = findF(c);
+
+        // Only use keybinding if it exists
         const kb =
-          f?.keybinding
-            ?.split("+")
-            .map((k) => `\`${cap(k)}\``)
-            .join(" + ") || "";
+          f && "keybinding" in f && f.keybinding
+            ? f.keybinding
+                .split("+")
+                .map((k) => `\`${cap(k)}\``)
+                .join(" + ")
+            : "";
+
         const title = `\`${f?.icon || ""}\` ${f?.title || c}`;
-        return `[${title} ${kb ? ` ${kb}` : ""}](command:markpen.${c})`;
+        return `[${title}${kb ? ` ${kb}` : ""}](command:markpen.${c})`;
       });
+
       const md = new vscode.MarkdownString(
         rows.join(sep ? "\n\n---\n\n" : "\n"),
       );
@@ -51,23 +57,27 @@ export class StatusBar {
       vscode.StatusBarAlignment.Right,
       2,
     );
-    moreItems.text = "$(triangle-down)MarkPen";
+    moreItems.text = "MarkPen$(triangle-down)";
 
     // Get insert commands dynamically from category "Insert"
-    const insertCmds = all.filter((f: any) => f.category === "Insert").map((f: any) => f.command);
-    
+    const insertCmds = all
+      .filter((f: any) => f.category === "Insert")
+      .map((f: any) => f.command);
+
     const insertItems = vscode.window.createStatusBarItem(
       vscode.StatusBarAlignment.Left,
       501,
     );
-    insertItems.text = "$(plus) Insert $(triangle-down)";
+    insertItems.text = "$(plus) Insert New $(triangle-down)";
     insertItems.tooltip = formatTooltip(insertCmds);
 
     let p = 500;
     const moreItemsList: any[] = [];
 
     // Get Format category items for status bar
-    const formatCmds = all.filter((f: any) => f.category === "Format").map((f: any) => f.command);
+    const formatCmds = all
+      .filter((f: any) => f.category === "Format")
+      .map((f: any) => f.command);
 
     for (const f of all) {
       // Add to status bar if in Format category
@@ -80,7 +90,10 @@ export class StatusBar {
         item.text = f.icon;
         item.tooltip = formatTooltip([f.command], false);
         this.items.set(f.command, { item, when: () => true });
-      } else if (!insertCmds.includes(f.command) && !["Heading", "List", "Table"].includes(f.category)) {
+      } else if (
+        !insertCmds.includes(f.command) &&
+        !["Heading", "List", "Table"].includes(f.category)
+      ) {
         // Everything else (except Insert, Heading, List, Table) goes to More
         moreItemsList.push(f);
       }
@@ -106,7 +119,7 @@ export class StatusBar {
         cat === "Heading"
           ? "$(symbol-number) Heading $(triangle-down)"
           : cat === "List"
-            ? "$(list-unordered) List $(triangle-down)"
+            ? "$(three-bars) List $(triangle-down)"
             : "$(table) Table $(triangle-down)";
       item.tooltip = formatTooltip(feats.map((f) => f.command));
       const when =
