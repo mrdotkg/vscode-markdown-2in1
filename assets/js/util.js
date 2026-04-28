@@ -1,3 +1,40 @@
+//----------------------
+function patchContext(el, patch) {
+  try {
+    const ctx = JSON.parse(el.dataset.vscodeContext || "{}");
+    el.dataset.vscodeContext = JSON.stringify({ ...ctx, ...patch });
+  } catch (e) {
+    console.error("patchContext failed", e);
+  }
+}
+function getActiveContext() {
+  const sel = window.getSelection();
+  if (!sel?.rangeCount) return {};
+  let el = sel.getRangeAt(0).startContainer;
+  if (el?.nodeType === 3) el = el.parentElement;
+  while (el && el !== document.body) {
+    if (el.dataset?.vscodeContext) {
+      try {
+        const ctx = JSON.parse(el.dataset.vscodeContext);
+        if (ctx.section || ctx.item) return ctx;
+      } catch {}
+    }
+    el = el.parentElement;
+  }
+  return {};
+}
+function debounce(fn, ms) {
+  let t;
+  return (...args) => {
+    clearTimeout(t);
+    t = setTimeout(() => fn(...args), ms);
+  };
+}
+function isLeaderKey(e) {
+  return e.metaKey || e.ctrlKey;
+}
+//----------------------
+
 export function setupCursorTracking() {
   let debounceTimer = null;
 
@@ -213,54 +250,7 @@ export function setupContextSystem(editorRoot, rules) {
   annotate(); // initial pass
 }
 
-function patchContext(el, patch) {
-  try {
-    const ctx = JSON.parse(el.dataset.vscodeContext || "{}");
-    el.dataset.vscodeContext = JSON.stringify({ ...ctx, ...patch });
-  } catch (e) {
-    console.error("patchContext failed", e);
-  }
-}
-function getActiveContext() {
-  const sel = window.getSelection();
-  if (!sel?.rangeCount) return {};
-  let el = sel.getRangeAt(0).startContainer;
-  if (el?.nodeType === 3) el = el.parentElement;
-  while (el && el !== document.body) {
-    if (el.dataset?.vscodeContext) {
-      try {
-        const ctx = JSON.parse(el.dataset.vscodeContext);
-        if (ctx.section || ctx.item) return ctx;
-      } catch {}
-    }
-    el = el.parentElement;
-  }
-  return {};
-}
-function debounce(fn, ms) {
-  let t;
-  return (...args) => {
-    clearTimeout(t);
-    t = setTimeout(() => fn(...args), ms);
-  };
-}
-function isLeaderKey(e) {
-  return e.metaKey || e.ctrlKey;
-}
-function matchShortcut(hotkey, event) {
-  const matchAlt = (hotkey.match(/!/) != null) == event.altKey;
-  const matchMeta = (hotkey.match(/⌘/) != null) == event.metaKey;
-  const matchCtrl = (hotkey.match(/\^/) != null) == event.ctrlKey;
-  const matchShifter = (hotkey.match(/\+/) != null) == event.shiftKey;
-
-  if (matchAlt && matchCtrl && matchShifter && matchMeta) {
-    return hotkey.match(new RegExp(`\\b${event.key}\\b`, "i"));
-  }
-}
-const isMac = navigator.userAgent.includes("Mac OS");
-const keyCodes = [222, 219, 57, 192, 56]; // const keys = ['"', "{", "(", "`", "*"];
-
-export const autoSymbol = (handler, editor, config) => {
+export const asyncDelete = () => {
   let _exec = document.execCommand.bind(document);
   document.execCommand = (cmd, ...args) => {
     if (cmd === "delete") {
@@ -271,104 +261,37 @@ export const autoSymbol = (handler, editor, config) => {
       return _exec(cmd, ...args);
     }
   };
-  window.addEventListener(
-    "keydown",
-    async (e) => {
-      if (matchShortcut("^⌘e", e) || matchShortcut("^!e", e)) {
-        e.stopPropagation();
-        e.preventDefault();
-        return handler.emit("editInVSCode", true);
-      }
-
-      if (
-        isMac &&
-        config.preventMacOptionKey &&
-        e.altKey &&
-        e.shiftKey &&
-        ["Digit1", "Digit2", "KeyW"].includes(e.code)
-      ) {
-        return e.preventDefault();
-      }
-      if (e.code == "F12") return handler.emit("developerTool");
-      if (isLeaderKey(e)) {
-        if (e.altKey && isMac) {
-          e.preventDefault();
-        }
-        switch (e.code) {
-          case "KeyS":
-            vscodeEvent.emit("doSave", editor.getValue());
-            e.stopPropagation();
-            e.preventDefault();
-            break;
-          case "KeyV":
-            if (e.shiftKey) {
-              const text = await navigator.clipboard.readText();
-              if (text) document.execCommand("insertText", false, text.trim());
-              e.stopPropagation();
-            } else if (document.getSelection()?.toString()) {
-              // "Fix the issue where the selected text is not cleared after cutting."
-              document.execCommand("delete");
-            }
-            e.preventDefault();
-            break;
-        }
-      }
-      if (!keyCodes.includes(e.keyCode)) return;
-      const selectText = document.getSelection().toString();
-      if (selectText != "") {
-        return;
-      }
-      if (e.key == "(") {
-        document.execCommand("insertText", false, ")");
-        document.getSelection().modify("move", "left", "character");
-      } else if (e.key == "{") {
-        document.execCommand("insertText", false, "}");
-        document.getSelection().modify("move", "left", "character");
-      } else if (e.key == '"') {
-        document.execCommand("insertText", false, e.key);
-        document.getSelection().modify("move", "left", "character");
-      } else if (e.key == "[") {
-        document.execCommand("insertText", false, "]");
-        document.getSelection().modify("move", "left", "character");
-      } else if (e.key == "`") {
-        document.execCommand("insertText", false, "`");
-        document.getSelection().modify("move", "left", "character");
-      } else if (e.key == "*") {
-        document.execCommand("insertText", false, "*");
-        document.getSelection().modify("move", "left", "character");
-      }
-    },
-    isMac ? true : undefined,
-  );
-
+};
+export const resizeEditorTab = () => {
   window.onresize = () => {
     document.getElementById("editor").style.height =
       `${document.documentElement.clientHeight}px`;
   };
-  let app;
-  let needFocus = false;
-  window.onblur = () => {
-    if (!app) {
-      app = document.querySelector(".vditor-reset");
-    }
-    const targetNode = document.getSelection()?.baseNode?.parentNode;
-    if (!app?.contains(targetNode)) {
-      needFocus = false;
-      return;
-    }
-    const curPosition = targetNode?.offsetTop ?? 0;
-    const appPosition = app?.scrollTop ?? 0;
-    if (appPosition - curPosition < window.innerHeight) {
-      needFocus = true;
-    }
-  };
-  window.onfocus = () => {
-    if (!app) {
-      app = document.querySelector(".vditor-reset");
-    }
-    if (needFocus) {
-      app.focus();
-      needFocus = false;
-    }
-  };
+};
+export const disableFS = () => {
+  document.getElementById('editor').addEventListener(
+    "keydown",
+    (e) => {
+      if (e.ctrlKey && e.key === "'") {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+      }
+    },
+    true,
+  );
+};
+export const trackSelectionState = () => {
+  document.addEventListener("selectionchange", () => {
+    const text = window.vditor?.getSelection()?.toString() ?? "";
+    handler.emit("selectionChange", text);
+  });
+};
+export const trackTrustedKeystrokes = () => {
+  document.addEventListener(
+    "keydown",
+    (e) => {
+      if (e.isTrusted) lastNativeKey = toKeyString(e);
+    },
+    true,
+  );
 };
