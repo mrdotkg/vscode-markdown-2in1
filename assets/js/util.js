@@ -269,7 +269,7 @@ export const resizeEditorTab = () => {
   };
 };
 export const disableFS = () => {
-  document.getElementById('editor').addEventListener(
+  document.getElementById("editor").addEventListener(
     "keydown",
     (e) => {
       if (e.ctrlKey && e.key === "'") {

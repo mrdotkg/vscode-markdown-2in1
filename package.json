@@ -290,26 +290,8 @@
         "category": "MarkPen"
       },
       {
-        "command": "markpen.cut",
-        "title": "Cut",
-        "icon": "$(edit)",
-        "category": "MarkPen"
-      },
-      {
-        "command": "markpen.paste",
-        "title": "Paste",
-        "icon": "$(inbox)",
-        "category": "MarkPen"
-      },
-      {
-        "command": "markpen.findInFiles",
-        "title": "Find",
-        "icon": "$(search)",
-        "category": "MarkPen"
-      },
-      {
         "command": "markpen.replaceInFiles",
-        "title": "Replace",
+        "title": "Find & Replace",
         "icon": "$(replace)",
         "category": "MarkPen"
       },
@@ -538,6 +520,11 @@
         "command": "markpen.redo",
         "key": "ctrl+y",
         "when": "activeCustomEditorId == 'markpen' && webviewFocus"
+      },
+      {
+        "command": "markpen.replaceInFiles",
+        "key": "ctrl+shift+h",
+        "when": "activeCustomEditorId == 'markpen' && webviewFocus"
       }
     ],
     "menus": {
@@ -704,18 +691,6 @@
         },
         {
           "command": "markpen.redo",
-          "when": "activeCustomEditorId == 'markpen'"
-        },
-        {
-          "command": "markpen.cut",
-          "when": "activeCustomEditorId == 'markpen'"
-        },
-        {
-          "command": "markpen.paste",
-          "when": "activeCustomEditorId == 'markpen'"
-        },
-        {
-          "command": "markpen.findInFiles",
           "when": "activeCustomEditorId == 'markpen'"
         },
         {
@@ -979,7 +954,7 @@
         "markpen.menus": {
           "type": "object",
           "default": {
-            "commandPalette": "toggle h0 h1 h2 h3 h4 h5 h6 h+ h- bold italic strikethrough link inlinecode unordered ordered checked checked-toggle indent unindent new-start new-end new-table new-row-above new-row-below del-row new-col-left new-col-right del-col align-left align-center align-right move-caret-prev move-caret-next select-codeblock codeblock blockquote hr undo redo cut paste findInFiles replaceInFiles toggle cycleHeading pasteimage openKeyboardShortcuts",
+            "commandPalette": "toggle h0 h1 h2 h3 h4 h5 h6 h+ h- bold italic strikethrough link inlinecode unordered ordered checked checked-toggle indent unindent new-start new-end new-table new-row-above new-row-below del-row new-col-left new-col-right del-col align-left align-center align-right move-caret-prev move-caret-next select-codeblock codeblock blockquote hr undo redo replaceInFiles toggle cycleHeading pasteimage openKeyboardShortcuts",
             "editor/context": "toggle",
             "editor/title": "toggle undo",
             "editor/title/context": "toggle undo redo",

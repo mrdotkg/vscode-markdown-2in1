@@ -67,19 +67,8 @@ export function activate(context: ExtensionContext) {
     registerCommand(`${eId}.toggle`, (uri?: Uri) => MD.toggle(uri)),
     registerCommand(`${eId}.cycleHeading`, () => MD.cycleHeading()),
     registerCommand(`${eId}.pasteimage`, () => MD.pasteimage(dir)),
-    registerCommand(`${eId}.cut`, () => MD.cut()),
-    registerCommand(`${eId}.paste`, () => MD.paste()),
-    registerCommand(`${eId}.findInFiles`, async () => {
-      const uri = Holder.doc?.uri;
-      if (uri) {
-        await commands.executeCommand("workbench.action.findInFiles", {
-          filesToInclude: uri.fsPath,
-          query: Holder.lastSelection,
-          triggerSearch: true,
-        });
-      }
-    }),
-
+    // registerCommand(`${eId}.cut`, () => MD.cut()),
+    // registerCommand(`${eId}.paste`, () => MD.paste()),
     registerCommand(`${eId}.replaceInFiles`, async () => {
       const uri = Holder.doc?.uri;
       if (uri) {
