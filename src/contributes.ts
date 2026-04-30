@@ -41,7 +41,10 @@ const mapMenu = (key: string, when: string, group?: string) =>
     .split(" ")
     .filter(Boolean)
     .map((cmd) => ({ command: prefix(cmd), when, ...(group && { group }) }));
-
+const NATIVE_KEYS = new Set([
+  "ctrl+c",
+  "ctrl+x",
+  "ctrl+a"]);
 const contributes = {
   customEditors: [
     {
@@ -62,11 +65,12 @@ const contributes = {
   })),
   keybindings: allFeatures
     .filter((f: any) => f.keybinding)
+    .filter((f: any) => !NATIVE_KEYS.has(f.keybinding.toLowerCase()))
     .map((f: any) => {
       return {
         command: prefix(f.command),
         key: f.keybinding,
-        when: editorIsActive + ` && webviewFocus`,
+        when: editorIsActive,
       };
     }),
   menus: {

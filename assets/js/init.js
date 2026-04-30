@@ -12,7 +12,6 @@ import {
   setupFocusManagement,
   disableFS,
   trackSelectionState,
-  trackTrustedKeystrokes,
 } from "./util.js";
 
 // ─── Zoom Utilities ──────────────────────────────────────────────────────────
@@ -262,6 +261,13 @@ handler
       },
 
       after() {
+        document.addEventListener(
+          "keydown",
+          (e) => {
+            if (e.isTrusted) lastNativeKey = toKeyString(e);
+          },
+          true,
+        );
         setupZoom(md.mdConfig?.fontSize || 14, {
           zoomLevel: md.mdConfig?.zoomLevel || 0,
           mouseWheelZoom: md.mdConfig?.mouseWheelZoom || false,
@@ -270,7 +276,6 @@ handler
         if (md.cursor) setTimeout(() => restoreCursorFromPoint(md.cursor), 150);
         asyncDelete();
         resizeEditorTab();
-        trackTrustedKeystrokes();
         disableFS();
         trackSelectionState();
         handler.on("update", (c) => window.vditor.setValue(c));

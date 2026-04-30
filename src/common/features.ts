@@ -306,7 +306,7 @@ export const Features = [
     command: "select-codeblock",
     title: "Select All Code Block",
     icon: "$(bracket-dot)",
-    keybinding: "ctrl+a",
+    keybinding: "ctrl+shift+a",
     category: "Code",
     selector: "[data-type='code-block']",
     hotkey: "ctrl+a",

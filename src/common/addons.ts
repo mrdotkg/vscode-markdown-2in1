@@ -15,26 +15,26 @@ export const Addons = [
     command: "replaceInFiles",
     title: "Find & Replace",
     icon: "$(replace)",
-    keybinding: "ctrl+shift+h",
+    keybinding: "ctrl+shift+r",
   },
   {
     command: "toggle",
     title: "Toggle Editor",
     icon: "$(markdown)",
-    // keybinding: "ctrl+alt+e",
+    keybinding: "ctrl+shift+t",
   },
   {
     command: "cycleHeading",
     title: "Cycle H1-H6 & Paragraph",
     category: "Format",
     icon: "$(text-size)",
-    // keybinding: "ctrl+alt+h",
+    keybinding: "ctrl+alt+c",
   },
   {
     command: "pasteimage",
     title: "Paste Image",
     icon: "$(copy)",
-    // keybinding: "ctrl+alt+v",
+    keybinding: "ctrl+shift+v",
   },
 
   {

@@ -286,12 +286,4 @@ export const trackSelectionState = () => {
     handler.emit("selectionChange", text);
   });
 };
-export const trackTrustedKeystrokes = () => {
-  document.addEventListener(
-    "keydown",
-    (e) => {
-      if (e.isTrusted) lastNativeKey = toKeyString(e);
-    },
-    true,
-  );
-};
+
