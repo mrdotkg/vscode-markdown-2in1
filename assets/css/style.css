@@ -108,9 +108,7 @@ hr {
   background-color: var(--vscode-textCodeBlock-background) !important;
   color: var(--vscode-editor-foreground) !important;
 }
-body.showEditorSelection pre.vditor-reset > [data-block] {
-  position: relative;
-}
+
 pre.vditor-reset {
   border: none;
   background-color: transparent !important;
@@ -119,108 +117,23 @@ pre.vditor-reset {
 .vditor-ir__preview {
   white-space: pre;
 }
-body.showEditorSelection pre.vditor-reset > [data-block]::before,
-body.showEditorSelection pre.vditor-reset > [data-block]::after {
-  display: none;
-  line-height: 1.5em;
-  margin-left: -29px;
-  color: var(--second-color);
-  position: absolute;
-}
-body.showEditorSelection pre.vditor-reset > [data-block]:hover::before {
-  display: block;
-  border-right: 3px solid;
-  top: 0;
-  bottom: 0;
-  position: absolute;
-  color: var(--second-color);
-  left: -29px;
-  margin-left: 0px;
-  padding-right: 0px;
-  min-width: 20px;
-}
-body.showEditorSelection pre.vditor-reset > [data-block]:hover::after {
-  display: block;
-  /* border-right: 3px solid; */
-  position: absolute;
-  color: var(--second-color);
-  left: -29px;
-  margin-left: 0px;
-  padding-right: 0px;
-  min-width: 20px;
-  /* bottom: -13px; */
-}
-body.showEditorSelection
-  pre.vditor-reset
-  > [data-block][data-type="code-block"]:before,
-body.showEditorSelection
-  pre.vditor-reset
-  > [data-block][data-type="code-block"]:after {
-  content: "```";
-  left: -36px;
-}
-body.showEditorSelection
-  pre.vditor-reset
-  > [data-block][data-type="code-block"]:before {
-  top: 1.2em;
-  line-height: 0;
-}
-body.showEditorSelection
-  pre.vditor-reset
-  > [data-block][data-type="code-block"]:after {
-  bottom: -1em;
-}
 
-body.showEditorSelection
-  pre.vditor-reset
-  > [data-block][data-type="math-block"]:before,
-body.showEditorSelection
-  pre.vditor-reset
-  > [data-block][data-type="math-block"]:after {
-  content: "$$";
-}
 div[data-block][data-type="code-block"].vditor-ir__node.vditor-ir__node--expand
-  .vditor-ir__preview:not(:has(.language-abc,.language-graphviz, .language-mermaid, .language-mindmap, .language-echarts)) {
+  .vditor-ir__preview:not(
+    :has(
+      .language-abc,
+      .language-graphviz,
+      .language-mermaid,
+      .language-mindmap,
+      .language-echarts
+    )
+  ) {
   display: none;
   font-family: monospace;
 }
 
 .vditor-ir__marker--info {
   display: inline !important;
-}
-
-body.showEditorSelection pre.vditor-reset > p[data-block]:before {
-  content: "¶¶";
-}
-body.showEditorSelection pre.vditor-reset > p[data-block]:hover:before {
-  content: "¶¶";
-}
-body.showEditorSelection pre.vditor-reset > table[data-block]::before {
-  content: "TT";
-}
-body.showEditorSelection pre.vditor-reset > table[data-block]:hover:before {
-  content: "TT";
-}
-body.showEditorSelection
-  pre.vditor-reset
-  > ol[data-block]:has(li.vditor-task):hover:before {
-  content: "☑≡ ";
-}
-
-body.showEditorSelection
-  pre.vditor-reset
-  > blockquote[data-block]:hover:before {
-  content: "❝❝";
-  left: -35px;
-}
-body.showEditorSelection pre.vditor-reset > ul[data-block]:hover:before {
-  content: "•≡ ";
-}
-body.showEditorSelection pre.vditor-reset > hr[data-block]:hover:before {
-  content: "――";
-}
-body.showEditorSelection pre.vditor-reset > ol[data-block]:hover:before {
-  content: "1≡ ";
 }
 
 body.scrollBeyondLastLine {
@@ -308,18 +221,18 @@ blockquote p {
   filter: invert(1) hue-rotate(180deg);
 }
 .vditor-reset li + li {
-    margin-top: 0;
+  margin-top: 0;
 }
 /* Agar Vditor use kar rahe ho toh */
 .vditor-ir .search-highlight {
   background: var(--vscode-editor-findMatchHighlightBackground);
   outline: 1px solid var(--vscode-editor-findMatchHighlightBorder);
-}/* Webview CSS — VSCode ke exact same colors */
+} /* Webview CSS — VSCode ke exact same colors */
 ::highlight(find-match) {
   background-color: var(--vscode-editor-findMatchHighlightBackground);
 }
 .vditor-reset code:not(.hljs):not(.highlight-chroma) {
-    padding: 0em 0.4em;
+  padding: 0em 0.4em;
 }
 /* Syntax highlighted code — content ke hisaab se grow karo */
 
@@ -348,7 +261,7 @@ pre.vditor-reset > [data-block][data-type="code-block"],
   opacity: 1;
 }
 
-.vditor-ir__node--expand .vditor-ir__marker--pre code{
+.vditor-ir__node--expand .vditor-ir__marker--pre code {
   height: auto;
 }
 
@@ -360,4 +273,27 @@ pre.vditor-reset > [data-block][data-type="code-block"],
   display: block;
   width: 100%;
   box-sizing: border-box;
+}
+/* ------------------- */
+.vditor-reset > h1:before,
+.vditor-reset > h2:before,
+.vditor-reset > h3:before,
+.vditor-reset > h4:before,
+.vditor-reset > h5:before,
+.vditor-reset > h6:before,
+div[data-type="link-ref-defs-block"]:before,
+div[data-type="footnotes-block"]:before,
+.vditor-toc:before {
+  display: none;
+}
+.vditor-reset > h1:hover::before,
+.vditor-reset > h2:hover::before,
+.vditor-reset > h3:hover::before,
+.vditor-reset > h4:hover::before,
+.vditor-reset > h5:hover::before,
+.vditor-reset > h6:hover::before,
+div[data-type="link-ref-defs-block"]:hover::before,
+div[data-type="footnotes-block"]:hover::before,
+.vditor-toc:before {
+  display: block;
 }
