@@ -291,7 +291,10 @@ export const disableFS = () => {
   document.getElementById("editor").addEventListener(
     "keydown",
     (e) => {
-      if (e.ctrlKey && e.key === "'") {
+      if (
+        (e.ctrlKey && e.key === "'") ||
+        (e.ctrlKey && e.altKey && ["7", "8", "9"].includes(e.key))
+      ) {
         e.preventDefault();
         e.stopImmediatePropagation();
       }
