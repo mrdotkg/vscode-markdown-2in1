@@ -127,10 +127,25 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
       })
       .on("command", (cmd: string) => commands.executeCommand(cmd))
       .on("openLink", (u: string) => {
-        const target = Uri.parse(u.replace(/https:\/\/file.*\.net/i, ""));
-        u.includes("file")
-          ? commands.executeCommand("vscode.open", target)
-          : env.openExternal(target);
+        const normalized = u.replace(/^https:\/\/file.*\.net/i, "");
+        const target = Uri.parse(normalized);
+        const isImage = /\.(png|jpe?g|gif|bmp|webp|svg|ico|avif|apng)(\?.*)?$/i.test(normalized);
+        const isLocal = target.scheme === "file" || target.scheme === "vscode-webview-resource" || /file/.test(normalized);
+
+        if (isImage) {
+          if (isLocal) {
+            commands.executeCommand("vscode.open", target);
+          } else {
+            env.openExternal(target);
+          }
+          return;
+        }
+
+        if (isLocal) {
+          commands.executeCommand("vscode.open", target);
+        } else {
+          env.openExternal(target);
+        }
       })
       .on("scroll", ({ scrollTop }: any) =>
         this.context.workspaceState.update(scrollKey, scrollTop),

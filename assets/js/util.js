@@ -141,34 +141,53 @@ export function scrollEditor(top) {
 }
 
 export const openLink = () => {
-  const clickCallback = (e) => {
-    const ele = e.target;
-    e.stopPropagation();
-    if (!(isLeaderKey(e) || ["dblclick", "auxclick"].includes(e.type))) return;
+  const isImage = (url) => /\.(png|jpe?g|gif|bmp|webp|svg|ico|avif|apng)(\?.*)?$/i.test(url);
+  const canOpen = (url) =>
+    !!url &&
+    (/^https?:\/\//i.test(url) || /^(mailto|tel):/i.test(url) ||
+      (/^(file:|vscode-webview-resource:)/i.test(url) && isImage(url)));
 
-    if (ele.tagName === "A") handler.emit("openLink", ele.href);
-    else if (ele.tagName === "IMG") {
-      const parent = ele.parentElement;
-      if (parent?.tagName === "A" && parent.href)
-        return handler.emit("openLink", parent.href);
-      if (ele.src?.startsWith("http")) handler.emit("openLink", ele.src);
+  const resolve = (el) => {
+    if (el.tagName === "A") return el.getAttribute("href") || el.href;
+    if (el.tagName === "IMG") {
+      const link = el.closest("a");
+      if (link) {
+        const href = link.getAttribute("href") || link.href;
+        if (canOpen(href)) return href;
+      }
+      return el.currentSrc || el.src;
     }
+    return null;
   };
 
-  document
-    .querySelector(".vditor-wysiwyg")
-    .addEventListener(
-      "click",
-      (e) => (e.ctrlKey || e.metaKey) && clickCallback(e),
-    );
+  const emit = (e, leader = false) => {
+    if (leader && !isLeaderKey(e)) return;
+    const target = resolve(e.target);
+    if (!canOpen(target)) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    handler.emit("openLink", target);
+  };
 
-  document.querySelector(".vditor-ir").addEventListener("click", (e) => {
-    if (!(e.ctrlKey || e.metaKey)) return;
-    let ele = e.target;
-    if (ele.classList.contains("vditor-ir__link"))
-      ele = ele.nextElementSibling?.nextElementSibling?.nextElementSibling;
-    if (ele.classList.contains("vditor-ir__marker--link"))
-      handler.emit("openLink", ele.textContent);
+  document.querySelectorAll(".vditor-ir, .vditor-wysiwyg").forEach((editor) => {
+    editor.addEventListener("click", (e) => emit(e, true));
+    editor.addEventListener("dblclick", emit, true);
+  });
+
+  document.querySelector(".vditor-reset")?.addEventListener("scroll", (e) =>
+    handler.emit("scroll", { scrollTop: e.target.scrollTop - 70 }),
+  );
+
+  document.querySelector(".vditor-ir")?.addEventListener("click", (e) => {
+    if (!isLeaderKey(e)) return;
+    let el = e.target;
+    if (el.classList.contains("vditor-ir__link")) {
+      el = el.nextElementSibling?.nextElementSibling?.nextElementSibling;
+    }
+    if (el.classList.contains("vditor-ir__marker--link")) {
+      const target = el.textContent;
+      if (canOpen(target)) handler.emit("openLink", target);
+    }
   });
 };
 
@@ -286,4 +305,3 @@ export const trackSelectionState = () => {
     handler.emit("selectionChange", text);
   });
 };
-
