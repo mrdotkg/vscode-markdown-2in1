@@ -296,7 +296,7 @@ export const disableFS = () => {
       const leader = isMac ? e.metaKey : e.ctrlKey;
       if (
         (leader && e.key === "'") ||
-        (leader && e.altKey && ["7", "8", "9"].includes(e.key))
+        (leader && e.altKey && ["Digit7", "Digit8", "Digit9"].includes(e.code))
       ) {
         e.preventDefault();
         e.stopImmediatePropagation();
