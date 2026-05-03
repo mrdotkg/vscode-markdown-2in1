@@ -41,10 +41,7 @@ const mapMenu = (key: string, when: string, group?: string) =>
     .split(" ")
     .filter(Boolean)
     .map((cmd) => ({ command: prefix(cmd), when, ...(group && { group }) }));
-const NATIVE_KEYS = new Set([
-  "ctrl+c",
-  "ctrl+x",
-  "ctrl+a"]);
+const NATIVE_KEYS = new Set(["ctrl+c", "ctrl+x", "ctrl+a"]);
 const contributes = {
   customEditors: [
     {

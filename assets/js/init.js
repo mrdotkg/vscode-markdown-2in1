@@ -99,10 +99,16 @@ window.handler = {
   on: (e, fn) => ((events[e] = fn), window.handler),
   emit: (e, d) => vscode?.postMessage({ type: e, content: d }),
 };
+const isMac = /Mac|iPhone|iPad/i.test(navigator.platform);
 
 let lastNativeKey = null;
-const toKeyString = ({ ctrlKey, altKey, shiftKey, key }) =>
-  [ctrlKey && "ctrl", altKey && "alt", shiftKey && "shift", key?.toLowerCase()]
+const toKeyString = ({ ctrlKey, metaKey, altKey, shiftKey, key }) =>
+  [
+    (ctrlKey || (isMac && metaKey)) && "ctrl",  // Cmd → ctrl on macOS
+    altKey && "alt",
+    shiftKey && "shift",
+    key?.toLowerCase(),
+  ]
     .filter(Boolean)
     .join("+");
 
@@ -115,7 +121,7 @@ function parseKeyString(keyString) {
     altKey: false,
     shiftKey: false,
     metaKey: false,
-    bubbles: true,
+    bubbles: !isMac,   // macOS par false — Vditor infinite loop fix
     cancelable: true,
   };
 
@@ -123,7 +129,11 @@ function parseKeyString(keyString) {
     const p = part.trim().toLowerCase();
     switch (p) {
       case "ctrl":
-        eventInit.ctrlKey = true;
+        if (isMac) {
+          eventInit.metaKey = true;   // macOS: ctrl → Cmd
+        } else {
+          eventInit.ctrlKey = true;
+        }
         break;
       case "alt":
         eventInit.altKey = true;
@@ -137,7 +147,6 @@ function parseKeyString(keyString) {
         eventInit.metaKey = true;
         break;
       default:
-        // actual key
         eventInit.key = part;
         if (/^[0-9]$/.test(part)) {
           eventInit.code = "Digit" + part;
@@ -177,7 +186,7 @@ handler
       window.vditor.focus();
       ["keydown", "keypress", "keyup"].forEach((t) =>
         (document.activeElement || window.vditor.ir.element).dispatchEvent(
-          new KeyboardEvent(t, parseKeyString(hotkeys)),
+          new KeyboardEvent(t, {...parseKeyString(hotkeys), bubbles: false}),
         ),
       );
     }

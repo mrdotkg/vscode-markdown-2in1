@@ -287,13 +287,16 @@ export const resizeEditorTab = () => {
       `${document.documentElement.clientHeight}px`;
   };
 };
+// AFTER
 export const disableFS = () => {
+  const isMac = /Mac|iPhone|iPad/i.test(navigator.platform);
   document.getElementById("editor").addEventListener(
     "keydown",
     (e) => {
+      const leader = isMac ? e.metaKey : e.ctrlKey;
       if (
-        (e.ctrlKey && e.key === "'") ||
-        (e.ctrlKey && e.altKey && ["7", "8", "9"].includes(e.key))
+        (leader && e.key === "'") ||
+        (leader && e.altKey && ["7", "8", "9"].includes(e.key))
       ) {
         e.preventDefault();
         e.stopImmediatePropagation();
