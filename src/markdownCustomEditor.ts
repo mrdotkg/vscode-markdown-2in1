@@ -26,6 +26,10 @@ export class MarkdownCustomEditor implements CustomTextEditorProvider {
   private static webviews = new Map<string, Webview>(); // Map of docUri -> webview
   private static currentTempZoom = 0; // Shared temp zoom state across all tabs
 
+  static refreshStatusBar() {
+    this.statusBar?.update();
+  }
+
   // Static method to broadcast to all webviews
   static broadcastToWebviews(type: string, value: any) {
     this.webviews.forEach((webview) =>

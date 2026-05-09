@@ -42,4 +42,9 @@ export const Addons = [
     title: "MarkPen Hotkeys",
     icon: "$(keyboard)",
   },
+  {
+    command: "toggleStatusbar",
+    title: "Toggle Status Bar",
+    icon: "$(layout-sidebar-right)",
+  },
 ];

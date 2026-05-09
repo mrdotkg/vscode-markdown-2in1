@@ -144,6 +144,10 @@ export class StatusBar {
     this._render();
   }
 
+  private _isToolbarVisible() {
+    return vscode.workspace.getConfiguration("markpen").get<boolean>("toggleStatusbar", false);
+  }
+
   dispose() {
     this.items.forEach(({ item }) => item.dispose());
     this.items.clear();
@@ -156,10 +160,23 @@ export class StatusBar {
       this.wc.hide();
       return;
     }
+    const toolbarVisible = this._isToolbarVisible();
     this.wc.show();
-    this.items.forEach(({ item, when }) =>
-      when(this.ctx) ? item.show() : item.hide(),
-    );
+    this.items.forEach(({ item, when }, key) => {
+      if (key === "more-button") {
+        item.show();
+        return;
+      }
+      if (!toolbarVisible) {
+        item.hide();
+        return;
+      }
+      if (when(this.ctx)) {
+        item.show();
+      } else {
+        item.hide();
+      }
+    });
   }
 
   private _wc() {

@@ -318,6 +318,12 @@
         "title": "MarkPen Hotkeys",
         "icon": "$(keyboard)",
         "category": "MarkPen"
+      },
+      {
+        "command": "markpen.toggleStatusbar",
+        "title": "Toggle Status Bar",
+        "icon": "$(layout-sidebar-right)",
+        "category": "MarkPen"
       }
     ],
     "keybindings": [
@@ -727,6 +733,10 @@
         {
           "command": "markpen.openKeyboardShortcuts",
           "when": "activeCustomEditorId == 'markpen'"
+        },
+        {
+          "command": "markpen.toggleStatusbar",
+          "when": "activeCustomEditorId == 'markpen'"
         }
       ],
       "editor/context": [
@@ -969,7 +979,7 @@
         "markpen.menus": {
           "type": "object",
           "default": {
-            "commandPalette": "toggle h0 h1 h2 h3 h4 h5 h6 h+ h- bold italic strikethrough link inlinecode unordered ordered checked checked-toggle indent unindent new-start new-end new-table new-row-above new-row-below del-row new-col-left new-col-right del-col align-left align-center align-right move-caret-prev move-caret-next select-codeblock codeblock blockquote hr undo redo replaceInFiles toggle cycleHeading pasteimage openKeyboardShortcuts",
+            "commandPalette": "toggle h0 h1 h2 h3 h4 h5 h6 h+ h- bold italic strikethrough link inlinecode unordered ordered checked checked-toggle indent unindent new-start new-end new-table new-row-above new-row-below del-row new-col-left new-col-right del-col align-left align-center align-right move-caret-prev move-caret-next select-codeblock codeblock blockquote hr undo redo replaceInFiles toggle cycleHeading pasteimage openKeyboardShortcuts toggleStatusbar",
             "editor/context": "toggle",
             "editor/title": "toggle undo",
             "editor/title/context": "toggle undo redo",
@@ -981,6 +991,11 @@
           "type": "boolean",
           "default": true,
           "description": "Open markdown outline."
+        },
+        "markpen.toggleStatusbar": {
+          "type": "boolean",
+          "default": false,
+          "description": "Show MarkPen status bar toolbar items on the left side."
         },
         "markpen.hideToolbar": {
           "type": "boolean",

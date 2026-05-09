@@ -47,6 +47,9 @@ export function activate(context: ExtensionContext) {
         console.log("[markpen] Broadcasting updateMdConfig:", config);
         MarkdownCustomEditor.broadcastToWebviews("updateMdConfig", config);
       }
+      if (e.affectsConfiguration("markpen.toggleStatusbar")) {
+        MarkdownCustomEditor.refreshStatusBar();
+      }
     }),
   );
 
@@ -89,6 +92,11 @@ export function activate(context: ExtensionContext) {
       } catch (e) {
         console.error("Keybindings error:", e);
       }
+    }),
+    registerCommand(`${eId}.toggleStatusbar`, async () => {
+      const config = workspace.getConfiguration("markpen");
+      const current = config.get<boolean>("toggleStatusbar", false);
+      await config.update("toggleStatusbar", !current, true);
     }),
     ...Features.map((f) =>
       registerCommand(`${eId}.${f.command}`, () =>

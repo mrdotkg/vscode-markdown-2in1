@@ -110,6 +110,11 @@ const contributes = {
         default: true,
         description: "Open markdown outline.",
       },
+      "markpen.toggleStatusbar": {
+        type: "boolean",
+        default: false,
+        description: "Show MarkPen status bar toolbar items on the left side.",
+      },
       "markpen.hideToolbar": {
         type: "boolean",
         default: false,
