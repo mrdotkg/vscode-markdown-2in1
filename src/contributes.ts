@@ -56,7 +56,7 @@ const contributes = {
   ],
   commands: allFeatures.map((f: any) => ({
     command: prefix(f.command),
-    title: f.title,
+    title: `${f.category} - ${f.title}`,
     icon: f.icon,
     category: "MarkPen",
   })),
@@ -100,40 +100,10 @@ const contributes = {
   configuration: {
     title: "MarkPen",
     properties: {
-      "markpen.menus": {
-        type: "object",
-        default: Holder.menus,
-        markdownDescription: "Customize menu... (options: h1, h2, etc.)",
-      },
-      "markpen.openOutline": {
-        type: "boolean",
-        default: true,
-        description: "Open markdown outline.",
-      },
       "markpen.toggleStatusbar": {
         type: "boolean",
         default: false,
         description: "Show MarkPen status bar toolbar items on the left side.",
-      },
-      "markpen.hideToolbar": {
-        type: "boolean",
-        default: false,
-        description: "Hide markdown toolbar.",
-      },
-      "markpen.previewCode": {
-        type: "boolean",
-        default: true,
-        description: "Preview code in markdown.",
-      },
-      "markpen.previewCodeHighlight.showLineNumber": {
-        type: "boolean",
-        default: false,
-        description: "Show line numbers.",
-      },
-      "markpen.workspacePathAsImageBasePath": {
-        type: "boolean",
-        default: false,
-        description: "Workspace as base path.",
       },
       "markpen.pasterImgPath": {
         type: "string",

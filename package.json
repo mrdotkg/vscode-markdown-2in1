@@ -51,278 +51,278 @@
     "commands": [
       {
         "command": "markpen.h0",
-        "title": "Remove Heading",
+        "title": "Heading - Remove",
         "icon": "$(symbol-number)0",
         "category": "MarkPen"
       },
       {
         "command": "markpen.h1",
-        "title": "H1 Style Heading",
+        "title": "Heading - H1 Style",
         "icon": "$(symbol-number)1",
         "category": "MarkPen"
       },
       {
         "command": "markpen.h2",
-        "title": "H2 Style Heading",
+        "title": "Heading - H2 Style",
         "icon": "$(symbol-number)2",
         "category": "MarkPen"
       },
       {
         "command": "markpen.h3",
-        "title": "H3 Style Heading",
+        "title": "Heading - H3 Style",
         "icon": "$(symbol-number)3",
         "category": "MarkPen"
       },
       {
         "command": "markpen.h4",
-        "title": "H4 Style Heading",
+        "title": "Heading - H4 Style",
         "icon": "$(symbol-number)4",
         "category": "MarkPen"
       },
       {
         "command": "markpen.h5",
-        "title": "H5 Style Heading",
+        "title": "Heading - H5 Style",
         "icon": "$(symbol-number)5",
         "category": "MarkPen"
       },
       {
         "command": "markpen.h6",
-        "title": "H6 Style Heading",
+        "title": "Heading - H6 Style",
         "icon": "$(symbol-number)6",
         "category": "MarkPen"
       },
       {
         "command": "markpen.h+",
-        "title": "Heading Level +1",
+        "title": "Heading - Level +1",
         "icon": "$(symbol-number)+",
         "category": "MarkPen"
       },
       {
         "command": "markpen.h-",
-        "title": "Heading Level - 1",
+        "title": "Heading - Level - 1",
         "icon": "$(symbol-number)-",
         "category": "MarkPen"
       },
       {
         "command": "markpen.bold",
-        "title": "Bold",
+        "title": "Format - Bold",
         "icon": "$(bold)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.italic",
-        "title": "Italic",
+        "title": "Format - Italic",
         "icon": "$(italic)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.strikethrough",
-        "title": "Strike",
+        "title": "Format - Strike",
         "icon": "$(strikethrough)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.link",
-        "title": "Link",
+        "title": "Format - Link",
         "icon": "$(link)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.inlinecode",
-        "title": "Monospace",
+        "title": "Format - Monospace",
         "icon": "$(symbol-string)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.unordered",
-        "title": "Unordered List",
+        "title": "Format - Unordered List",
         "icon": "$(list-unordered)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.ordered",
-        "title": "Ordered List",
+        "title": "Format - Ordered List",
         "icon": "$(list-ordered)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.checked",
-        "title": "Checked List",
+        "title": "Format - Checked List",
         "icon": "$(tasklist)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.checked-toggle",
-        "title": "Toggle Tick",
+        "title": "List - Toggle Tick",
         "icon": "$(check)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.indent",
-        "title": "(L) Indent",
+        "title": "List - (L) Indent",
         "icon": "$(indent)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.unindent",
-        "title": "(R) Indent",
+        "title": "List - (R) Indent",
         "icon": "$(newline)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.new-start",
-        "title": "Empty Paragraph (before)",
+        "title": "Insert - Empty Paragraph (before)",
         "icon": "$(arrow-up)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.new-end",
-        "title": "Empty Paragraph",
+        "title": "Insert - Empty Paragraph",
         "icon": "$(arrow-down)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.new-table",
-        "title": "Empty 3x3 Table",
+        "title": "Insert - Empty 3x3 Table",
         "icon": "$(table)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.new-row-above",
-        "title": "Row (above)",
+        "title": "Table - Row (above)",
         "icon": "$(arrow-up)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.new-row-below",
-        "title": "Row (below)",
+        "title": "Table - Row (below)",
         "icon": "$(arrow-down)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.del-row",
-        "title": "Delete Row",
+        "title": "Table - Delete Row",
         "icon": "$(split-vertical)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.new-col-left",
-        "title": "Col (L)",
+        "title": "Table - Col (L)",
         "icon": "$(arrow-left)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.new-col-right",
-        "title": "Col (R)",
+        "title": "Table - Col (R)",
         "icon": "$(arrow-right)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.del-col",
-        "title": "Delete Col",
+        "title": "Table - Delete Col",
         "icon": "$(split-horizontal)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.align-left",
-        "title": "Align (L)",
+        "title": "Table - Align (L)",
         "icon": "$(layout-sidebar-left-dock)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.align-center",
-        "title": "Align [C]",
+        "title": "Table - Align [C]",
         "icon": "$(layout-centered)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.align-right",
-        "title": "Align (R)",
+        "title": "Table - Align (R)",
         "icon": "$(layout-sidebar-right-dock)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.move-caret-prev",
-        "title": "Move to Prev Cell",
+        "title": "Table - Move to Prev Cell",
         "icon": "$(debug-step-back)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.move-caret-next",
-        "title": "Move to Next Cell",
+        "title": "Table - Move to Next Cell",
         "icon": "$(debug-step-over)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.select-codeblock",
-        "title": "Select All Code Block",
+        "title": "Code - Select All Code Block",
         "icon": "$(bracket-dot)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.codeblock",
-        "title": "Fenced Code Block",
+        "title": "Insert - Fenced Code Block",
         "icon": "$(code)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.blockquote",
-        "title": "Block Quote",
+        "title": "Format - Block Quote",
         "icon": "$(quote)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.hr",
-        "title": "Horizontal Line",
+        "title": "Insert - Horizontal Line",
         "icon": "$(horizontal-rule)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.undo",
-        "title": "Undo",
+        "title": "System - Undo",
         "icon": "$(discard)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.redo",
-        "title": "Redo",
+        "title": "System - Redo",
         "icon": "$(redo)",
         "category": "MarkPen"
       },
       {
-        "command": "markpen.replaceInFiles",
-        "title": "Find & Replace",
-        "icon": "$(replace)",
-        "category": "MarkPen"
-      },
-      {
         "command": "markpen.toggle",
-        "title": "Toggle Editor",
+        "title": "undefined - Switch Document Editor",
         "icon": "$(markdown)",
         "category": "MarkPen"
       },
       {
-        "command": "markpen.cycleHeading",
-        "title": "Cycle H1-H6 & Paragraph",
-        "icon": "$(text-size)",
-        "category": "MarkPen"
-      },
-      {
-        "command": "markpen.pasteimage",
-        "title": "Paste Image",
-        "icon": "$(copy)",
+        "command": "markpen.toggleStatusbar",
+        "title": "undefined - Toggle StatusBar Buttons",
+        "icon": "$(layout-sidebar-right)",
         "category": "MarkPen"
       },
       {
         "command": "markpen.openKeyboardShortcuts",
-        "title": "MarkPen Hotkeys",
+        "title": "undefined - Available MarkPen Hotkeys",
         "icon": "$(keyboard)",
         "category": "MarkPen"
       },
       {
-        "command": "markpen.toggleStatusbar",
-        "title": "Toggle Status Bar",
-        "icon": "$(layout-sidebar-right)",
+        "command": "markpen.pasteimage",
+        "title": "undefined - Paste Clipboard Image",
+        "icon": "$(copy)",
+        "category": "MarkPen"
+      },
+      {
+        "command": "markpen.replaceInFiles",
+        "title": "undefined - Find and Replace in Files",
+        "icon": "$(replace)",
+        "category": "MarkPen"
+      },
+      {
+        "command": "markpen.cycleHeading",
+        "title": "Format - Cycle Heading Styles",
+        "icon": "$(text-size)",
         "category": "MarkPen"
       }
     ],
@@ -528,23 +528,23 @@
         "when": "activeCustomEditorId == 'markpen'"
       },
       {
-        "command": "markpen.replaceInFiles",
-        "key": "ctrl+shift+r",
-        "when": "activeCustomEditorId == 'markpen'"
-      },
-      {
         "command": "markpen.toggle",
         "key": "ctrl+shift+t",
         "when": "activeCustomEditorId == 'markpen'"
       },
       {
-        "command": "markpen.cycleHeading",
-        "key": "ctrl+alt+c",
+        "command": "markpen.pasteimage",
+        "key": "ctrl+shift+v",
         "when": "activeCustomEditorId == 'markpen'"
       },
       {
-        "command": "markpen.pasteimage",
-        "key": "ctrl+shift+v",
+        "command": "markpen.replaceInFiles",
+        "key": "ctrl+shift+r",
+        "when": "activeCustomEditorId == 'markpen'"
+      },
+      {
+        "command": "markpen.cycleHeading",
+        "key": "ctrl+alt+c",
         "when": "activeCustomEditorId == 'markpen'"
       }
     ],
@@ -715,19 +715,11 @@
           "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markpen.replaceInFiles",
-          "when": "activeCustomEditorId == 'markpen'"
-        },
-        {
           "command": "markpen.toggle",
           "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markpen.cycleHeading",
-          "when": "activeCustomEditorId == 'markpen'"
-        },
-        {
-          "command": "markpen.pasteimage",
+          "command": "markpen.toggleStatusbar",
           "when": "activeCustomEditorId == 'markpen'"
         },
         {
@@ -735,7 +727,15 @@
           "when": "activeCustomEditorId == 'markpen'"
         },
         {
-          "command": "markpen.toggleStatusbar",
+          "command": "markpen.pasteimage",
+          "when": "activeCustomEditorId == 'markpen'"
+        },
+        {
+          "command": "markpen.replaceInFiles",
+          "when": "activeCustomEditorId == 'markpen'"
+        },
+        {
+          "command": "markpen.cycleHeading",
           "when": "activeCustomEditorId == 'markpen'"
         }
       ],
@@ -976,46 +976,10 @@
     "configuration": {
       "title": "MarkPen",
       "properties": {
-        "markpen.menus": {
-          "type": "object",
-          "default": {
-            "commandPalette": "toggle h0 h1 h2 h3 h4 h5 h6 h+ h- bold italic strikethrough link inlinecode unordered ordered checked checked-toggle indent unindent new-start new-end new-table new-row-above new-row-below del-row new-col-left new-col-right del-col align-left align-center align-right move-caret-prev move-caret-next select-codeblock codeblock blockquote hr undo redo replaceInFiles toggle cycleHeading pasteimage openKeyboardShortcuts toggleStatusbar",
-            "editor/context": "toggle",
-            "editor/title": "toggle undo",
-            "editor/title/context": "toggle undo redo",
-            "statusBar": "cycleHeading bold italic strikethrough link inlinecode unordered ordered checked blockquote"
-          },
-          "markdownDescription": "Customize menu... (options: h1, h2, etc.)"
-        },
-        "markpen.openOutline": {
-          "type": "boolean",
-          "default": true,
-          "description": "Open markdown outline."
-        },
         "markpen.toggleStatusbar": {
           "type": "boolean",
           "default": false,
           "description": "Show MarkPen status bar toolbar items on the left side."
-        },
-        "markpen.hideToolbar": {
-          "type": "boolean",
-          "default": false,
-          "description": "Hide markdown toolbar."
-        },
-        "markpen.previewCode": {
-          "type": "boolean",
-          "default": true,
-          "description": "Preview code in markdown."
-        },
-        "markpen.previewCodeHighlight.showLineNumber": {
-          "type": "boolean",
-          "default": false,
-          "description": "Show line numbers."
-        },
-        "markpen.workspacePathAsImageBasePath": {
-          "type": "boolean",
-          "default": false,
-          "description": "Workspace as base path."
         },
         "markpen.pasterImgPath": {
           "type": "string",

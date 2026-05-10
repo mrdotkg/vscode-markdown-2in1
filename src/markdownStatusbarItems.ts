@@ -92,7 +92,7 @@ export class StatusBar {
         this.items.set(f.command, { item, when: () => true });
       } else if (
         !insertCmds.includes(f.command) &&
-        !["Heading", "List", "Table"].includes(f.category)
+        !["Heading", "List", "Table", "Code"].includes(f.category)
       ) {
         // Everything else (except Insert, Heading, List, Table) goes to More
         moreItemsList.push(f);

@@ -240,7 +240,7 @@ handler
       mode: "ir",
       lang: config.editorLanguage || "en_US",
       tab: "  ",
-      toolbarConfig: { tipPosition: "south", hide: config.hideToolbar },
+      toolbarConfig: { tipPosition: "south", hide: true },
       cache: { enable: false },
       customWysiwygToolbar: () => {},
       preview: {
@@ -251,7 +251,7 @@ handler
           style: document.body.classList.contains("vscode-dark")
             ? "vs2015"
             : "vs",
-          lineNumber: config.previewCodeHighlight.showLineNumber,
+          lineNumber: false,
         },
         extPath: md.rootPath,
         math: { engine: "KaTeX", inlineDigit: true },

@@ -1,8 +1,8 @@
 export const Features = [
-  // Heading
+  //
   {
     command: "h0",
-    title: "Remove Heading",
+    title: "Remove",
     icon: "$(symbol-number)0",
     keybinding: "ctrl+h",
     category: "Heading",
@@ -11,7 +11,7 @@ export const Features = [
   },
   {
     command: "h1",
-    title: "H1 Style Heading",
+    title: "H1 Style",
     icon: "$(symbol-number)1",
     keybinding: "ctrl+alt+1",
     category: "Heading",
@@ -20,7 +20,7 @@ export const Features = [
   },
   {
     command: "h2",
-    title: "H2 Style Heading",
+    title: "H2 Style",
     icon: "$(symbol-number)2",
     keybinding: "ctrl+alt+2",
     category: "Heading",
@@ -29,7 +29,7 @@ export const Features = [
   },
   {
     command: "h3",
-    title: "H3 Style Heading",
+    title: "H3 Style",
     icon: "$(symbol-number)3",
     keybinding: "ctrl+alt+3",
     category: "Heading",
@@ -38,7 +38,7 @@ export const Features = [
   },
   {
     command: "h4",
-    title: "H4 Style Heading",
+    title: "H4 Style",
     icon: "$(symbol-number)4",
     keybinding: "ctrl+alt+4",
     category: "Heading",
@@ -47,7 +47,7 @@ export const Features = [
   },
   {
     command: "h5",
-    title: "H5 Style Heading",
+    title: "H5 Style",
     icon: "$(symbol-number)5",
     keybinding: "ctrl+alt+5",
     category: "Heading",
@@ -56,7 +56,7 @@ export const Features = [
   },
   {
     command: "h6",
-    title: "H6 Style Heading",
+    title: "H6 Style",
     icon: "$(symbol-number)6",
     keybinding: "ctrl+alt+6",
     category: "Heading",
@@ -65,7 +65,7 @@ export const Features = [
   },
   {
     command: "h+",
-    title: "Heading Level +1",
+    title: "Level +1",
     icon: "$(symbol-number)+",
     keybinding: "ctrl+=",
     category: "Heading",
@@ -73,7 +73,7 @@ export const Features = [
   },
   {
     command: "h-",
-    title: "Heading Level - 1",
+    title: "Level - 1",
     icon: "$(symbol-number)-",
     keybinding: "ctrl+-",
     category: "Heading",
@@ -308,7 +308,7 @@ export const Features = [
     icon: "$(bracket-dot)",
     keybinding: "ctrl+shift+a",
     category: "Code",
-    selector: "[data-type='code-block']",
+    selector: "[data-type='code-block'] pre code:not(.hljs)",
     hotkey: "ctrl+a",
   },
   {
