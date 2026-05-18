@@ -364,12 +364,12 @@
       },
       {
         "command": "markpen.h+",
-        "key": "ctrl+=",
+        "key": "ctrl+alt+=",
         "when": "activeCustomEditorId == 'markpen'"
       },
       {
         "command": "markpen.h-",
-        "key": "ctrl+-",
+        "key": "ctrl+alt+-",
         "when": "activeCustomEditorId == 'markpen'"
       },
       {
@@ -996,6 +996,7 @@
     "build": "npm run gen:contributes && rimraf out && node build.ts --mode=production",
     "package": "vsce package --no-dependencies",
     "publish": "vsce publish --no-dependencies",
+    "release": "node buildscripts/bump-version.js && npm run build && npm run package",
     "vscode:prepublish": "npm run build"
   },
   "devDependencies": {

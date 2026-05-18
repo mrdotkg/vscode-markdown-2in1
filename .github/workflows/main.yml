@@ -9,22 +9,79 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Skip the version-bump commit CI pushed back, avoid infinite loop
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
+    - uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - uses: actions/setup-node@v3
       with:
         node-version: 25.x
+
     - run: npm i
-    - run: |
-        echo ">>> Start compile vscode-markdown."
-        npm run build
-        echo ">>> Compile vscode-markdown success!"
-    - run: npm run package
-    - name: Upload to GitHub Release
+
+    # ── Determine bump type from commit message ───────────────────────────
+    # Write [minor] or [major] anywhere in your commit message.
+    # Default is patch.
+    - name: Determine bump type
+      id: bump
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      run: |
+        MSG=$(git log -1 --pretty=%B)
+        if echo "$MSG" | grep -qi '\[major\]'; then
+          echo "type=major" >> $GITHUB_OUTPUT
+        elif echo "$MSG" | grep -qi '\[minor\]'; then
+          echo "type=minor" >> $GITHUB_OUTPUT
+        else
+          echo "type=patch" >> $GITHUB_OUTPUT
+        fi
+
+    # ── Bump version in package.json + README ────────────────────────────
+    - name: Bump version
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      run: node scripts/bump-version.js ${{ steps.bump.outputs.type }}
+
+    # ── Read the new version for use in later steps ──────────────────────
+    - name: Read version
+      id: pkg
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+
+    # ── Build + Package ───────────────────────────────────────────────────
+    # "npm run package" triggers vscode:prepublish → npm run build internally.
+    # On PRs this still runs so compile errors are caught early.
+    - name: Package
+      run: npm run package
+
+    # ── Commit bumped files back to main ─────────────────────────────────
+    - name: Commit version bump
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add package.json README.md
+        git diff --staged --quiet || git commit -m "chore: release v${{ steps.pkg.outputs.version }} [skip ci]"
+        git push
+
+    # ── GitHub Release ────────────────────────────────────────────────────
+    - name: Create GitHub Release
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: v${{ github.run_number }}
-        files: ./markpen-0.0.1.vsix
+        tag_name: v${{ steps.pkg.outputs.version }}
+        name: v${{ steps.pkg.outputs.version }}
+        files: ./markpen-${{ steps.pkg.outputs.version }}.vsix
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    # ── Publish to VS Code Marketplace ───────────────────────────────────
+    # Reuses the .vsix already built above — no extra build triggered.
+    # Requires VSCE_PAT secret: Azure DevOps → User Settings →
+    # Personal Access Tokens → scope: Marketplace → Manage
+    - name: Publish to Marketplace
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      run: npx vsce publish --no-dependencies --packagePath ./markpen-${{ steps.pkg.outputs.version }}.vsix
+      env:
+        VSCE_PAT: ${{ secrets.VSCE_PAT }}
