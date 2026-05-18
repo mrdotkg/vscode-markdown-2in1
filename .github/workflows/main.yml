@@ -41,7 +41,7 @@ jobs:
     # ── Bump version in package.json + README ────────────────────────────
     - name: Bump version
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-      run: node scripts/bump-version.js ${{ steps.bump.outputs.type }}
+      run: node buildscripts/bump-version.js ${{ steps.bump.outputs.type }}
 
     # ── Read the new version for use in later steps ──────────────────────
     - name: Read version
